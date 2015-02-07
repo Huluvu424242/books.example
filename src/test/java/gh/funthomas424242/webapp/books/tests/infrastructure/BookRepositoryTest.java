@@ -1,8 +1,9 @@
-package gh.funthomas424242.webapp.books.infrastructure;
+package gh.funthomas424242.webapp.books.tests.infrastructure;
 
 import static org.junit.Assert.assertEquals;
 import gh.funthomas424242.webapp.books.BookController;
 import gh.funthomas424242.webapp.books.domain.Book;
+import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
