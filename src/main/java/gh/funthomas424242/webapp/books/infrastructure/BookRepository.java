@@ -12,5 +12,6 @@ import org.springframework.stereotype.Component;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
 	List<Book> findByTitel(String titel);
+	List<Book> findByIsbn(String isbn);
 
 }
