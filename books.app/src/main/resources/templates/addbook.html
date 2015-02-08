@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Neues Buch Erfassen</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Buch : Eigenschaften</h1>
+	<div layout:fragment="content" class="container">
+		<form action="addbook.html" th:attr="action=@{/book/save}" th:object="${book}" method="post">
+			<fieldset>
+				<input type="text" name="titel" /> 
+				<input type="text" name="isbn" />
+				<input type="submit" value="Subscribe me!"
+					th:attr="value=#{subscribe.submit}" />
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
