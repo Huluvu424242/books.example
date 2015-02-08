@@ -25,7 +25,7 @@ public class BookController {
 		bookRepository.save(new Book("Nackt unter Wölfen","1-3-333-3"));
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/books")
 	public ModelAndView hello() {
 		return new ModelAndView("booklist","books",bookRepository.findAll());
 	}

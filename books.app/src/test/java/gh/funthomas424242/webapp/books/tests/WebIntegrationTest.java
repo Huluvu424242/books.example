@@ -26,7 +26,7 @@ public class WebIntegrationTest {
 	@Test
 	public void homePage() {
 		RestTemplate restTemplate = new RestTemplate();
-		assertTrue(restTemplate.getForObject("http://127.0.0.1:"+serverPort,
+		assertTrue(restTemplate.getForObject("http://127.0.0.1:"+serverPort+"/books",
 				String.class).contains("Ede"));
 	}
 
