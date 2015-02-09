@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,8 +44,8 @@ public class BookController {
 	}
 
 	@RequestMapping("/book/save")
-	public ModelAndView speichereBuch(final Book book) {
-		bookService.addBook(book.getTitel(), book.getIsbn());
+	public ModelAndView speichereBuch(@RequestParam("titel") final String titel,@RequestParam("isbn") final String isbn) {
+		bookService.addBook(titel, isbn);
 		return new ModelAndView("booklist", "books", bookService.findAll());
 	}
 
