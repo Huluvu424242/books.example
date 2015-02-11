@@ -15,7 +15,7 @@ public class SharedSteps {
    
     @Given("book $titel with ISBN $isbn")
     public void product(String titel, String isbn) {
-        bookRepository.save(new Book(titel, isbn));
+       // bookRepository.save(new Book(titel, isbn));
     }
 
 //    @Given("book $titel isbn is $isbn")

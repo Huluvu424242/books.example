@@ -2,7 +2,6 @@ package gh.funthomas424242.webapp.books.tests;
 
 import static org.junit.Assert.assertTrue;
 import gh.funthomas424242.webapp.books.Application;
-import gh.funthomas424242.webapp.books.web.BookController;
 
 import org.junit.Ignore;
 import org.junit.Test;

@@ -1,6 +1,6 @@
 package gh.funthomas424242.webapp.books.tests.converter;
 
-import gh.funthomas424242.webapp.books.domain.types.ISBN;
+import gh.funthomas424242.webapp.books.domain.ISBN;
 
 import org.apache.commons.lang.StringUtils;
 import org.jbehave.core.annotations.AsParameterConverter;

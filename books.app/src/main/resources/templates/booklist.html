@@ -23,7 +23,7 @@
 				<tr th:each="book : ${books}">
 					<td th:text="${book.id}">1</td>
 					<td th:text="${book.titel}">Titel</td>
-					<td th:text="${book.isbn}">ISBN</td>
+					<td th:text="${book.isbn.toString()}">ISBN</td>
 				</tr>
 			</tbody>
 		</table>

@@ -1,7 +1,9 @@
 package gh.funthomas424242.webapp.books.web;
 
 import gh.funthomas424242.webapp.books.domain.Book;
+import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.service.BookService;
+import gh.funthomas424242.webapp.books.service.ISBNService;
 
 import java.util.List;
 
@@ -16,10 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class BookController {
 
 	private final BookService bookService;
+	
+	private final ISBNService isbnService;
 
 	@Autowired
-	public BookController(BookService bookService) {
+	public BookController(final BookService bookService, final ISBNService isbnService) {
 		this.bookService = bookService;
+		this.isbnService=isbnService;
 	}
 
 	// public BookController(BookRepository bookRepository) {
@@ -44,7 +49,9 @@ public class BookController {
 	}
 
 	@RequestMapping("/book/save")
-	public ModelAndView speichereBuch(@RequestParam("titel") final String titel,@RequestParam("isbn") final String isbn) {
+	public ModelAndView speichereBuch(@RequestParam("titel") final String titel,@RequestParam("isbn") final String isbnraw) {
+		final ISBN isbn=ISBN.parseFromString(isbnraw);
+		isbnService.addISBN(isbn);
 		bookService.addBook(titel, isbn);
 		return new ModelAndView("booklist", "books", bookService.findAll());
 	}

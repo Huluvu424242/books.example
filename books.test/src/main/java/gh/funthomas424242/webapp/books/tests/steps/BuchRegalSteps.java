@@ -3,7 +3,7 @@ package gh.funthomas424242.webapp.books.tests.steps;
 import java.util.List;
 
 import gh.funthomas424242.webapp.books.domain.Book;
-import gh.funthomas424242.webapp.books.domain.types.ISBN;
+import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 
 import org.jbehave.core.annotations.AsParameters;
