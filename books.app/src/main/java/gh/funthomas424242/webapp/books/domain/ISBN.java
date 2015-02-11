@@ -4,6 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * International Standard Book Number. Es gibt zwei Formate: ISBN-10 (alt) und
+ * ISBN-13 (neu). Zur Konvertierung von ISBN-10 in ISBN-13 wird der Prefix 978
+ * vorangestellt und die Prüfsumme mit dem ISBN-13 Algorithmus neu berechnet.
+ * 
+ * @author huluvu424242
+ * 
+ */
 @Entity
 public class ISBN {
 
@@ -11,7 +19,7 @@ public class ISBN {
 	@GeneratedValue
 	protected long id;
 
-	protected String präfix;
+	protected String prefix;
 	protected String gruppenNummer;
 	protected String verlagsNummer;
 	protected String bandTitelNummer;
@@ -30,10 +38,10 @@ public class ISBN {
 				isbnParts[4]);
 	}
 
-	public ISBN(String präfix, String gruppenNummer, String verlagsNummer,
+	public ISBN(String prefix, String gruppenNummer, String verlagsNummer,
 			String bandTitelNummer, String pruefZiffer) {
 		super();
-		this.präfix = präfix;
+		this.prefix = prefix;
 		this.gruppenNummer = gruppenNummer;
 		this.verlagsNummer = verlagsNummer;
 		this.bandTitelNummer = bandTitelNummer;
@@ -43,7 +51,7 @@ public class ISBN {
 	@Override
 	public String toString() {
 		final StringBuffer buf = new StringBuffer();
-		buf.append(präfix);
+		buf.append(prefix);
 		buf.append("-");
 
 		buf.append(gruppenNummer);
@@ -69,7 +77,7 @@ public class ISBN {
 				+ ((gruppenNummer == null) ? 0 : gruppenNummer.hashCode());
 		result = prime * result
 				+ ((pruefZiffer == null) ? 0 : pruefZiffer.hashCode());
-		result = prime * result + ((präfix == null) ? 0 : präfix.hashCode());
+		result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
 		result = prime * result
 				+ ((verlagsNummer == null) ? 0 : verlagsNummer.hashCode());
 		return result;
@@ -99,10 +107,10 @@ public class ISBN {
 				return false;
 		} else if (!pruefZiffer.equals(other.pruefZiffer))
 			return false;
-		if (präfix == null) {
-			if (other.präfix != null)
+		if (prefix == null) {
+			if (other.prefix != null)
 				return false;
-		} else if (!präfix.equals(other.präfix))
+		} else if (!prefix.equals(other.prefix))
 			return false;
 		if (verlagsNummer == null) {
 			if (other.verlagsNummer != null)
@@ -124,8 +132,8 @@ public class ISBN {
 		return parts;
 	}
 
-	public String getPräfix() {
-		return präfix;
+	public String getPrefix() {
+		return prefix;
 	}
 
 	public String getGruppenNummer() {

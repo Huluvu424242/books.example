@@ -10,7 +10,9 @@
 	<div layout:fragment="content" class="container">
 		<form action="addbook.html" th:attr="action=@{/book/save}" method="post">
 			<fieldset>
+			<label>Titel:</label>
 				<input type="text" name="titel" /> 
+				<label>ISBN</label>
 				<input type="text" name="isbn" />
 				<input type="submit" value="Subscribe me!"
 					th:attr="value=#{subscribe.submit}" />
