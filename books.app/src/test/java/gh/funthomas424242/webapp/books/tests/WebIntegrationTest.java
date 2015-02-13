@@ -9,13 +9,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@IntegrationTest("server.port=0")
+@PropertySource("classpath:messages.properties")
+@IntegrationTest({"server.port=0"})
 @WebAppConfiguration
 public class WebIntegrationTest {
 
@@ -24,12 +26,14 @@ public class WebIntegrationTest {
 	@Value("${local.server.port}")
 	private int serverPort;
 
+	//@Value("${message.buch.liste.leer}")
+	private String messageLeeresRegal="Aktuell keine Bücher im Buchregal.";
 	
 	@Test
 	public void homePage() {
 		RestTemplate restTemplate = new RestTemplate();
 		assertTrue(restTemplate.getForObject(SERVER_URL+serverPort+"/books",
-				String.class).contains("No messages"));
+				String.class).contains( messageLeeresRegal));
 	}
 
 	@Test
@@ -37,7 +41,7 @@ public class WebIntegrationTest {
 	public void addPage() {
 		RestTemplate restTemplate = new RestTemplate();
 		assertTrue(restTemplate.getForObject(SERVER_URL+serverPort+"/book/add",
-				String.class).contains("No messages"));
+				String.class).contains("Aktuell keine Bücher im Buchregal."));
 	}
 	
 	@Test

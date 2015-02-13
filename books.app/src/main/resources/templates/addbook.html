@@ -6,16 +6,17 @@
 <title>Neues Buch Erfassen</title>
 </head>
 <body>
-	<h1 layout:fragment="header">Buch : Eigenschaften</h1>
+	<h1 layout:fragment="header" th:text="#{buch.form.register.titel}">Titel Buch erfassen</h1>
 	<div layout:fragment="content" class="container">
-		<form action="addbook.html" th:attr="action=@{/book/save}" method="post">
+		<form action="addbook.html" th:attr="action=@{/book/register}" method="post">
 			<fieldset>
 			<label>Titel:</label>
 				<input type="text" name="titel" /> 
-				<label>ISBN</label>
+				<label>ISBN:</label>
 				<input type="text" name="isbn" />
+				<!-- submit button -->
 				<input type="submit" value="Subscribe me!"
-					th:attr="value=#{subscribe.submit}" />
+					th:attr="value=#{buch.form.register.submit}" />
 			</fieldset>
 		</form>
 	</div>

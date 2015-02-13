@@ -18,7 +18,7 @@
 			</thead>
 			<tbody>
 				<tr th:if="${books.empty}">
-					<td colspan="3">No messages</td>
+					<td colspan="3" th:text="#{message.buch.liste.leer}">No messages</td>
 				</tr>
 				<tr th:each="book : ${books}">
 					<td th:text="${book.id}">1</td>
@@ -28,7 +28,7 @@
 			</tbody>
 		</table>
 		<div>
-		<a href="/book/add">Neues Buch registrieren</a>
+		<a href="/book/add" th:text="#{buch.liste.link.erfassen}">Neues Buch registrieren</a>
 		</div>
 	</div>
 </body>
