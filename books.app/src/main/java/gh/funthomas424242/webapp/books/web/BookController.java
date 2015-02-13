@@ -50,8 +50,6 @@ public class BookController {
 
 	@RequestMapping("/book/register")
 	public ModelAndView speichereBuch(HttpServletRequest request,
-			HttpServletResponse response, ServletContext servletContext,
-			TemplateEngine templateEngine,
 			@RequestParam("titel") final String titel,
 			@RequestParam("isbn") final String isbnraw) {
 
