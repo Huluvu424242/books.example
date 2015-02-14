@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Bücher : Übersicht</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Bücher : Übersicht</h1>
+	<div layout:fragment="content" class="content">
+
+		<!-- Jumbotron -->
+		<div class="jumbotron">
+			<h1>Marketing stuff!</h1>
+			<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas
+				eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+				condimentum nibh, ut fermentum massa justo sit amet.</p>
+			<p>
+				<a class="btn btn-lg btn-success" href="/book/add" role="button"
+					th:text="#{buch.liste.link.erfassen}">Get started today</a>
+			</p>
+		</div>
+		<div class="table-responsive">
+
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Titel</td>
+						<td>ISBN</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${books.empty}">
+						<td colspan="3" th:text="#{message.buch.liste.leer}">No
+							messages</td>
+					</tr>
+					<tr th:each="book : ${books}">
+						<td th:text="${book.id}">1</td>
+						<td th:text="${book.titel}">Titel</td>
+						<td th:text="${book.isbn.toString()}">ISBN</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<a href="/book/add" th:text="#{buch.liste.link.erfassen}">Neues
+				Buch registrieren</a>
+		</div>
+	</div>
+</body>
+</html>
