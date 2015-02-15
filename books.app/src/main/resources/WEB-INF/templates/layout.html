@@ -9,24 +9,41 @@
 <meta name="author" content="" />
 <title>Layout</title>
 
-<!-- Das neueste kompilierte und minimierte CSS -->
+<!-- Das neueste kompilierte und minimierte CSS 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+	-->
 
-<!-- Optionales Theme -->
+<!-- Optionales Theme 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
+-->
 
-<!-- Das neueste kompilierte und minimierte JavaScript -->
+<!-- Das neueste kompilierte und minimierte JavaScript 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<!-- link rel="stylesheet" 
-	th:href="@{templates/css/bootstrap.min.css}"
-	href="templates/css/bootstrap.min.css" />
 -->
+
+<!-- Das eingebettete kompilierte und minimierte CSS --> 
+<link rel="stylesheet" 
+	th:href="@{/css/bootstrap.min.css}"
+	href="../css/bootstrap.min.css" />
+
+<!-- Das lokale optionale Theme  -->
+<link rel="stylesheet" 
+	th:href="@{/css/bootstrap-theme.min.css}"
+	href="../css/bootstrap-theme.min.css" />
+
+<!-- Das neueste kompilierte und minimierte JavaScript -->
+<link rel="stylesheet" 
+	th:href="@{/js/bootstrap.min.js}"
+	href="../js/bootstrap.min.js" />	
+
+
+<!-- Das spezifische lokale CSS -->
 <link rel="stylesheet" th:href="@{/css/justified-nav.css}"
 	href="../css/justified-nav.css" />
+	
 </head>
 <body>
 	<div class="container">
