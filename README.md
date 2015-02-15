@@ -13,7 +13,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * http://mkuthan.github.io/blog/2014/05/29/acceptance-testing-using-jbehave-spring-framework-and-maven/
 
 
-*Ausprobieren*
+# Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
 2. Anschließend in das books.app Unterverzeichnis wechseln.
 3. Dort das Projekt bauen mit mvn  -U clean install
