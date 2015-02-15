@@ -6,18 +6,8 @@
 <title>Bücher : Übersicht</title>
 </head>
 <body>
-	<h1 layout:fragment="header">Bücher : Übersicht</h1>
+	<h1 layout:fragment="header">Bücherregal : Übersicht</h1>
 	<div layout:fragment="content" class="content">
-
-		<!-- Jumbotron -->
-		<div class="jumbotron">
-			<h1>Bücherregal</h1>
-			<p class="lead">Ein Überblick über alle verwalteten Bücher.</p>
-			<p>
-				<a class="btn btn-lg btn-success" href="/book/add" role="button"
-					th:text="#{buch.liste.link.erfassen}">Los geht's</a>
-			</p>
-		</div>
 		<div class="table-responsive">
 
 			<table class="table table-bordered table-striped">
@@ -41,9 +31,12 @@
 				</tbody>
 			</table>
 		</div>
-		<div>
-			<a href="/book/add" th:text="#{buch.liste.link.erfassen}">Neues
-				Buch registrieren</a>
+		<!-- Jumbotron -->
+		<div class="jumbotron">
+			<p>
+				<a class="btn btn-lg btn-success" href="/book/add" role="button"
+					th:text="#{buch.liste.link.erfassen}">Los geht's</a>
+			</p>
 		</div>
 	</div>
 </body>
