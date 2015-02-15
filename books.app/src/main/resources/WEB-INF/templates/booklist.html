@@ -3,30 +3,30 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorator="layout">
 <head>
-<title>Bücher : Übersicht</title>
+<title>Kleine Bücherverwaltung - Bücherregal</title>
 </head>
 <body>
-	<h1 layout:fragment="header">Bücherregal : Übersicht</h1>
+	<h1 layout:fragment="header" th:text="#{books.section}">?Bücherregal</h1>
 	<div layout:fragment="content" class="content">
 		<div class="table-responsive">
 
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<td>ID</td>
-						<td>Titel</td>
-						<td>ISBN</td>
+						<th>ID</th>
+						<th>Titel</th>
+						<th>ISBN</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:if="${books.empty}">
-						<td colspan="3" th:text="#{message.buch.liste.leer}">No
+						<td colspan="3" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
 					<tr th:each="book : ${books}">
-						<td th:text="${book.id}">1</td>
-						<td th:text="${book.titel}">Titel</td>
-						<td th:text="${book.isbn.toString()}">ISBN</td>
+						<td th:text="${book.id}">?1</td>
+						<td th:text="${book.titel}">?Titel</td>
+						<td th:text="${book.isbn.toString()}">?ISBN</td>
 					</tr>
 				</tbody>
 			</table>
@@ -34,8 +34,9 @@
 		<!-- Jumbotron -->
 		<div class="jumbotron">
 			<p>
-				<a class="btn btn-lg btn-success" href="/book/add" role="button"
-					th:text="#{buch.liste.link.erfassen}">Los geht's</a>
+				<a class="btn btn-lg btn-success"
+					th:attr="href=@{#{link.buch.erfassen}}" role="button"
+					th:text="#{buch.liste.link.erfassen}">?Weiteres Buch erfassen</a>
 			</p>
 		</div>
 	</div>

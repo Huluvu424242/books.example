@@ -7,9 +7,7 @@ import gh.funthomas424242.webapp.books.service.ISBNService;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.TemplateEngine;
 
 @RestController
 public class BookController {
@@ -38,17 +35,22 @@ public class BookController {
 		return this.bookService.findAll();
 	}
 
-	@RequestMapping({ "/", "/books" })
+	@RequestMapping("${link.impressum}")
+	public ModelAndView zeigeImpressum() {
+		return new ModelAndView("impressum", "books", bookService.findAll());
+	}
+	
+	@RequestMapping({ "/", "${link.books}" })
 	public ModelAndView listeBuecher() {
 		return new ModelAndView("booklist", "books", bookService.findAll());
 	}
 
-	@RequestMapping("/book/add")
+	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
 		return new ModelAndView("addbook", "book", new Book());
 	}
 
-	@RequestMapping("/book/register")
+	@RequestMapping("${link.buch.registrieren}")
 	public ModelAndView speichereBuch(HttpServletRequest request,
 			@RequestParam("titel") final String titel,
 			@RequestParam("isbn") final String isbnraw) {

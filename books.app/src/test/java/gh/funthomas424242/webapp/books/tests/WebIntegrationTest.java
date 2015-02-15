@@ -23,16 +23,22 @@ public class WebIntegrationTest {
 
 	@Value("${local.server.port}")
 	private int serverPort;
+	
+	@Value("${link.books}")
+	private  String LINK_BOOKS;
+	
+	@Value("${link.buch.erfassen}")
+	private  String LINK_BUCH_ERFASSEN;
 
-	// @Value("${message.buch.liste.leer}")
-	private String messageLeeresRegal = "Aktuell keine Bücher im Buchregal.";
+	//@Value("${message.buch.liste.leer}")
+	private String MESSAGE_LEERES_REGAL= "Aktuell keine Bücher im Buchregal.";
 
 	@Test
 	public void homePage() {
 		RestTemplate restTemplate = new RestTemplate();
 		assertTrue(restTemplate.getForObject(
-				SERVER_URL + serverPort + "/books", String.class).contains(
-				messageLeeresRegal));
+				SERVER_URL + serverPort + LINK_BOOKS, String.class).contains(
+				MESSAGE_LEERES_REGAL));
 	}
 
 	@Test
@@ -40,7 +46,7 @@ public class WebIntegrationTest {
 	public void addPage() {
 		RestTemplate restTemplate = new RestTemplate();
 		assertTrue(restTemplate.getForObject(
-				SERVER_URL + serverPort + "/book/add", String.class).contains(
+				SERVER_URL + serverPort + LINK_BUCH_ERFASSEN, String.class).contains(
 				"Aktuell keine Bücher im Buchregal."));
 	}
 

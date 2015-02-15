@@ -24,31 +24,31 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 -->
 
-<!-- Das eingebettete kompilierte und minimierte CSS --> 
-<link rel="stylesheet" 
-	th:href="@{/css/bootstrap.min.css}"
+<!-- Das eingebettete kompilierte und minimierte CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
 	href="../css/bootstrap.min.css" />
 
 <!-- Das lokale optionale Theme  -->
-<link rel="stylesheet" 
-	th:href="@{/css/bootstrap-theme.min.css}"
+<link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"
 	href="../css/bootstrap-theme.min.css" />
 
 <!-- Das neueste kompilierte und minimierte JavaScript -->
-<link rel="stylesheet" 
-	th:href="@{/js/bootstrap.min.js}"
-	href="../js/bootstrap.min.js" />	
+<link rel="stylesheet" th:href="@{/js/bootstrap.min.js}"
+	href="../js/bootstrap.min.js" />
 
 
-<!-- Das spezifische lokale CSS -->
+<!-- Die spezifischen lokalen CSS -->
 <link rel="stylesheet" th:href="@{/css/justified-nav.css}"
 	href="../css/justified-nav.css" />
-	
+<link rel="stylesheet" th:href="@{/css/dashboard.css}"
+	href="../css/dashboard.css" />
+
 </head>
 <body>
 	<div class="container">
 		<div class="masthead">
-			<a href="https://github.com/FunThomas424242/books.example" target='_blank'><img
+			<a href="https://github.com/FunThomas424242/books.example"
+				target='_blank'><img
 				style="position: absolute; top: 0; left: 0; border: 0;"
 				src="https://camo.githubusercontent.com/121cd7cbdc3e4855075ea8b558508b91ac463ac2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677265656e5f3030373230302e706e67"
 				alt="Fork me on GitHub"
@@ -56,56 +56,17 @@
 			<h3 class="text-muted" th:text="#{info.app.name}"></h3>
 			<nav>
 				<ul class="nav nav-justified">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Projects</a></li>
+					<li class="active"><a th:attr="href=#{link.books}">Bücher</a></li>
+					<li><a th:attr="href=#{link.impressum}">Impressum</a></li>
+					<!--
 					<li><a href="#">Services</a></li>
 					<li><a href="#">Downloads</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Contact</a></li>
+					 -->
 				</ul>
 			</nav>
 		</div>
-
-		<!-- Example row of columns 
-		<div class="row">
-			<div class="col-lg-4">
-				<h2>Safari bug warning!</h2>
-				<p class="text-danger">As of v8.0, Safari exhibits a bug in
-					which resizing your browser horizontally causes rendering errors in
-					the justified nav that are cleared upon refreshing.</p>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn btn-primary" href="#" role="button">View details
-						&raquo;</a>
-				</p>
-			</div>
-			<div class="col-lg-4">
-				<h2>Heading</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn btn-primary" href="#" role="button">View details
-						&raquo;</a>
-				</p>
-			</div>
-			<div class="col-lg-4">
-				<h2>Heading</h2>
-				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-					egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-					nibh, ut fermentum massa.</p>
-				<p>
-					<a class="btn btn-primary" href="#" role="button">View details
-						&raquo;</a>
-				</p>
-			</div>
-		</div>
-		-->
 
 
 
@@ -114,19 +75,12 @@
 		<!-- Site footer -->
 		<footer class="footer">
 			<p>
-				<a href="http://stackoverflow.com/users/373498/funthomas424242"
-					target='_blank'> <img
-					src="http://stackoverflow.com/users/flair/373498.png" width="208"
-					height="58"
-					alt="profile for FunThomas424242 at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
-					title="profile for FunThomas424242 at Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
-				</a> &copy; 2015 <a
-					href='https://www.openhub.net/accounts/68990?ref=Detailed'
+				<a href='https://www.openhub.net/accounts/68990?ref=Detailed'
 					target='_blank'> <img
 					alt='Open Hub profile for FunThomas424242' border='0' height='35'
 					src='https://www.openhub.net/accounts/68990/widgets/account_detailed.gif'
-					width='230' />
-				</a>
+					width='230' /> 
+				</a>Letzte Änderung durchgeführt in 2015.
 			</p>
 		</footer>
 	</div>

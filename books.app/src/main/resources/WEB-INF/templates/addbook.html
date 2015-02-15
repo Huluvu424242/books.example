@@ -3,12 +3,12 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorator="layout">
 <head>
-<title>Neues Buch Erfassen</title>
+<title th:text="#{buch.form.register.titel}">?Kleine Bücherverwaltung - Buch erfassen</title>
 </head>
 <body>
-	<h1 layout:fragment="header" th:text="#{buch.form.register.titel}">Titel Buch erfassen</h1>
+	<h1 layout:fragment="header" th:text="#{buch.form.register.section}">?Buchdaten - Erfassen</h1>
 	<div layout:fragment="content" class="container">
-		<form action="addbook.html" th:attr="action=@{/book/register}" method="post">
+		<form action="addbook.html" th:attr="action=@{#{link.buch.registrieren}}" method="post">
 			<fieldset>
 			<label>Titel:</label>
 				<input type="text" name="titel" /> 
