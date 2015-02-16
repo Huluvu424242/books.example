@@ -8,7 +8,7 @@
 <body>
 	<h1 layout:fragment="header" th:text="#{buch.form.register.section}">?Buchdaten - Erfassen</h1>
 	<div layout:fragment="content" class="container">
-		<form action="addbook.html" th:attr="action=@{#{link.buch.registrieren}}" method="post">
+		<form action="erfassebuch.html" th:attr="action=@{#{link.buch.registrieren}}" method="post">
 			<fieldset>
 			<label>Titel:</label>
 				<input type="text" name="titel" /> 

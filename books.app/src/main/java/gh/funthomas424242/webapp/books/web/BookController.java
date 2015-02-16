@@ -34,20 +34,16 @@ public class BookController {
 	public List<Book> populateFeatures() {
 		return this.bookService.findAll();
 	}
-
-	@RequestMapping("${link.impressum}")
-	public ModelAndView zeigeImpressum() {
-		return new ModelAndView("impressum", "books", bookService.findAll());
-	}
 	
 	@RequestMapping({ "/", "${link.books}" })
 	public ModelAndView listeBuecher() {
-		return new ModelAndView("booklist", "books", bookService.findAll());
+		return new ModelAndView("booklist","books", bookService.findAll());
 	}
+
 
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
-		return new ModelAndView("addbook", "book", new Book());
+		return new ModelAndView("erfassebuch");
 	}
 
 	@RequestMapping("${link.buch.registrieren}")
