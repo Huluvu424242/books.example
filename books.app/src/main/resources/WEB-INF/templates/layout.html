@@ -37,40 +37,55 @@
 	href="../js/bootstrap.min.js" />
 
 
+
+
+
+
 <!-- Die spezifischen lokalen CSS -->
-<link rel="stylesheet" th:href="@{/css/justified-nav.css}"
-	href="../css/justified-nav.css" />
 <link rel="stylesheet" th:href="@{/css/dashboard.css}"
 	href="../css/dashboard.css" />
+<link rel="stylesheet" th:href="@{/css/justified-nav.css}"
+	href="../css/justified-nav.css" />
+<link rel="stylesheet" th:href="@{/css/jumbotron.css}"
+	href="../css/jumbotron.css" />
 
 </head>
 <body>
-	<div class="container">
-		<div class="masthead">
-			<a href="https://github.com/FunThomas424242/books.example"
-				target='_blank'><img
-				style="position: absolute; top: 0; left: 0; border: 0;"
-				src="https://camo.githubusercontent.com/121cd7cbdc3e4855075ea8b558508b91ac463ac2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677265656e5f3030373230302e706e67"
-				alt="Fork me on GitHub"
-				data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" /></a>
-			<h3 class="text-muted" th:text="#{info.app.name}"></h3>
-			<nav>
-				<ul class="nav nav-justified">
-					<li class="active"><a th:attr="href=#{link.books}">Bücher</a></li>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="true"
+					aria-controls="navbar">
+					<span class="sr-only">Navigation ein-/ausblenden</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" target="_blank"
+					href="https://github.com/FunThomas424242/books.example"><img
+					style="position: absolute; top: 0; left: 0; border: 10;"
+					src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67"
+					alt="Fork me on GitHub"
+					data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" /></a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" placeholder="openID" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-success">Anmelden</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:attr="href=#{link.books}">Bücher</a></li>
 					<li><a th:attr="href=#{link.settings}">Einstellungen</a></li>
 					<li><a th:attr="href=#{link.user}">Nutzer</a></li>
 					<li><a th:attr="href=#{link.impressum}">Impressum</a></li>
-					<!--
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Downloads</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-					 -->
 				</ul>
-			</nav>
+			</div>
 		</div>
+	</nav>
 
-
+	<div class="container">
 
 		<h1 layout:fragment="header">Layout</h1>
 		<div layout:fragment="content">Fake content</div>
@@ -81,12 +96,14 @@
 					target='_blank'> <img
 					alt='Open Hub profile for FunThomas424242' border='0' height='35'
 					src='https://www.openhub.net/accounts/68990/widgets/account_detailed.gif'
-					width='230' /> 
+					width='230' />
 				</a>Letzte Änderung durchgeführt in 2015.
 			</p>
 		</footer>
 	</div>
 	<!-- container -->
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="../js/docs.min.js"></script>
 </body>
 </html>
