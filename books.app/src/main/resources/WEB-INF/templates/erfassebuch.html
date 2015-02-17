@@ -3,16 +3,35 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorator="layout">
 <head>
-<title th:text="#{buch.form.register.titel}">?Kleine Bücherverwaltung - Buch erfassen</title>
+<title th:text="#{buch.form.register.titel}">?Kleine
+	Bücherverwaltung - Buch erfassen</title>
 </head>
 <body>
-	<h1 layout:fragment="header" th:text="#{buch.form.register.section}">?Buchdaten - Erfassen</h1>
+	<h1 layout:fragment="header" th:text="#{buch.form.register.section}">?Buchdaten
+		- Erfassen</h1>
 	<div layout:fragment="content" class="container">
-		<form action="erfassebuch.html" th:attr="action=@{#{link.buch.registrieren}}" method="post">
+
+		<div th:if="${message != null}">
+			<div class="alert alert-danger alert-dismissible" role="alert">
+
+				<button type=" button" class="close" data-dismiss="alert"
+					aria-label="Schließen">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4>Warnung!</h4>
+				<p>Mindestens eine Eingabe ist fehlerhaft.</p>
+				<p>
+					<button type="button" class="btn btn-danger">Take this
+						action</button>
+					<button type="button" class="btn btn-default">Or do this</button>
+				</p>
+			</div>
+		</div>
+
+		<form action="erfassebuch.html"
+			th:attr="action=@{#{link.buch.registrieren}}" method="post">
 			<fieldset>
-			<label>Titel:</label>
-				<input type="text" name="titel" /> 
-				<label>ISBN:</label>
+				<label>Titel:</label> <input type="text" name="titel" /> <label>ISBN:</label>
 				<input type="text" name="isbn" />
 				<!-- submit button -->
 				<input type="submit" value="Subscribe me!"

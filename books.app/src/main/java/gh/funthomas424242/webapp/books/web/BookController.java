@@ -2,6 +2,7 @@ package gh.funthomas424242.webapp.books.web;
 
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
+import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class BookController {
 
+	
 	private final BookService bookService;
 
 	private final ISBNService isbnService;
@@ -43,7 +45,7 @@ public class BookController {
 
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
-		return new ModelAndView("erfassebuch");
+		return new ModelAndView("erfassebuch","message",null);
 	}
 
 	@RequestMapping("${link.buch.registrieren}")
@@ -51,10 +53,19 @@ public class BookController {
 			@RequestParam("titel") final String titel,
 			@RequestParam("isbn") final String isbnraw) {
 
-		final ISBN isbn = ISBN.parseFromString(isbnraw);
-		isbnService.addISBN(isbn);
-		bookService.addBook(titel, isbn);
-		return new ModelAndView("booklist", "books", bookService.findAll());
+		
+		
+		ModelAndView nextModelView=null;
+		try {
+			final ISBN isbn = ISBN.parseFromString(isbnraw);
+			isbnService.addISBN(isbn);
+			bookService.addBook(titel, isbn);
+			nextModelView=new ModelAndView("booklist", "books", bookService.findAll());
+		} catch (InvalidISBNException e) {
+			nextModelView=new ModelAndView("erfassebuch","message","ISB: "+isbnraw);
+		}
+
+		return nextModelView;
 	}
 
 }

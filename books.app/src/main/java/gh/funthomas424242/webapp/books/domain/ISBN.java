@@ -33,7 +33,7 @@ public class ISBN {
 		this(parseIntoParts(isbnraw));
 	}
 
-	public ISBN(String[] isbnParts) {
+	protected ISBN(String[] isbnParts) {
 		this(isbnParts[0], isbnParts[1], isbnParts[2], isbnParts[3],
 				isbnParts[4]);
 	}
@@ -120,11 +120,23 @@ public class ISBN {
 		return true;
 	}
 
-	public static ISBN parseFromString(String isbnraw) {
+	public static ISBN parseFromString(String isbnraw) throws InvalidISBNException {
 		final String[] isbnParts = parseIntoParts(isbnraw);
-		final ISBN isbn = new ISBN(isbnParts[0], isbnParts[1], isbnParts[2],
-				isbnParts[3], isbnParts[4]);
-		return isbn;
+		final int partCount = isbnParts.length;
+
+		switch (partCount) {
+		case 5: {
+			return new ISBN(isbnParts[0], isbnParts[1], isbnParts[2],
+					isbnParts[3], isbnParts[4]);
+		}
+		case 4: {
+			return new ISBN10(isbnParts[0], isbnParts[1], isbnParts[2],
+					isbnParts[3]);
+		}
+		default:
+			throw new InvalidISBNException(isbnraw);
+		}
+		// not reachable
 	}
 
 	private static String[] parseIntoParts(String isbnraw) {

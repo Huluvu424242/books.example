@@ -11,7 +11,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * JBehave Integration in Spring
     * https://github.com/mkuthan/example-jbehave
     * http://mkuthan.github.io/blog/2014/05/29/acceptance-testing-using-jbehave-spring-framework-and-maven/
-
+* PGP Integration
+    * http://www.javacodegeeks.com/2011/06/java-pretty-good-privacy-pgp.html
 
 # Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git

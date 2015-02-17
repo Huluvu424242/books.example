@@ -24,7 +24,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 -->
 
-<!-- Das eingebettete kompilierte und minimierte CSS -->
+<!-- Das locale und minimierte CSS -->
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
 	href="../css/bootstrap.min.css" />
 
@@ -32,22 +32,23 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"
 	href="../css/bootstrap-theme.min.css" />
 
-<!-- Das neueste kompilierte und minimierte JavaScript -->
+<!-- Das lokale und minimierte JavaScript 
 <link rel="stylesheet" th:href="@{/js/bootstrap.min.js}"
 	href="../js/bootstrap.min.js" />
 
-
-
-
-
+<link rel="stylesheet" th:href="@{/js/docs.min.js}"
+	href="../js/docs.min.js" />
+-->
 
 <!-- Die spezifischen lokalen CSS -->
 <link rel="stylesheet" th:href="@{/css/dashboard.css}"
 	href="../css/dashboard.css" />
-<link rel="stylesheet" th:href="@{/css/justified-nav.css}"
-	href="../css/justified-nav.css" />
+
 <link rel="stylesheet" th:href="@{/css/jumbotron.css}"
 	href="../css/jumbotron.css" />
+
+<link rel="stylesheet" th:href="@{/css/justified-nav.css}"
+	href="../css/justified-nav.css" />
 
 </head>
 <body>
@@ -74,6 +75,10 @@
 						<input type="text" placeholder="openID" class="form-control" />
 					</div>
 					<button type="submit" class="btn btn-success">Anmelden</button>
+				</form>
+				<form class="navbar-form navbar-right">
+					<button type="submit" class="btn btn-success">Zugang
+						erstellen</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a th:attr="href=#{link.books}">Bücher</a></li>
@@ -102,8 +107,13 @@
 		</footer>
 	</div>
 	<!-- container -->
+
+	<!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="../js/docs.min.js"></script>
+	<!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
+	<script th:attr="src=@{/js/bootstrap.min.js}" src="../js/bootstrap.min.js"></script>
+	<script th:attr="src=@{/js/docs.min.js}" src="../js/docs.min.js"></script>
+
 </body>
 </html>
