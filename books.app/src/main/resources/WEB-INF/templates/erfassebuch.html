@@ -11,22 +11,22 @@
 		- Erfassen</h1>
 	<div layout:fragment="content" class="container">
 
-		<div th:if="${message != null}">
-			<div class="alert alert-danger alert-dismissible" role="alert">
+		<div class="alert alert-danger alert-dismissible" role="alert"
+			th:if="${message != null}">
 
-				<button type=" button" class="close" data-dismiss="alert"
-					aria-label="Schließen">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4>Warnung!</h4>
-				<p>Mindestens eine Eingabe ist fehlerhaft.</p>
-				<p>
-					<button type="button" class="btn btn-danger">Take this
-						action</button>
-					<button type="button" class="btn btn-default">Or do this</button>
-				</p>
-			</div>
+			<button type=" button" class="close" data-dismiss="alert"
+				aria-label="Schließen">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h4>Warnung!</h4>
+			<p>Mindestens eine Eingabe ist fehlerhaft.</p>
+			<p>
+				<button type="button" class="btn btn-danger">Take this
+					action</button>
+				<button type="button" class="btn btn-default">Or do this</button>
+			</p>
 		</div>
+
 
 		<form action="erfassebuch.html"
 			th:attr="action=@{#{link.buch.registrieren}}" method="post">
