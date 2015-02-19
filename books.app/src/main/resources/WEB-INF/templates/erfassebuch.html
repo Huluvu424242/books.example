@@ -30,12 +30,27 @@
 
 		<form action="erfassebuch.html"
 			th:attr="action=@{#{link.buch.registrieren}}" method="post">
+
 			<fieldset>
-				<label>Titel:</label> <input type="text" name="titel" /> <label>ISBN:</label>
-				<input type="text" name="isbn" />
-				<!-- submit button -->
-				<input type="submit" value="Subscribe me!"
-					th:attr="value=#{buch.form.register.submit}" />
+				<div class="row">
+					<div class="form-group col-xs-2">
+						<label for="titel">Titel</label> <input id="titel" type="text"
+							name="titel" class="form-control" required="true"
+							autofocus="true" />
+					</div>
+
+					<div class="form-group col-xs-3">
+						<label for="isbn">ISBN</label> <input id="isbn" type="text"
+							name="isbn" class="form-control" />
+					</div>
+				</div>
+				<div class="row">
+					<!-- submit button -->
+					<div class="form-group col-xs-2">
+						<button type="submit" class="btn btn-lg btn-success"
+							th:text="#{buch.form.register.submit}">?Subscribe me!</button>
+					</div>
+				</div>
 			</fieldset>
 		</form>
 	</div>
