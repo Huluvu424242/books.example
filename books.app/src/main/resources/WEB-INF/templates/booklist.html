@@ -26,7 +26,8 @@
 					<tr th:each="book : ${books}">
 						<td th:text="${book.id}">?1</td>
 						<td th:text="${book.titel}">?Titel</td>
-						<td th:text="${book.isbn.toString()}">?ISBN</td>
+						<td th:if="${book.isbn != null}" th:text="${book.isbn.toString()}">?ISBN</td>
+						<td th:if="${book.isbn == null}"></td>
 					</tr>
 				</tbody>
 			</table>
