@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class BookController {
+public class BookController{
 
 	protected final BookService bookService;
 
@@ -37,7 +37,11 @@ public class BookController {
 
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
-		return new ModelAndView("erfassebuch", "message", null);
+		final Map<String, Object> modelMap = erzeugeModelMap();
+		 modelMap.put("message", null);
+		 modelMap.put("invalidISBN", false);
+		
+		return new ModelAndView("erfassebuch",modelMap);
 	}
 
 	@RequestMapping("${link.buch.registrieren}")
@@ -57,16 +61,22 @@ public class BookController {
 			nextModelView = new ModelAndView("booklist", "books",
 					bookService.findAll());
 		} catch (InvalidISBNException e) {
-			final Map<String, Object> modelMap = new HashMap<String, Object>();
+			final Map<String, Object> modelMap = erzeugeModelMap();
 			modelMap.put("message", "Es wurde eine ungültige ISBN eingegeben ("
 					+ isbnraw + " ). Bitte korrigieren Sie diese.");
 			modelMap.put("titel", titel);
 			modelMap.put("isbn", isbnraw);
+			modelMap.put("invalidISBN", true);
 
 			nextModelView = new ModelAndView("erfassebuch", modelMap);
 		}
 
 		return nextModelView;
+	}
+
+	protected Map<String, Object > erzeugeModelMap() {
+		final Map<String, Object> modelMap = new HashMap<String, Object>();
+		return modelMap;
 	}
 
 }

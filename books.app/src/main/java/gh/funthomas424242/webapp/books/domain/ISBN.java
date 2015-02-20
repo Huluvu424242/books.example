@@ -25,7 +25,7 @@ public class ISBN {
 	protected String bandTitelNummer;
 	protected String pruefZiffer;
 
-	public ISBN() {
+	protected ISBN() {
 
 	}
 
@@ -51,8 +51,10 @@ public class ISBN {
 	@Override
 	public String toString() {
 		final StringBuffer buf = new StringBuffer();
-		buf.append(prefix);
-		buf.append("-");
+		if (prefix.length() > 0) {
+			buf.append(prefix);
+			buf.append("-");
+		}
 
 		buf.append(gruppenNummer);
 		buf.append("-");
@@ -120,7 +122,11 @@ public class ISBN {
 		return true;
 	}
 
-	public static ISBN parseFromString(String isbnraw) throws InvalidISBNException {
+	public static ISBN parseFromString(String isbnraw)
+			throws InvalidISBNException {
+		if (isbnraw == null) {
+			throw new InvalidISBNException(isbnraw);
+		}
 		final String[] isbnParts = parseIntoParts(isbnraw);
 		final int partCount = isbnParts.length;
 
@@ -142,6 +148,44 @@ public class ISBN {
 	private static String[] parseIntoParts(String isbnraw) {
 		final String[] parts = isbnraw.split("-");
 		return parts;
+	}
+
+	public boolean isValid() {
+
+		final StringBuffer numberPart = new StringBuffer();
+		numberPart.append(prefix);
+		numberPart.append(gruppenNummer);
+		numberPart.append(verlagsNummer);
+		numberPart.append(bandTitelNummer);
+
+		if (numberPart.length() != 12) {
+			return false;
+		} else {
+			final String berechnetePruefziffer = berechnePruefziffer(numberPart);
+			return this.pruefZiffer.equals(berechnetePruefziffer);
+		}
+	}
+
+	protected String berechnePruefziffer(final StringBuffer numberPart) {
+
+		int summe = 0;
+		for (int i = 0; i < 11; i = i + 2) {
+			/* berechne *1 */{
+				final char c = numberPart.charAt(i);
+				final String digit = Character.toString(c);
+				int value = Integer.parseInt(digit);
+				summe = summe + value;
+			}
+			/* berechne *3 */{
+				final char c = numberPart.charAt(i + 1);
+				final String digit = Character.toString(c);
+				int value = Integer.parseInt(digit);
+				summe = summe + (value * 3);
+			}
+		}
+		int remainderMod10 = summe % 10;
+		int pruefDigit = 10 - remainderMod10;
+		return Integer.toString(pruefDigit);
 	}
 
 	public String getPrefix() {

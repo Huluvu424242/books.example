@@ -36,14 +36,17 @@
 			<fieldset>
 				<div class="row">
 					<div class="form-group col-xs-2">
-						<label for="titel">Titel</label> <input id="titel" type="text"
+						<label class="control-label" for="titel">Titel</label> <input id="titel" type="text"
 							th:attr="value=${titel}" name="titel" class="form-control"
 							required="true" autofocus="true" />
 					</div>
 
-					<div class="form-group col-xs-3">
-						<label for="isbn">ISBN</label> <input id="isbn" type="text"
-							th:attr="value=${isbn}" name="isbn" class="form-control" />
+					<div th:attr="class='form-group col-xs-3 '+( (${invalidISBN}==true)?'has-warning has-feedback ':'')">
+						<label class="control-label" for="isbn">ISBN</label> 
+						<input id="isbn" type="text" name="isbn"
+							th:attr="value=${isbn},class='form-control '+( (${invalidISBN}==true)?'aria-describedby=isbnStatus':'')"/>
+						<span th:if="${invalidISBN}" class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+	  					<span th:if="${invalidISBN}" id="isbnStatus" class="sr-only">(Ungültige ISBN)</span>
 					</div>
 				</div>
 				<div class="row">
