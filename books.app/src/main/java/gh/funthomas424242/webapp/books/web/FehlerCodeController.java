@@ -2,10 +2,9 @@ package gh.funthomas424242.webapp.books.web;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+//@Controller
 public class FehlerCodeController {
 	
 	 //@ExceptionHandler(Exception.class)

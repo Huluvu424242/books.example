@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.tests;
+package gh.funthomas424242.webapp.books.tests.modul;
 
 import gh.funthomas424242.webapp.books.Application;
 import gh.funthomas424242.webapp.books.domain.Book;
