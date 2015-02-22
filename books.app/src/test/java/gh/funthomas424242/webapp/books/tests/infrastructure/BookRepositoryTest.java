@@ -94,4 +94,21 @@ public class BookRepositoryTest {
 		assertEquals(2, bookRepository.findAll().size());
 	}
 
+	
+	@Test
+	public void LoescheAlleBuecherErhalteEinLeeresBuecherregal() {
+		final ISBN isbn = new ISBN("3-7-33-5-3");
+		isbnRepository.save(isbn);
+		final Book book = new Book("Test", isbn);
+		bookRepository.save(book);
+		final ISBN isbn1 = new ISBN("3-7-33-5-4");
+		isbnRepository.save(isbn1);
+		final Book book1 = new Book("Test und Testing", isbn1);
+		bookRepository.save(book1);
+		assertEquals(2, bookRepository.findAll().size());
+		bookRepository.deleteAll();
+		assertEquals(0, bookRepository.findAll().size());
+	}
+
+	
 }

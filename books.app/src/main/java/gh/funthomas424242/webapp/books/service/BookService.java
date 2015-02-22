@@ -28,4 +28,8 @@ public class BookService {
 		this.bookRepository.save(book);
 	}
 
+	public void deleteAll(){
+		this.bookRepository.deleteAll();
+	}
+	
 }
