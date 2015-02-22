@@ -53,10 +53,18 @@ public class BuchTestSchritte {
 	}
 
 	@Dann("^enthält das Bücherregal 1 Buch mit gültiger ISBN\\.$")
-	public void buchHinzufuegen() {
+	public void buchHinzufuegenValidISBN() {
 		final List<Book> alleBuecher = bookService.findAll();
 		Assert.assertEquals(1, alleBuecher.size());
 		final Book buch = alleBuecher.get(0);
 		Assert.assertTrue(buch.getIsbn().isValid());
+	}
+	
+	@Dann("^enthält das Bücherregal 1 Buch mit ungültiger ISBN\\.$")
+	public void buchHinzufuegenInvalidISBN() {
+		final List<Book> alleBuecher = bookService.findAll();
+		Assert.assertEquals(1, alleBuecher.size());
+		final Book buch = alleBuecher.get(0);
+		Assert.assertFalse(buch.getIsbn().isValid());
 	}
 }

@@ -5,6 +5,7 @@ import gh.funthomas424242.webapp.books.Application;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.infrastructure.ISBNRepository;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class ISBNRepositoryTest {
 	@Autowired
 	ISBNRepository isbnRepository;
 
+	@Before
+	public void prepareTests(){
+		isbnRepository.deleteAll();
+	}
+	
 	@Test
 	public void emptyRepository() {
 		assertEquals(0, isbnRepository.findAll().size());
