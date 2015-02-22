@@ -11,6 +11,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * Cucumber-JVM Integration in Spring
     * https://github.com/cucumber/cucumber-java-skeleton
     * https://github.com/excellentdrums/Cucumber-JVM-Spring-MVC-Test-HTMLUnit-Demo
+    * http://testerstories.com/2014/06/an-introduction-to-using-cucumber-jvm/
 * JBehave Integration in Spring
     * https://github.com/mkuthan/example-jbehave
     * http://mkuthan.github.io/blog/2014/05/29/acceptance-testing-using-jbehave-spring-framework-and-maven/
