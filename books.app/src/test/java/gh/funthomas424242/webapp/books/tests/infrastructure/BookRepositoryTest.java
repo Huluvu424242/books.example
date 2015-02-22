@@ -7,6 +7,7 @@ import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 import gh.funthomas424242.webapp.books.infrastructure.ISBNRepository;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {Application.class} )
+@SpringApplicationConfiguration(classes = { Application.class })
 @Transactional
 public class BookRepositoryTest {
 
 	@Autowired
 	BookRepository bookRepository;
-	
+
 	@Autowired
 	ISBNRepository isbnRepository;
+
+	@Before
+	public void prepareTests() {
+		bookRepository.deleteAll();
+	}
 
 	@Test
 	public void emptyRepository() {
@@ -36,7 +42,7 @@ public class BookRepositoryTest {
 		bookRepository.save(book);
 		assertEquals(1, bookRepository.findAll().size());
 	}
-	
+
 	@Test
 	public void addBookWithISBN() {
 		final ISBN isbn = new ISBN("3-7-33-5-3");
@@ -69,7 +75,7 @@ public class BookRepositoryTest {
 		bookRepository.save(book1);
 		assertEquals(2, bookRepository.findAll().size());
 	}
-	
+
 	@Test
 	public void addTwoDifferentBooksWithSameISBN() {
 		final ISBN isbn = new ISBN("3-7-33-5-3");
@@ -80,7 +86,7 @@ public class BookRepositoryTest {
 		bookRepository.save(book1);
 		assertEquals(2, bookRepository.findAll().size());
 	}
-	
+
 	@Test
 	public void addTwoDifferentBooksWithDifferentISBN() {
 		final ISBN isbn = new ISBN("3-7-33-5-3");
@@ -94,7 +100,6 @@ public class BookRepositoryTest {
 		assertEquals(2, bookRepository.findAll().size());
 	}
 
-	
 	@Test
 	public void LoescheAlleBuecherErhalteEinLeeresBuecherregal() {
 		final ISBN isbn = new ISBN("3-7-33-5-3");
@@ -110,5 +115,4 @@ public class BookRepositoryTest {
 		assertEquals(0, bookRepository.findAll().size());
 	}
 
-	
 }
