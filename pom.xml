@@ -6,10 +6,11 @@
 	<artifactId>books.example</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>Bücherverwaltung - Parent</name>
 
 	<modules>
 		<module>books.app</module>
-		<!-- >module>books.inttest</module-->
+		<module>books.inttest</module>
 	</modules>
 
 

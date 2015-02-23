@@ -11,6 +11,8 @@
 	<groupId>gh.funthomas424242.webapp</groupId>
 	<artifactId>books.app</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Bücherverwaltung - App</name>
 
 	<properties>
 		<java.version>1.7</java.version>
