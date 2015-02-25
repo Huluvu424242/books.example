@@ -5,8 +5,8 @@ jdk:
     - openjdk7
 
 
-before_script:
-   - rm -f ~/bookdb.*
+#before_script:
+#   - rm -f ~/bookdb.*
 
 script:
    - cd books.app;mvn clean install
