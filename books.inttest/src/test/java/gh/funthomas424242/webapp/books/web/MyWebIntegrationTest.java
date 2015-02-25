@@ -1,7 +1,7 @@
 package gh.funthomas424242.webapp.books.web;
 
-import static org.junit.Assert.*;
-import gh.funthomas424242.webapp.books.Application;
+import static org.junit.Assert.assertTrue;
+import gh.funthomas424242.webapp.books.AcceptanceTestsConfiguration;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {Application.class})
+@SpringApplicationConfiguration(classes = {AcceptanceTestsConfiguration.class})
 @IntegrationTest({ "server.port=0" })
 @WebAppConfiguration
 public class MyWebIntegrationTest {

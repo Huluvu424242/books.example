@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.1.RELEASE</version>
+		<groupId>gh.funthomas424242.webapp</groupId>
+		<artifactId>books.example</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>books.inttest</artifactId>
 	<packaging>jar</packaging>
 	<name>Bücherverwaltung - Test</name>
@@ -18,16 +18,15 @@
 			<groupId>gh.funthomas424242.webapp</groupId>
 			<artifactId>books.app</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -41,15 +40,15 @@
 			<version>1.2.0</version>
 			<scope>test</scope>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-htmlunit-driver</artifactId>
 			<version>2.44.0</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test-mvc-htmlunit</artifactId>
@@ -58,50 +57,16 @@
 		</dependency>
 
 
-<!-- 
+		<!-- <dependency> <groupId>xml-apis</groupId> <artifactId>xml-apis</artifactId> 
+			<version>1.4.01</version> </dependency> <dependency> <groupId>org.seleniumhq.selenium</groupId> 
+			<artifactId>selenium-java</artifactId> <version>2.44.0</version> <scope>test</scope> 
+			</dependency> <dependency> <groupId>org.seleniumhq.selenium</groupId> <artifactId>selenium-firefox-driver</artifactId> 
+			<version>2.44.0</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>org.seleniumhq.selenium</groupId> <artifactId>selenium-chrome-driver</artifactId> 
+			<version>2.44.0</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>com.github.detro.ghostdriver</groupId> <artifactId>phantomjsdriver</artifactId> 
+			<version>1.1.0</version> <scope>test</scope> </dependency> -->
 
-
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version>
-		</dependency>
-
-
-		
-
-		
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>2.44.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-firefox-driver</artifactId>
-			<version>2.44.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-chrome-driver</artifactId>
-			<version>2.44.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.detro.ghostdriver</groupId>
-			<artifactId>phantomjsdriver</artifactId>
-			<version>1.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
- -->
-		
 	</dependencies>
 
 	<build>
@@ -109,7 +74,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 					<source>1.6</source>
@@ -119,8 +83,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	
+
+<!--  -->
 	<repositories>
 		<repository>
 			<id>spring-milestone</id>
@@ -140,5 +104,5 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 </project>

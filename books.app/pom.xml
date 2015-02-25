@@ -3,14 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.1.RELEASE</version>
+		<groupId>gh.funthomas424242.webapp</groupId>
+		<artifactId>books.example</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>gh.funthomas424242.webapp</groupId>
 	<artifactId>books.app</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Bücherverwaltung - App</name>
 
@@ -29,12 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<!--  
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		-->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -45,8 +37,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
@@ -61,7 +53,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		
+
 
 	</dependencies>
 
@@ -81,6 +73,6 @@
 		</plugins>
 	</build>
 
-	
+
 
 </project>
