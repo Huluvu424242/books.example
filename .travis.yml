@@ -6,7 +6,7 @@ jdk:
 
 
 before_script:
-   - rm ~/bookdb.*
+   - rm -f ~/bookdb.*
 
 script:
    - cd books.app;mvn clean install
