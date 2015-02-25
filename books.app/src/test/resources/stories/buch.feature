@@ -18,3 +18,5 @@ Funktionalität: Bücherregal verwalten
     Gegeben sei ein leeres Bücherregal.
     Wenn ich ein Buch mit dem Titel "Schwarz" und der ISBN "978-3-453-87556-3" hinzufüge.
     Dann enthält das Bücherregal 1 Buch mit ungültiger ISBN.
+    
+    
