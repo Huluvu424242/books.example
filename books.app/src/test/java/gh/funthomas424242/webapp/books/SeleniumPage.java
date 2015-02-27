@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.web;
+package gh.funthomas424242.webapp.books;
 //
 //import java.util.concurrent.TimeUnit;
 //

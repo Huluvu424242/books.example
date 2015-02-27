@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.web;
+package gh.funthomas424242.webapp.books;
 //
 //import gh.funthomas424242.webapp.books.AcceptanceTestsConfiguration;
 //import gh.funthomas424242.webapp.books.Application;
