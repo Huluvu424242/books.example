@@ -84,35 +84,10 @@ public class GuiIntegrationTest {
 	@Test
 	public void homePage() {
 		final TestRestTemplate restTemplate = new TestRestTemplate();
-
-		// logInfo(MESSAGE_LEERES_REGAL);
 		final String pageContent = restTemplate.getForObject(SERVER_URL
 				+ serverPort + LINK_BOOKS, String.class);
-		// logInfo(pageContent);
-		assertTrue(pageContent.contains("Kleine Bücherverwaltung - Bücherregal"));
+		assertTrue(pageContent
+				.contains("Kleine Bücherverwaltung - Bücherregal"));
 	}
 
-	// @Test
-	// @Ignore
-	// public void addPage() {
-	// RestTemplate restTemplate = new RestTemplate();
-	// assertTrue(restTemplate.getForObject(
-	// SERVER_URL + serverPort + LINK_BUCH_ERFASSEN, String.class)
-	// .contains("Aktuell keine Bücher im Buchregal."));
-	// }
-	//
-	// @Test
-	// @Ignore
-	// public void health() {
-	// RestTemplate restTemplate = new RestTemplate();
-	// assertTrue(restTemplate.getForObject(
-	// SERVER_URL + serverPort + "/health", String.class).contains(
-	// "UP"));
-	// }
-	//
-	// protected void logInfo(String text) {
-	// System.out.println("=============================");
-	// System.out.println("LOG-INFO:" + text);
-	// System.out.println("=============================");
-	// }
 }
