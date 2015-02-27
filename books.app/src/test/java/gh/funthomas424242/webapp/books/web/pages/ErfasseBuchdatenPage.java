@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books;
+package gh.funthomas424242.webapp.books.web.pages;
 //
 //import org.openqa.selenium.WebDriver;
 //

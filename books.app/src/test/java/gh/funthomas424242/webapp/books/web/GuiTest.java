@@ -8,7 +8,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
-//@RunWith(Cucumber.class)
+@RunWith(Cucumber.class)
 @CucumberOptions(tags = { "@gui" }, plugin = { "pretty",
 		"html:target/test-report" }, features = { "src/test/resources/stories" } 
 		)

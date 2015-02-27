@@ -14,13 +14,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @author huluvu424242
@@ -52,14 +50,7 @@ public class GuiIntegrationTest {
 	@Value("${message.buch.liste.leer}")
 	private String MESSAGE_LEERES_REGAL;
 
-	@Autowired
-	protected WebApplicationContext context;
-
 	static protected WebDriver driver;
-
-	protected static WebDriver getWebDriver() {
-		return driver;
-	}
 
 	@BeforeClass
 	public static void setup() throws IOException {

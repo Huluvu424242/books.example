@@ -5,7 +5,7 @@ Funktionalität: Startseite prüfen
   Szenario: Zur Startseite navigieren
     Angenommen wir befinden uns auf der Startseite.
     Wenn der Browser weitergeleitet hat.
-    Dann lautet der URL "http://localhost:8080/books".
+    Dann lautet der URL "http://localhost:8080/".
 
 
   @pending
