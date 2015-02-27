@@ -1,7 +1,6 @@
-package gh.funthomas424242.webapp.books.web;
+package gh.funthomas424242.webapp.books;
 
 import static org.junit.Assert.assertTrue;
-import gh.funthomas424242.webapp.books.MyTestConfiguration;
 
 import java.io.IOException;
 
@@ -26,7 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {MyTestConfiguration.class})
+@SpringApplicationConfiguration(classes = {Application.class})
 //@IntegrationTest({ "server.port=8080" })
 @WebIntegrationTest({ "server.port=8080" })
 //@ContextHierarchy({
@@ -35,7 +34,7 @@ import org.springframework.web.context.WebApplicationContext;
 //})
 
 //@WebAppConfiguration
-public class MyWebIntegrationTest {
+public class AppWebIntegrationTest {
 
 	public static final String SERVER_URL = "http://127.0.0.1:";
 
