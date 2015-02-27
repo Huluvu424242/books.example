@@ -20,7 +20,7 @@
 				</thead>
 				<tbody>
 					<tr th:if="${books.empty}">
-						<td colspan="3" th:text="#{message.buch.liste.leer}">?No
+						<td id="message" colspan="3" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
 					<tr th:each="book : ${books}">
