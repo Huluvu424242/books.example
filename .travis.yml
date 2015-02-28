@@ -5,9 +5,8 @@ jdk:
     - openjdk7
 
 env:
-   -  spring.jpa.hibernate.ddl-auto=create-drop
+   -  spring.jpa.hibernate.ddl\-auto=create-drop
 
 before_install:
-   - export spring.jpa.hibernate.ddl-auto=create-drop
    - rm -f ~/bookdb.*
    - mvn clean
