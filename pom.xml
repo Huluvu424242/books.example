@@ -14,11 +14,35 @@
 	<packaging>pom</packaging>
 	<name>Bücherverwaltung - Parent</name>
 
+	<profiles>
+		<profile>
+			<id>ciserver</id>
+			<activation>
+				<property>
+					<name>ciserver</name>
+				</property>
+			</activation>
+			<properties>
+				<ddl.mode>spring.jpa.hibernate.ddl-auto=create-drop</ddl.mode>
+			</properties>
+		</profile>
+		<!--  
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<ddl.mode></ddl.mode>
+			</properties>
+		</profile>
+		-->
+	</profiles>
+
+
 	<modules>
 		<module>books.app</module>
-		<!-- 
-		<module>books.inttest</module>
-		 -->
+		<!-- <module>books.inttest</module> -->
 	</modules>
 
 
