@@ -21,24 +21,27 @@ public class ISBNRepositoryTest {
 	@Autowired
 	ISBNRepository isbnRepository;
 
-	@Before
-	public void prepareTests(){
+	//@Before
+	public void clearEntries(){
 		isbnRepository.deleteAll();
 	}
 	
 	@Test
 	public void emptyRepository() {
+		clearEntries();
 		assertEquals(0, isbnRepository.findAll().size());
 	}
 
 	@Test
 	public void addOneISBN() {
+		clearEntries();
 		isbnRepository.save(new ISBN("3-7-33-5-3"));
 		assertEquals(1, isbnRepository.findAll().size());
 	}
 
 	@Test
 	public void addTwoISBN() {
+		clearEntries();
 		isbnRepository.save(new ISBN("3-7-33-5-3"));
 		isbnRepository.save(new ISBN("3-7-33-5-3"));
 		assertEquals(2, isbnRepository.findAll().size());
