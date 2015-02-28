@@ -26,17 +26,6 @@
 				<ddl.mode>spring.jpa.hibernate.ddl-auto=create-drop</ddl.mode>
 			</properties>
 		</profile>
-		<!--  
-		<profile>
-			<id>local</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<ddl.mode></ddl.mode>
-			</properties>
-		</profile>
-		-->
 	</profiles>
 
 
