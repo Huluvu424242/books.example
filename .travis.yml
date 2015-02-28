@@ -4,11 +4,9 @@ language:
 jdk:
     - openjdk7
 
+env:
+   -  spring.jpa.hibernate.ddl-auto=create-drop
 
 before_install:
    - rm -f ~/bookdb.*
    - mvn clean
-
-
-#script:
-#   - cd books.app;mvn clean install
