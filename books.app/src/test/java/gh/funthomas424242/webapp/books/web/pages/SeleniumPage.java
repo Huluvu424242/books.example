@@ -22,12 +22,11 @@ public abstract class SeleniumPage {
 		return this;
 	}
 
-	// public boolean isCurrentPage() {
-	// final String url = driver.getCurrentUrl();
-	// System.out.println("INFO-url: " + url);
-	// return getPageUrl().equals(url);
-	// }
-	//
+	public boolean isCurrentPage() {
+		final String url = driver.getCurrentUrl();
+		return getPageUrl().equals(url);
+	}
+
 	// public void pressLink(String text) {
 	// driver.findElement(By.linkText(text)).click();
 	// }

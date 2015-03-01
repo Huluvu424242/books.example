@@ -75,7 +75,7 @@ public class JBehaveAbstractStory extends JUnitStory {
 						CodeLocations.codeLocationFromClass(this.getClass()))
 				.withPathResolver(new ResolveToPackagedName())
 				.withFailureTrace(true).withDefaultFormats()
-				.withFormats(Format.XML, Format.IDE_CONSOLE,Format.TXT,Format.HTML);
+				.withFormats(Format.IDE_CONSOLE,Format.HTML);
 	}
 
 	private ParameterControls parameterControls() {
