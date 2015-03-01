@@ -1,7 +1,7 @@
 Narrative:
-In order to learn JBehave
+In order to die grundlegenden Funktionen der Anwendung zu prüfen
 As a tester
-I want to define sample story for shopping cart
+I want to einige Stories für die Buchverwaltung definieren.
 
 Scenario: Startseite prüfen
 
