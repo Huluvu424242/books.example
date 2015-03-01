@@ -11,6 +11,6 @@ before_install:
    - rm -f ~/bookdb.*
    - mvn clean
 
-after_install:
+script:
    - mvn install
 
