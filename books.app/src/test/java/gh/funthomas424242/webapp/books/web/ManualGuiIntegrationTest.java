@@ -36,7 +36,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(classes = { Application.class })
 @DirtiesContext
 @WebIntegrationTest({ "server.port=8080" })
-public class GuiIntegrationTest {
+public class ManualGuiIntegrationTest {
 	
 	
 	public static final String SERVER_URL = "http://127.0.0.1:";

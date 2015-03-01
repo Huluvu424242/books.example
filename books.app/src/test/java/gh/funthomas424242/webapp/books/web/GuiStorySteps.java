@@ -18,46 +18,31 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 
 @SpringApplicationConfiguration(classes = { Application.class })
 @Steps
-public class SeleniumPageTestSchritte{
+public class GuiStorySteps {
 
 	protected SeleniumPage page;
-	
-	
 	protected WebDriver driver;
-	//=new HtmlUnitDriver(true);
-	
 
+	@BeforeStory
+	public void setup() {
+		final DesiredCapabilities capabilities = DesiredCapabilities
+				.htmlUnitWithJs();
+		driver = new HtmlUnitDriver(capabilities);
+		// System.out.println("INFO#======== NEW DRIVER startet ==========");
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+	}
 
-
-	 @BeforeStory
-	 public void setup() {
-	 final DesiredCapabilities capabilities = DesiredCapabilities
-	 .htmlUnitWithJs();
-	 // capabilities.setBrowserName(BrowserType.FIREFOX);
-	 // capabilities.setJavascriptEnabled(true);
-	 // capabilities.setPlatform(<platform>);
-	 // capabilities.setVersion(<version>);
-	 // driver = new HtmlUnitDriver(capabilities);
-	 driver = new HtmlUnitDriver(capabilities);
-	 System.out.println("INFO#======== NEW DRIVER startet ==========");
-	 // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	 // driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-	 }
-	
-	 @AfterStory
-	 public void destroy() {
-	 if (driver != null) {
-	 driver.close();
-	 }
-	 }
+	@AfterStory
+	public void destroy() {
+		if (driver != null) {
+			driver.close();
+		}
+	}
 
 	@Given("der Server ist gestartet")
 	public void derServerIstGestartet() throws Throwable {
-		// driver.get("http://127.0.0.1:8080/");
-		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		// driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-		// final String url = driver.getCurrentUrl();
-		// System.out.println("INFO_URL:"+url);
+		Assert.assertNotNull(driver);
 	}
 
 	@When("wir den URL $url aufrufen")
@@ -69,7 +54,7 @@ public class SeleniumPageTestSchritte{
 	@Then("wird die Startseite angezeigt")
 	public void lautet_der_URL() throws Throwable {
 		final String url = driver.getCurrentUrl();
-		System.out.println("INFO#Startseite:"+page);
+		System.out.println("INFO#Startseite:" + page);
 		Assert.assertEquals(page.getPageUrl(), url);
 	}
 
