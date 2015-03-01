@@ -18,8 +18,13 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 public class SeleniumPageTestSchritte{
 
 	protected SeleniumPage page;
-	protected static WebDriver driver=new HtmlUnitDriver(true);
 	
+	//@Autowired
+	protected WebDriver driver=new HtmlUnitDriver(true);
+	
+//	public static void setWebDriver(final WebDriver webDriver){
+//		driver=webDriver;
+//	}
 
 
 	// @Before
@@ -62,6 +67,7 @@ public class SeleniumPageTestSchritte{
 	@Then("wird die Startseite angezeigt")
 	public void lautet_der_URL() throws Throwable {
 		final String url = driver.getCurrentUrl();
+		System.out.println("INFO#Startseite:"+page);
 		Assert.assertEquals(page.getPageUrl(), url);
 	}
 

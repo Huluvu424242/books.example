@@ -20,20 +20,19 @@ import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class AbstractSpringJBehaveStory extends JUnitStory {
+public class JBehaveAbstractStory extends JUnitStory {
 
 	private static final int STORY_TIMEOUT = 120;
 
 	@Autowired
 	private ApplicationContext applicationContext;
 
-	
 	@Override
 	public InjectableStepsFactory stepsFactory() {
 		return new SpringStepsFactory(configuration(), applicationContext);
 	}
 
-	public AbstractSpringJBehaveStory() {
+	public JBehaveAbstractStory() {
 		Embedder embedder = new Embedder();
 		embedder.useEmbedderControls(embedderControls());
 		embedder.useMetaFilters(Arrays.asList("-skip"));
