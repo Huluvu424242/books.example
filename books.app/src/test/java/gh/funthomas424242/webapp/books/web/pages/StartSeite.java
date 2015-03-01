@@ -1,7 +1,6 @@
 package gh.funthomas424242.webapp.books.web.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Value;
 
 public class StartSeite extends SeleniumPage {
 
