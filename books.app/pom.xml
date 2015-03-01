@@ -14,6 +14,7 @@
 
 	<properties>
 		<java.version>1.7</java.version>
+		<jbehave.version>3.9.2</jbehave.version>
 	</properties>
 
 	<dependencies>
@@ -25,6 +26,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-jetty</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -62,7 +69,31 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- -->
+
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-spring</artifactId>
+			<version>${jbehave.version}</version>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>htmlunit</groupId> <artifactId>htmlunit</artifactId> 
+			<version>1.14</version> <scope>test</scope> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-test-mvc-htmlunit</artifactId> <version>1.0.0.M1</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>org.seleniumhq.selenium</groupId> 
+			<artifactId>selenium-firefox-driver</artifactId> <version>2.44.0</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>org.seleniumhq.selenium</groupId> 
+			<artifactId>selenium-chrome-driver</artifactId> <version>2.44.0</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>com.github.detro.ghostdriver</groupId> 
+			<artifactId>phantomjsdriver</artifactId> <version>1.0.4</version> <scope>test</scope> 
+			</dependency> -->
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-htmlunit-driver</artifactId>
@@ -70,12 +101,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test-mvc-htmlunit</artifactId>
-			<version>1.0.0.M1</version>
-			<scope>test</scope>
-		</dependency>
 
 		<!-- -->
 		<dependency>
@@ -89,24 +114,7 @@
 			<version>2.44.0</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-firefox-driver</artifactId>
-			<version>2.44.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-chrome-driver</artifactId>
-			<version>2.44.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.detro.ghostdriver</groupId>
-			<artifactId>phantomjsdriver</artifactId>
-			<version>1.0.4</version>
-			<scope>test</scope>
-		</dependency>
+
 
 
 	</dependencies>
@@ -124,30 +132,55 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Story.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			 -->
+			 	<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*IntegrationTest*</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			-->
+			 
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>${jbehave.version}</version>
+				<executions>
+					<execution>
+						<id>unpack-view-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack-view-resources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
 
 
-	<!-- -->
-	<repositories>
-		<repository>
-			<id>spring-milestone</id>
-			<url>http://repo.spring.io/libs-milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-milestone</id>
-			<url>http://repo.spring.io/libs-milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 
 </project>

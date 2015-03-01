@@ -10,7 +10,7 @@ public class StartSeite extends SeleniumPage {
 
 	@Override
 	public String getPageUrl() {
-		return "http://127.0.0.1:8080/";
+		return "http://localhost:8080/";
 	}
 
 }

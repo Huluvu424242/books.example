@@ -1,10 +1,6 @@
 package gh.funthomas424242.webapp.books.web.pages;
 
-import java.net.URL;
-
 import org.openqa.selenium.WebDriver;
-
-import com.gargoylesoftware.htmlunit.Page;
 
 public abstract class SeleniumPage {
 
@@ -18,9 +14,11 @@ public abstract class SeleniumPage {
 
 	public SeleniumPage open() {
 		final String pageUrl = getPageUrl();
+		System.out.println("INFO#driver: " + driver);
 		System.out.println("INFO#pageUrl: " + pageUrl);
 		driver.get(pageUrl);
-		System.out.println("INFO#page: " + driver.getCurrentUrl());
+		System.out.println("INFO#page at: " + driver.getCurrentUrl());
+		System.out.println("INFO#pagesource: " + driver.getPageSource());
 		return this;
 	}
 

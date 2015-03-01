@@ -1,24 +1,29 @@
 package gh.funthomas424242.webapp.books.web;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gh.funthomas424242.webapp.books.Application;
 
 import java.io.IOException;
 
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.model.InitializationError;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import cucumber.api.junit.Cucumber;
 
 /**
  * @author huluvu424242
@@ -35,7 +40,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(classes = { Application.class })
 @WebIntegrationTest({ "server.port=0" })
 public class GuiIntegrationTest {
-
+	
+	
 	public static final String SERVER_URL = "http://127.0.0.1:";
 
 	@Value("${local.server.port}")
@@ -66,6 +72,7 @@ public class GuiIntegrationTest {
 
 	@Test
 	public void startSeiteGeliefertJavaScriptArbeitet() {
+		System.out.println("INFO_URL++:"+SERVER_URL + serverPort + LINK_BOOKS);
 		driver.get(SERVER_URL + serverPort + LINK_BOOKS);
 		assertEquals("Kleine Bücherverwaltung - Bücherregal", driver.getTitle());
 		final WebElement element = driver.findElement(By.id("message"));
