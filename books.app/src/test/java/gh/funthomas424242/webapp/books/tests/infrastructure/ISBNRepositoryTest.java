@@ -40,7 +40,7 @@ public class ISBNRepositoryTest {
 	@Test
 	public void addTwoISBN() {
 		isbnRepository.save(new ISBN("3-7-33-5-3"));
-		isbnRepository.save(new ISBN("3-7-33-5-3"));
+		isbnRepository.save(new ISBN("3-7-33-5-4"));
 		assertEquals(2, isbnRepository.findAll().size());
 	}
 
