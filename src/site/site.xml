@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
+	name="${project.artifactId}">
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>1.1</version>
+	</skin>
+
+	<publishDate format="dd MMM yyyy" />
+	<version position="right" />
+	<body>
+		<links>
+			<item name="FunThomas424242" href="https://www.openhub.net/accounts/FunThomas424242" />
+		</links>
+		<menu name="Allgemeines">
+			<item name="Willkommen bei" href="index.html" />
+			<item name="Unittest Reports" href="surefire-report.html" />
+			<item name="Inttest Reports" href="failsafe-report.html" />
+			<item name="Features" href="test-report/index.html" />
+			<item name="Stories" href="jbehave/view/index.html" />
+		</menu>
+	</body>
+	<poweredBy>
+		<logo name="FunThomas424242" href="https://www.openhub.net/accounts/FunThomas424242"
+			img="http://www.gravatar.com/avatar/a1613eb80d8c91531e3753d1e4ca45b2.png" />
+	</poweredBy>
+</project>
