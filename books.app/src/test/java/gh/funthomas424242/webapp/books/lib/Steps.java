@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.jbehave;
+package gh.funthomas424242.webapp.books.lib;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

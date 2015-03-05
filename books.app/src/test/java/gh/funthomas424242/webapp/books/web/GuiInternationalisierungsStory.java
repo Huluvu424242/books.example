@@ -1,7 +1,7 @@
 package gh.funthomas424242.webapp.books.web;
 
-import gh.funthomas424242.webapp.books.jbehave.JBehaveAbstractStory;
-import gh.funthomas424242.webapp.books.jbehave.Story;
+import gh.funthomas424242.webapp.books.lib.JBehaveAbstractStory;
+import gh.funthomas424242.webapp.books.lib.Story;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

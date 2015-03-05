@@ -1,7 +1,7 @@
 package gh.funthomas424242.webapp.books.web;
 
 import gh.funthomas424242.webapp.books.Application;
-import gh.funthomas424242.webapp.books.jbehave.Steps;
+import gh.funthomas424242.webapp.books.lib.Steps;
 import gh.funthomas424242.webapp.books.web.pages.SeleniumPage;
 import gh.funthomas424242.webapp.books.web.pages.StartSeite;
 

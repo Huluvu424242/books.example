@@ -31,7 +31,7 @@
 
 	<modules>
 		<module>books.app</module>
-		<!-- <module>books.inttest</module> -->
+		<module>books.tck</module> 
 	</modules>
 
 

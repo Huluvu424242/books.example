@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.selenium;
+package gh.funthomas424242.webapp.books.lib;
 
 import java.util.Locale;
 
