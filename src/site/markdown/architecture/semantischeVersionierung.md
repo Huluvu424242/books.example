@@ -15,6 +15,8 @@ Major: Änderungen die das API brechen
 Minor: Änderungen durch Hinzufügen neuer Features ohne Bruch der API
 Patch: Änderungen zur Fehlerbehebung ohne Bruch der API
 
+Als Alternative findet sich das [ Libtool versioning system](http://www.sourceware.org/autobook/autobook/autobook_91.html)
+
 ##Sicherstellung über TCK##
 TCK: Technical Compatibility Kit
 
