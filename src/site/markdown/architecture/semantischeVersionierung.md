@@ -1,4 +1,10 @@
 #Semantische Versionierung#
+
+##Quellen##
+* http://semver.org/
+* https://jaxenter.de/semantic-versioning-1034
+* http://de.slideshare.net/mfrancis/osgi-community-event-2010-automated-semantic-versioning-for-osgi-bundles
+
 ##Grundlagen##
 
 Versionsnummer: Major,Minor,Patch
