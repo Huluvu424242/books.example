@@ -1,7 +1,7 @@
 # books.example
 Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 
-books.app:
+Build Status:
 [![Build Status](https://travis-ci.org/FunThomas424242/books.example.svg?branch=master)](https://travis-ci.org/FunThomas424242/books.example)
 
 Es gibt auch weitere [Dokumentation](src/site/markdown/index.md) zum Projekt
