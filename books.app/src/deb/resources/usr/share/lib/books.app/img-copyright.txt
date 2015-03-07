@@ -1,0 +1,12 @@
+Epiphany-bookmarks.png
+-------------------------------------------
+url: http://commons.wikimedia.org/wiki/File:Epiphany-bookmarks.png
+license: LGPL v2.1 ff.
+author: Everaldo Coelho
+download date: 07.03.2015
+
+Start-Epiphany-bookmarks.png
+-----------------------------------------------------
+license: LGPL v2.1 ff.
+author: Everaldo Coelho, modified by Huluvu424242
+created by gimp at: 07.03.2015

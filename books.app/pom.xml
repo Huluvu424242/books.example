@@ -5,12 +5,13 @@
 	<parent>
 		<groupId>gh.funthomas424242.webapp</groupId>
 		<artifactId>books.example</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>books.app</artifactId>
 	<packaging>jar</packaging>
 	<name>Bücherverwaltung - App</name>
+	<description>Kleine Verwaltung für Bücher</description>
 
 	<properties>
 		<java.version>1.7</java.version>
@@ -109,6 +110,33 @@
 
 	<build>
 		<plugins>
+
+			<plugin>
+				<!-- This plugin's configuration must come *before* the Debian Maven 
+					Plugin. -->
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-deb-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<outputDirectory>${basedir}/target/deb</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/deb/resources</directory>
+									<!-- Uncomment the following line to enable Velocity filtering. -->
+									<!-- <filtering>true</filtering> -->
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -169,6 +197,24 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>net.sf.debian-maven</groupId>
+				<artifactId>debian-maven-plugin</artifactId>
+				<version>1.0.6</version>
+				<executions>
+					<execution>
+						<id>mkdeb</id>
+						<phase>package</phase>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludeAllDependencies>true</excludeAllDependencies>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
