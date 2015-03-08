@@ -23,8 +23,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
 # Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
-2. Anschließend in das books.app Unterverzeichnis wechseln.
-3. Dort das Projekt bauen mit mvn  -U clean install
-4. Dann starten mit java -jar target/books.app-1.0.0-SNAPSHOT.jar
-5. Per Webbrowser die URL http://localhost:8080/ aufrufen und das Projekt ausprobieren.
+1. Dort das Projekt bauen mit mvn  -U clean install
+1. Dann starten mit java -jar target/books.app-1.0.0-SNAPSHOT.jar
+1. Per Webbrowser die URL http://localhost:8080/ aufrufen und das Projekt ausprobieren.
 
