@@ -9,4 +9,10 @@ Start-Epiphany-bookmarks.png
 -----------------------------------------------------
 license: LGPL v2.1 ff.
 author: Everaldo Coelho, modified by Huluvu424242
-created by gimp at: 07.03.2015
+created by gimp at: 08.03.2015
+
+Stop-Epiphany-bookmarks.png
+----------------------------------------------------
+license: LGPL v2.1 ff.
+author: Everaldo Coelho, modified by Huluvu424242
+created by gimp at: 08.03.2015
