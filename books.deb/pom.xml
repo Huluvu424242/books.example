@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>gh.funthomas424242.webapp</groupId>
+		<artifactId>books.example</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>books.deb</artifactId>
+	<packaging>jar</packaging>
+	<name>Bücherverwaltung - Deb</name>
+	<description>Debian Archiv für die kleine Bücherverwaltung</description>
+
+	<properties>
+		<java.version>1.7</java.version>
+		<jbehave.version>4.0-beta-11</jbehave.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>gh.funthomas424242.webapp</groupId>
+			<artifactId>books.app</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<!-- This plugin's configuration must come *before* the Debian Maven 
+					Plugin. -->
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-deb-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<outputDirectory>${basedir}/target/deb</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/deb/resources</directory>
+									<!-- Uncomment the following line to enable Velocity filtering. -->
+									<!-- <filtering>true</filtering> -->
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>books.app</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<!-- <destFileName>${project.artifactId}-${project.version}.jar</destFileName> 
+										<outputDirectory>${project.build.directory}</outputDirectory> -->
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<!-- <overWriteReleases>false</overWriteReleases> <overWriteSnapshots>true</overWriteSnapshots> -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<file>target/books.app-${project.version}.jar</file>
+									<type>jar</type>
+									<classifier>app</classifier>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>net.sf.debian-maven</groupId>
+				<artifactId>debian-maven-plugin</artifactId>
+				<version>1.0.6</version>
+				<executions>
+					<execution>
+						<id>mkdeb</id>
+						<phase>package</phase>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludeAllDependencies>true</excludeAllDependencies>
+					<includeAttachedArtifacts>true</includeAttachedArtifacts>
+					<excludeArtifacts>
+						<artifact>${project.artifactId}-${project.version}.jar</artifact>
+					</excludeArtifacts>
+					<packageName>books.app</packageName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+
+</project>
