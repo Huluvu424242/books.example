@@ -10,6 +10,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
 * Spring Boot Konfiguration
     * https://github.com/ewolff/spring-boot-demos 
+    * http://www.leveluplunch.com/java/tutorials/019-disable-actuator-endpoints-in-spring-boot/
 * Cucumber-JVM Integration in Spring
     * https://github.com/cucumber/cucumber-java-skeleton
     * https://github.com/excellentdrums/Cucumber-JVM-Spring-MVC-Test-HTMLUnit-Demo
@@ -18,6 +19,10 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * JBehave Integration in Spring
     * https://github.com/mkuthan/example-jbehave
     * http://mkuthan.github.io/blog/2014/05/29/acceptance-testing-using-jbehave-spring-framework-and-maven/
+* Debian Archiv Erstellung
+    * http://debian-maven.sourceforge.net/project-info.html
+    * https://wiki.debian.org/Teams/JavaPackaging
+    * https://wiki.debian.org/JavaPackage
 * PGP Integration
     * http://www.javacodegeeks.com/2011/06/java-pretty-good-privacy-pgp.html
 
