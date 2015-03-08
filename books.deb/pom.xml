@@ -10,7 +10,7 @@
 
 	<artifactId>books.deb</artifactId>
 	<packaging>jar</packaging>
-	<name>Bücherverwaltung - Deb</name>
+	<name>Bücherverwaltung - Deb (Debian Archive)</name>
 	<description>Debian Archiv für die kleine Bücherverwaltung</description>
 
 	<properties>
@@ -126,6 +126,10 @@
 						<artifact>${project.artifactId}-${project.version}.jar</artifact>
 					</excludeArtifacts>
 					<packageName>books.app</packageName>
+					<packageDependencies>
+						<package>java-runtime</package>
+						<package>xdg-utils</package>
+					</packageDependencies>
 				</configuration>
 			</plugin>
 		</plugins>
