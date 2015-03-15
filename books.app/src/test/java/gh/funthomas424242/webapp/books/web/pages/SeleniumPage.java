@@ -4,27 +4,13 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class SeleniumPage {
 
-	protected WebDriver driver;
-
 	abstract public String getPageUrl();
 
-	public SeleniumPage(final WebDriver driver) {
-		this.driver = driver;
-	}
-
-	public SeleniumPage open() {
+	
+	public SeleniumPage open(final WebDriver driver) {
 		final String pageUrl = getPageUrl();
-		System.out.println("INFO#driver: " + driver);
-		System.out.println("INFO#pageUrl: " + pageUrl);
 		driver.get(pageUrl);
-		System.out.println("INFO#page at: " + driver.getCurrentUrl());
-		System.out.println("INFO#pagesource: " + driver.getPageSource());
 		return this;
-	}
-
-	public boolean isCurrentPage() {
-		final String url = driver.getCurrentUrl();
-		return getPageUrl().equals(url);
 	}
 
 	// public void pressLink(String text) {

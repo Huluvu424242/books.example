@@ -11,13 +11,13 @@ import java.util.Locale;
 import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
 @SpringApplicationConfiguration(classes = { Application.class })
@@ -57,9 +57,9 @@ public class GuiInternationalisierungsStorySteps {
 
 	@When("wir navigieren zur Startseite,")
 	public void navigateToStartseite() throws Throwable {
-		final StartSeite startseite = new StartSeite(driver);
-		page = startseite.open();
-		Assert.assertTrue(page.isCurrentPage());
+		final StartSeite startseite =PageFactory.initElements(driver, StartSeite.class);
+		page = startseite.open(driver);
+		Assert.assertEquals(page.getPageUrl(),driver.getCurrentUrl());
 	}
 
 	@Then("finden wir eine Schaltfläche welche $text lautet.")

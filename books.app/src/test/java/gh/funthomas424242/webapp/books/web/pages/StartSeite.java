@@ -1,15 +1,13 @@
 package gh.funthomas424242.webapp.books.web.pages;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class StartSeite extends SeleniumPage {
 
-	public StartSeite(final WebDriver driver) {
-		super(driver);
-	}
 	
 	
-	public static final String SERVER_URL = "http://127.0.0.1:";
+	public static final String SERVER_URL = "http://localhost:";
 
 	//@Value("${local.server.port}")
 	private int serverPort=8080;
@@ -19,4 +17,11 @@ public class StartSeite extends SeleniumPage {
 		return SERVER_URL+serverPort+"/";
 	}
 
+	@FindBy(id="erfasseBook")
+	WebElement buttonRegisterBook;
+	
+	public void pressButtonRegisterBook(){
+		buttonRegisterBook.click();
+	}
+	
 }
