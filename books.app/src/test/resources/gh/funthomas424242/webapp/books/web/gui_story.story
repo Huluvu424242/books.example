@@ -12,7 +12,7 @@ Then wird die Startseite angezeigt
 Scenario: Navigation zum Buch erfassen
 
 Given wir befinden uns auf der Startseite
-When wir die Schaltfläche Weiteres Buch erfassen betätigen
+When wir die Schaltfläche zum Erfassen eines Buches betätigen
 Then wird zur Erfassungsseite für Bücher navigiert
 
 Scenario: Buch mit Titel und ISBN erfassen
@@ -20,8 +20,8 @@ Scenario: Buch mit Titel und ISBN erfassen
 Given wir befinden uns auf der Erfassungsseite für Bücher
 When wir als Titel Die Augen des Drachen eingeben
 And als ISBN 3-453-02435-4 erfassen
-And die Schaltfläche Buch Registrieren betätigen
-Then wird zur Startseite navigiert
+And die Schaltfläche zum Buch registrieren betätigen
+Then wird zur Registrierungsseite navigiert
 And in der Liste der Bücher ein Buch angezeigt
 And mit Titel Die Augen des Drachen
 And mit ISBN 3-453-02435-4

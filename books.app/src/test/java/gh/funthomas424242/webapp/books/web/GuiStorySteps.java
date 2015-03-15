@@ -1,8 +1,12 @@
 package gh.funthomas424242.webapp.books.web;
 
+import java.util.List;
+
 import gh.funthomas424242.webapp.books.Application;
+import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.lib.Steps;
 import gh.funthomas424242.webapp.books.web.pages.ErfasseBuchdatenPage;
+import gh.funthomas424242.webapp.books.web.pages.RegisterPage;
 import gh.funthomas424242.webapp.books.web.pages.SeleniumPage;
 import gh.funthomas424242.webapp.books.web.pages.StartSeite;
 
@@ -48,37 +52,79 @@ public class GuiStorySteps {
 
 	@When("wir den URL $url aufrufen")
 	public void openURL(final String url) throws Throwable {
-		final StartSeite startseite = PageFactory.initElements(driver, StartSeite.class);
-		page = startseite.open(driver);
-	}
-
-	@Then("wird die Startseite angezeigt")
-	public void lautet_der_URL() throws Throwable {
-		final String url = driver.getCurrentUrl();
-		System.out.println("INFO#Startseite:" + page);
-		Assert.assertEquals(page.getPageUrl(), url);
+		driver.get(url);
 	}
 	
 	@Given("wir befinden uns auf der Startseite")
-	@Then("wird zur Startseite navigiert")
-	public void atStartseite(){
+	public void openStartseite(){
 		this.page=PageFactory.initElements(driver, StartSeite.class);
-		Assert.assertEquals(page.getPageUrl(), driver.getCurrentUrl());
-		
+		page.open(driver);
 	}
 	
-	@When("wir die Schaltfläche $buttonText betätigen")
-	@Alias("die Schaltfläche $buttonText betätigen")
-	public void pressButton(final String buttonText){
+	
+	@When("wir die Schaltfläche zum Erfassen eines Buches betätigen")
+	public void pressButtonErfasseBuch(){
 		final StartSeite curPage=(StartSeite)page;
-		curPage.pressButtonRegisterBook();
+		curPage.pressButtonErfasseBuch();
 	}
 	
+	@When("die Schaltfläche zum Buch registrieren betätigen")
+	public void pressButtonRegistriereBuch(){
+		final ErfasseBuchdatenPage curPage=(ErfasseBuchdatenPage)page;
+		curPage.pressButtonRegistriereBuch();
+	}
 	
 	@Given("wir befinden uns auf der Erfassungsseite für Bücher")
 	public void openBuchErfassungsSeite(){
 		page=PageFactory.initElements(driver, ErfasseBuchdatenPage.class);
 		page.open(driver);
+	}
+	
+	@When("wir als Titel $titel eingeben")
+	public void titelErfassen(final String titel){
+		final ErfasseBuchdatenPage curPage=(ErfasseBuchdatenPage)page;
+		curPage.setTitel(titel);
+	}
+	
+	@When("als ISBN $isbn erfassen")
+	public void isbnErfassen(final String isbn){
+		final ErfasseBuchdatenPage curPage=(ErfasseBuchdatenPage)page;
+		curPage.setISBN(isbn);
+	}
+	
+	
+		
+	@Then("in der Liste der Bücher ein Buch angezeigt")
+	@Pending
+	public void bookListContainsBook(){
+		final StartSeite curPage=PageFactory.initElements(driver, StartSeite.class);
+		//final RegisterPage curPage=(RegisterPage)page;
+		Assert.assertTrue(curPage.getBuchanzahl()>0);
+		final List<Book> buchListe=curPage.getBuchliste();
+		Assert.assertNotNull(buchListe);
+		
+		
+	}
+	
+	@Then("mit Titel $titel")
+	public void listContainsTitel(final String titel){
+		final StartSeite curPage=(StartSeite)page;
+		final List<Book> buchListe=curPage.getBuchliste();
+	}
+	
+	@Then("mit ISBN $isbnraw")
+	@Pending
+	public void listContainsISBN(final String isbnRaw)
+	{
+		
+	}
+	
+	
+	@Then("wird die Startseite angezeigt")
+	public void atStartseite(){
+		this.page=PageFactory.initElements(driver, StartSeite.class);
+		Assert.assertEquals(page.getPageUrl(), driver.getCurrentUrl());
+		
 	}
 	
 	@Then("wird zur Erfassungsseite für Bücher navigiert")
@@ -87,35 +133,10 @@ public class GuiStorySteps {
 		Assert.assertEquals(page.getPageUrl(),driver.getCurrentUrl());
 	}
 	
-	@When("wir als Titel $titel eingeben")
-	@Pending
-	public void titelErfassen(final String titel){
-		
-	}
-	
-	@When("als ISBN $isbn erfassen")
-	@Pending
-	public void isbnErfassen(final String isbnraw){
-		
-	}
-	
-		
-	@Then("in der Liste der Bücher ein Buch angezeigt")
-	@Pending
-	public void bookListContainsBook(){
-		
-	}
-	
-	@Then("mit Titel $titel")
-	@Pending
-	public void listContainsTitel(final String titel){
-		
-	}
-	
-	@Then("mit ISBN $isbnraw")
-	@Pending
-	public void listContainsISBN(final String isbnRaw)
-	{
+	@Then("wird zur Registrierungsseite navigiert")
+	public void atRegistrierungsseite(){
+		this.page=PageFactory.initElements(driver, RegisterPage.class);
+		Assert.assertEquals(page.getPageUrl(), driver.getCurrentUrl());
 		
 	}
 
