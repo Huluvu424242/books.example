@@ -30,7 +30,7 @@ public class BookController{
 		this.isbnService = isbnService;
 	}
 
-	@RequestMapping({ "/", "${link.books}" })
+	@RequestMapping({ "${link.books}" })
 	public ModelAndView listeBuecher() {
 		return new ModelAndView("booklist", "books", bookService.findAll());
 	}
@@ -45,7 +45,7 @@ public class BookController{
 	}
 
 	@RequestMapping("${link.buch.registrieren}")
-	public ModelAndView speichereBuch(HttpServletRequest request,
+	public ModelAndView speichereBuch(final HttpServletRequest request,
 			@RequestParam("titel") final String titel,
 			@RequestParam("isbn") final String isbnraw) {
 
@@ -58,8 +58,7 @@ public class BookController{
 				isbnService.addISBN(isbn);
 			}
 			bookService.addBook(titel, isbn);
-			nextModelView = new ModelAndView("booklist", "books",
-					bookService.findAll());
+			nextModelView = new ModelAndView("redirect:/books");
 		} catch (InvalidISBNException e) {
 			final Map<String, Object> modelMap = erzeugeModelMap();
 			modelMap.put("message", "Es wurde eine ungültige ISBN eingegeben ("

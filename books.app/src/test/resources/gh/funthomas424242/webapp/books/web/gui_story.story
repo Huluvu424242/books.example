@@ -7,7 +7,7 @@ Scenario: Startseite prüfen
 
 Given der Server ist gestartet
 When wir den URL http://localhost:8080/ aufrufen
-Then wird die Startseite angezeigt
+Then wird auf die Startseite weitergeleitet
 
 Scenario: Navigation zum Buch erfassen
 
@@ -21,7 +21,7 @@ Given wir befinden uns auf der Erfassungsseite für Bücher
 When wir als Titel Die Augen des Drachen eingeben
 And als ISBN 3-453-02435-4 erfassen
 And die Schaltfläche zum Buch registrieren betätigen
-Then wird zur Registrierungsseite navigiert
+Then wird zur Startseite navigiert
 And in der Liste der Bücher ein Buch angezeigt
 And mit Titel Die Augen des Drachen
 And mit ISBN 3-453-02435-4

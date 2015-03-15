@@ -12,6 +12,12 @@ public class DashBoardController {
 	}
 	
 	// Bücher: ->BookController
+	
+	@RequestMapping({ "/" })
+	public ModelAndView listeBuecher() {
+		return new ModelAndView("redirect:/books");
+	}
+
 
 	@RequestMapping("${link.settings}")
 	public ModelAndView zeigeEinstellungen() {
