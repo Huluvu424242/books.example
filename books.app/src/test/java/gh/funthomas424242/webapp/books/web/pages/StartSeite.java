@@ -31,8 +31,7 @@ public class StartSeite extends SeleniumPage {
 		buttonErfasseBuch.click();
 	}
 
-	// @FindBys({ @FindBy(tagName = "tr"), @FindBy(tagName = "td") })
-	@FindBys({ @FindBy(tagName = "tr") })
+	@FindBys({ @FindBy(tagName = "tbody"),@FindBy(tagName = "tr") })
 	List<WebElement> buchListe;
 
 	public int getBuchanzahl() {

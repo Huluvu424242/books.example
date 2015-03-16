@@ -2,11 +2,15 @@ package gh.funthomas424242.webapp.books.web;
 
 import gh.funthomas424242.webapp.books.Application;
 import gh.funthomas424242.webapp.books.domain.Book;
+import gh.funthomas424242.webapp.books.domain.ISBN;
+import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.lib.Steps;
 import gh.funthomas424242.webapp.books.web.pages.ErfasseBuchdatenPage;
 import gh.funthomas424242.webapp.books.web.pages.SeleniumPage;
 import gh.funthomas424242.webapp.books.web.pages.StartSeite;
+
 import java.util.List;
+
 import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.BeforeStory;
@@ -106,9 +110,15 @@ public class GuiStorySteps {
 	}
 
 	@Then("mit ISBN $isbnraw")
-	@Pending
 	public void listContainsISBN(final String isbnRaw) {
-
+		final StartSeite curPage = (StartSeite) page;
+		final List<Book> buchListe = curPage.getBuchliste();
+		final ISBN isbn=buchListe.get(0).getIsbn();
+		try {
+			Assert.assertEquals(ISBN.parseFromString(isbnRaw), isbn);
+		} catch (InvalidISBNException e) {
+			Assert.fail();
+		}
 	}
 
 	@Then("wird auf die Startseite weitergeleitet")
