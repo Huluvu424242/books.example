@@ -16,7 +16,7 @@ public class StartSeite extends SeleniumPage {
 
 	public static final String SERVER_URL = "http://localhost:";
 
-	// @Value("${local.server.port}")
+	//@Value("${local.server.port}")
 	protected int serverPort = 8080;
 
 	@Override

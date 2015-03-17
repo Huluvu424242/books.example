@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books;
+package gh.funthomas424242.webapp.books.services;
 
 import gh.funthomas424242.webapp.books.lib.Feature;
 
