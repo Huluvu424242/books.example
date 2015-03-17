@@ -25,3 +25,11 @@ Then wird zur Startseite navigiert
 And in der Liste der Bücher ein Buch angezeigt
 And mit Titel Die Augen des Drachen
 And mit ISBN 3-453-02435-4
+
+Scenario: Buch löschen
+
+Given wir befinden uns auf der Startseite
+And die Bücherliste enthält das Buch Die Augen des Drachen in Zeile 1
+When wir das Mülleimersymbol betätigen
+Then erscheint die Rückfrage Möchten Sie das Buch Die Augen des Drachen mit ID 1 wirklich löschen?
+

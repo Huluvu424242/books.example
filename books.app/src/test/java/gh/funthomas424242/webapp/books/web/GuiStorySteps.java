@@ -15,6 +15,7 @@ import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.junit.Assert;
@@ -133,5 +134,24 @@ public class GuiStorySteps {
 		page = PageFactory.initElements(driver, ErfasseBuchdatenPage.class);
 		Assert.assertEquals(page.getPageUrl(), driver.getCurrentUrl());
 	}
+	
+	@Given("die Bücherliste enthält das Buch $titel in Zeile 1")
+	@Pending
+	public void containsBookAtFirstLine(final String titel){
+		
+	}
+	
+	@When("wir das Mülleimersymbol betätigen")
+	@Pending
+	public void pressTrash(){
+		
+	}
+	
+	@Then("erscheint die Rückfrage $text")
+	@Pending
+	public void showQuestion(final String text){
+		
+	}
+	
 
 }
