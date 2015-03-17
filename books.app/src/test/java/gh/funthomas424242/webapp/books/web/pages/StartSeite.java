@@ -31,6 +31,24 @@ public class StartSeite extends SeleniumPage {
 		buttonErfasseBuch.click();
 	}
 
+	@FindBy(tagName="h1")
+	WebElement ueberschrift;
+	
+	public String getUeberschrift(){
+		return ueberschrift.getText();
+	}
+	
+	@FindBys({ @FindBy(tagName = "tr"),@FindBy(tagName = "th") })
+	protected List<WebElement> spaltenKoepfe;
+	
+	public Object getSpaltennamenDerTabelle() {
+		final List<String> spaltenNamen=new ArrayList<String>();
+		for(final WebElement element:spaltenKoepfe){
+			spaltenNamen.add(element.getText());
+		}
+		return spaltenNamen;
+	}
+	
 	@FindBys({ @FindBy(tagName = "tbody"),@FindBy(tagName = "tr") })
 	List<WebElement> buchListe;
 
@@ -64,5 +82,6 @@ public class StartSeite extends SeleniumPage {
 		}
 		return buecher;
 	}
+
 
 }

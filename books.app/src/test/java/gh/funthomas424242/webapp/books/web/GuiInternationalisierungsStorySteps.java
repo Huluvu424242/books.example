@@ -6,6 +6,7 @@ import gh.funthomas424242.webapp.books.lib.Steps;
 import gh.funthomas424242.webapp.books.web.pages.SeleniumPage;
 import gh.funthomas424242.webapp.books.web.pages.StartSeite;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.jbehave.core.annotations.AfterStory;
@@ -66,6 +67,18 @@ public class GuiInternationalisierungsStorySteps {
 	public void findButtonWithText(final String text) throws Throwable {
 		final WebElement element = driver.findElement(By.linkText(text));
 		Assert.assertNotNull(element);
+	}
+	
+	@Then("eine Überschrift $ueberschrift.")
+	public void containsUeberschrift(final String ueberschrift){
+		final StartSeite startseite=(StartSeite)page;
+		Assert.assertEquals(ueberschrift, startseite.getUeberschrift());
+	}
+	
+	@Then("eine Tabelle mit den Spalten: $spaltenNamen.")
+	public void containsTabellenspalten(final List<String> spaltenNamen){
+		final StartSeite startseite=(StartSeite)page;
+		Assert.assertEquals(spaltenNamen, startseite.getSpaltennamenDerTabelle());
 	}
 
 }
