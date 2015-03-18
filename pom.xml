@@ -32,6 +32,8 @@
 
 	<properties>
 		<github.maventools.version>0.11</github.maventools.version>
+		<java.version>1.7</java.version>
+		<jbehave.version>4.0-beta-11</jbehave.version>
 	</properties>
 
 
@@ -66,7 +68,7 @@
 		<license>
 			<url>./LICENSE</url>
 			<name>GNU LESSER GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007</name>
+					Version 3, 29 June 2007</name>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -76,6 +78,7 @@
 		<module>books.app</module>
 		<module>books.tck</module>
 		<module>books.deb</module>
+		<module>books.rpm</module>
 	</modules>
 
 	<reporting>
