@@ -14,8 +14,8 @@ env:
 
 before_install:
    - rm -f ~/bookdb.*
-   - sudo apt-get rpm
-   - sudo apt-get fakeroot
+   - sudo apt-get install rpm
+   - sudo apt-get install fakeroot
    - mvn clean
 
 script:
