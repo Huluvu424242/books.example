@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Öffne Bücherverwaltung
+Comment=Öffne die Bücherverwaltung im Browser auf http://localhost:8080/
+Icon=/usr/share/lib/books.app/Epiphany-bookmarks.png
+Exec=xdg-open http://localhost:8080/
+Terminal=false
+StartupNotify=true
+Categories=Office
+
+Name[en_EN]=Open book manager

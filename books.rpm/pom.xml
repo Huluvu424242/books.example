@@ -33,7 +33,32 @@
 				<version>2.1.2</version>
 				<extensions>true</extensions>
 				<configuration>
-				<group>${project.groupId}</group>
+					<group>${project.groupId}</group>
+					<mappings>
+						<mapping>
+							<directory>/usr/share</directory>
+							<filemode>750</filemode>
+							<username>root</username>
+							<groupname>root</groupname>
+							<dependency>
+								<includes>
+									<include>gh.funthomas424242.webapp:books.app</include>
+								</includes>
+							</dependency>
+						</mapping>
+						<mapping>
+							<directory>/</directory>
+							<configuration>true</configuration>
+							<filemode>640</filemode>
+							<username>root</username>
+							<groupname>root</groupname>
+							<sources>
+								<source>
+									<location>src/rpm/resources</location>
+								</source>
+							</sources>
+						</mapping>
+					</mappings>
 				</configuration>
 			</plugin>
 		</plugins>

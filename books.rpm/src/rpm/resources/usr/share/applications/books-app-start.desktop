@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Starte Service
+Comment=Startet den Server der Bücherverwaltung mit lokaler Datenbank
+Icon=/usr/share/lib/books.app/Start-Epiphany-bookmarks.png
+Exec=java -jar /usr/share/lib/books.app/books.app.jar
+Terminal=false
+StartupNotify=true
+Categories=Office
+
+Name[en_EN]=Start service
