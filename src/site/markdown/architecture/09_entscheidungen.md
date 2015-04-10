@@ -13,8 +13,8 @@
 10.04.2015:
 * Nutzer werden über eine UUID weltweit eindeutig identifiziert
 * Die Daten jedes Nutzers liegen stets verschlüsselt in der Datenbank:
-  ** Zur Verschlüsselung wird ein Nutzerspezifischer Schlüssel verwendet. 
-  ** Der Schlüssel selbst stellt einen symmetrischen Schlüssel dar damit mittels symmetrischen Verfahren die Datenbankzugriffe möglichst schnell ausgeführt werden. 
-  ** Der symmetrische Schlüssel selber wird über ein asymetrisches Verfahren (PGP) verschlüsselt in der Datenbank abgelegt. 
-  ** Jeder Nutzer verfügt über einen spezifischen symmetrischen Schlüssel, so dass nach Knacken eines Schlüssels nicht die Daten aller Nutzer verloren sind. 
-  ** Der Login Mechanismus wird über ein asymmetrisches Verfahren abgehandelt.
+  * Zur Verschlüsselung wird ein Nutzerspezifischer Schlüssel verwendet. 
+  * Der Schlüssel selbst stellt einen symmetrischen Schlüssel dar damit mittels symmetrischen Verfahren die Datenbankzugriffe möglichst schnell ausgeführt werden. 
+  * Der symmetrische Schlüssel selber wird über ein asymetrisches Verfahren (PGP) verschlüsselt in der Datenbank abgelegt. 
+  * Jeder Nutzer verfügt über einen spezifischen symmetrischen Schlüssel, so dass nach Knacken eines Schlüssels nicht die Daten aller Nutzer verloren sind. 
+  * Der Login Mechanismus wird über ein asymmetrisches Verfahren abgehandelt.
