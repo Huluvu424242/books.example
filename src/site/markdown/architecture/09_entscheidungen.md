@@ -3,6 +3,22 @@
 ## Versionierung
 06.03.2015 In dem Projekt ist [semantische Versionierung](semantischeVersionierung.md) zu nutzen.
 
+## Testkonzept
+### Modultest
+* HTML Seiten werden mit HTMLUnit auf korrekte Struktur getestet
+* JavaScript wird getetestet mit?
+** 
+* Java wird getestet mit:
+** jUnit
+** TestNG 
+=> (25.04.2015 Entscheidung für jUnit da keine Vorteile von TestNG gegenüber jUnit bekannt)
+* REST API wird getestet mit - Entscheidung noch offen:
+** RAML - sehr strukturiert aber noch viele Integrationsprobleme. Mischt Konzepte aus Swagger und API Blueprint.
+** Swagger - scheint der stabilste Kandidat zu sein.
+** WADL
+** I/O Docs
+** API Blueprint
+
 ## Verteilte Konzepte
 ### Verteilung und Abgleich der Änderungen im Netz ###
 10.04.2015 Damit die Clients autark arbeiten und dennoch Informationen an alle anderen Clients verteilen können ohne diese Clients oder deren Nutzer zu kennen, wird ein verteiltes Informationssystem benötigt an welches Aktualisierungen gesendet und über das Suchen ausgeführt werden können. Also zur Verteilung und zum Auslesen der Informationen wird ein Suchserver wie google benötigt. 
