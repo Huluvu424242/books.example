@@ -14,7 +14,7 @@
 => (25.04.2015 Entscheidung für jUnit da keine Vorteile von TestNG gegenüber jUnit bekannt)
 * REST API wird getestet mit - Entscheidung noch offen:
   * RAML - sehr strukturiert aber noch viele Integrationsprobleme. Mischt Konzepte aus Swagger und API Blueprint.
-  * Swagger - scheint der stabilste Kandidat zu sein.
+  * Swagger - scheint der stabilste Kandidat zu sein (Beispiel? https://github.com/kenshoo/swagger-validator)
   * WADL
   * I/O Docs
   * API Blueprint
