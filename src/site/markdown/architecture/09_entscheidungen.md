@@ -7,17 +7,18 @@
 ### Modultest
 * HTML Seiten werden mit HTMLUnit auf korrekte Struktur getestet
 * JavaScript wird getetestet mit?
-** 
+  * Jasmine
 * Java wird getestet mit:
-** jUnit
-** TestNG 
+  * jUnit
+  * TestNG 
 => (25.04.2015 Entscheidung für jUnit da keine Vorteile von TestNG gegenüber jUnit bekannt)
 * REST API wird getestet mit - Entscheidung noch offen:
-** RAML - sehr strukturiert aber noch viele Integrationsprobleme. Mischt Konzepte aus Swagger und API Blueprint.
-** Swagger - scheint der stabilste Kandidat zu sein.
-** WADL
-** I/O Docs
-** API Blueprint
+  * RAML - sehr strukturiert aber noch viele Integrationsprobleme. Mischt Konzepte aus Swagger und API Blueprint.
+  * Swagger - scheint der stabilste Kandidat zu sein.
+  * WADL
+  * I/O Docs
+  * API Blueprint
+  * http://www.bibsonomy.org/bibtex/294f86c9f252fc214081f44e7fdca5bed/funthomas424242
 
 ## Verteilte Konzepte
 ### Verteilung und Abgleich der Änderungen im Netz ###
