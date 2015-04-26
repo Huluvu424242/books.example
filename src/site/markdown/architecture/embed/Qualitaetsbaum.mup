@@ -8,9 +8,12 @@
       "id": 3
     },
     "11": {
-      "title": "Ã„nderbarkeit",
+      "title": "Ãnderbarkeit",
       "id": 4,
-      "ideas": {}
+      "ideas": {},
+      "attr": {
+        "style": {}
+      }
     },
     "21": {
       "title": "Verf�gbarkeit",
