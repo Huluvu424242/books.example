@@ -13,8 +13,11 @@
       "ideas": {}
     },
     "21": {
-      "title": "VerfÃ¼gbarkeit",
-      "id": 5
+      "title": "Verfügbarkeit",
+      "id": 5,
+      "attr": {
+        "style": {}
+      }
     },
     "31": {
       "title": "Sicherheit",
