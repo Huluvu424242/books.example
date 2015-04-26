@@ -1,0 +1,75 @@
+{
+  "title": "Buchanwendung",
+  "id": 1,
+  "formatVersion": 2,
+  "ideas": {
+    "1": {
+      "title": "Performance",
+      "id": 3
+    },
+    "11": {
+      "title": "Änderbarkeit",
+      "id": 4,
+      "ideas": {}
+    },
+    "21": {
+      "title": "Verfügbarkeit",
+      "id": 5
+    },
+    "31": {
+      "title": "Sicherheit",
+      "id": 6
+    },
+    "-1": {
+      "title": "Testbarkeit",
+      "id": 7,
+      "ideas": {
+        "2": {
+          "title": "manuell",
+          "id": 9,
+          "ideas": {}
+        },
+        "4": {
+          "title": "Modultests ",
+          "id": 11,
+          "attr": {
+            "style": {}
+          },
+          "ideas": {
+            "1": {
+              "title": "Relevanz: Hoch\nKomplexität: Mittel\nProzentsatz automatischer Tests",
+              "id": 8,
+              "ideas": {},
+              "attr": {
+                "style": {},
+                "attachment": {
+                  "contentType": "text/html",
+                  "content": "Relevanz: Hoch<br>Komplexität: Niedrig"
+                }
+              }
+            }
+          }
+        },
+        "5": {
+          "title": "Integrationstests",
+          "id": 12,
+          "ideas": {
+            "1": {
+              "title": "Anteil aus Spezifikation abgeleiteter Tests",
+              "id": 14,
+              "attr": {
+                "style": {}
+              }
+            }
+          },
+          "attr": {
+            "style": {}
+          }
+        }
+      },
+      "attr": {
+        "style": {}
+      }
+    }
+  }
+}
