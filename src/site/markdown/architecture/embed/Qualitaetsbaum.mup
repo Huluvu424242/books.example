@@ -8,12 +8,12 @@
       "id": 3
     },
     "11": {
-      "title": "Änderbarkeit",
+      "title": "Ã„nderbarkeit",
       "id": 4,
       "ideas": {}
     },
     "21": {
-      "title": "Verf�gbarkeit",
+      "title": "Verfügbarkeit",
       "id": 5,
       "attr": {
         "style": {}
@@ -40,14 +40,14 @@
           },
           "ideas": {
             "1": {
-              "title": "Relevanz: Hoch\nKomplexit�t: Mittel\nProzentsatz automatischer Tests",
+              "title": "Relevanz: Hoch\nKomplexität: Mittel\nProzentsatz automatischer Tests",
               "id": 8,
               "ideas": {},
               "attr": {
                 "style": {},
                 "attachment": {
                   "contentType": "text/html",
-                  "content": "Relevanz: Hoch<br>Komplexität: Niedrig"
+                  "content": "Relevanz: Hoch<br>KomplexitÃ¤t: Niedrig"
                 }
               }
             }
