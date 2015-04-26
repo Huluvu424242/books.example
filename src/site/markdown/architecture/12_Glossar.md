@@ -1,5 +1,8 @@
 # Glossar
 
-*wort*
+<dl>
+<dt>wort</dt>
+<dd>beschreibung</dd>
+</dl>
 
 
