@@ -25,6 +25,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://wiki.debian.org/JavaPackage
 * PGP Integration
     * http://www.javacodegeeks.com/2011/06/java-pretty-good-privacy-pgp.html
+* Bintray / JFroge Integration
+    * https://www.jfrog.com/confluence/pages/viewpage.action?pageId=26083425
 
 # Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
