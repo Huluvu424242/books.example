@@ -4,8 +4,8 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 Build Status:
 [![Build Status](https://travis-ci.org/FunThomas424242/books.example.svg?branch=master)](https://travis-ci.org/FunThomas424242/books.example)
 
-[ ![Download Releases](https://api.bintray.com/packages/funthomas424242/books.example/books.example/images/download.svg) ](https://bintray.com/funthomas424242/books.example/books.example/_latestVersion)
-[ ![Download Snapshots](https://api.bintray.com/packages/funthomas424242/books.example/books.example/images/download.svg) ](http://oss.jfrog.org/simple/oss-snapshot-local/gh/funthomas424242/webapp/books.app/)
+[ ![Download Releases](./src/main/resources/img/Releases.png) ](https://bintray.com/funthomas424242/books.example/books.example/_latestVersion)
+[ ![Download Snapshots](./src/main/resources/img/Snapshots.png) ](http://oss.jfrog.org/simple/oss-snapshot-local/gh/funthomas424242/webapp/books.app/)
 
 Es gibt auch weitere [Dokumentation](src/site/markdown/index.md) zum Projekt
 
