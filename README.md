@@ -4,6 +4,8 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 Build Status:
 [![Build Status](https://travis-ci.org/FunThomas424242/books.example.svg?branch=master)](https://travis-ci.org/FunThomas424242/books.example)
 
+[ ![Download](https://api.bintray.com/packages/funthomas424242/books.example/books.example/images/download.svg) ](https://bintray.com/funthomas424242/books.example/books.example/_latestVersion)
+
 Es gibt auch weitere [Dokumentation](src/site/markdown/index.md) zum Projekt
 
 Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
