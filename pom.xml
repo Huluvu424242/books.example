@@ -157,26 +157,55 @@
 	</build>
 
 	<!-- -->
+
 	<repositories>
 		<repository>
-			<id>spring-milestone</id>
-			<url>http://repo.spring.io/libs-milestone</url>
+			<id>jfrog-releases</id>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
+		</repository>
+		<repository>
+			<id>jfrog-snapshots</id>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>spring-milestone</id>
-			<url>http://repo.spring.io/libs-milestone</url>
+			<id>jfrog-releases</id>
+			<url>http://oss.jfrog.org/artifactory/plugins-release</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+			<id>jfrog-snapshots</id>
+			<url>http://oss.jfrog.org/artifactory/plugins-snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
 	</pluginRepositories>
 
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>oss-jfrog-artifactory</id>
+			<name>oss-jfrog-artifactory-snapshots</name>
+			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+	<!-- <repositories> <repository> <id>spring-milestone</id> <url>http://repo.spring.io/libs-milestone</url> 
+		<snapshots> <enabled>false</enabled> </snapshots> </repository> </repositories> 
+		<pluginRepositories> <pluginRepository> <id>spring-milestone</id> <url>http://repo.spring.io/libs-milestone</url> 
+		<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> </pluginRepositories> -->
 
 
 </project>
