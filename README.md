@@ -1,4 +1,4 @@
-#[Books Logo](./books.app/src/main/resources/static/img/Lieblingsbuch149x149.png)books.example
+# [![Books Logo](./books.app/src/main/resources/static/img/Lieblingsbuch149x149.png)books.example]
 Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 
 Build Status:
