@@ -173,6 +173,10 @@
 				<enabled>false</enabled>
 			</releases>
 		</repository>
+		<repository>
+			<id>artifactory</id>
+			<url>http://mvnrepository.com/artifact</url>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
