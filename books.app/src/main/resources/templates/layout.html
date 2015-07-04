@@ -43,7 +43,7 @@
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="true"
 					aria-controls="navbar">
 					<span class="sr-only">Navigation ein-/ausblenden</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
@@ -56,18 +56,18 @@
 				</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a th:attr="href=#{link.books}">Bücher</a></li>
-					<li><a th:attr="href=#{link.settings}">Einstellungen</a></li>
-					<li><a th:attr="href=#{link.user}">Nutzer</a></li>
-					<li><a th:attr="href=#{link.impressum}">Zugang Erstellen</a></li>
-				</ul>
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
 						<input type="text" placeholder="openID" class="form-control" />
 					</div>
 					<button type="submit" class="btn btn-success">Anmelden</button>
 				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:attr="href=#{link.books}">Bücher</a></li>
+					<li><a th:attr="href=#{link.settings}">Einstellungen</a></li>
+					<li><a th:attr="href=#{link.user}">Nutzer</a></li>
+					<li><a th:attr="href=#{link.impressum}">Zugang Erstellen</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -102,8 +102,8 @@
 		th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 
 	<script
-		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.js"
-		th:src="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.js}"></script>
+		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
 
 	<!-- lokale Skripte-->
 	<script th:src="@{/js/docs.min.js}" src="../js/docs.min.js"></script>
