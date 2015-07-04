@@ -8,7 +8,9 @@
 <body>
 	<div layout:fragment="header">
 		<div class="page-header">
-			<h1 th:text="#{books.section}">?Bücherregal - <small>Liste aller B&uuml;cher</small></h1>
+			<h1 th:text="#{books.section}">
+				?Bücherregal - <small>Liste aller B&uuml;cher</small>
+			</h1>
 		</div>
 		<p>
 			<a id="erfasseBuch" class="btn btn-lg btn-success"
@@ -18,40 +20,50 @@
 
 	</div>
 	<div layout:fragment="content">
-		<div class="table-responsive">
 
-			<table id="buchliste"
-				class="table table-bordered table-striped table-condensed">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Titel</th>
-						<th>ISBN</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${books.empty}">
-						<td id="message" colspan="3" th:text="#{message.buch.liste.leer}">?No
-							messages</td>
-					</tr>
-					<tr th:each="book : ${books}">
-						<td th:text="${book.id}">?1</td>
-						<td th:text="${book.titel}">?Titel</td>
-						<td th:if="${book.isbn != null}"
-							th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
-							th:class="${!book.isbn.isValid()}?'warning has-warning has-feedback'">
-							<span th:text="${book.isbn.toString()}"
-							th:attr="id='isbnText' +${!book.isbn.isValid()}?' aria-describedby=isbnStatus'">?ISBN</span>
-							<span th:unless="${book.isbn.isValid()}"
-							class="glyphicon glyphicon-warning-sign form-control-feedback"
-							aria-hidden="true"></span> <span
-							th:unless="${book.isbn.isValid()}" id="isbnStatus"
-							class="sr-only">(ungültige ISBN)</span>
-						</td>
-						<td th:if="${book.isbn == null}"></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">Tabellenzusammenfassung</div>
+
+
+			<div class="table-responsive">
+
+				<table id="buchliste"
+					class="table table-bordered table-striped table-condensed">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Titel</th>
+							<th>ISBN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${books.empty}">
+							<td id="message" colspan="3" th:text="#{message.buch.liste.leer}">?No
+								messages</td>
+						</tr>
+						<tr th:each="book : ${books}">
+							<td th:text="${book.id}">?1</td>
+							<td th:text="${book.titel}">?Titel</td>
+							<td th:if="${book.isbn != null}"
+								th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
+								th:class="${!book.isbn.isValid()}?'warning has-warning has-feedback'">
+								<span th:text="${book.isbn.toString()}"
+								th:attr="id='isbnText' +${!book.isbn.isValid()}?' aria-describedby=isbnStatus'">?ISBN</span>
+								<span th:unless="${book.isbn.isValid()}"
+								class="glyphicon glyphicon-warning-sign form-control-feedback"
+								aria-hidden="true"></span> <span
+								th:unless="${book.isbn.isValid()}" id="isbnStatus"
+								class="sr-only">(ungültige ISBN)</span>
+							</td>
+							<td th:if="${book.isbn == null}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="panel-footer">Panel footer</div>
 		</div>
 	</div>
 </body>
