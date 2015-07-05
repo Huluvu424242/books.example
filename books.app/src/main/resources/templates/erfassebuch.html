@@ -7,9 +7,21 @@
 	Bücherverwaltung - Buch erfassen</title>
 </head>
 <body>
-	<h1 layout:fragment="header" th:text="#{buch.form.register.section}">?Buchdaten
-		- Erfassen</h1>
-	<div layout:fragment="content" class="container">
+	<div layout:fragment="navmenu">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="active"><a th:attr="href=#{link.books}">Bücher</a></li>
+			<li><a th:attr="href=#{link.settings}">Einstellungen</a></li>
+			<li><a th:attr="href=#{link.user}">Nutzer</a></li>
+			<li><a th:attr="href=#{link.impressum}">Impressum</a></li>
+		</ul>
+	</div>
+	<div layout:fragment="header">
+		<div class="page-header">
+			<h1 th:text="#{buch.form.register.section}">?Buchdaten -
+				Erfassen</h1>
+		</div>
+	</div>
+	<div layout:fragment="content">
 
 		<div class="alert alert-danger alert-dismissible" role="alert"
 			th:if="${message != null}">
@@ -36,23 +48,27 @@
 			<fieldset>
 				<div class="row">
 					<div class="form-group col-xs-2">
-						<label class="control-label" for="titel">Titel</label> <input id="titel" type="text"
-							th:attr="value=${titel}" name="titel" class="form-control"
-							required="true" autofocus="true" />
+						<label class="control-label" for="titel">Titel</label> <input
+							id="titel" type="text" th:attr="value=${titel}" name="titel"
+							class="form-control" required="true" autofocus="true" />
 					</div>
 
-					<div th:attr="class='form-group col-xs-3 '+( (${invalidISBN}==true)?'has-warning has-feedback ':'')">
-						<label class="control-label" for="isbn">ISBN</label> 
-						<input id="isbn" type="text" name="isbn"
-							th:attr="value=${isbn},class='form-control '+( (${invalidISBN}==true)?'aria-describedby=isbnStatus':'')"/>
-						<span th:if="${invalidISBN}" class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-	  					<span th:if="${invalidISBN}" id="isbnStatus" class="sr-only">(Ungültige ISBN)</span>
+					<div
+						th:attr="class='form-group col-xs-3 '+( (${invalidISBN}==true)?'has-warning has-feedback ':'')">
+						<label class="control-label" for="isbn">ISBN</label> <input
+							id="isbn" type="text" name="isbn"
+							th:attr="value=${isbn},class='form-control '+( (${invalidISBN}==true)?'aria-describedby=isbnStatus':'')" />
+						<span th:if="${invalidISBN}"
+							class="glyphicon glyphicon-warning-sign form-control-feedback"
+							aria-hidden="true"></span> <span th:if="${invalidISBN}"
+							id="isbnStatus" class="sr-only">(Ungültige ISBN)</span>
 					</div>
 				</div>
 				<div class="row">
 					<!-- submit button -->
 					<div class="form-group col-xs-2">
-						<button id="registriereBuch" type="submit" class="btn btn-lg btn-success"
+						<button id="registriereBuch" type="submit"
+							class="btn btn-lg btn-success"
 							th:text="#{buch.form.register.submit}">?Subscribe me!</button>
 					</div>
 				</div>

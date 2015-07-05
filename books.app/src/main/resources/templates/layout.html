@@ -7,51 +7,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Layout</title>
+<title th:text="#{info.app.name}">Layout</title>
 
-<!-- Das neueste kompilierte und minimierte CSS 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-	-->
 
-<!-- Optionales Theme 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
--->
+<!-- Gespiegelte Styles über WebJAR CSS -->
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
 
-<!-- Das neueste kompilierte und minimierte JavaScript 
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
--->
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.min.css}"
+	rel="stylesheet" media="screen" />
 
-<!-- Das locale und minimierte CSS -->
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
-	href="../css/bootstrap.min.css" />
-
-<!-- Das lokale optionale Theme  -->
-<link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"
-	href="../css/bootstrap-theme.min.css" />
-
-<!-- Das lokale und minimierte JavaScript 
-<link rel="stylesheet" th:href="@{/js/bootstrap.min.js}"
-	href="../js/bootstrap.min.js" />
-
-<link rel="stylesheet" th:href="@{/js/docs.min.js}"
-	href="../js/docs.min.js" />
--->
-
-<!-- Die spezifischen lokalen CSS -->
-<link rel="stylesheet" th:href="@{/css/dashboard.css}"
-	href="../css/dashboard.css" />
-
+<!-- locale CSS -->
 <link rel="stylesheet" th:href="@{/css/jumbotron.css}"
 	href="../css/jumbotron.css" />
+
+
+<!-- Die spezifischen lokalen CSS 
 
 <link rel="stylesheet" th:href="@{/css/justified-nav.css}"
 	href="../css/justified-nav.css" />
 
+-->
+
 </head>
-<body>
+<body class="jumbotron">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -63,11 +46,10 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" target="_blank"
-					href="https://github.com/FunThomas424242/books.example">
-					<img 
+					href="https://github.com/FunThomas424242/books.example"> <img
 					style="position: absolute; height: 50px; top: 0; left: 0; border: 0;"
-					src="/img/Lieblingsbuch149x149.png"
-					alt="App Icon Lieblingsbuch" />
+					src="/img/Lieblingsbuch149x149.png" alt="App Icon Lieblingsbuch" 
+					th:text="#{info.app.name}"/>
 				</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
@@ -76,52 +58,44 @@
 						<input type="text" placeholder="openID" class="form-control" />
 					</div>
 					<button type="submit" class="btn btn-success">Anmelden</button>
+					<button type="submit" class="btn btn-default">Zugang
+						Erstellen</button>
 				</form>
-				<form class="navbar-form navbar-right">
-					<button type="submit" class="btn btn-success">Zugang
-						erstellen</button>
-				</form>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a th:attr="href=#{link.books}">Bücher</a></li>
-					<li><a th:attr="href=#{link.settings}">Einstellungen</a></li>
-					<li><a th:attr="href=#{link.user}">Nutzer</a></li>
-					<li><a th:attr="href=#{link.impressum}">Impressum</a></li>
-				</ul>
+				<div layout:fragment="navmenu" class="container">Fake Menu</div>
 			</div>
 		</div>
 	</nav>
 
-	<div class="container">
+	<div layout:fragment="header" class="container">Fake header</div>
+	<div layout:fragment="content" class="container">Fake content</div>
+	<!-- Site footer -->
+	<footer class="footer">
 
-		<h1 layout:fragment="header" class="page-header">Layout</h1>
-		<div layout:fragment="content">Fake content</div>
-		<!-- Site footer -->
-		<footer class="footer">
-		
-			<div>
+		<div>
 			powered by <a href="http://www.glyphicons.com/">glyphicons</a>,
 			powered by <a href="http://www.getboostrap.com">bootstrap</a>,
 			powered by <a href="http://www.spring.io">spring</a>
-			</div>
-			<div>
-				<a href='https://www.openhub.net/accounts/68990?ref=Detailed'
-					target='_blank'> <img
-					alt='Open Hub profile for FunThomas424242' border='0' height='35'
-					src='https://www.openhub.net/accounts/68990/widgets/account_detailed.gif'
-					width='230' />
-				</a>erstellte die Anwendung und änderte sie zuletzt in 2015.
-			</div>
-		</footer>
-	</div>
-	<!-- container -->
+		</div>
+		<div>
+			<a href='https://www.openhub.net/accounts/68990?ref=Detailed'
+				target='_blank'> <img alt='Open Hub profile for FunThomas424242'
+				border='0' height='35'
+				src='https://www.openhub.net/accounts/68990/widgets/account_detailed.gif'
+				width='230' />
+			</a>erstellte die Anwendung und änderte sie zuletzt in 2015.
+		</div>
+	</footer>
 
-	<!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+	<!-- Gespiegelte Skripte über WebJARs -->
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
-	<script th:attr="src=@{/js/bootstrap.min.js}"
-		src="../js/bootstrap.min.js"></script>
-	<script th:attr="src=@{/js/docs.min.js}" src="../js/docs.min.js"></script>
+		src="http://cdn.jsdelivr.net/webjars/jquery/1.11.2/jquery.min.js"
+		th:src="@{/webjars/jquery/1.11.2/jquery.min.js}"></script>
 
+	<script
+		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+
+	<!-- lokale Skripte-->
+	<script th:src="@{/js/docs.min.js}" src="../js/docs.min.js"></script>
 </body>
 </html>

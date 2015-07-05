@@ -6,12 +6,21 @@
 <title>Kleine Bücherverwaltung - Einstellungen</title>
 </head>
 <body>
-	<h1 layout:fragment="header">Einstellungen</h1>
-	<div layout:fragment="content" class="content">
-		<!-- Jumbotron -->
-		<div class="jumbotron">
-			<p>Hier werden später die aktuellen Einstellungen aufgelistet.</p>
+	<div layout:fragment="navmenu">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a th:attr="href=#{link.books}">Bücher</a></li>
+			<li class="active"><a th:attr="href=#{link.settings}">Einstellungen</a></li>
+			<li><a th:attr="href=#{link.user}">Nutzer</a></li>
+			<li><a th:attr="href=#{link.impressum}">Impressum</a></li>
+		</ul>
+	</div>
+	<div layout:fragment="header">
+		<div class="page-header">
+			<h1>Einstellungen</h1>
 		</div>
+	</div>
+	<div layout:fragment="content">
+		<p>Hier werden später die aktuellen Einstellungen aufgelistet.</p>
 	</div>
 </body>
 </html>
