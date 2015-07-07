@@ -15,10 +15,17 @@ import javax.persistence.Id;
 @Entity
 public class ISBN {
 
+
 	@Id
 	@GeneratedValue
 	protected long id;
 
+	// ISBN Ziffernfolge
+	protected String isbnDigits;
+	// user formatierte und getrimmte Wert
+	protected String formattedValue;
+
+	// optionale Angaben evtl. aus formatierten Wert abgeleitet
 	protected String prefix;
 	protected String gruppenNummer;
 	protected String verlagsNummer;
@@ -29,25 +36,85 @@ public class ISBN {
 
 	}
 
-	public ISBN(final String isbnraw) {
-		this(parseIntoParts(isbnraw));
+//	protected ISBN(final String isbnDigits) {
+//		this.isbnDigits = isbnDigits;
+//	}
+
+	protected ISBN(final String isbnDigits, final String formattedValue) {
+		this.isbnDigits = isbnDigits;
+		this.formattedValue = formattedValue.trim();
+		final String[] isbnParts = parseIntoParts(formattedValue);
+		// 1. Segment von rechts
+		if (isbnParts.length > 0) {
+			this.pruefZiffer = isbnParts[isbnParts.length - 1];
+		}else{
+			this.pruefZiffer="";
+		}
+		// 2. Segment von rechts
+		if (isbnParts.length > 1) {
+			this.bandTitelNummer = isbnParts[isbnParts.length - 2];
+		}else{
+			this.bandTitelNummer="";
+		}
+		// 3. Segment von rechts
+		if (isbnParts.length > 2) {
+			this.verlagsNummer = isbnParts[isbnParts.length - 3];
+		}else{
+			this.verlagsNummer="";
+		}
+		// 4. Segment von rechts
+		if (isbnParts.length > 3) {
+			this.gruppenNummer = isbnParts[isbnParts.length - 4];
+		}else{
+			this.gruppenNummer="";
+		}
+		// 5. Segment von rechts
+		if (isbnParts.length > 4) {
+			this.prefix = isbnParts[isbnParts.length - 5];
+		}else{
+			this.prefix="";
+		}
+
 	}
 
-	protected ISBN(String[] isbnParts) {
-		this(isbnParts[0], isbnParts[1], isbnParts[2], isbnParts[3],
-				isbnParts[4]);
+	protected int getDigitBase(){
+		return 13;
 	}
-
-	public ISBN(String prefix, String gruppenNummer, String verlagsNummer,
-			String bandTitelNummer, String pruefZiffer) {
-		super();
-		this.prefix = prefix;
-		this.gruppenNummer = gruppenNummer;
-		this.verlagsNummer = verlagsNummer;
-		this.bandTitelNummer = bandTitelNummer;
-		this.pruefZiffer = pruefZiffer;
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((isbnDigits == null) ? 0 : isbnDigits.hashCode());
+		return result;
 	}
-
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof ISBN)) {
+			return false;
+		}
+		ISBN other = (ISBN) obj;
+		if (isbnDigits == null) {
+			if (other.isbnDigits != null) {
+				return false;
+			}
+		} else if (!isbnDigits.equals(other.isbnDigits)) {
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		final StringBuffer buf = new StringBuffer();
@@ -56,117 +123,82 @@ public class ISBN {
 			buf.append("-");
 		}
 
-		buf.append(gruppenNummer);
-		buf.append("-");
+		if (gruppenNummer.length() > 0) {
+			buf.append(gruppenNummer);
+			buf.append("-");
+		}
 
-		buf.append(verlagsNummer);
-		buf.append("-");
+		if (verlagsNummer.length() > 0) {
+			buf.append(verlagsNummer);
+			buf.append("-");
+		}
 
-		buf.append(bandTitelNummer);
-		buf.append("-");
+		if (bandTitelNummer.length() > 0) {
+			buf.append(bandTitelNummer);
+			buf.append("-");
+		}
 
-		buf.append(pruefZiffer);
+		if (pruefZiffer.length() > 0) {
+			buf.append(pruefZiffer);
+		}
 		return buf.toString();
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((bandTitelNummer == null) ? 0 : bandTitelNummer.hashCode());
-		result = prime * result
-				+ ((gruppenNummer == null) ? 0 : gruppenNummer.hashCode());
-		result = prime * result
-				+ ((pruefZiffer == null) ? 0 : pruefZiffer.hashCode());
-		result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
-		result = prime * result
-				+ ((verlagsNummer == null) ? 0 : verlagsNummer.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ISBN other = (ISBN) obj;
-		if (bandTitelNummer == null) {
-			if (other.bandTitelNummer != null)
-				return false;
-		} else if (!bandTitelNummer.equals(other.bandTitelNummer))
-			return false;
-		if (gruppenNummer == null) {
-			if (other.gruppenNummer != null)
-				return false;
-		} else if (!gruppenNummer.equals(other.gruppenNummer))
-			return false;
-		if (pruefZiffer == null) {
-			if (other.pruefZiffer != null)
-				return false;
-		} else if (!pruefZiffer.equals(other.pruefZiffer))
-			return false;
-		if (prefix == null) {
-			if (other.prefix != null)
-				return false;
-		} else if (!prefix.equals(other.prefix))
-			return false;
-		if (verlagsNummer == null) {
-			if (other.verlagsNummer != null)
-				return false;
-		} else if (!verlagsNummer.equals(other.verlagsNummer))
-			return false;
-		return true;
-	}
-
-	public static ISBN parseFromString(String isbnraw)
+	public static ISBN parseFromString(final String isbnraw)
 			throws InvalidISBNException {
-		if (isbnraw == null) {
-			throw new InvalidISBNException(isbnraw);
+		final String isbnNumbers = extractNumbers(isbnraw);
+		ISBN isbn = null;
+		if (isbnNumbers.length() <= 10) {
+			isbn = new ISBN10(isbnNumbers,isbnraw);
 		}
-		final String[] isbnParts = parseIntoParts(isbnraw);
-		final int partCount = isbnParts.length;
-
-		switch (partCount) {
-		case 5: {
-			return new ISBN(isbnParts[0], isbnParts[1], isbnParts[2],
-					isbnParts[3], isbnParts[4]);
+		if (isbnNumbers.length() >= 13) {
+			isbn = new ISBN(isbnNumbers,isbnraw);
 		}
-		case 4: {
-			return new ISBN10(isbnParts[0], isbnParts[1], isbnParts[2],
-					isbnParts[3]);
-		}
-		default:
-			throw new InvalidISBNException(isbnraw);
-		}
-		// not reachable
+		return isbn;
 	}
 
-	private static String[] parseIntoParts(String isbnraw) {
+	protected static String[] parseIntoParts(String isbnraw) {
 		final String[] parts = isbnraw.split("-");
 		return parts;
 	}
 
+	protected static String extractNumbers(final String untrimmedISBN)
+			throws InvalidISBNException {
+		if (untrimmedISBN == null) {
+			throw new InvalidISBNException(untrimmedISBN);
+		}
+		final String trimmedISBN = untrimmedISBN.trim();
+		final StringBuffer buf = new StringBuffer();
+		for (int index = 0; index < trimmedISBN.length(); index++) {
+			final char ch = trimmedISBN.charAt(index);
+			if (Character.isDigit(ch)) {
+				buf.append(ch);
+			}
+		}
+		return buf.toString();
+	}
+
 	public boolean isValid() {
+		
+		if(isbnDigits == null || isbnDigits.length() <1){
+			return false;
+		}
 
-		final StringBuffer numberPart = new StringBuffer();
-		numberPart.append(prefix);
-		numberPart.append(gruppenNummer);
-		numberPart.append(verlagsNummer);
-		numberPart.append(bandTitelNummer);
+		final String contentPart = isbnDigits.substring(0,
+				isbnDigits.length() - 1);
 
-		if (numberPart.length() != 12) {
+		if (contentPart.length() != (getDigitBase()-1)) {
 			return false;
 		} else {
-			final String berechnetePruefziffer = berechnePruefziffer(numberPart);
-			return this.pruefZiffer.equals(berechnetePruefziffer);
+			final char pruefZifferSoll = isbnDigits
+					.charAt(isbnDigits.length() - 1);
+			final String berechnetePruefziffer = berechnePruefziffer(contentPart);
+			return String.valueOf(pruefZifferSoll)
+					.equals(berechnetePruefziffer);
 		}
 	}
 
-	protected String berechnePruefziffer(final StringBuffer numberPart) {
+	protected String berechnePruefziffer(final String numberPart) {
 
 		int summe = 0;
 		for (int i = 0; i < 11; i = i + 2) {
