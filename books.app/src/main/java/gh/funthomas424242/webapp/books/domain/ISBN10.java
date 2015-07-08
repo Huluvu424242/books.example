@@ -7,38 +7,41 @@ import javax.persistence.Table;
 @Table(name = "ISBN")
 public class ISBN10 extends ISBN {
 
-	protected ISBN10(){
-		
+	protected ISBN10() {
+
+	}
+
+//	protected ISBN10(final String isbnDigits) {
+//		super(isbnDigits);
+//	}
+
+	protected ISBN10(final String isbnDigits, final String formattedValue) {
+		super(isbnDigits, formattedValue);
 	}
 	
-	protected ISBN10(String[] isbnParts) {
-		super("", isbnParts[0], isbnParts[1], isbnParts[2], isbnParts[3]);
+	protected int getDigitBase(){
+		return 10;
 	}
 
-	public ISBN10(final String gruppenNummer, final String verlagsNummer,
-			final String bandTitelNummer, final String pruefZiffer) {
-		super("", gruppenNummer, verlagsNummer, bandTitelNummer, pruefZiffer);
-	}
+//	@Override
+//	public boolean isValid() {
+//
+//		final StringBuffer numberPart = new StringBuffer();
+//		// prefix geht nicht in die Berechnung ein, da erst ab ISBN13 definiert
+//		numberPart.append(gruppenNummer);
+//		numberPart.append(verlagsNummer);
+//		numberPart.append(bandTitelNummer);
+//
+//		if (numberPart.length() != 9) {
+//			return false;
+//		} else {
+//			final String berechnetePruefziffer = berechnePruefziffer(numberPart);
+//			return this.pruefZiffer.equals(berechnetePruefziffer);
+//		}
+//	}
 
 	@Override
-	public boolean isValid() {
-
-		final StringBuffer numberPart = new StringBuffer();
-		// prefix geht nicht in die Berechnung ein, da erst ab ISBN13 definiert
-		numberPart.append(gruppenNummer);
-		numberPart.append(verlagsNummer);
-		numberPart.append(bandTitelNummer);
-
-		if (numberPart.length() != 9) {
-			return false;
-		} else {
-			final String berechnetePruefziffer = berechnePruefziffer(numberPart);
-			return this.pruefZiffer.equals(berechnetePruefziffer);
-		}
-	}
-
-	@Override
-	protected String berechnePruefziffer(final StringBuffer numberPart) {
+	protected String berechnePruefziffer(final String numberPart) {
 
 		int summe = 0;
 		for (int i = 10; i > 1; i--) {

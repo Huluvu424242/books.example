@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import gh.funthomas424242.webapp.books.Application;
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
+import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 import gh.funthomas424242.webapp.books.infrastructure.ISBNRepository;
 
@@ -46,8 +47,8 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void addBookWithISBN() {
-		final ISBN isbn = new ISBN("3-7-33-5-3");
+	public void addBookWithISBN() throws InvalidISBNException {
+		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
@@ -55,12 +56,12 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void addTwoEqualBooksWithISBNDuplicate() {
-		final ISBN isbn = new ISBN("3-7-33-5-3");
+	public void addTwoEqualBooksWithISBNDuplicate() throws InvalidISBNException {
+		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
-		final ISBN isbn1 = new ISBN("3-7-33-5-3");
+		final ISBN isbn1 =ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn1);
 		final Book book1 = new Book("Test", isbn1);
 		bookRepository.save(book1);
@@ -68,8 +69,8 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void addTwoEqualBooksWithSameISBN() {
-		final ISBN isbn = new ISBN("3-7-33-5-3");
+	public void addTwoEqualBooksWithSameISBN() throws InvalidISBNException {
+		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
@@ -79,8 +80,8 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void addTwoDifferentBooksWithSameISBN() {
-		final ISBN isbn = new ISBN("3-7-33-5-3");
+	public void addTwoDifferentBooksWithSameISBN() throws InvalidISBNException {
+		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
@@ -90,12 +91,12 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void addTwoDifferentBooksWithDifferentISBN() {
-		final ISBN isbn = new ISBN("3-7-33-5-3");
+	public void addTwoDifferentBooksWithDifferentISBN() throws InvalidISBNException {
+		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
-		final ISBN isbn1 = new ISBN("3-7-33-5-4");
+		final ISBN isbn1 = ISBN.parseFromString("3-7-33-5-4");
 		isbnRepository.save(isbn1);
 		final Book book1 = new Book("Test und Testing", isbn1);
 		bookRepository.save(book1);
@@ -103,12 +104,12 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void LoescheAlleBuecherErhalteEinLeeresBuecherregal() {
-		final ISBN isbn = new ISBN("3-7-33-5-3");
+	public void LoescheAlleBuecherErhalteEinLeeresBuecherregal() throws InvalidISBNException {
+		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
-		final ISBN isbn1 = new ISBN("3-7-33-5-4");
+		final ISBN isbn1 = ISBN.parseFromString("3-7-33-5-4");
 		isbnRepository.save(isbn1);
 		final Book book1 = new Book("Test und Testing", isbn1);
 		bookRepository.save(book1);
