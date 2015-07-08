@@ -36,10 +36,6 @@ public class ISBN {
 
 	}
 
-//	protected ISBN(final String isbnDigits) {
-//		this.isbnDigits = isbnDigits;
-//	}
-
 	protected ISBN(final String isbnDigits, final String formattedValue) {
 		this.isbnDigits = isbnDigits;
 		this.formattedValue = formattedValue.trim();
