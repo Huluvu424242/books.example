@@ -32,6 +32,8 @@
 	href="../css/justified-nav.css" />
 
 -->
+<script src="http://ui-grid.info/release/ui-grid-unstable.css"></script>
+
 
 </head>
 <body class="jumbotron">
@@ -48,8 +50,8 @@
 				<a class="navbar-brand" target="_blank"
 					href="https://github.com/FunThomas424242/books.example"> <img
 					style="position: absolute; height: 50px; top: 0; left: 0; border: 0;"
-					src="/img/Lieblingsbuch149x149.png" alt="App Icon Lieblingsbuch" 
-					th:text="#{info.app.name}"/>
+					src="/img/Lieblingsbuch149x149.png" alt="App Icon Lieblingsbuch"
+					th:text="#{info.app.name}" />
 				</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
@@ -95,7 +97,28 @@
 		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.min.js"
 		th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
 
+	<script
+		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"
+		th:src="@{/webjars/angularjs/1.4.1/angular.js}"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-touch.js"
+		th:src="@{/webjars/angularjs/1.4.1/angular-touch.js}"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.js"
+		th:src="@{/webjars/angularjs/1.4.1/angular-animate.js}"></script>
+
+	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+	<script src="http://ui-grid.info/release/ui-grid-unstable.js"></script>
+	<script src="../js/table.js" th:src="@{/js/table.js}"></script>
+
+
 	<!-- lokale Skripte-->
-	<script th:src="@{/js/docs.min.js}" src="../js/docs.min.js"></script>
+	<script src="../js/docs.min.js" th:src="@{/js/docs.min.js}"></script>
 </body>
 </html>
