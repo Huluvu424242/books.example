@@ -31,7 +31,7 @@
 	<div layout:fragment="content">
 
 
-		<div ng-controller="MainCtrl">
+		<div  ng-app="app" ng-controller="MainCtrl">
 			<button id="refreshButton" type="button" class="btn btn-success"
 				ng-click="refreshData()">Refresh Data</button>
 			<strong>Calls Pending:</strong> <span ng-bind="callsPending"></span>
@@ -39,7 +39,8 @@
 			<div id="grid1" ui-grid="gridOptions" ui-grid-cellNav ui-grid-edit
 				ui-grid-resize-columns ui-grid-pinning ui-grid-selection
 				ui-grid-move-columns ui-grid-importer ui-grid-exporter
-				ui-grid-grouping class="grid"></div>
+				ui-grid-grouping class="grid">
+			</div>
 		</div>
 
 
