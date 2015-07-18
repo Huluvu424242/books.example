@@ -30,70 +30,14 @@
 	</div>
 	<div layout:fragment="content">
 
-
-		<div  ng-app="app" ng-controller="MainCtrl">
+		<div ng-app="app" ng-controller="MainCtrl">
 			<button id="refreshButton" type="button" class="btn btn-success"
 				ng-click="refreshData()">Refresh Data</button>
 			<strong>Calls Pending:</strong> <span ng-bind="callsPending"></span>
-			<br> <br> <strong>{{myData.length}} rows</strong> <br>
-			<div id="grid1" ui-grid="gridOptions" ui-grid-cellNav ui-grid-edit
-				ui-grid-resize-columns ui-grid-pinning ui-grid-selection
-				ui-grid-move-columns ui-grid-importer ui-grid-exporter
-				ui-grid-grouping class="grid">
+			<br> <br> <strong>{{ myData.length }} rows</strong> <br>
+			<div id="grid1"  ui-grid="gridOptions"  class="grid">
+		
 			</div>
-		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">Panel title</h3>
-			</div>
-
-
-			<table id="buchliste"
-				class="table table-responsive table-hover table-bordered table-striped table-condensed">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Titel</th>
-						<th>ISBN</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${books.empty}">
-						<td id="message" colspan="3" th:text="#{message.buch.liste.leer}">?No
-							messages</td>
-					</tr>
-					<tr th:each="book : ${books}">
-						<td th:text="${book.id}">?1</td>
-						<td th:text="${book.titel}">?Titel</td>
-						<td th:if="${book.isbn != null}"
-							th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
-							th:class="${!book.isbn.isValid()}?'warning has-warning has-feedback'">
-							<span th:text="${book.isbn.toString()}"
-							th:attr="id='isbnText' +${!book.isbn.isValid()}?' aria-describedby=isbnStatus'">?ISBN</span>
-							<span th:unless="${book.isbn.isValid()}"
-							class="glyphicon glyphicon-warning-sign form-control-feedback"
-							aria-hidden="true"></span> <span
-							th:unless="${book.isbn.isValid()}" id="isbnStatus"
-							class="sr-only">(ungültige ISBN)</span>
-						</td>
-						<td th:if="${book.isbn == null}"></td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="panel-footer">Panel footer</div>
 		</div>
 	</div>
 </body>
