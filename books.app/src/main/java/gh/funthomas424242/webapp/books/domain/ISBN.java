@@ -1,5 +1,7 @@
 package gh.funthomas424242.webapp.books.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +15,7 @@ import javax.persistence.Id;
  * 
  */
 @Entity
-public class ISBN {
+public class ISBN implements Serializable {
 
 
 	@Id
