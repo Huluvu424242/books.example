@@ -10,9 +10,6 @@
 <title th:text="#{info.app.name}">Layout</title>
 
 
-<!-- Direkt Abhängigkeit ins Web (CSS) -->
-<link rel="stylesheet"
-	href="http://ui-grid.info/release/ui-grid-stable.css" />
 
 
 <!-- Gespiegelte Styles über WebJAR CSS -->
@@ -32,6 +29,9 @@
 <!-- locale CSS -->
 <link rel="stylesheet" href="../css/app.css" th:href="@{/css/app.css}" />
 
+<!-- Direkt Abhängigkeit ins Web (CSS) -->
+<link rel="stylesheet"
+	href="http://ui-grid.info/release/ui-grid-stable.css" />
 
 </head>
 <body class="jumbotron">
@@ -86,12 +86,6 @@
 		</div>
 	</footer>
 
-	<!-- Direkt Abhängigkeit ins Web (JavaScript) -->
-	<script src="http://ui-grid.info/release/ui-grid-stable.js"></script>
-
-	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
 
 
 	<!-- Gespiegelte Skripte über WebJARs -->
@@ -116,9 +110,13 @@
 
 	<!-- lokale Skripte-->
 	<script src="../js/app.js" th:src="@{/js/app.js}"></script>
-	<!-- 
-	<script src="../js/docs.min.js" th:src="@{/js/docs.min.js}"></script>
-	 -->
+	
+	<!-- Direkt Abhängigkeit ins Web (JavaScript) -->
+	<script src="http://ui-grid.info/release/ui-grid-stable.js"></script>
+
+	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
 
 </body>
 </html>
