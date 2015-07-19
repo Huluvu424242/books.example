@@ -1,11 +1,13 @@
 package gh.funthomas424242.webapp.books.web;
 
+import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,16 @@ public class BookController{
 
 	@RequestMapping({ "${link.books}" })
 	public ModelAndView listeBuecher() {
-		return new ModelAndView("booklist", "books", bookService.findAll());
+		return new ModelAndView("booklist", "books", retrieveAllBooks());
+	}
+
+	protected List<Book> retrieveAllBooks() {
+		return bookService.findAll();
+	}
+	
+	@RequestMapping({ "${link.books}/json" })
+	public List<Book> listeBuecherJSON() {
+		return  retrieveAllBooks();
 	}
 
 	@RequestMapping("${link.buch.erfassen}")
