@@ -12,6 +12,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * Spring Boot Konfiguration
     * https://github.com/ewolff/spring-boot-demos 
     * http://www.leveluplunch.com/java/tutorials/019-disable-actuator-endpoints-in-spring-boot/
+* Spring Boot REST
+    * https://spring.io/guides/gs/actuator-service/
 * Cucumber-JVM Integration in Spring
     * https://github.com/cucumber/cucumber-java-skeleton
     * https://github.com/excellentdrums/Cucumber-JVM-Spring-MVC-Test-HTMLUnit-Demo
@@ -30,6 +32,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://www.jfrog.com/confluence/pages/viewpage.action?pageId=26083425
 * AngularJS UI Grid
    * http://ui-grid.info/docs/#/tutorial/401_AllFeatures
+
 
 
 # Ausprobieren
