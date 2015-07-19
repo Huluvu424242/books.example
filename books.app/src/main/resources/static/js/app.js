@@ -11,6 +11,7 @@
       $scope.gridOptions.showGridFooter = true;
       $scope.gridOptions.showColumnFooter = true;
       $scope.gridOptions.fastWatch = true;
+      //$scope.gridOptions.minRowsToShow = 5;
      
       $scope.gridOptions.rowIdentity = function(row) {
         return row.id;
@@ -20,24 +21,10 @@
       };
      
       $scope.gridOptions.columnDefs = [
-        { name:'id', width:50 },
-        { name:'name', width:100 },
-        { name:'age', width:100, enableCellEdit: true, aggregationType:uiGridConstants.aggregationTypes.avg, treeAggregationType: uiGridGroupingConstants.aggregation.AVG },
-        { name:'address.street', width:150, enableCellEdit: true },
-        { name:'address.city', width:150, enableCellEdit: true },
-        { name:'address.state', width:50, enableCellEdit: true },
-        { name:'address.zip', width:50, enableCellEdit: true },
-        { name:'company', width:100, enableCellEdit: true },
-        { name:'email', width:100, enableCellEdit: true },
-        { name:'phone', width:200, enableCellEdit: true },
-        { name:'about', width:300, enableCellEdit: true },
-        { name:'friends[0].name', displayName:'1st friend', width:150, enableCellEdit: true },
-        { name:'friends[1].name', displayName:'2nd friend', width:150, enableCellEdit: true },
-        { name:'friends[2].name', displayName:'3rd friend', width:150, enableCellEdit: true },
-        { name:'agetemplate',field:'age', width:150, cellTemplate: '<div class="ui-grid-cell-contents"><span>Age 2:{{COL_FIELD}}</span></div>' },
-        { name:'Is Active',field:'isActive', width:150, type:'boolean' },
-        { name:'Join Date',field:'registered', cellFilter:'date', width:150, type:'date', enableFiltering:false },
-        { name:'Month Joined',field:'registered', cellFilter: 'date:"MMMM"', filterCellFiltered:true, sortCellFiltered:true, width:150, type:'date' }
+        { field:'id', displayName:'ID',  width:'10%' },
+        { field:'titel', name:'Titel', width:'40%', enableCellEdit: true},
+        { field:'isbn.formattedValue',displayName:'ISBN', width:'40%', enableCellEdit: true},
+        { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false}
       ];
      
       $scope.callsPending = 0;
@@ -50,14 +37,14 @@
         var sec = $interval(function () {
           $scope.callsPending++;
      
-          $http.get('http://ui-grid.info/data/500_complex.json')
+          $http.get('http://localhost:8080/books/json')
             .success(function(data) {
               $scope.callsPending--;
      
               data.forEach(function(row){
                 row.id = i;
                 i++;
-                row.registered = new Date(row.registered)
+                //row.registered = new Date(row.registered)
                 $scope.myData.push(row);
               });
             })
