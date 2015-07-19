@@ -36,10 +36,11 @@
 				<h3 class="panel-title">Panel title</h3>
 			</div>
 			<div ng-app="app" ng-controller="MainCtrl">
-				<button id="refreshButton" type="button" class="btn btn-success"
-					ng-click="refreshData()">Refresh Data</button>
-				<span>{{myData.length}} Bücher
-					gelesen</span>
+				<span>
+					<button id="refreshButton" type="button" class="btn btn-success"
+						ng-click="refreshData()">Refresh Data</button> <span
+					ng-bind="myData.length"></span> Bücher gelesen
+				</span>
 
 				<div id="grid1" ui-grid="gridOptions" ui-grid-cellNav ui-grid-edit
 					ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning
