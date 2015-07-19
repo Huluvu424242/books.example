@@ -216,6 +216,10 @@ public class ISBN {
 		return Integer.toString(pruefDigit);
 	}
 
+	public String getFormattedValue(){
+		return this.formattedValue;
+	}
+	
 	public String getPrefix() {
 		return prefix;
 	}
