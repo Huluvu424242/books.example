@@ -24,41 +24,24 @@
         { field:'id', displayName:'ID',  width:'10%' },
         { field:'titel', name:'Titel', width:'40%', enableCellEdit: true},
         { field:'isbn.formattedValue',displayName:'ISBN', width:'40%', enableCellEdit: true},
-        { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false}
+        { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false, type:'boolean'}
       ];
      
-      $scope.callsPending = 0;
-     
-      var i = 0;
       $scope.refreshData = function(){
-        $scope.myData = [];
-     
-        var start = new Date();
-        var sec = $interval(function () {
-          $scope.callsPending++;
-     
-          $http.get('http://localhost:8080/books/json')
-            .success(function(data) {
-              $scope.callsPending--;
-     
-              data.forEach(function(row){
-                row.id = i;
-                i++;
-                //row.registered = new Date(row.registered)
-                $scope.myData.push(row);
-              });
-            })
-            .error(function() {
-              $scope.callsPending--
-            });
-        }, 200);
-     
-     
-        $timeout(function() {
-           $interval.cancel(sec);
-           $scope.left = '';
-        }, 2000);
-     
+          $scope.myData = [];
+      
+	      $http.get('http://localhost:8080/books/json')
+	      .success(function(data) {
+	      
+	        var i = 0;
+	        data.forEach(function(row){
+	          row.id = i;
+	          i++;
+	          $scope.myData.push(row);
+	        });
+	      });
       };
-     
+      
+      $scope.refreshData();
+         
     }]);

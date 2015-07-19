@@ -38,8 +38,9 @@
 			<div ng-app="app" ng-controller="MainCtrl">
 				<button id="refreshButton" type="button" class="btn btn-success"
 					ng-click="refreshData()">Refresh Data</button>
-				<strong>Calls Pending:</strong> <span ng-bind="callsPending"></span>
-				<br> <br> <strong>{{myData.length}} rows</strong> <br>
+				<span>{{myData.length}} Bücher
+					gelesen</span>
+
 				<div id="grid1" ui-grid="gridOptions" ui-grid-cellNav ui-grid-edit
 					ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning
 					ui-grid-selection ui-grid-move-columns ui-grid-importer
