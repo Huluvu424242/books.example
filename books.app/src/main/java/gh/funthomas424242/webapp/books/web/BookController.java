@@ -48,7 +48,7 @@ public class BookController{
 		return  retrieveAllBooks();
 	}
 
-	@RequestMapping(value="${link.buch.loeschen}/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="${link.buch.loeschen}/{id}", method=RequestMethod.DELETE)
 	public ModelAndView loescheBuch(@PathVariable("id") Long id) {
 		
 		bookService.deleteBook(id);

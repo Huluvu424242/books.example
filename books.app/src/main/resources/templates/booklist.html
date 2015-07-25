@@ -70,10 +70,14 @@
 						</td>
 						<td th:if="${book.isbn == null}"></td>
 						<!-- Aktionen -->
-						<td><a th:attr="id=deleteBuch_+${book.id}"
-							class="glyphicon glyphicon-trash"
-							th:href="@{#{link.buch.loeschen}}+'/'+${book.id}" role="button"
-							th:title="#{buch.liste.link.loeschen}+' '+${book.id}"></a></td>
+						<td>
+							<form th:action="@{#{link.buch.loeschen}}+'/'+${book.id}"
+								th:method="delete">
+								<button th:attr="id=deleteBuch_+${book.id}" type="submit" class="glyphicon glyphicon-trash"
+									th:title="#{buch.liste.link.loeschen}+' '+${book.id}">
+								</button>
+							</form>
+						</td>
 					</tr>
 				</tbody>
 			</table>
