@@ -13,7 +13,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,6 +48,15 @@ public class BookController{
 		return  retrieveAllBooks();
 	}
 
+	@RequestMapping(value="${link.buch.loeschen}/{id}", method=RequestMethod.GET)
+	public ModelAndView loescheBuch(@PathVariable("id") Long id) {
+		
+		bookService.deleteBook(id);
+		
+		return listeBuecher();
+	}
+	
+	
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
 		final Map<String, Object> modelMap = erzeugeModelMap();
