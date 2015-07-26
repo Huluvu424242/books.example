@@ -27,6 +27,10 @@ public class BookService {
 		final Book book = new Book(titel, isbn);
 		this.bookRepository.save(book);
 	}
+	
+	public void deleteBook(final Long id){
+		this.bookRepository.delete(id);
+	}
 
 	public void deleteAll(){
 		this.bookRepository.deleteAll();

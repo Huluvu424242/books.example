@@ -32,7 +32,7 @@
 
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<h3 class="panel-title">Panel title</h3>
+				<div class="panel-title">Panel title</div>
 			</div>
 
 
@@ -43,16 +43,20 @@
 						<th>ID</th>
 						<th>Titel</th>
 						<th>ISBN</th>
+						<th>Aktionen</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:if="${books.empty}">
-						<td id="message" colspan="3" th:text="#{message.buch.liste.leer}">?No
+						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
 					<tr th:each="book : ${books}">
+						<!-- Id -->
 						<td th:text="${book.id}">?1</td>
+						<!-- Titel -->
 						<td th:text="${book.titel}">?Titel</td>
+						<!-- ISBN -->
 						<td th:if="${book.isbn != null}"
 							th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
 							th:class="${!book.isbn.isValid()}?'warning has-warning has-feedback'">
@@ -65,10 +69,32 @@
 							class="sr-only">(ungültige ISBN)</span>
 						</td>
 						<td th:if="${book.isbn == null}"></td>
+						<!-- Aktionen -->
+						<td>
+							<form th:action="@{#{link.buch.loeschen}}+'/'+${book.id}"
+								th:method="delete">
+								<button th:attr="id=deleteBuch_+${book.id}" type="submit" class="glyphicon glyphicon-trash"
+									th:title="#{buch.liste.link.loeschen}+' '+${book.id}">
+								</button>
+							</form>
+						</td>
 					</tr>
 				</tbody>
 			</table>
-			<div class="panel-footer">Panel footer</div>
+			<div class="panel-footer">
+				<div class="panel-title">Legende</div>
+				<dl class="dl-horizontal">
+					<dt>
+						<span class="glyphicon glyphicon-trash"></span>
+					</dt>
+					<dd>Buch löschen</dd>
+					<dt>
+						<span class="glyphicon glyphicon-warning-sign warning"></span>
+					</dt>
+					<dd>ISBN ungültig</dd>
+				</dl>
+
+			</div>
 		</div>
 	</div>
 </body>
