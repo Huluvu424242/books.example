@@ -38,7 +38,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 # Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
 1. Dann das Projekt bauen mit mvn  -U clean install
-1. Und starten mit java -jar books.app/target/books.app-0.1.0-SNAPSHOT.jar
+1. Und starten mit java -jar books.app/target/books.app-1.1.0-SNAPSHOT.jar oder hot deploy über  mvn spring-boot:run
 1. Per Webbrowser die URL [http://localhost:8080/](http://localhost:8080/) aufrufen und das Projekt ausprobieren.
 2. Herunterfahren funktioniert über eine Console mittels  curl -X POST http://localhost:8080/shutdown oder in der gestarteten Console über Ctrl+C ;)
 
