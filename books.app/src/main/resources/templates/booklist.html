@@ -28,30 +28,7 @@
 		</p>
 
 	</div>
-	<div layout:fragment="content">
-
-
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">Panel title</h3>
-			</div>
-			<div ng-app="app" ng-controller="MainCtrl">
-				<span>
-					<button id="refreshButton" type="button" class="btn btn-success"
-						ng-click="refreshData()">Refresh Data</button> <span
-					ng-bind="myData.length"></span> Bücher gelesen
-				</span>
-
-				<div id="grid1" ui-grid="gridOptions" ui-grid-cellNav ui-grid-edit
-					ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning
-					ui-grid-selection ui-grid-move-columns ui-grid-importer
-					ui-grid-exporter ui-grid-grouping class="grid table"></div>
-			</div>
-
-			<div class="panel-footer">Panel footer</div>
-		</div>
-
-
+	<div layout:fragment="content" ng-app="app" ng-controller="MainCtrl">
 
 		<div class="panel panel-info">
 			<div class="panel-heading">
