@@ -43,5 +43,11 @@
       };
       
       $scope.refreshData();
+      
+      $scope.deleteBook = function(id){
+          
+	      $http.delete('http://localhost:8080/book/delete/'+id)
+	      .sucess();
+	  };
          
     }]);
