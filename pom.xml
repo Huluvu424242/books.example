@@ -9,7 +9,7 @@
 
 	<groupId>gh.funthomas424242.webapp</groupId>
 	<artifactId>books.example</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Bücherverwaltung - Parent</name>
 	<url>http://funthomas424242.github.io/books.example/index.html</url>
