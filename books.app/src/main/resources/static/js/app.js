@@ -42,12 +42,18 @@
 	      });
       };
       
-      $scope.refreshData();
+     //$scope.refreshData();
       
       $scope.deleteBook = function(id){
           
 	      $http.delete('http://localhost:8080/book/delete/'+id)
-	      .sucess();
+	      .success( function(result){
+	    	  console.log(result);
+	    	  document.getElementById('book_'+id).remove();
+	      })
+	      .error( function(){
+	    	  console.log("FEHLER BEIM ANGULAR DELETE");
+	      });
 	  };
          
     }]);
