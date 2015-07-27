@@ -32,6 +32,10 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://www.jfrog.com/confluence/pages/viewpage.action?pageId=26083425
 * AngularJS UI Grid
    * http://ui-grid.info/docs/#/tutorial/401_AllFeatures
+* Thymleaf und AngularJS
+   * http://stackoverflow.com/questions/29199089/thymeleaf-value-send-angularjs-ng-onclick-method
+   * http://www.mattheye.com/passing-data-between-spring-mvc-and-angularjs/
+
 
 
 
