@@ -13,15 +13,18 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class BookController{
+public class BookController {
 
 	protected final BookService bookService;
 
@@ -42,28 +45,31 @@ public class BookController{
 	protected List<Book> retrieveAllBooks() {
 		return bookService.findAll();
 	}
-	
+
 	@RequestMapping({ "${link.books}/json" })
 	public List<Book> listeBuecherJSON() {
-		return  retrieveAllBooks();
+		return retrieveAllBooks();
 	}
 
-	@RequestMapping(value="${link.buch.loeschen}/{id}", method=RequestMethod.DELETE)
-	public ModelAndView loescheBuch(@PathVariable("id") Long id) {
-		
+	// @ApiMethod
+	@RequestMapping(value = "${link.buch.loeschen}/{id}", method = RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void loescheBuch(@PathVariable("id") Long id) {
+		// if(true){
+		// throw new RuntimeException();
+		// }
+		System.out.println("loeschen aufgerufen");
+		System.out.println("ID:" + id);
 		bookService.deleteBook(id);
-		
-		return listeBuecher();
 	}
-	
-	
+
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
 		final Map<String, Object> modelMap = erzeugeModelMap();
-		 modelMap.put("message", null);
-		 modelMap.put("invalidISBN", false);
-		
-		return new ModelAndView("erfassebuch",modelMap);
+		modelMap.put("message", null);
+		modelMap.put("invalidISBN", false);
+
+		return new ModelAndView("erfassebuch", modelMap);
 	}
 
 	@RequestMapping("${link.buch.registrieren}")
@@ -75,7 +81,7 @@ public class BookController{
 		try {
 			ISBN isbn = null;
 
-			if (isbnraw.length()>0) {
+			if (isbnraw.length() > 0) {
 				isbn = ISBN.parseFromString(isbnraw);
 				isbnService.addISBN(isbn);
 			}
@@ -95,7 +101,7 @@ public class BookController{
 		return nextModelView;
 	}
 
-	protected Map<String, Object > erzeugeModelMap() {
+	protected Map<String, Object> erzeugeModelMap() {
 		final Map<String, Object> modelMap = new HashMap<String, Object>();
 		return modelMap;
 	}

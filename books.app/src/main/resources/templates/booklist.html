@@ -51,7 +51,7 @@
 						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
-					<tr th:each="book : ${books}">
+					<tr th:each="book : ${books}" th:attr="id=book_+${book.id}" >
 						<!-- Id -->
 						<td th:text="${book.id}">?1</td>
 						<!-- Titel -->
@@ -71,12 +71,12 @@
 						<td th:if="${book.isbn == null}"></td>
 						<!-- Aktionen -->
 						<td>
-							<form th:action="@{#{link.buch.loeschen}}+'/'+${book.id}"
-								th:method="delete">
-								<button th:attr="id=deleteBuch_+${book.id}" type="submit" class="glyphicon glyphicon-trash"
-									th:title="#{buch.liste.link.loeschen}+' '+${book.id}">
-								</button>
-							</form>
+							<button th:attr="id=deleteBook_+${book.id}" 
+								class="glyphicon glyphicon-trash"
+								th:title="#{buch.liste.link.loeschen}+' '+${book.id}"
+								th:attr="ng-click='deleteBook(\''+${book.id}+'\');'">
+							</button>
+
 						</td>
 					</tr>
 				</tbody>
