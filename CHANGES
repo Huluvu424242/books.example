@@ -1,6 +1,6 @@
 # 1.1.2-SNAPSHOT
 
- * Bugfix für ISBN der Längen 11 und 12
+* Bugfix für ISBN der Längen 11 und 12
 Erfassung eines Buches mit solchen ISBNs führte bislang zum Nullpointer.
 
 # 1.1.1-SNAPSHOT
