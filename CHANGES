@@ -7,7 +7,8 @@ Erfassung eines Buches mit solchen ISBNs führte bislang zum Nullpointer.
 
 
 ## 1.1.0-SNAPSHOT ##
-* Loeschen von Büchern wird jetzt unterstützt.
+# Loeschen von Büchern wird jetzt unterstützt.
+Zur Realisierung wurde angularjs als JavaScript Technologie eingebunden.
 
 ## 1.0.0-SNAPSHOT ##
 * Umsetzung der Ausführungsumgebung mittels eingebettetem Tomcat
