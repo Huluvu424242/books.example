@@ -146,8 +146,7 @@ public class ISBN {
 		ISBN isbn = null;
 		if (isbnNumbers.length() <= 10) {
 			isbn = new ISBN10(isbnNumbers,isbnraw);
-		}
-		if (isbnNumbers.length() >= 13) {
+		}else{
 			isbn = new ISBN(isbnNumbers,isbnraw);
 		}
 		return isbn;

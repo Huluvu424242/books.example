@@ -8,6 +8,7 @@ import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 import gh.funthomas424242.webapp.books.infrastructure.ISBNRepository;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,12 +57,27 @@ public class BookRepositoryTest {
 	}
 
 	@Test
+	public void addBookWithInvalidISBN() throws InvalidISBNException {
+		final String titel = "Die Päpstin";
+		try {
+			final ISBN isbn = ISBN.parseFromString("3-77-77-88-7777");
+			isbnRepository.save(isbn);
+			final Book book = new Book(titel, isbn);
+			bookRepository.save(book);
+			assertEquals(1, bookRepository.findAll().size());
+		} catch (InvalidISBNException ex) {
+			Assert.fail();
+		}
+
+	}
+
+	@Test
 	public void addTwoEqualBooksWithISBNDuplicate() throws InvalidISBNException {
 		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
 		bookRepository.save(book);
-		final ISBN isbn1 =ISBN.parseFromString("3-7-33-5-3");
+		final ISBN isbn1 = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn1);
 		final Book book1 = new Book("Test", isbn1);
 		bookRepository.save(book1);
@@ -91,7 +107,8 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void addTwoDifferentBooksWithDifferentISBN() throws InvalidISBNException {
+	public void addTwoDifferentBooksWithDifferentISBN()
+			throws InvalidISBNException {
 		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
@@ -104,7 +121,8 @@ public class BookRepositoryTest {
 	}
 
 	@Test
-	public void LoescheAlleBuecherErhalteEinLeeresBuecherregal() throws InvalidISBNException {
+	public void LoescheAlleBuecherErhalteEinLeeresBuecherregal()
+			throws InvalidISBNException {
 		final ISBN isbn = ISBN.parseFromString("3-7-33-5-3");
 		isbnRepository.save(isbn);
 		final Book book = new Book("Test", isbn);
