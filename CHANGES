@@ -1,16 +1,20 @@
-## 1.1.2-SNAPSHOT ##
+# 1.1.2-SNAPSHOT ##
+
 * Bugfix für ISBN der Längen 11 und 12
 Erfassung eines Buches mit solchen ISBNs führte bislang zum Nullpointer.
 
-## 1.1.1-SNAPSHOT ##
+# 1.1.1-SNAPSHOT ##
+
 * Prüfnummernberechnung der ISBN korrigiert
 
 
-## 1.1.0-SNAPSHOT ##
-# Loeschen von Büchern wird jetzt unterstützt.
+# 1.1.0-SNAPSHOT ##
+
+* Loeschen von Büchern wird jetzt unterstützt.
 Zur Realisierung wurde angularjs als JavaScript Technologie eingebunden.
 
-## 1.0.0-SNAPSHOT ##
+# 1.0.0-SNAPSHOT ##
+
 * Umsetzung der Ausführungsumgebung mittels eingebettetem Tomcat
 * Umsetzung der Persistenz mittels eingebetteter h2 Datenbank über JPA 
 * Umsetzung der Oberfläche mittel bootstrap
