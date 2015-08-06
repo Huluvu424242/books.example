@@ -14,8 +14,15 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>gh.funthomas424242.webapp</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>books.app</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>books.testlib</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
