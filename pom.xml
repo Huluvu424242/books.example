@@ -78,6 +78,7 @@
 
 	<modules>
 		<module>books.app</module>
+		<module>books.test</module>
 		<module>books.tck</module>
 		<module>books.deb</module>
 	</modules>
