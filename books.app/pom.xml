@@ -74,12 +74,7 @@
 			</dependency> -->
 		<!-- for hot swap ende -->
 
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>books.testlib</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
+		
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -87,57 +82,14 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-spring</artifactId>
-			<version>1.2.0</version>
-			<scope>test</scope>
-		</dependency>
+		
 
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>1.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>1.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-spring</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- -->
+		
+		
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>1.4.01</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-htmlunit-driver</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -197,21 +149,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>${jbehave.version}</version>
-				<executions>
-					<execution>
-						<id>unpack-view-resources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack-view-resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 		</plugins>
 	</build>
 

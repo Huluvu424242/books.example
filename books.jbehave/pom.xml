@@ -8,12 +8,13 @@
 		<version>1.1.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>books.test</artifactId>
+	<artifactId>books.jbehave</artifactId>
 	<packaging>jar</packaging>
-	<name>Books.App - Selenium Webdriver</name>
+	<name>Books.App - JBehave Tests</name>
 
 	<dependencies>
 
+		<!-- -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>books.app</artifactId>
@@ -33,7 +34,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 
 
 		<dependency>

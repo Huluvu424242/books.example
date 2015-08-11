@@ -7,7 +7,13 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 
+
+
 public class MyHtmlUnitDriver extends HtmlUnitDriver {
+	
+	public MyHtmlUnitDriver(){
+		super(true);
+	}
 	
 	public MyHtmlUnitDriver(final Capabilities capabilities){
 		super(capabilities);
@@ -18,5 +24,7 @@ public class MyHtmlUnitDriver extends HtmlUnitDriver {
 		final String language=locale.getLanguage();
 		client.addRequestHeader("Accept-Language" , language);
 	}
+
+	
 
 }

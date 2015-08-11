@@ -11,7 +11,7 @@
 	<artifactId>books.example</artifactId>
 	<version>1.1.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Bücherverwaltung - Parent</name>
+	<name>Books.App - Parent</name>
 	<url>http://funthomas424242.github.io/books.example/index.html</url>
 
 
@@ -77,8 +77,10 @@
 
 
 	<modules>
-		<module>books.testlib</module>
 		<module>books.app</module>
+		<module>books.testlib</module>
+		<module>books.jbehave</module>
+		<module>books.cucumber</module>
 		<module>books.test</module>
 		<module>books.tck</module>
 		<module>books.deb</module>

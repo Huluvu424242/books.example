@@ -36,7 +36,12 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
    * http://stackoverflow.com/questions/29199089/thymeleaf-value-send-angularjs-ng-onclick-method
    * http://www.mattheye.com/passing-data-between-spring-mvc-and-angularjs/
    * http://stackoverflow.com/questions/17230242/angular-element-vs-document-getelementbyid-or-jquery-selector-with-spin-busy-c
-
+* Testing
+   * http://blog.codeleak.pl/2015/03/spring-boot-integration-testing-with.html
+   * http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html
+   * http://connect-group.github.io/thymeleaf-tdd/
+   * http://docs.spring.io/spring-test-htmlunit/docs/current/reference/html5/
+   
 
 
 

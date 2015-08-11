@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.lib;
+package gh.funthomas424242.webapp.books.web;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -24,7 +24,7 @@ import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class JBehaveAbstractStory extends JUnitStory {
+public class AbstractStory extends JUnitStory {
 
 	private static final int STORY_TIMEOUT = 120;
 
@@ -39,7 +39,7 @@ public class JBehaveAbstractStory extends JUnitStory {
 		return new SpringStepsFactory(configuration(), applicationContext);
 	}
 
-	public JBehaveAbstractStory() {
+	public AbstractStory() {
 		Embedder embedder = new Embedder();
 		embedder.useEmbedderControls(embedderControls());
 		embedder.useMetaFilters(Arrays.asList("-skip"));

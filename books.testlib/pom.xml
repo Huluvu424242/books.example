@@ -2,9 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>gh.funthomas424242.webapp</groupId>
+
+	<parent>
+		<groupId>gh.funthomas424242.webapp</groupId>
+		<artifactId>books.example</artifactId>
+		<version>1.1.2-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>books.testlib</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Books.App - TestLib</name>
 	<description>Kleiner Buchverwaltungs Service</description>
@@ -12,25 +17,40 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>books.app</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- -->
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>1.4.01</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-api</artifactId>
 			<version>2.44.0</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>2.44.0</version>
+			<scope>test</scope>
 		</dependency>
+
 
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
@@ -38,15 +58,18 @@
 			<version>2.15</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-htmlunit-driver</artifactId>
-			<version>2.44.0</version>
+			<scope>test</scope>
 		</dependency>
+
+
 
 	</dependencies>
 
-	
+
 
 
 </project>
