@@ -22,33 +22,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>books.testlib</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
 
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-spring</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- -->
 
 		<dependency>
 			<groupId>xml-apis</groupId>
@@ -61,6 +40,7 @@
 			<scope>test</scope>
 		</dependency>
 
+ 
 		<dependency>
 			<groupId>org.springframework.test.htmlunit</groupId>
 			<artifactId>spring-test-htmlunit</artifactId>
@@ -87,20 +67,7 @@
 				</excludes> </configuration> <executions> <execution> <phase>install</phase> 
 				<goals> <goal>integration-test</goal> <goal>verify</goal> </goals> </execution> 
 				</executions> </plugin> -->
-			<plugin>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>${jbehave.version}</version>
-				<executions>
-					<execution>
-						<id>unpack-view-resources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack-view-resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 		</plugins>
 	</build>
 

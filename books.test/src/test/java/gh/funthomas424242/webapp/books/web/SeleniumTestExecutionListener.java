@@ -17,6 +17,8 @@ import org.springframework.core.Ordered;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 
+import org.apache.http.cookie.CookieAttributeHandler;
+
 public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {
 
     private WebDriver webDriver;
@@ -36,9 +38,11 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
             SeleniumTest annotation = findAnnotation(
                     testContext.getTestClass(), SeleniumTest.class);
             
-    		final DesiredCapabilities capabilities = DesiredCapabilities
-    				.htmlUnitWithJs();
-    		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver(capabilities);
+//    		final DesiredCapabilities capabilities = DesiredCapabilities
+//    				.htmlUnitWithJs();
+            CookieAttributeHandler handler = null;
+    		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver();
+    		
     		
             if(annotation.lang().equals(LANGUAGE.DEUTSCH)){
             	newDriver.changeLocaleTo(Locale.GERMAN);
