@@ -2,7 +2,7 @@ package gh.funthomas424242.webapp.books.web;
 
 
 import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
-import gh.funthomas424242.webapp.books.lib.MyHtmlUnitDriver;
+//import gh.funthomas424242.webapp.books.lib.MyHtmlUnitDriver;
 import gh.funthomas424242.webapp.books.web.SeleniumTest.LANGUAGE;
 
 import java.util.Locale;
@@ -38,7 +38,7 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
             
     		final DesiredCapabilities capabilities = DesiredCapabilities
     				.htmlUnitWithJs();
-    		final MyHtmlUnitDriver newDriver = new MyHtmlUnitDriver(capabilities);
+    		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver(capabilities);
     		
             if(annotation.lang().equals(LANGUAGE.DEUTSCH)){
             	newDriver.changeLocaleTo(Locale.GERMAN);

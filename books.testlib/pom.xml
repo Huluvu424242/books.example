@@ -21,7 +21,6 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>books.app</artifactId>
 			<version>${project.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
