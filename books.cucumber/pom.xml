@@ -97,20 +97,7 @@
 				</excludes> </configuration> <executions> <execution> <phase>install</phase> 
 				<goals> <goal>integration-test</goal> <goal>verify</goal> </goals> </execution> 
 				</executions> </plugin> -->
-			<plugin>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>${jbehave.version}</version>
-				<executions>
-					<execution>
-						<id>unpack-view-resources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack-view-resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 		</plugins>
 	</build>
 

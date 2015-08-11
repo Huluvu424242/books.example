@@ -79,8 +79,8 @@
 	<modules>
 		<module>books.app</module>
 		<module>books.testlib</module>
-		<module>books.jbehave</module>
 		<module>books.cucumber</module>
+		<module>books.jbehave</module>
 		<module>books.test</module>
 		<module>books.tck</module>
 		<module>books.deb</module>
