@@ -8,7 +8,7 @@
 		<version>1.1.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>books.test</artifactId>
+	<artifactId>books.selenium</artifactId>
 	<packaging>jar</packaging>
 	<name>Books.App - Selenium Webdriver</name>
 
@@ -20,7 +20,7 @@
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -40,14 +40,14 @@
 			<scope>test</scope>
 		</dependency>
 
- 
+ <!-- 
 		<dependency>
 			<groupId>org.springframework.test.htmlunit</groupId>
 			<artifactId>spring-test-htmlunit</artifactId>
 			<version>1.0.0.RC1</version>
 			<scope>test</scope>
 		</dependency>
-
+ -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-htmlunit-driver</artifactId>

@@ -1,11 +1,9 @@
 package gh.funthomas424242.webapp.books.web;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gh.funthomas424242.webapp.books.Application;
 
 import java.io.IOException;
-import java.util.Locale;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,16 +13,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
@@ -40,11 +34,11 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = { Application.class })
-// @WebAppConfiguration
-@DirtiesContext
+//@EnableAutoConfiguration
+//@WebAppConfiguration
+//@DirtiesContext
 @WebIntegrationTest({ "server.port=8080" })
-@SeleniumTest(lang = SeleniumTest.LANGUAGE.DEUTSCH, baseUrl =
- "http://localhost:8080")
+//SeleniumTest(lang = SeleniumTest.LANGUAGE.DEUTSCH, baseUrl ="http://localhost:8080")
 //@PropertySource("classpath:messages.properties")
 public class ManualGuiIntegrationTest {
 
@@ -67,17 +61,23 @@ public class ManualGuiIntegrationTest {
 
 	@Autowired
 	WebApplicationContext contextWebApp;
+	
+//	public ManualGuiIntegrationTest(){
+//		
+//	}
 
 	@Before
 	public void setup() throws IOException {
 
-		final DesiredCapabilities capabilities = DesiredCapabilities
-				.htmlUnitWithJs();
-		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver(capabilities);
-		newDriver.changeLocaleTo(Locale.GERMAN);
-
-		driver = MockMvcHtmlUnitDriverBuilder.webAppContextSetup(contextWebApp)
-				.configureDriver(newDriver);
+////		final DesiredCapabilities capabilities = DesiredCapabilities
+////				.htmlUnitWithJs();
+//		//final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver(capabilities);
+//		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver();
+//		newDriver.changeLocaleTo(Locale.GERMAN);
+//		//driver=newDriver;
+//		driver = MockMvcHtmlUnitDriverBuilder.webAppContextSetup(contextWebApp)
+//				.configureDriver(newDriver);
+		driver=new MyHtmlUnitDriver();
 	}
 
 	@After
@@ -92,7 +92,7 @@ public class ManualGuiIntegrationTest {
 		System.out
 				.println("INFO_URL++:" + SERVER_URL + serverPort + LINK_BOOKS);
 		driver.get(SERVER_URL + serverPort + LINK_BOOKS);
-		// assertEquals("Books.App", driver.getTitle());
+		//assertEquals("Books.App", driver.getTitle());
 		final WebElement element = driver.findElement(By.id("message"));
 		final String messageCode = element.getText();
 		// final String[] args={};
@@ -107,7 +107,7 @@ public class ManualGuiIntegrationTest {
 	@Ignore
 	public void homePage() {
 		System.out.println("INFO: " + SERVER_URL + serverPort + LINK_BOOKS);
-		System.out.println("INFO CONTEXT: " + contextWebApp);
+	//	System.out.println("INFO CONTEXT: " + contextWebApp);
 		final TestRestTemplate restTemplate = new TestRestTemplate();
 		final String pageContent = restTemplate.getForObject(SERVER_URL
 				+ serverPort + LINK_BOOKS, String.class);

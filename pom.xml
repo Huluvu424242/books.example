@@ -80,8 +80,8 @@
 		<module>books.app</module>
 		<module>books.tck</module>
 		<module>books.cucumber</module>
+		<module>books.selenium</module>
 		<module>books.jbehave</module>
-		<module>books.test</module>
 		<module>books.deb</module>
 	</modules>
 
