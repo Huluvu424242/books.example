@@ -20,7 +20,13 @@
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -40,14 +46,21 @@
 			<scope>test</scope>
 		</dependency>
 
- <!-- 
+		<!-- -->
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.test.htmlunit</groupId>
 			<artifactId>spring-test-htmlunit</artifactId>
 			<version>1.0.0.RC1</version>
 			<scope>test</scope>
 		</dependency>
- -->
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-htmlunit-driver</artifactId>
@@ -67,7 +80,7 @@
 				</excludes> </configuration> <executions> <execution> <phase>install</phase> 
 				<goals> <goal>integration-test</goal> <goal>verify</goal> </goals> </execution> 
 				</executions> </plugin> -->
-			
+
 		</plugins>
 	</build>
 

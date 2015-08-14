@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import gh.funthomas424242.webapp.books.Application;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,6 +20,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
@@ -72,12 +74,12 @@ public class ManualGuiIntegrationTest {
 ////		final DesiredCapabilities capabilities = DesiredCapabilities
 ////				.htmlUnitWithJs();
 //		//final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver(capabilities);
-//		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver();
-//		newDriver.changeLocaleTo(Locale.GERMAN);
+		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver();
+		newDriver.changeLocaleTo(Locale.GERMAN);
 //		//driver=newDriver;
-//		driver = MockMvcHtmlUnitDriverBuilder.webAppContextSetup(contextWebApp)
-//				.configureDriver(newDriver);
-		driver=new MyHtmlUnitDriver();
+		driver = MockMvcHtmlUnitDriverBuilder.webAppContextSetup(contextWebApp)
+				.configureDriver(newDriver);
+		//driver=new MyHtmlUnitDriver();
 	}
 
 	@After
