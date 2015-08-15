@@ -12,5 +12,5 @@ before_install:
    - mvn clean
 
 script:
-   - mvn install
+   - mvn install -fae
 
