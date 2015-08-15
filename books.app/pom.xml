@@ -86,6 +86,7 @@
 
 
 
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
@@ -99,6 +100,8 @@
 		</dependency>
 
 		<!-- -->
+=======
+>>>>>>> branch 'separatetests' of https://github.com/FunThomas424242/books.example.git
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
@@ -175,6 +178,7 @@
 				</executions>
 			</plugin>
 
+<<<<<<< HEAD
 			<plugin>
 				<groupId>org.jbehave</groupId>
 				<artifactId>jbehave-maven-plugin</artifactId>
@@ -189,6 +193,8 @@
 					</execution>
 				</executions>
 			</plugin>
+=======
+>>>>>>> branch 'separatetests' of https://github.com/FunThomas424242/books.example.git
 		</plugins>
 	</build>
 
