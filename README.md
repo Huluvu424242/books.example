@@ -41,6 +41,11 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
    * http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html
    * http://connect-group.github.io/thymeleaf-tdd/
    * http://docs.spring.io/spring-test-htmlunit/docs/current/reference/html5/
+* Deployment
+    * https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
+    * http://debian-maven.sourceforge.net/
+
+
    
 
 

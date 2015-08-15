@@ -12,6 +12,10 @@
 	<packaging>jar</packaging>
 	<name>Books.App - Cucumber Tests</name>
 
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
 	<dependencies>
 
 		<!-- -->
@@ -90,7 +94,7 @@
 				</excludes> </configuration> <executions> <execution> <phase>install</phase> 
 				<goals> <goal>integration-test</goal> <goal>verify</goal> </goals> </execution> 
 				</executions> </plugin> -->
-			
+
 		</plugins>
 	</build>
 

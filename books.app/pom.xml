@@ -13,6 +13,10 @@
 	<name>Books.App</name>
 	<description>Kleiner Buchverwaltungs Service</description>
 
+	<properties>
+		<maven.deploy.skip>false</maven.deploy.skip>
+	</properties>
+
 	
 	<dependencies>
 		<dependency>
