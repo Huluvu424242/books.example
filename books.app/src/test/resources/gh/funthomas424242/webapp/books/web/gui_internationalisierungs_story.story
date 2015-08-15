@@ -10,7 +10,7 @@ Given unsere Sprache ist Deutsch.
 When wir navigieren zur Startseite,
 Then finden wir eine Schaltfläche welche Weiteres Buch erfassen lautet.
 And eine Überschrift Bücherregal.
-And eine Tabelle mit den Spalten: ID,Titel,ISBN.
+And eine Tabelle mit den Spalten: ID,Titel,ISBN,Aktionen.
 
 Scenario: Startseite in Englisch prüfen
 
