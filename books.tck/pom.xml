@@ -9,7 +9,7 @@
 
 	<artifactId>books.tck</artifactId>
 	<packaging>jar</packaging>
-	<name>Bücherverwaltung - Technical Compatibility Kit (TCK)</name>
+	<name>Books.App - Technical Compatibility Kit (TCK)</name>
 
 	<dependencies>
 

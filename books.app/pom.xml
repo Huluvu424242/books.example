@@ -13,7 +13,7 @@
 	<name>Books.App</name>
 	<description>Kleiner Buchverwaltungs Service</description>
 
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -74,18 +74,18 @@
 			</dependency> -->
 		<!-- for hot swap ende -->
 
-		
-		
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		
 
-		
-		
+
+
+
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
@@ -149,7 +149,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 

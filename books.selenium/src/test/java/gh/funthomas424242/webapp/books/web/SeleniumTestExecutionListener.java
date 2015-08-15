@@ -8,16 +8,12 @@ import gh.funthomas424242.webapp.books.web.SeleniumTest.LANGUAGE;
 import java.util.Locale;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
-
-import org.apache.http.cookie.CookieAttributeHandler;
 
 public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {
 
@@ -40,7 +36,6 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
             
 //    		final DesiredCapabilities capabilities = DesiredCapabilities
 //    				.htmlUnitWithJs();
-            CookieAttributeHandler handler = null;
     		final MyWebConnectionHtmlUnitDriver newDriver = new MyWebConnectionHtmlUnitDriver();
     		
     		

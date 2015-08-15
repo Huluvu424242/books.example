@@ -12,6 +12,12 @@
 	<packaging>jar</packaging>
 	<name>Books.App - JBehave Tests</name>
 
+	<properties>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+	</properties>
+
+
+
 	<dependencies>
 
 		<!-- -->
@@ -21,7 +27,7 @@
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -71,15 +77,42 @@
 
 	<build>
 		<plugins>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
-				<configuration> <includes> <include>**/*Test.java</include> </includes> <excludes> 
-				<exclude>**/*IntegrationTest.java</exclude> </excludes> </configuration> 
-				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> 
-				<configuration> <includes> <include>**/*Story.java</include> <include>**/*IntegrationTest.java</include> 
-				</includes> <excludes> <exclude>**/*Test.java</exclude> <exclude>**/*AbstractStory.java</exclude> 
-				</excludes> </configuration> <executions> <execution> <phase>install</phase> 
-				<goals> <goal>integration-test</goal> <goal>verify</goal> </goals> </execution> 
-				</executions> </plugin> -->
+			<!-- -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Story.java</include>
+						<include>**/*IntegrationTest.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*Test.java</exclude>
+						<exclude>**/*AbstractStory.java</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.jbehave</groupId>
 				<artifactId>jbehave-maven-plugin</artifactId>

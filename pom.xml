@@ -36,6 +36,7 @@
 		<jbehave.version>4.0-beta-11</jbehave.version>
 		<selenium.version>2.44.0</selenium.version>
 		<jquery.version>1.11.3</jquery.version>
+		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 	</properties>
 
 
