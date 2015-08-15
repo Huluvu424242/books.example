@@ -68,6 +68,7 @@
 						</goals>
 						<configuration>
 							<deb>[[buildDir]]/books.app-${project.version}.deb</deb>
+							<attach>false</attach>
 							<dataSet>
 								<data>
 									<src>${project.build.directory}/${project.build.finalName}.jar</src>
@@ -91,24 +92,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>remove-jars</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>remove-project-artifact</goal>
-						</goals>
-						<configuration>
-							<removeAll>false</removeAll>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<executions>
@@ -121,7 +104,7 @@
 						<configuration>
 							<repositoryId>oss-jfrog-artifactory</repositoryId>
 							<groupId>${project.groupId}</groupId>
-							<artifactId>books.app</artifactId>
+							<artifactId>books</artifactId>
 							<version>${project.version}</version>
 							<file>target/books.app-${project.version}.deb</file>
 							<url>${jfrog.snapshot.url}</url>
