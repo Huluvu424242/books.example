@@ -1,0 +1,7 @@
+Package: books.app
+Version: [[version]]
+Section: misc
+Priority: low
+Architecture: all
+Description: [[description]]
+Maintainer: funthomas424242@gmail.com
