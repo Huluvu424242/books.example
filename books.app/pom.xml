@@ -13,9 +13,9 @@
 	<name>Books.App</name>
 	<description>Kleiner Buchverwaltungs Service</description>
 
-	<!-- <properties>
+	<properties>
 		<maven.deploy.skip>false</maven.deploy.skip>
-	</properties> -->
+	</properties>
 
 	
 	<dependencies>

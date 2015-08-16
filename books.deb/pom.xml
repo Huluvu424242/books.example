@@ -16,6 +16,7 @@
 
 	<properties>
 		<maven.deploy.skip>false</maven.deploy.skip>
+		<app.jar.name>books.app-${project.version}.jar</app.jar.name>
 	</properties>
 
 	<dependencies>
@@ -29,7 +30,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>books.app-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -67,11 +67,11 @@
 							<goal>jdeb</goal>
 						</goals>
 						<configuration>
-							<deb>[[buildDir]]/books.app-${project.version}.deb</deb>
+							<deb>[[buildDir]]/books.deb-${project.version}.deb</deb>
 							<attach>false</attach>
 							<dataSet>
 								<data>
-									<src>${project.build.directory}/${project.build.finalName}.jar</src>
+									<src>${project.build.directory}/${app.jar.name}</src>
 									<type>file</type>
 									<mapper>
 										<type>perm</type>
@@ -83,7 +83,16 @@
 									<type>link</type>
 									<symlink>true</symlink>
 									<linkName>/usr/share/java/books.jar</linkName>
-									<linkTarget>/usr/share/jdeb/lib/${project.build.finalName}.jar</linkTarget>
+									<linkTarget>/usr/share/jdeb/lib/${app.jar.name}</linkTarget>
+								</data>
+
+								<data>
+									<src>${basedir}/src/deb/usr</src>
+									<type>directory</type>
+									<mapper>
+										<type>perm</type>
+										<prefix>/usr</prefix>
+									</mapper>
 								</data>
 
 							</dataSet>
@@ -96,7 +105,7 @@
 				<artifactId>maven-deploy-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>default-deploy</id>
+						<id>deb-deploy</id>
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy-file</goal>
@@ -104,14 +113,15 @@
 						<configuration>
 							<repositoryId>oss-jfrog-artifactory</repositoryId>
 							<groupId>${project.groupId}</groupId>
-							<artifactId>books</artifactId>
+							<artifactId>${project.artifactId}</artifactId>
 							<version>${project.version}</version>
-							<file>target/books.app-${project.version}.deb</file>
+							<file>target/books.deb-${project.version}.deb</file>
 							<url>${jfrog.snapshot.url}</url>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 

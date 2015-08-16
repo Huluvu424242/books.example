@@ -1,4 +1,4 @@
-Package: [[name]]
+Package: books.app
 Version: [[version]]
 Section: misc
 Priority: low
