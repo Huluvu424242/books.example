@@ -28,6 +28,11 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://wiki.debian.org/JavaPackage
 * PGP Integration
     * http://www.javacodegeeks.com/2011/06/java-pretty-good-privacy-pgp.html
+* SmartCard Reader Integration
+    * http://konstantin.filtschew.de/blog/2009/10/08/smart-cards-durch-die-in-java-eingebaute-java-smartcard-io-javax-smartcardio-ansprechen/
+    * https://www.opensc-project.org/opensc/wiki/OverView
+    * https://www.opensc-project.org/opensc/wiki/QuickStart
+    * https://de.wikipedia.org/wiki/Chipkarte
 * Bintray / JFroge Integration
     * https://www.jfrog.com/confluence/pages/viewpage.action?pageId=26083425
 * AngularJS UI Grid

@@ -1,3 +1,10 @@
+# xxxxx
+
+* Probleme zwischen Selen und Thymeleaf in separaten Testsuiten bleiben bestehen 
+-> weitere Testkopien im App Projekt notwendig. 
+* Selenium Tests in separate Projekte ausgelagert um einfache Buildzyklen 
+zu verkürzen
+
 # 1.1.2-SNAPSHOT
 
 * Bugfix für ISBN der Längen 11 und 12
