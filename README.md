@@ -1,5 +1,5 @@
 # ![Books Logo](./books.app/src/main/resources/static/img/Lieblingsbuch149x149.png) books.example
-Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
+Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot) 
 
 [![Build Status](https://travis-ci.org/FunThomas424242/books.example.svg?branch=master)](https://travis-ci.org/FunThomas424242/books.example)
 [ ![Download Releases](./src/main/resources/img/Releases.png) ](https://bintray.com/funthomas424242/books.example/books.example/_latestVersion)
