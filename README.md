@@ -14,6 +14,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * http://www.leveluplunch.com/java/tutorials/019-disable-actuator-endpoints-in-spring-boot/
 * Spring Boot REST
     * https://spring.io/guides/gs/actuator-service/
+* Spring Cloud
+    * https://jaxenter.de/spring-cloud-das-microservices-framework-501
 * Cucumber-JVM Integration in Spring
     * https://github.com/cucumber/cucumber-java-skeleton
     * https://github.com/excellentdrums/Cucumber-JVM-Spring-MVC-Test-HTMLUnit-Demo
