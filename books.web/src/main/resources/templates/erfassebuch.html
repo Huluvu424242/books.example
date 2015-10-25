@@ -1,0 +1,100 @@
+<!--
+  #%L
+  Books.App
+  %%
+  Copyright (C) 2015 Pivotal Software, Inc.
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Lesser Public License for more details.
+  
+  You should have received a copy of the GNU General Lesser Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/lgpl-3.0.html>.
+  #L%
+  -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title th:text="#{buch.form.register.titel}">?Kleine
+	Bücherverwaltung - Buch erfassen</title>
+</head>
+<body>
+	<div layout:fragment="navmenu">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="active"><a th:attr="href=#{link.books}">Bücher</a></li>
+			<li><a th:attr="href=#{link.settings}">Einstellungen</a></li>
+			<li><a th:attr="href=#{link.user}">Nutzer</a></li>
+			<li><a th:attr="href=#{link.impressum}">Impressum</a></li>
+		</ul>
+	</div>
+	<div layout:fragment="header">
+		<div class="page-header">
+			<h1 th:text="#{buch.form.register.section}">?Buchdaten -
+				Erfassen</h1>
+		</div>
+	</div>
+	<div layout:fragment="content">
+
+		<div class="alert alert-danger alert-dismissible" role="alert"
+			th:if="${message != null}">
+
+			<button type=" button" class="close" data-dismiss="alert"
+				aria-label="Schließen">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h4>Fehler!</h4>
+			<p th:text="${message}">Mindestens eine Eingabe ist fehlerhaft.</p>
+			<!-- 
+			<p>
+				<button type="button" class="btn btn-danger">Take this
+					action</button>
+				<button type="button" class="btn btn-default">Or do this</button>
+			</p>
+			 -->
+		</div>
+
+
+		<form action="erfassebuch.html"
+			th:attr="action=@{#{link.buch.registrieren}}" method="post">
+
+			<fieldset>
+				<div class="row">
+					<div class="form-group col-xs-2">
+						<label class="control-label" for="titel">Titel</label> <input
+							id="titel" type="text" th:attr="value=${titel}" name="titel"
+							class="form-control" required="true" autofocus="true" />
+					</div>
+
+					<div
+						th:attr="class='form-group col-xs-3 '+( (${invalidISBN}==true)?'has-warning has-feedback ':'')">
+						<label class="control-label" for="isbn">ISBN</label> <input
+							id="isbn" type="text" name="isbn"
+							th:attr="value=${isbn},class='form-control '+( (${invalidISBN}==true)?'aria-describedby=isbnStatus':'')" />
+						<span th:if="${invalidISBN}"
+							class="glyphicon glyphicon-warning-sign form-control-feedback"
+							aria-hidden="true"></span> <span th:if="${invalidISBN}"
+							id="isbnStatus" class="sr-only">(Ungültige ISBN)</span>
+					</div>
+				</div>
+				<div class="row">
+					<!-- submit button -->
+					<div class="form-group col-xs-2">
+						<button id="registriereBuch" type="submit"
+							class="btn btn-lg btn-success"
+							th:text="#{buch.form.register.submit}">?Subscribe me!</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

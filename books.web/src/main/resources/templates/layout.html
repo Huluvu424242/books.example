@@ -1,0 +1,143 @@
+<!--
+  #%L
+  Books.App
+  %%
+  Copyright (C) 2015 Pivotal Software, Inc.
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Lesser Public License for more details.
+  
+  You should have received a copy of the GNU General Lesser Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/lgpl-3.0.html>.
+  #L%
+  -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Eine Buchverwaltung" />
+<meta name="author" content="FunThomas424242 (Thomas Schubert)" />
+<title th:text="#{info.app.name}">Layout</title>
+
+
+
+
+<!-- Gespiegelte Styles über WebJAR CSS -->
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+	rel="stylesheet" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+
+<link rel="stylesheet" href="../css/jumbotron.css"
+	th:href="@{/css/jumbotron.css}" />
+
+<!-- locale CSS -->
+<link rel="stylesheet" href="../css/app.css" th:href="@{/css/app.css}" />
+
+<!-- Direkt Abhängigkeit ins Web (CSS) -->
+<link rel="stylesheet"
+	href="http://ui-grid.info/release/ui-grid-stable.css" />
+
+</head>
+<body class="jumbotron">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="true"
+					aria-controls="navbar">
+					<span class="sr-only">Navigation ein-/ausblenden</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" target="_blank"
+					href="https://github.com/FunThomas424242/books.example"> <img
+					style="position: absolute; height: 50px; top: 0; left: 0; border: 0;"
+					src="/img/Lieblingsbuch149x149.png" alt="App Icon Lieblingsbuch" 
+					th:text="#{info.app.name}+' '+#{info.app.version}"/>
+				</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" placeholder="openID" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-success">Anmelden</button>
+					<button type="submit" class="btn btn-default">Zugang
+						Erstellen</button>
+				</form>
+				<div layout:fragment="navmenu" class="container">Fake Menu</div>
+			</div>
+		</div>
+	</nav>
+
+	<div layout:fragment="header" class="container">Fake header</div>
+	<div layout:fragment="content" class="container">Fake content</div>
+	<!-- Site footer -->
+	<footer class="footer">
+
+		<div>
+			powered by <a href="http://www.glyphicons.com/">glyphicons</a>,
+			powered by <a href="http://www.getboostrap.com">bootstrap</a>,
+			powered by <a href="http://www.spring.io">spring</a>
+		</div>
+		<div>
+			<a href='https://www.openhub.net/accounts/68990?ref=Detailed'
+				target='_blank'> <img alt='Open Hub profile for FunThomas424242'
+				border='0' height='35'
+				src='https://www.openhub.net/accounts/68990/widgets/account_detailed.gif'
+				width='230' />
+			</a>erstellte die Anwendung und änderte sie zuletzt in 2015.
+		</div>
+	</footer>
+
+
+
+	<!-- Gespiegelte Skripte über WebJARs -->
+	<script src="http://cdn.jsdelivr.net/webjars/jquery/1.11.3/jquery.js"
+		th:src="@{/webjars/jquery/1.11.3/jquery.js}"></script>
+
+	<script
+		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.js"
+		th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"
+		th:src="@{/webjars/angularjs/1.3.16/angular.js}"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-touch.js"
+		th:src="@{/webjars/angularjs/1.3.16/angular-touch.js}"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-animate.js"
+		th:src="@{/webjars/angularjs/1.3.16/angular-animate.js}"></script>
+
+
+
+	<!-- lokale Skripte-->
+	<script src="../js/app.js" th:src="@{/js/app.js}"></script>
+	
+	<!-- Direkt Abhängigkeit ins Web (JavaScript) -->
+	<script src="http://ui-grid.info/release/ui-grid-stable.js"></script>
+
+	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+
+</body>
+</html>
