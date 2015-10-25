@@ -10,7 +10,7 @@
 
 	<artifactId>books.web</artifactId>
 	<packaging>jar</packaging>
-	<name>Books.App</name>
+	<name>Books.App - Web</name>
 	<description>Kleiner Buchverwaltungs Service</description>
 
 	<properties>
