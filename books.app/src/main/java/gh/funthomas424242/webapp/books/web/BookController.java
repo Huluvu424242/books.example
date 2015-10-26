@@ -77,13 +77,27 @@ public class BookController {
 	@RequestMapping(value = "${link.buch.loeschen}/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void loescheBuch(@PathVariable("id") Long id) {
-		// if(true){
-		// throw new RuntimeException();
-		// }
 		System.out.println("loeschen aufgerufen");
 		System.out.println("ID:" + id);
 		bookService.deleteBook(id);
 	}
+
+	
+	@RequestMapping(value="${link.buch.registrieren}", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void speichereBuch(final HttpServletRequest request,
+			@RequestParam("titel") final String titel,
+			@RequestParam("isbn") final String isbnraw) throws InvalidISBNException {
+
+		ISBN isbn = null;
+		
+		if (isbnraw.length() > 0) {
+			isbn = ISBN.parseFromString(isbnraw);
+			isbnService.addISBN(isbn);
+		}
+		bookService.addBook(titel, isbn);
+	}
+	
 
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
@@ -94,35 +108,7 @@ public class BookController {
 		return new ModelAndView("erfassebuch", modelMap);
 	}
 
-	@RequestMapping("${link.buch.registrieren}")
-	public ModelAndView speichereBuch(final HttpServletRequest request,
-			@RequestParam("titel") final String titel,
-			@RequestParam("isbn") final String isbnraw) {
-
-		ModelAndView nextModelView = null;
-		try {
-			ISBN isbn = null;
-
-			if (isbnraw.length() > 0) {
-				isbn = ISBN.parseFromString(isbnraw);
-				isbnService.addISBN(isbn);
-			}
-			bookService.addBook(titel, isbn);
-			nextModelView = new ModelAndView("redirect:/books");
-		} catch (InvalidISBNException e) {
-			final Map<String, Object> modelMap = erzeugeModelMap();
-			modelMap.put("message", "Es wurde eine ungültige ISBN eingegeben ("
-					+ isbnraw + " ). Bitte korrigieren Sie diese.");
-			modelMap.put("titel", titel);
-			modelMap.put("isbn", isbnraw);
-			modelMap.put("invalidISBN", true);
-
-			nextModelView = new ModelAndView("erfassebuch", modelMap);
-		}
-
-		return nextModelView;
-	}
-
+	
 	protected Map<String, Object> erzeugeModelMap() {
 		final Map<String, Object> modelMap = new HashMap<String, Object>();
 		return modelMap;
