@@ -7,7 +7,7 @@ var app = angular.module('BooksApp', [ 'ngTouch', 'ui.grid', 'ui.grid.cellNav',
 app.controller('BookController',  ['$scope', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
 function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingConstants) {
     
-	$scope.myData = [];
+	$scope.books = [];
 	
     $scope.gridOptions = {};
     $scope.gridOptions.data = 'myData';
@@ -34,20 +34,18 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
     ];
    
     $scope.refreshData = function(){
-        $scope.myData = [];
+        $scope.books = [];
     
         $http.get('http://localhost:8080/books/json')
         .then(
 			  function erfolg(response) {
 		        var i = 0;
-		        response.data.forEach(function(row){
-		          row.id = i;
-		          i++;
-		          $scope.myData.push(row);
+		        response.data.forEach(function(book){
+		          $scope.books.push(book);
 		        });
 			  },
 			  function fehler(response) {
-			       $scope.text = response.status;
+			       $scope.message = response.statusText;
 			  }
 	      );
     };

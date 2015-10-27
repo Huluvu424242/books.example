@@ -105,9 +105,7 @@
 
 	</div>
 
-	<div ng-controller="BookController">
-	
-		<button ng-click="refreshData()"></button>
+	<div class="container">
 
 		<div class="panel panel-info">
 			<div class="panel-heading">
@@ -130,11 +128,11 @@
 						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
-					<tr th:each="book : ${books}" th:attr="id=book_+${book.id}" >
+					<tr ng-repeat="book in books" id="book_+{{book.id}}" >
 						<!-- Id -->
-						<td th:text="${book.id}">?1</td>
+						<td>{{book.id}}</td>
 						<!-- Titel -->
-						<td th:text="${book.titel}">?Titel</td>
+						<td>{{book.titel}}</td>
 						<!-- ISBN -->
 						<td th:if="${book.isbn != null}"
 							th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
