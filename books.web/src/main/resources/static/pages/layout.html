@@ -105,21 +105,79 @@
 
 	</div>
 
+	<div ng-controller="BookController">
+	
+		<button ng-click="refreshData()"></button>
 
-	<div >
-		<select ng-model="template" ng-options="t.name for t in templates">
-			<option value="">(blank)</option>
-		</select> url of the template:
-		<code>{{template.url}}</code>
-		<hr />
-		<div class="slide-animate-container">
-			<div class="slide-animate" ng-include="template.url"></div>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<div class="panel-title">Panel title</div>
+			</div>
+
+
+			<table id="buchliste"
+				class="table table-responsive table-hover table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Titel</th>
+						<th>ISBN</th>
+						<th>Aktionen</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${books.empty}">
+						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
+							messages</td>
+					</tr>
+					<tr th:each="book : ${books}" th:attr="id=book_+${book.id}" >
+						<!-- Id -->
+						<td th:text="${book.id}">?1</td>
+						<!-- Titel -->
+						<td th:text="${book.titel}">?Titel</td>
+						<!-- ISBN -->
+						<td th:if="${book.isbn != null}"
+							th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
+							th:class="${!book.isbn.isValid()}?'warning has-warning has-feedback'">
+							<span th:text="${book.isbn.toString()}"
+							th:attr="id='isbnText' +${!book.isbn.isValid()}?' aria-describedby=isbnStatus'">?ISBN</span>
+							<span th:unless="${book.isbn.isValid()}"
+							class="glyphicon glyphicon-warning-sign form-control-feedback"
+							aria-hidden="true"></span> <span
+							th:unless="${book.isbn.isValid()}" id="isbnStatus"
+							class="sr-only">(ungültige ISBN)</span>
+						</td>
+						<td th:if="${book.isbn == null}"></td>
+						<!-- Aktionen -->
+						<td>
+							<button th:attr="id=deleteBook_+${book.id}" 
+								class="glyphicon glyphicon-trash"
+								th:title="#{buch.liste.link.loeschen}+' '+${book.id}"
+								th:attr="ng-click='deleteBook(\''+${book.id}+'\');'">
+							</button>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="panel-footer">
+				<div class="panel-title">Legende</div>
+				<dl class="dl-horizontal">
+					<dt>
+						<span class="glyphicon glyphicon-trash"></span>
+					</dt>
+					<dd>Buch löschen</dd>
+					<dt>
+						<span class="glyphicon glyphicon-warning-sign warning"></span>
+					</dt>
+					<dd>ISBN ungültig</dd>
+				</dl>
+
+			</div>
 		</div>
 	</div>
-
-
-
-	<div layout:fragment="content" class="container">Fake content</div>
+	
+	
 	<!-- Site footer -->
 	<footer class="footer">
 
@@ -141,22 +199,11 @@
 
 
 	<!-- Gespiegelte Skripte über WebJARs -->
-	<script src="http://cdn.jsdelivr.net/webjars/jquery/1.11.3/jquery.js"
-		th:src="@{/webjars/jquery/1.11.3/jquery.js}"></script>
-
-	<script
-		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.js"
-		th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}"></script>
-
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"
-		th:src="@{/webjars/angularjs/1.3.16/angular.js}"></script>
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-touch.js"
-		th:src="@{/webjars/angularjs/1.3.16/angular-touch.js}"></script>
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-animate.js"
-		th:src="@{/webjars/angularjs/1.3.16/angular-animate.js}"></script>
+	<script src="http://cdn.jsdelivr.net/webjars/jquery/1.11.3/jquery.js"></script>
+	<script	src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-touch.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.min.js"></script>
 
 
 
@@ -165,7 +212,6 @@
 
 	<!-- Direkt Abhängigkeit ins Web (JavaScript) -->
 	<script src="http://ui-grid.info/release/ui-grid-stable.js"></script>
-
 	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
 	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
 	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>

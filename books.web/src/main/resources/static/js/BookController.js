@@ -4,9 +4,11 @@ var app = angular.module('BooksApp', [ 'ngTouch', 'ui.grid', 'ui.grid.cellNav',
 		'ui.grid.selection', 'ui.grid.moveColumns', 'ui.grid.exporter',
 		'ui.grid.importer', 'ui.grid.grouping' ]);
 
-app.controller('MainCtrl',  ['$scope', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
+app.controller('BookController',  ['$scope', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
 function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingConstants) {
     
+	$scope.myData = [];
+	
     $scope.gridOptions = {};
     $scope.gridOptions.data = 'myData';
     $scope.gridOptions.enableColumnResizing = true;
@@ -34,19 +36,25 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
     $scope.refreshData = function(){
         $scope.myData = [];
     
-	      $http.get('http://localhost:8080/books/json')
-	      .success(function(data) {
-	      
-	        var i = 0;
-	        data.forEach(function(row){
-	          row.id = i;
-	          i++;
-	          $scope.myData.push(row);
-	        });
-	      });
+        $http({
+        	  method: 'GET',
+        	  url: 'http://localhost:8080/books/json'
+        	})
+        .then(
+			  function erfolg(response) {
+		        var i = 0;
+		        response.data.forEach(function(row){
+		          row.id = i;
+		          i++;
+		          $scope.myData.push(row);
+		        });
+			  },
+			  function fehler(response) {
+			       $scope.text = response.status;
+			  }
+	      );
     };
     
-   // $scope.refreshData();
     
     $scope.deleteBook = function(id){
         
@@ -60,4 +68,5 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	      });
 	  };
        
+
   }]);
