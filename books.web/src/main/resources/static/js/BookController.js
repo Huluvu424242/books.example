@@ -36,10 +36,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
     $scope.refreshData = function(){
         $scope.myData = [];
     
-        $http({
-        	  method: 'GET',
-        	  url: 'http://localhost:8080/books/json'
-        	})
+        $http.get('http://localhost:8080/books/json')
         .then(
 			  function erfolg(response) {
 		        var i = 0;
