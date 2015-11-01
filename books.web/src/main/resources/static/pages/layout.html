@@ -100,7 +100,7 @@
 			</h1>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-6" >
+			<div class="form-group col-md-6">
 				<label>Titel:</label><input type="text" ng-model="newBookData.titel"
 					class="form-control"> </input>
 			</div>
@@ -136,9 +136,12 @@
 				</thead>
 				<tbody>
 					<tr ng-hide="books">
-						<td id="message" colspan="4">Es wurden noch keine B&uuml;cher erfasst!</td>
+						<td id="message" colspan="4">Es wurden noch keine B&uuml;cher
+							erfasst!</td>
 					</tr>
-					<tr ng-hide="!books" ng-repeat="book in books | orderBy : 'id' : 'reverse' " id="book_{{book.id}}">
+					<tr ng-hide="!books"
+						ng-repeat="book in books | orderBy : 'id' : 'reverse' "
+						id="book_{{book.id}}">
 						<!-- Id -->
 						<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
 						<!-- Titel -->
@@ -165,7 +168,6 @@
 					</dt>
 					<dd>ISBN ungültig</dd>
 				</dl>
-
 			</div>
 		</div>
 	</div>
