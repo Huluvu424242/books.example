@@ -1,3 +1,24 @@
+/*
+ * #%L
+ * Books.App - Web
+ * %%
+ * Copyright (C) 2015 Pivotal Software, Inc.
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Lesser Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Lesser Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/lgpl-3.0.html>.
+ * #L%
+ */
 
 var app = angular.module('BooksApp', [ 'ngTouch', 'ui.grid', 'ui.grid.cellNav',
 		'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.pinning',
@@ -39,7 +60,6 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
         $http.get('http://localhost:8080/books/json')
         .then(
 			  function erfolg(response) {
-		        var i = 0;
 		        response.data.forEach(function(book){
 		          $scope.books.push(book);
 		        });
@@ -50,6 +70,25 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	      );
     };
     
+    $scope.addBook = function(){
+    	
+    	var titel = $scope.newBookData.titel;
+    	var isbn  = $scope.newBookData.isbn;
+        
+	    $http({
+	    	method: 'POST',
+	    	url: 'http://localhost:8080/book/register',
+	    	params: {titel: $scope.newBookData.titel, isbn: "$isbn" }
+	    }).then( 
+	          function erfolg (response){
+	        	  $scope.newBookData={};
+	        	  //$scope.refreshData();
+	          },
+		      function fehler ( response ){
+		    	  $scope.message ="FEHLER BEIM ANGULAR ADD";
+		      }
+		);
+	};
     
     $scope.deleteBook = function(id){
         
@@ -61,7 +100,6 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	      .error( function(){
 	    	  console.log("FEHLER BEIM ANGULAR DELETE");
 	      });
-	  };
-       
-
+	};
+	
   }]);

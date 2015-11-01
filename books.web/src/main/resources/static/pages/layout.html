@@ -20,7 +20,7 @@
   #L%
   -->
 <!DOCTYPE html>
-<html ng-app="BooksApp" >
+<html ng-app="BooksApp">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -51,7 +51,8 @@
 	href="http://ui-grid.info/release/ui-grid-stable.css" />
 
 </head>
-<body class="jumbotron" ng-controller="BookController" ng-init="refreshData()">
+<body class="jumbotron" ng-controller="BookController"
+	ng-init="refreshData()">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -98,9 +99,14 @@
 				?Bücherregal - <small>Liste aller B&uuml;cher</small>
 			</h1>
 		</div>
+		<div>
+			<label>Titel</label><input ng-model="newBookData.titel"> </input>
+			<!--  -->
+			<label>ISBN</label><input ng-model="newBookData.isbn"> </input>
+		</div>
 		<p>
-			<a id="erfasseBuch" class="btn btn-lg btn-success"
-				href="erfassebuch.html" role="button">Weiteres Buch erfassen</a>
+			<button id="erfasseBuch" class="btn btn-lg btn-success"
+				ng-click="addBook()">Weiteres Buch erfassen</a>
 		</p>
 
 	</div>
@@ -111,7 +117,6 @@
 			<div class="panel-heading">
 				<div class="panel-title">Panel title</div>
 			</div>
-
 
 			<table id="buchliste"
 				class="table table-responsive table-hover table-bordered table-striped table-condensed">
@@ -128,7 +133,7 @@
 						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
-					<tr ng-repeat="book in books" id="book_+{{book.id}}" >
+					<tr ng-repeat="book in books" id="book_+{{book.id}}">
 						<!-- Id -->
 						<td>{{book.id}}</td>
 						<!-- Titel -->
@@ -148,11 +153,10 @@
 						<td th:if="${book.isbn == null}"></td>
 						<!-- Aktionen -->
 						<td>
-							<button th:attr="id=deleteBook_+${book.id}" 
+							<button th:attr="id=deleteBook_+${book.id}"
 								class="glyphicon glyphicon-trash"
 								th:title="#{buch.liste.link.loeschen}+' '+${book.id}"
-								th:attr="ng-click='deleteBook(\''+${book.id}+'\');'">
-							</button>
+								th:attr="ng-click='deleteBook(\''+${book.id}+'\');'"></button>
 
 						</td>
 					</tr>
@@ -174,8 +178,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<!-- Site footer -->
 	<footer class="footer">
 
@@ -198,10 +202,14 @@
 
 	<!-- Gespiegelte Skripte über WebJARs -->
 	<script src="http://cdn.jsdelivr.net/webjars/jquery/1.11.3/jquery.js"></script>
-	<script	src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-touch.min.js"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.min.js"></script>
+	<script
+		src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-touch.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.min.js"></script>
 
 
 

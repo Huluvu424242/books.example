@@ -37,6 +37,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,8 +54,7 @@ public class BookController {
 	protected final ISBNService isbnService;
 
 	@Autowired
-	public BookController(final BookService bookService,
-			final ISBNService isbnService) {
+	public BookController(final BookService bookService, final ISBNService isbnService) {
 		this.bookService = bookService;
 		this.isbnService = isbnService;
 	}
@@ -82,22 +82,38 @@ public class BookController {
 		bookService.deleteBook(id);
 	}
 
-	
-	@RequestMapping(value="${link.buch.registrieren}", method = RequestMethod.POST)
+	private class BookData {
+		public String titel;
+		public String isbn;
+
+		public BookData(final String titel, final String isbn) {
+			this.titel = titel;
+			this.isbn = isbn;
+		};
+
+	}
+
+	@RequestMapping(value = "${link.buch.registrieren}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void speichereBuch(final HttpServletRequest request,
+	public void speichereBuch(final HttpServletRequest request, 
 			@RequestParam("titel") final String titel,
-			@RequestParam("isbn") final String isbnraw) throws InvalidISBNException {
+			@RequestParam("isbn") final String isbnraw)	throws InvalidISBNException {
+		
+		//System.out.println("NewBookData: " + newBookData.toString());
+		System.out.println("Titel: "+titel);
+		System.out.println("ISB: "+isbnraw);
+
+//		final String isbnraw = newBookData.isbn;
+//		final String titel = newBookData.titel;
 
 		ISBN isbn = null;
-		
+
 		if (isbnraw.length() > 0) {
 			isbn = ISBN.parseFromString(isbnraw);
 			isbnService.addISBN(isbn);
 		}
 		bookService.addBook(titel, isbn);
 	}
-	
 
 	@RequestMapping("${link.buch.erfassen}")
 	public ModelAndView erfasseBuch() {
@@ -108,7 +124,6 @@ public class BookController {
 		return new ModelAndView("erfassebuch", modelMap);
 	}
 
-	
 	protected Map<String, Object> erzeugeModelMap() {
 		final Map<String, Object> modelMap = new HashMap<String, Object>();
 		return modelMap;
