@@ -78,11 +78,11 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	    $http({
 	    	method: 'POST',
 	    	url: 'http://localhost:8080/book/register',
-	    	params: {titel: $scope.newBookData.titel, isbn: "$isbn" }
+	    	params: {'titel': titel, 'isbn': isbn }
 	    }).then( 
 	          function erfolg (response){
 	        	  $scope.newBookData={};
-	        	  //$scope.refreshData();
+	        	  $scope.refreshData();
 	          },
 		      function fehler ( response ){
 		    	  $scope.message ="FEHLER BEIM ANGULAR ADD";

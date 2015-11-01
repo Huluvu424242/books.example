@@ -133,30 +133,19 @@
 						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
 							messages</td>
 					</tr>
-					<tr ng-repeat="book in books" id="book_+{{book.id}}">
+					<tr ng-repeat="book in books" id="book_{{book.id}}">
 						<!-- Id -->
 						<td>{{book.id}}</td>
 						<!-- Titel -->
 						<td>{{book.titel}}</td>
 						<!-- ISBN -->
-						<td th:if="${book.isbn != null}"
-							th:title="${book.isbn.toString()}+' '+( (${book.isbn.isValid()})?'gültige':'ungültige')+' ISBN.'"
-							th:class="${!book.isbn.isValid()}?'warning has-warning has-feedback'">
-							<span th:text="${book.isbn.toString()}"
-							th:attr="id='isbnText' +${!book.isbn.isValid()}?' aria-describedby=isbnStatus'">?ISBN</span>
-							<span th:unless="${book.isbn.isValid()}"
-							class="glyphicon glyphicon-warning-sign form-control-feedback"
-							aria-hidden="true"></span> <span
-							th:unless="${book.isbn.isValid()}" id="isbnStatus"
-							class="sr-only">(ungültige ISBN)</span>
-						</td>
-						<td th:if="${book.isbn == null}"></td>
+						<td>{{book.isbn.formattedValue}}</td>
 						<!-- Aktionen -->
 						<td>
-							<button th:attr="id=deleteBook_+${book.id}"
+							<button id="deleteBook_{{book.id}}"
 								class="glyphicon glyphicon-trash"
-								th:title="#{buch.liste.link.loeschen}+' '+${book.id}"
-								th:attr="ng-click='deleteBook(\''+${book.id}+'\');'"></button>
+								title="Loesche Buch mit ID {{book.id}}"
+								ng-click="deleteBook({{book.id}})"></button>
 
 						</td>
 					</tr>
