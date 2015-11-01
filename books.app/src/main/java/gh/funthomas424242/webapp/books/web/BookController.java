@@ -1,5 +1,21 @@
 package gh.funthomas424242.webapp.books.web;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 /*
  * #%L
  * Books.App
@@ -27,24 +43,6 @@ import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class BookController {
@@ -82,29 +80,15 @@ public class BookController {
 		bookService.deleteBook(id);
 	}
 
-	private class BookData {
-		public String titel;
-		public String isbn;
-
-		public BookData(final String titel, final String isbn) {
-			this.titel = titel;
-			this.isbn = isbn;
-		};
-
-	}
-
 	@RequestMapping(value = "${link.buch.registrieren}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void speichereBuch(final HttpServletRequest request, 
-			@RequestParam("titel") final String titel,
-			@RequestParam("isbn") final String isbnraw)	throws InvalidISBNException {
+			@RequestParam(value="titel") final String titel,
+			@RequestParam(value="isbn", defaultValue="") final String isbnraw)	throws InvalidISBNException {
 		
-		//System.out.println("NewBookData: " + newBookData.toString());
 		System.out.println("Titel: "+titel);
 		System.out.println("ISB: "+isbnraw);
 
-//		final String isbnraw = newBookData.isbn;
-//		final String titel = newBookData.titel;
 
 		ISBN isbn = null;
 

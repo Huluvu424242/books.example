@@ -96,17 +96,20 @@
 	<div class="container">
 		<div class="page-header">
 			<h1>
-				?Bücherregal - <small>Liste aller B&uuml;cher</small>
+				B&uuml;cherregal - <small>Liste aller B&uuml;cher</small>
 			</h1>
 		</div>
 		<div>
-			<label>Titel</label><input ng-model="newBookData.titel"> </input>
-			<!--  -->
-			<label>ISBN</label><input ng-model="newBookData.isbn"> </input>
+			<div> <label>Titel:</label><input
+				ng-model="newBookData.titel"> </input>
+			</div><div> <!--  --> <label>ISBN:</label><input
+				ng-model="newBookData.isbn"> </input>
+			</div>
 		</div>
 		<p>
 			<button id="erfasseBuch" class="btn btn-lg btn-success"
-				ng-click="addBook()">Weiteres Buch erfassen</a>
+				ng-click="addBook()">
+				Weiteres Buch erfassen</a>
 		</p>
 
 	</div>
@@ -135,19 +138,16 @@
 					</tr>
 					<tr ng-repeat="book in books" id="book_{{book.id}}">
 						<!-- Id -->
-						<td>{{book.id}}</td>
+						<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
 						<!-- Titel -->
-						<td>{{book.titel}}</td>
+						<td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
 						<!-- ISBN -->
-						<td>{{book.isbn.formattedValue}}</td>
+						<td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
 						<!-- Aktionen -->
-						<td>
-							<button id="deleteBook_{{book.id}}"
-								class="glyphicon glyphicon-trash"
-								title="Loesche Buch mit ID {{book.id}}"
-								ng-click="deleteBook({{book.id}})"></button>
-
-						</td>
+						<td><span id="deleteBook_{{book.id}}"
+							class="glyphicon glyphicon-trash"
+							title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
+							ng-click="deleteBook({{book.id}})"></span></td>
 					</tr>
 				</tbody>
 			</table>
