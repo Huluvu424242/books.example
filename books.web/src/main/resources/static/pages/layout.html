@@ -99,17 +99,20 @@
 				B&uuml;cherregal - <small>Liste aller B&uuml;cher</small>
 			</h1>
 		</div>
-		<div>
-			<div> <label>Titel:</label><input
-				ng-model="newBookData.titel"> </input>
-			</div><div> <!--  --> <label>ISBN:</label><input
-				ng-model="newBookData.isbn"> </input>
+		<div class="row">
+			<div class="form-group col-md-6" >
+				<label>Titel:</label><input type="text" ng-model="newBookData.titel"
+					class="form-control"> </input>
+			</div>
+			<div class="form-group col-md-6">
+				<label>ISBN:</label><input type="text" ng-model="newBookData.isbn"
+					class="form-control"> </input>
 			</div>
 		</div>
 		<p>
 			<button id="erfasseBuch" class="btn btn-lg btn-success"
 				ng-click="addBook()">
-				Weiteres Buch erfassen</a>
+				Obige Daten als neues Buch aufnehmen</a>
 		</p>
 
 	</div>
@@ -132,11 +135,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:if="${books.empty}">
-						<td id="message" colspan="4" th:text="#{message.buch.liste.leer}">?No
-							messages</td>
+					<tr ng-hide="books">
+						<td id="message" colspan="4">Es wurden noch keine B&uuml;cher erfasst!</td>
 					</tr>
-					<tr ng-repeat="book in books" id="book_{{book.id}}">
+					<tr ng-hide="!books" ng-repeat="book in books | orderBy : 'id' : 'reverse' " id="book_{{book.id}}">
 						<!-- Id -->
 						<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
 						<!-- Titel -->
