@@ -51,28 +51,29 @@ public class BookController {
 
 	protected final ISBNService isbnService;
 
+	//TODO @Inject
 	@Autowired
 	public BookController(final BookService bookService, final ISBNService isbnService) {
 		this.bookService = bookService;
 		this.isbnService = isbnService;
 	}
 
-	@RequestMapping({ "${link.books}" })
-	public ModelAndView listeBuecher() {
-		return new ModelAndView("booklist", "books", retrieveAllBooks());
-	}
+//	@RequestMapping({ "${link.books}" })
+//	public ModelAndView listeBuecher() {
+//		return new ModelAndView("booklist", "books", retrieveAllBooks());
+//	}
 
 	protected List<Book> retrieveAllBooks() {
 		return bookService.findAll();
 	}
 
-	@RequestMapping({ "${link.books}/json" })
+	@RequestMapping({ "/books" })
 	public List<Book> listeBuecherJSON() {
 		return retrieveAllBooks();
 	}
 
 	// @ApiMethod
-	@RequestMapping(value = "${link.buch.loeschen}/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/book/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void loescheBuch(@PathVariable("id") Long id) {
 		System.out.println("loeschen aufgerufen");
@@ -80,7 +81,7 @@ public class BookController {
 		bookService.deleteBook(id);
 	}
 
-	@RequestMapping(value = "${link.buch.registrieren}", method = RequestMethod.POST)
+	@RequestMapping(value = "/book/new", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void speichereBuch(final HttpServletRequest request, 
 			@RequestParam(value="titel") final String titel,
@@ -99,18 +100,18 @@ public class BookController {
 		bookService.addBook(titel, isbn);
 	}
 
-	@RequestMapping("${link.buch.erfassen}")
-	public ModelAndView erfasseBuch() {
-		final Map<String, Object> modelMap = erzeugeModelMap();
-		modelMap.put("message", null);
-		modelMap.put("invalidISBN", false);
+//	@RequestMapping("${link.buch.erfassen}")
+//	public ModelAndView erfasseBuch() {
+//		final Map<String, Object> modelMap = erzeugeModelMap();
+//		modelMap.put("message", null);
+//		modelMap.put("invalidISBN", false);
+//
+//		return new ModelAndView("erfassebuch", modelMap);
+//	}
 
-		return new ModelAndView("erfassebuch", modelMap);
-	}
-
-	protected Map<String, Object> erzeugeModelMap() {
-		final Map<String, Object> modelMap = new HashMap<String, Object>();
-		return modelMap;
-	}
+//	protected Map<String, Object> erzeugeModelMap() {
+//		final Map<String, Object> modelMap = new HashMap<String, Object>();
+//		return modelMap;
+//	}
 
 }

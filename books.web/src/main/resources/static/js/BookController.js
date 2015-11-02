@@ -57,7 +57,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
     $scope.refreshData = function(){
         $scope.books = [];
     
-        $http.get('http://localhost:8080/books/json')
+        $http.get('http://localhost:8080/books')
         .then(
 			  function erfolg(response) {
 		        response.data.forEach(function(book){
@@ -77,7 +77,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
         
 	    $http({
 	    	method: 'POST',
-	    	url: 'http://localhost:8080/book/register',
+	    	url: 'http://localhost:8080/book/new',
 	    	params: {'titel': titel, 'isbn': isbn }
 	    }).then( 
 	          function erfolg (response){
@@ -90,12 +90,13 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 		);
 	};
     
-    $scope.deleteBook = function(id){
+	//url format http://localhost:8080/book/'+id
+    $scope.deleteBook = function(url){
         
-	      $http.delete('http://localhost:8080/book/delete/'+id)
+	      $http.delete(url)
 	      .success( function(result){
 	    	  console.log(result);
-	    	  document.getElementById('book_'+id).remove();
+	    	  document.getElementById(url).remove();
 	      })
 	      .error( function(){
 	    	  console.log("FEHLER BEIM ANGULAR DELETE");

@@ -2,7 +2,7 @@ package gh.funthomas424242.webapp.books.domain;
 
 /*
  * #%L
- * Books.App
+ * Books.App - REST Services
  * %%
  * Copyright (C) 2015 Pivotal Software, Inc.
  * %%
@@ -22,43 +22,18 @@ package gh.funthomas424242.webapp.books.domain;
  * #L%
  */
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+public abstract class Resource {
 
-@Entity
-public class Book extends Resource{
+	protected String selfURL;
 
-	@Id
-	@GeneratedValue
-	protected long id;
+	public abstract long getId();
 
-	protected String titel;
-
-	@ManyToOne
-	protected ISBN isbn;
-
-	public Book() {
-
+	public String getSelfURL() {
+		return selfURL;
 	}
 
-	public Book(final String titel, final ISBN isbn) {
-		this.titel = titel;
-		this.isbn = isbn;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getTitel() {
-		return titel;
-	}
-
-	
-	public ISBN getIsbn() {
-		return isbn;
+	public void setSelfURL(String selfURL) {
+		this.selfURL = selfURL;
 	}
 
 }

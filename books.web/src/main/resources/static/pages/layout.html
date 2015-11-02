@@ -141,7 +141,7 @@
 					</tr>
 					<tr ng-hide="!books"
 						ng-repeat="book in books | orderBy : 'id' : 'reverse' "
-						id="book_{{book.id}}">
+						id="http://localhost:8080/book/{{book.id}}">
 						<!-- Id -->
 						<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
 						<!-- Titel -->
@@ -152,7 +152,7 @@
 						<td><span id="deleteBook_{{book.id}}"
 							class="glyphicon glyphicon-trash"
 							title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
-							ng-click="deleteBook({{book.id}})"></span></td>
+							ng-click="deleteBook('http://localhost:8080/book/{{book.id}}')"></span></td>
 					</tr>
 				</tbody>
 			</table>
