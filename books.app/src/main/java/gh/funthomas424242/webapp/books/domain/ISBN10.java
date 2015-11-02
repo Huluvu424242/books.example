@@ -33,10 +33,6 @@ public class ISBN10 extends ISBN {
 
 	}
 
-//	protected ISBN10(final String isbnDigits) {
-//		super(isbnDigits);
-//	}
-
 	protected ISBN10(final String isbnDigits, final String formattedValue) {
 		super(isbnDigits, formattedValue);
 	}
@@ -45,22 +41,6 @@ public class ISBN10 extends ISBN {
 		return 10;
 	}
 
-//	@Override
-//	public boolean isValid() {
-//
-//		final StringBuffer numberPart = new StringBuffer();
-//		// prefix geht nicht in die Berechnung ein, da erst ab ISBN13 definiert
-//		numberPart.append(gruppenNummer);
-//		numberPart.append(verlagsNummer);
-//		numberPart.append(bandTitelNummer);
-//
-//		if (numberPart.length() != 9) {
-//			return false;
-//		} else {
-//			final String berechnetePruefziffer = berechnePruefziffer(numberPart);
-//			return this.pruefZiffer.equals(berechnetePruefziffer);
-//		}
-//	}
 
 	@Override
 	protected String berechnePruefziffer(final String numberPart) {
