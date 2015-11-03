@@ -1,4 +1,6 @@
-package gh.funthomas424242.webapp.books.web;
+package gh.funthomas424242.webapp.books;
+
+import org.glassfish.jersey.filter.LoggingFilter;
 
 /*
  * #%L
@@ -22,22 +24,19 @@ package gh.funthomas424242.webapp.books.web;
  * #L%
  */
 
-import gh.funthomas424242.webapp.books.domain.Resource;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 
-public class ResourceRepraesentation {
-	
-	protected Resource resource;
-	protected String selfURL;
-	
-	public ResourceRepraesentation(final String selfURL, final Resource resource){
-		this.selfURL=selfURL;
-		this.resource=resource;
-	}
-	
+import gh.funthomas424242.webapp.books.web.BookController;
+import gh.funthomas424242.webapp.books.web.SimpleCORSFilter;
 
-	public ResourceRepraesentation(final String selfURL, final Iterable<Resource> resources){
-		this.selfURL=selfURL;
-		//this.resource=resource;
-	}
+public class JerseyConfig extends ResourceConfig {
 
+    public JerseyConfig() {
+        register(RequestContextFilter.class);
+        register(SimpleCORSFilter.class);
+        register(BookController.class);
+        packages("gh.funthomas424242.webapp.books.web");
+        register(LoggingFilter.class);
+    }
 }
