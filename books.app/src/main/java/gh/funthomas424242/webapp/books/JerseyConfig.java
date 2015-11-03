@@ -1,7 +1,5 @@
 package gh.funthomas424242.webapp.books;
 
-import org.glassfish.jersey.filter.LoggingFilter;
-
 /*
  * #%L
  * Books.App - REST Services
@@ -26,10 +24,9 @@ import org.glassfish.jersey.filter.LoggingFilter;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
+import org.springframework.context.annotation.Configuration;
 
-import gh.funthomas424242.webapp.books.web.BookController;
-import gh.funthomas424242.webapp.books.web.SimpleCORSFilter;
-
+@Configuration
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {

@@ -32,10 +32,10 @@ import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
@@ -52,7 +52,6 @@ public class BookController {
 	protected final ISBNService isbnService;
 
 	@Inject
-	//@Autowired
 	public BookController(final BookService bookService, final ISBNService isbnService) {
 		this.bookService = bookService;
 		this.isbnService = isbnService;
@@ -73,7 +72,7 @@ public class BookController {
 	@DELETE
 	@Path("/book/{id}")
 	//@ResponseStatus(value = HttpStatus.OK)
-	public void loescheBuch(@PathVariable("id") Long id) {
+	public void loescheBuch(@PathParam("id") Long id) {
 		System.out.println("loeschen aufgerufen");
 		System.out.println("ID:" + id);
 		bookService.deleteBook(id);
