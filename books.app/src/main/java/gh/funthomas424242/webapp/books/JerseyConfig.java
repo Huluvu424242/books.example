@@ -34,8 +34,8 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
         register(RequestContextFilter.class);
-        register(SimpleCORSFilter.class);
-        register(BookController.class);
+       // register(SimpleCORSFilter.class);
+       // register(BookController.class);
         packages("gh.funthomas424242.webapp.books.web");
         register(LoggingFilter.class);
     }
