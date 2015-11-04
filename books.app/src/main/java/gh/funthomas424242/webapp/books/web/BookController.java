@@ -68,12 +68,13 @@ public class BookController {
 	@GET
 	@Path("/books")
 	public ResourceRepraesentation listeBuecher(@Context final HttpServletRequest request) {
-		System.out.println("RequestURL:"+request);
-		System.out.println(request.getRequestURL());
+		final String selfURL=request.getRequestURL().toString();
+		final String baseURL = selfURL.substring(0, selfURL.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
+		//convert book list to resource array
 		final List<Book> books=retrieveAllBooks();
 		final Resource[] resources=new Resource[books.size()];
 		books.toArray(resources);
-		final ResourceRepraesentation resourceRepresentation=new ResourceRepraesentation("http://localhost:8080/books",resources);
+		final ResourceRepraesentation resourceRepresentation=new ResourceRepraesentation(baseURL,selfURL,resources);
 		return resourceRepresentation;
 	}
 

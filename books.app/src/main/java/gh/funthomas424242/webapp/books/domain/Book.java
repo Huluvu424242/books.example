@@ -61,4 +61,9 @@ public class Book extends Resource{
 		return isbn;
 	}
 
+	@Override
+	public String getResourcePathPattern() {
+		return "{baseURL}/book/{id}";
+	}
+
 }

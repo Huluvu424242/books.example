@@ -152,7 +152,7 @@
 						<td><span id="deleteBook_{{book.id}}"
 							class="glyphicon glyphicon-trash"
 							title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
-							ng-click="deleteBook('http://localhost:8080/book/{{book.id}}')"></span></td>
+							ng-click="deleteBook('{{book.selfURL}}')"></span></td>
 					</tr>
 				</tbody>
 			</table>

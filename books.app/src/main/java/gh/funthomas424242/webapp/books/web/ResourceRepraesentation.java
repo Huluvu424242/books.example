@@ -1,7 +1,5 @@
 package gh.funthomas424242.webapp.books.web;
 
-import java.util.Collection;
-
 /*
  * #%L
  * Books.App - REST Services
@@ -30,16 +28,24 @@ public class ResourceRepraesentation {
 
 	protected Resource resource;
 	protected Resource[] resources;
+
+	protected String baseURL;
 	protected String selfURL;
 
-	public ResourceRepraesentation(final String selfURL, final Resource resource) {
+	public ResourceRepraesentation(final String baseURL, final String selfURL, final Resource resource) {
+		this.baseURL = baseURL;
 		this.selfURL = selfURL;
 		this.resource = resource;
+		resource.computeAndSetSelfURL(baseURL);
 	}
 
-	public ResourceRepraesentation(final String selfURL, final Resource[] resources) {
+	public ResourceRepraesentation(final String baseURL, final String selfURL, final Resource[] resources) {
+		this.baseURL = baseURL;
 		this.selfURL = selfURL;
 		this.resources = resources;
+		for (final Resource resource : resources) {
+			resource.computeAndSetSelfURL(baseURL);
+		}
 	}
 
 	public Resource getResource() {
@@ -48,6 +54,10 @@ public class ResourceRepraesentation {
 
 	public Resource[] getResources() {
 		return resources;
+	}
+
+	public String getBaseURL() {
+		return baseURL;
 	}
 
 	public String getSelfURL() {

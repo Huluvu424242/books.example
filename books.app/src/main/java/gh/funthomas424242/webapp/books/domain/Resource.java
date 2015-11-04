@@ -24,16 +24,24 @@ package gh.funthomas424242.webapp.books.domain;
 
 public abstract class Resource {
 
-	protected String selfURL;
+	protected transient String selfURL;
 
 	public abstract long getId();
+
+	public abstract String getResourcePathPattern();
 
 	public String getSelfURL() {
 		return selfURL;
 	}
 
-	public void setSelfURL(String selfURL) {
-		this.selfURL = selfURL;
+	public void computeAndSetSelfURL(final String baseURL) {
+		final long id = getId();
+		final String idPart = String.valueOf(id);
+		String resourcePath = getResourcePathPattern();
+		// quote for { } and /
+		resourcePath=resourcePath.replaceAll("\\{baseURL\\}\\/", baseURL);
+		resourcePath=resourcePath.replaceAll("\\{id\\}", idPart);
+		selfURL=resourcePath;
 	}
 
 }
