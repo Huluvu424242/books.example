@@ -60,7 +60,8 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
         $http.get('http://localhost:8080/books')
         .then(
 			  function erfolg(response) {
-		        response.data.forEach(function(book){
+				  
+		        response.data.resources.forEach(function(book){
 		          $scope.books.push(book);
 		        });
 			  },

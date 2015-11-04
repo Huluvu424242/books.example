@@ -1,5 +1,8 @@
 package gh.funthomas424242.webapp.books.web;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 /*
  * #%L
  * Books.App
@@ -34,11 +37,13 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
+import gh.funthomas424242.webapp.books.domain.Resource;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
@@ -62,9 +67,14 @@ public class BookController {
 
 	@GET
 	@Path("/books")
-	public List<Book> listeBuecher() {
-		// HttpServletRequest request @Context
-		return retrieveAllBooks();
+	public ResourceRepraesentation listeBuecher(@Context final HttpServletRequest request) {
+		System.out.println("RequestURL:"+request);
+		System.out.println(request.getRequestURL());
+		final List<Book> books=retrieveAllBooks();
+		final Resource[] resources=new Resource[books.size()];
+		books.toArray(resources);
+		final ResourceRepraesentation resourceRepresentation=new ResourceRepraesentation("http://localhost:8080/books",resources);
+		return resourceRepresentation;
 	}
 
 	// @ApiMethod
