@@ -34,8 +34,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
-
-import org.springframework.stereotype.Component;
+import javax.ws.rs.ext.Provider;
 
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
@@ -44,7 +43,7 @@ import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
 @Path("/")
-@Component
+@Provider
 public class BookController {
 
 	protected final BookService bookService;
