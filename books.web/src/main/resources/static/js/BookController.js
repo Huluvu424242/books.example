@@ -54,10 +54,15 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
       { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false, type:'boolean'}
     ];
    
-    $scope.refreshData = function(selfURL){
+    //GET http://localhost:8080/books
+    $scope.refreshData = function(defaultURL){
+    	
+    	//default für allerersten Aufruf
+    	if (typeof($scope.selfURL)==='undefined') $scope.selfURL = defaultURL;
+    	
         $scope.books = [];
     
-        $http.get(selfURL)
+        $http.get($scope.selfURL)
         .then(
 			  function erfolg(response) {
 				  
@@ -77,6 +82,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	      );
     };
     
+    //POST http://localhost:8080/book/new
     $scope.addBook = function(){
     	
     	var titel = $scope.newBookData.titel;
@@ -84,7 +90,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
         
 	    $http({
 	    	method: 'POST',
-	    	url: 'http://localhost:8080/book/new',
+	    	url: $scope.newURL,
 	    	params: {'titel': titel, 'isbn': isbn }
 	    }).then( 
 	          function erfolg (response){
@@ -109,5 +115,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	    	  console.log("FEHLER BEIM ANGULAR DELETE");
 	      });
 	};
+	
+	//$scope.refreshData('http://localhost:8080/books');
 	
   }]);

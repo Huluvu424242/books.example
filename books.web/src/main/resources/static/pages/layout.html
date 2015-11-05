@@ -60,7 +60,7 @@
 	href="http://ui-grid.info/release/ui-grid-stable.css" />
 
 </head>
-<body class="jumbotron" ng-init="refreshData('{{selfURL}}')">
+<body class="jumbotron" ng-init="refreshData('http://localhost:8080/books')">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -149,7 +149,7 @@
 					</tr>
 					<tr ng-hide="!books"
 						ng-repeat="book in books | orderBy : 'id' : 'reverse' "
-						id="http://localhost:8080/book/{{book.id}}">
+						id="{{book.selfURL}}">
 						<!-- Id -->
 						<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
 						<!-- Titel -->
