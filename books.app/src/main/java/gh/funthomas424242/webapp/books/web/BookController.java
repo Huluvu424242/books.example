@@ -26,6 +26,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
@@ -86,7 +87,8 @@ public class BookController {
 
 	@POST
 	@Path("/book/new")
-	public void speichereBuch(@Context final HttpServletRequest request, @QueryParam("titel") final String titel,
+	public void speichereBuch(@Context final HttpServletRequest request,
+			@NotNull @QueryParam("titel") final String titel,
 			@DefaultValue("") @QueryParam("isbn") final String isbnraw) throws InvalidISBNException {
 
 		System.out.println("Titel: " + titel);
