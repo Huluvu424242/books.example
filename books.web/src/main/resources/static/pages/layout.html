@@ -28,14 +28,10 @@
 <meta name="description" content="Eine Buchverwaltung" />
 <meta name="author" content="FunThomas424242 (Thomas Schubert)" />
 <base href="{{baseURL}}">
-<link rel="self" title="aktuelle Seite"
-	href="{{selfURL}}">
-<link rel="next" title="nächste Seite"
-	href="{{nextURL}}">
-<link rel="prev" title="vorherige Seite"
-	href="{{prevURL}}">
-<link rel="new" title="neues Buch erstellen"
-	href="{{newURL}}">
+<link rel="self" title="aktuelle Seite" href="{{selfURL}}">
+<link rel="next" title="nächste Seite" href="{{nextURL}}">
+<link rel="prev" title="vorherige Seite" href="{{prevURL}}">
+<link rel="new" title="neues Buch erstellen" href="{{newURL}}">
 <title>Books App</title>
 
 
@@ -60,7 +56,8 @@
 	href="http://ui-grid.info/release/ui-grid-stable.css" />
 
 </head>
-<body class="jumbotron" ng-init="refreshData('http://localhost:8080/books')">
+<body class="jumbotron"
+	ng-init="refreshData('http://localhost:8080/books')">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -118,9 +115,9 @@
 			</div>
 		</div>
 		<p>
-			<button id="erfasseBuch" class="btn btn-lg btn-success"
-				ng-click="addBook()">
-				Obige Daten als neues Buch aufnehmen</a>
+			<a autofocus id="erfasseBuch" class="btn btn-lg btn-success" href=""
+				role="button" ng-click="addBook()">Obige Daten als neues Buch
+				aufnehmen</a>
 		</p>
 
 	</div>
