@@ -91,7 +91,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 		);
 	};
     
-	//url format http://localhost:8080/book/'+id
+	//DELETE http://localhost:8080/book/{id}
     $scope.deleteBook = function(url){
         
 	      $http.delete(url)

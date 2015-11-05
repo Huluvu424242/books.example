@@ -22,46 +22,25 @@ package gh.funthomas424242.webapp.books.web;
  * #L%
  */
 
-import gh.funthomas424242.webapp.books.domain.Resource;
+public abstract class WebResource {
 
-public class ResourceRepraesentation {
+	protected transient String selfURL;
 
-	protected Resource resource;
-	protected Resource[] resources;
+	public abstract long getId();
 
-	protected String baseURL;
-	protected String selfURL;
-
-	public ResourceRepraesentation(final String baseURL, final String selfURL, final Resource resource) {
-		this.baseURL = baseURL;
-		this.selfURL = selfURL;
-		this.resource = resource;
-		resource.computeAndSetSelfURL(baseURL);
-	}
-
-	public ResourceRepraesentation(final String baseURL, final String selfURL, final Resource[] resources) {
-		this.baseURL = baseURL;
-		this.selfURL = selfURL;
-		this.resources = resources;
-		for (final Resource resource : resources) {
-			resource.computeAndSetSelfURL(baseURL);
-		}
-	}
-
-	public Resource getResource() {
-		return resource;
-	}
-
-	public Resource[] getResources() {
-		return resources;
-	}
-
-	public String getBaseURL() {
-		return baseURL;
-	}
+	public abstract String getResourcePathPattern();
 
 	public String getSelfURL() {
 		return selfURL;
+	}
+
+	public void computeAndSetSelfURL(final String baseURL) {
+		final long id = getId();
+		final String idPart = String.valueOf(id);
+		String resourcePath = getResourcePathPattern();
+		resourcePath=resourcePath.replaceAll("\\{baseURL\\}\\/", baseURL);
+		resourcePath=resourcePath.replaceAll("\\{id\\}", idPart);
+		selfURL=resourcePath;
 	}
 
 }

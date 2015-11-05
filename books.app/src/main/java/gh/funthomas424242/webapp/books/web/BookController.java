@@ -1,8 +1,5 @@
 package gh.funthomas424242.webapp.books.web;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 /*
  * #%L
  * Books.App
@@ -43,7 +40,6 @@ import javax.ws.rs.ext.Provider;
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
-import gh.funthomas424242.webapp.books.domain.Resource;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
@@ -67,21 +63,20 @@ public class BookController {
 
 	@GET
 	@Path("/books")
-	public ResourceRepraesentation listeBuecher(@Context final HttpServletRequest request) {
+	public WebState listeBuecher(@Context final HttpServletRequest request) {
 		final String selfURL=request.getRequestURL().toString();
 		final String baseURL = selfURL.substring(0, selfURL.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
 		//convert book list to resource array
 		final List<Book> books=retrieveAllBooks();
-		final Resource[] resources=new Resource[books.size()];
+		final WebResource[] resources=new WebResource[books.size()];
 		books.toArray(resources);
-		final ResourceRepraesentation resourceRepresentation=new ResourceRepraesentation(baseURL,selfURL,resources);
+		final WebState resourceRepresentation=new WebState(baseURL,selfURL,resources);
 		return resourceRepresentation;
 	}
 
 	// @ApiMethod
 	@DELETE
 	@Path("/book/{id}")
-	//@ResponseStatus(value = HttpStatus.OK)
 	public void loescheBuch(@PathParam("id") Long id) {
 		System.out.println("loeschen aufgerufen");
 		System.out.println("ID:" + id);
@@ -90,8 +85,7 @@ public class BookController {
 
 	@POST
 	@Path("/book/new")
-	//@ResponseStatus(value = HttpStatus.OK)
-	public void speichereBuch(final HttpServletRequest request, @QueryParam("titel") final String titel,
+	public void speichereBuch(@Context final HttpServletRequest request, @QueryParam("titel") final String titel,
 			@DefaultValue("") @QueryParam("isbn") final String isbnraw) throws InvalidISBNException {
 
 		System.out.println("Titel: " + titel);

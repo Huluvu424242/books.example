@@ -27,8 +27,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import gh.funthomas424242.webapp.books.web.WebResource;
+
 @Entity
-public class Book extends Resource{
+public class Book extends WebResource{
 
 	@Id
 	@GeneratedValue
