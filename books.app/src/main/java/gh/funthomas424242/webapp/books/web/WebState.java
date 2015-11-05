@@ -30,6 +30,11 @@ public class WebState {
 	protected String baseURL;
 	protected String selfURL;
 
+	protected String newURL;
+	protected String printURL;
+	protected String nextURL;
+	protected String prevURL;
+
 	public WebState(final String baseURL, final String selfURL, final WebResource resource) {
 		this.baseURL = baseURL;
 		this.selfURL = selfURL;
@@ -47,19 +52,51 @@ public class WebState {
 	}
 
 	public WebResource getResource() {
-		return resource;
+		return this.resource;
 	}
 
 	public WebResource[] getResources() {
-		return resources;
+		return this.resources;
 	}
 
 	public String getBaseURL() {
-		return baseURL;
+		return this.baseURL;
 	}
 
 	public String getSelfURL() {
-		return selfURL;
+		return this.selfURL;
+	}
+
+	public String getNewURL() {
+		return this.newURL;
+	}
+
+	public void setNewURL(String newURL) {
+		this.newURL = newURL;
+	}
+
+	public String getPrintURL() {
+		return this.printURL;
+	}
+
+	public void setPrintURL(String printURL) {
+		this.printURL = printURL;
+	}
+
+	public String getNextURL() {
+		return this.nextURL;
+	}
+
+	public void setNextURL(String nextURL) {
+		this.nextURL = nextURL;
+	}
+
+	public String getPrevURL() {
+		return this.prevURL;
+	}
+
+	public void setPrevURL(String prevURL) {
+		this.prevURL = prevURL;
 	}
 
 }

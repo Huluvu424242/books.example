@@ -20,13 +20,22 @@
   #L%
   -->
 <!DOCTYPE html>
-<html ng-app="BooksApp">
+<html ng-app="BooksApp" ng-controller="BookController">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Eine Buchverwaltung" />
 <meta name="author" content="FunThomas424242 (Thomas Schubert)" />
+<base href="{{baseURL}}">
+<link rel="self" title="aktuelle Seite"
+	href="{{selfURL}}">
+<link rel="next" title="nächste Seite"
+	href="{{nextURL}}">
+<link rel="prev" title="vorherige Seite"
+	href="{{prevURL}}">
+<link rel="new" title="neues Buch erstellen"
+	href="{{newURL}}">
 <title>Books App</title>
 
 
@@ -51,8 +60,7 @@
 	href="http://ui-grid.info/release/ui-grid-stable.css" />
 
 </head>
-<body class="jumbotron" ng-controller="BookController"
-	ng-init="refreshData()">
+<body class="jumbotron" ng-init="refreshData()">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">

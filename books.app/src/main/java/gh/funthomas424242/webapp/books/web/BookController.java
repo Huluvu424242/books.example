@@ -10,18 +10,17 @@ package gh.funthomas424242.webapp.books.web;
  * it under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Lesser Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Lesser Public
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/lgpl-3.0.html>.
  * #L%
  */
-
 
 import java.util.List;
 
@@ -58,20 +57,22 @@ public class BookController {
 	}
 
 	protected List<Book> retrieveAllBooks() {
-		return bookService.findAll();
+		return this.bookService.findAll();
 	}
 
 	@GET
 	@Path("/books")
 	public WebState listeBuecher(@Context final HttpServletRequest request) {
-		final String selfURL=request.getRequestURL().toString();
-		final String baseURL = selfURL.substring(0, selfURL.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
-		//convert book list to resource array
-		final List<Book> books=retrieveAllBooks();
-		final WebResource[] resources=new WebResource[books.size()];
+		final String selfURL = request.getRequestURL().toString();
+		final String baseURL = selfURL.substring(0, selfURL.length() - request.getRequestURI().length())
+				+ request.getContextPath() + "/";
+		// convert book list to resource array
+		final List<Book> books = retrieveAllBooks();
+		final WebResource[] resources = new WebResource[books.size()];
 		books.toArray(resources);
-		final WebState resourceRepresentation=new WebState(baseURL,selfURL,resources);
-		return resourceRepresentation;
+		final WebState webState = new WebState(baseURL, selfURL, resources);
+		webState.setNewURL(baseURL + "book/new");
+		return webState;
 	}
 
 	// @ApiMethod
@@ -80,7 +81,7 @@ public class BookController {
 	public void loescheBuch(@PathParam("id") Long id) {
 		System.out.println("loeschen aufgerufen");
 		System.out.println("ID:" + id);
-		bookService.deleteBook(id);
+		this.bookService.deleteBook(id);
 	}
 
 	@POST
@@ -95,9 +96,9 @@ public class BookController {
 
 		if (isbnraw.length() > 0) {
 			isbn = ISBN.parseFromString(isbnraw);
-			isbnService.addISBN(isbn);
+			this.isbnService.addISBN(isbn);
 		}
-		bookService.addBook(titel, isbn);
+		this.bookService.addBook(titel, isbn);
 	}
 
 }

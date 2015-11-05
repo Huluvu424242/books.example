@@ -61,6 +61,12 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
         .then(
 			  function erfolg(response) {
 				  
+				  $scope.baseURL=response.data.baseURL;
+				  $scope.selfURL=response.data.selfURL;
+				  $scope.newURL=response.data.newURL;
+				  $scope.nextURL=response.data.nextURL;
+				  $scope.prevURL=response.data.prevURL;
+				  
 		        response.data.resources.forEach(function(book){
 		          $scope.books.push(book);
 		        });
