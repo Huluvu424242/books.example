@@ -54,10 +54,10 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
       { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false, type:'boolean'}
     ];
    
-    $scope.refreshData = function(){
+    $scope.refreshData = function(selfURL){
         $scope.books = [];
     
-        $http.get('http://localhost:8080/books')
+        $http.get(selfURL)
         .then(
 			  function erfolg(response) {
 				  
