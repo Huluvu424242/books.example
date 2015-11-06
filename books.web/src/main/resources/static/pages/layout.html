@@ -166,9 +166,15 @@
 				</div>
 			</div>
 
+			<div ng-hide="ergebnisseVorhanden" class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">Liste der erfassten Bücher</div>
+				</div>
+				<div class="panel-body">Es wurden noch keine B&uuml;cher
+					erfasst!</div>
+			</div>
 
-
-			<div class="panel panel-default">
+			<div ng-show="ergebnisseVorhanden" class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">Liste der erfassten Bücher</div>
 				</div>
@@ -184,29 +190,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-hide="books">
-								<td id="message" colspan="4">Es wurden noch keine
-									B&uuml;cher erfasst!</td>
-							</tr>
-							<tr id="editrow" class="success">
-								<!-- Id -->
-								<td><span id="edit_id" disabled length="3"
-									class="form-control" title="ID: {{book.id}}">{{book.id}}</span></td>
-								<!-- Titel -->
-								<td><input title="Titel: {{book.titel}}"
-									placeholder="{{book.titel}}"></input></td>
-								<!-- ISBN -->
-								<td><input id="edit_isbn"
-									title="ISBN: {{book.isbn.formattedValue}}"
-									placeholder="{{book.isbn.formattedValue}}"></input></td>
-								<!-- Aktionen -->
-								<td><span id="editBook_{{book.id}}"
-									class="glyphicon glyphicon-remove"
-									title="Verwerfe alle Änderungen"
-									ng-click="clearBookEdit('{{book.selfURL}}')"></span></td>
-							</tr>
-							<tr ng-hide="!books"
-								ng-repeat="book in books | orderBy : 'id' : 'reverse' "
+							<tr ng-repeat="book in books | orderBy : 'id' : 'reverse' "
 								id="{{book.selfURL}}">
 								<!-- Id -->
 								<td><span title="ID: {{book.id}}">{{book.id}}</span></td>

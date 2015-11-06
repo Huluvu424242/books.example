@@ -75,6 +75,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 		        response.data.resources.forEach(function(book){
 		          $scope.books.push(book);
 		        });
+		        $scope.ergebnisseVorhanden=($scope.books.length > 0);
 			  },
 			  function fehler(response) {
 			       $scope.message = response.statusText;
