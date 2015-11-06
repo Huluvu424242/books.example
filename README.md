@@ -12,6 +12,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * Spring Boot Konfiguration
     * https://github.com/ewolff/spring-boot-demos 
     * http://www.leveluplunch.com/java/tutorials/019-disable-actuator-endpoints-in-spring-boot/
+    * https://spring.io/blog/2013/12/19/serving-static-web-content-with-spring-boot
 * Spring Boot REST
     * https://spring.io/guides/gs/actuator-service/
 * Spring Cloud
