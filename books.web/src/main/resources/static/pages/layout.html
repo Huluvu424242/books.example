@@ -104,13 +104,8 @@
 				B&uuml;cherregal - <small>Liste aller B&uuml;cher</small>
 			</h1>
 		</div>
-	</div>
-
-
-
-	<div class="container">
 		<div class="panel-group">
-			<div class="panel panel-default">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">Buchdaten Erfassen</div>
 				</div>
@@ -127,12 +122,11 @@
 							</div>
 						</div>
 						<div class="btn-group">
-
-
-							<button id="erfasseBuch" class="btn btn-default" type="submit"
+							<button id="newBookDataOK" class="btn btn-info" type="submit"
 								ng-click="addBook()">
-								<span class="glyphicon glyphicon-save"></span> Obige Daten als
-								neues Buch aufnehmen
+								<span class="glyphicon glyphicon-save"
+									title="Eingaben als neues Buch speichern mit Titel {{book.titel}}"></span>
+								Obige Daten als neues Buch aufnehmen
 							</button>
 						</div>
 					</form>
@@ -233,17 +227,19 @@
 					</table>
 				</div>
 				<div class="panel-footer">
-					<div>Legende</div>
-					<dl class="dl-horizontal">
-						<dt>
-							<span class="glyphicon glyphicon-trash"></span>
-						</dt>
-						<dd>Buch löschen</dd>
-						<dt>
-							<span class="glyphicon glyphicon-warning-sign warning"></span>
-						</dt>
-						<dd>ISBN ungültig</dd>
-					</dl>
+					<div class="panel-title">Legende</div>
+					<div>
+						<dl class="dl-horizontal">
+							<dt>
+								<span class="glyphicon glyphicon-trash"></span>
+							</dt>
+							<dd>Buch löschen</dd>
+							<dt>
+								<span class="glyphicon glyphicon-warning-sign warning"></span>
+							</dt>
+							<dd>ISBN ungültig</dd>
+						</dl>
+					</div>
 				</div>
 			</div>
 		</div>
