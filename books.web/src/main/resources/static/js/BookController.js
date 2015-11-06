@@ -75,6 +75,7 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 		        response.data.resources.forEach(function(book){
 		          $scope.books.push(book);
 		        });
+			    // Ausblenden der Tabelle wenn keine Treffer
 		        $scope.ergebnisseVorhanden=($scope.books.length > 0);
 			  },
 			  function fehler(response) {
@@ -105,18 +106,17 @@ function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingCon
 	};
     
 	//DELETE http://localhost:8080/book/{id}
-    $scope.deleteBook = function(url){
+    $scope.deleteBook = function(url,index){
         
 	      $http.delete(url)
 	      .success( function(result){
-	    	  console.log(result);
-	    	  document.getElementById(url).remove();
+	    	  //console.log(result);
+	    	 //document.getElementById(url).remove();
+	    	  $scope.refreshData();
 	      })
 	      .error( function(){
 	    	  console.log("FEHLER BEIM ANGULAR DELETE");
 	      });
 	};
-	
-	//$scope.refreshData('http://localhost:8080/books');
 	
   }]);
