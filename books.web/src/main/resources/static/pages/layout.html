@@ -104,77 +104,147 @@
 				B&uuml;cherregal - <small>Liste aller B&uuml;cher</small>
 			</h1>
 		</div>
-		<form>
-			<div class="row">
-				<div class="form-group col-md-6">
-					<label>Titel:</label><input type="text"
-						ng-model="newBookData.titel" class="form-control"> </input>
-				</div>
-				<div class="form-group col-md-6">
-					<label>ISBN:</label><input type="text" ng-model="newBookData.isbn"
-						class="form-control"> </input>
-				</div>
-			</div>
-			<p>
-				<button autofocus id="erfasseBuch" class="btn btn-lg btn-success"
-					type="submit" ng-click="addBook()">Obige Daten als neues
-					Buch aufnehmen</button>
-			</p>
-		</form>
-
 	</div>
 
-	<div class="container">
 
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<div class="panel-title">Panel title</div>
+
+	<div class="container">
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">Buchdaten Erfassen</div>
+				</div>
+				<div class="panel-body">
+					<form>
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label>Titel:</label><input type="text"
+									ng-model="newBookData.titel" class="form-control"> </input>
+							</div>
+							<div class="form-group col-md-6">
+								<label>ISBN:</label><input type="text"
+									ng-model="newBookData.isbn" class="form-control"> </input>
+							</div>
+						</div>
+						<div class="btn-group">
+
+
+							<button id="erfasseBuch" class="btn btn-default" type="submit"
+								ng-click="addBook()">
+								<span class="glyphicon glyphicon-save"></span> Obige Daten als
+								neues Buch aufnehmen
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">Buchdaten Bearbeiten</div>
+				</div>
+				<div class="panel-body">
+					<form>
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label>Titel:</label><input type="text"
+									ng-model="editBookData.titel" class="form-control"> </input>
+							</div>
+							<div class="form-group col-md-6">
+								<label>ISBN:</label><input type="text"
+									ng-model="editBookData.isbn" class="form-control"> </input>
+							</div>
+						</div>
+						<p>
+							<button id="editBookOK" class="btn btn-info" type="submit"
+								ng-click="saveEditData()">
+								<span class="glyphicon glyphicon-ok"
+									title="Speichere die Eingaben als Buch mit ID {{book.id}} und Titel {{book.titel}}"></span>
+								Formularwerte ins Buch zurückspeichern
+							</button>
+							<button id="editBookCancel" class="btn btn-info" type="submit"
+								ng-click="cancelEditData()">
+								<span class="glyphicon glyphicon-remove"
+									title="Eingaben verwerfen zum Buch mit ID {{book.id}}"></span>
+								Formularwerte ins Buch zurückspeichern
+							</button>
+						</p>
+					</form>
+				</div>
 			</div>
 
-			<table id="buchliste"
-				class="table table-responsive table-hover table-bordered table-striped table-condensed">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Titel</th>
-						<th>ISBN</th>
-						<th>Aktionen</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-hide="books">
-						<td id="message" colspan="4">Es wurden noch keine B&uuml;cher
-							erfasst!</td>
-					</tr>
-					<tr ng-hide="!books"
-						ng-repeat="book in books | orderBy : 'id' : 'reverse' "
-						id="{{book.selfURL}}">
-						<!-- Id -->
-						<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
-						<!-- Titel -->
-						<td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
-						<!-- ISBN -->
-						<td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
-						<!-- Aktionen -->
-						<td><span id="deleteBook_{{book.id}}"
-							class="glyphicon glyphicon-trash"
-							title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
-							ng-click="deleteBook('{{book.selfURL}}')"></span></td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="panel-footer">
-				<div class="panel-title">Legende</div>
-				<dl class="dl-horizontal">
-					<dt>
-						<span class="glyphicon glyphicon-trash"></span>
-					</dt>
-					<dd>Buch löschen</dd>
-					<dt>
-						<span class="glyphicon glyphicon-warning-sign warning"></span>
-					</dt>
-					<dd>ISBN ungültig</dd>
-				</dl>
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">Liste der erfassten Bücher</div>
+				</div>
+				<div class="panel-body">
+					<table id="buchliste"
+						class="table table-responsive table-hover table-bordered table-striped table-condensed">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Titel</th>
+								<th>ISBN</th>
+								<th>Aktionen</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-hide="books">
+								<td id="message" colspan="4">Es wurden noch keine
+									B&uuml;cher erfasst!</td>
+							</tr>
+							<tr id="editrow" class="success">
+								<!-- Id -->
+								<td><span id="edit_id" disabled length="3"
+									class="form-control" title="ID: {{book.id}}">{{book.id}}</span></td>
+								<!-- Titel -->
+								<td><input title="Titel: {{book.titel}}"
+									placeholder="{{book.titel}}"></input></td>
+								<!-- ISBN -->
+								<td><input id="edit_isbn"
+									title="ISBN: {{book.isbn.formattedValue}}"
+									placeholder="{{book.isbn.formattedValue}}"></input></td>
+								<!-- Aktionen -->
+								<td><span id="editBook_{{book.id}}"
+									class="glyphicon glyphicon-remove"
+									title="Verwerfe alle Änderungen"
+									ng-click="clearBookEdit('{{book.selfURL}}')"></span></td>
+							</tr>
+							<tr ng-hide="!books"
+								ng-repeat="book in books | orderBy : 'id' : 'reverse' "
+								id="{{book.selfURL}}">
+								<!-- Id -->
+								<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
+								<!-- Titel -->
+								<td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
+								<!-- ISBN -->
+								<td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
+								<!-- Aktionen -->
+								<td><span id="editBook_{{book.id}}"
+									class="glyphicon glyphicon-edit"
+									title="Bearbeite Buch mit ID {{book.id}} und Titel {{book.titel}}"
+									ng-click="editBook('{{book.selfURL}}')"></span> <span
+									id="deleteBook_{{book.id}}" class="glyphicon glyphicon-trash"
+									title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
+									ng-click="deleteBook('{{book.selfURL}}')"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="panel-footer">
+					<div>Legende</div>
+					<dl class="dl-horizontal">
+						<dt>
+							<span class="glyphicon glyphicon-trash"></span>
+						</dt>
+						<dd>Buch löschen</dd>
+						<dt>
+							<span class="glyphicon glyphicon-warning-sign warning"></span>
+						</dt>
+						<dd>ISBN ungültig</dd>
+					</dl>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -221,6 +291,5 @@
 	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
 	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
 	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
-
 </body>
 </html>
