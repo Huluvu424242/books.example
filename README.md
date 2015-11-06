@@ -53,10 +53,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * Deployment
     * https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
     * http://debian-maven.sourceforge.net/
-
-
-   
-
+* JavaScript Libs & Components 
+    * Ladespinner: https://github.com/fgnass/spin.js
 
 
 # Ausprobieren
