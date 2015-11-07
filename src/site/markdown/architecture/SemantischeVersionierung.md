@@ -18,7 +18,7 @@ Patch: Änderungen zur Fehlerbehebung ohne Bruch der API
 Als Alternative findet sich das [ Libtool versioning system](http://www.sourceware.org/autobook/autobook/autobook_91.html)
 
 ## Sicherstellung über TCK
-TCK: Technical Compatibility Kit
+[TCK](TCK.md): Technical Compatibility Kit
 
 Eine Testsuite die sicherstellt, dass das API nicht gebrochen wurde.
 
