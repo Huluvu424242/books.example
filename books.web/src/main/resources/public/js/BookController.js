@@ -28,32 +28,34 @@ var app = angular.module('BooksApp', [ 'ngTouch', 'ui.grid', 'ui.grid.cellNav',
 app.controller('BookController',  ['$scope', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
 function ($scope, $http, $timeout, $interval, uiGridConstants, uiGridGroupingConstants) {
     
+	$scope.editModusAktiv=false;
 	$scope.books = [];
 	
-    $scope.gridOptions = {};
-    $scope.gridOptions.data = 'myData';
-    $scope.gridOptions.enableColumnResizing = true;
-    $scope.gridOptions.enableFiltering = true;
-    $scope.gridOptions.enableGridMenu = true;
-    $scope.gridOptions.showGridFooter = true;
-    $scope.gridOptions.showColumnFooter = true;
-    $scope.gridOptions.fastWatch = true;
+//    $scope.gridOptions = {};
+//    $scope.gridOptions.data = 'myData';
+//    $scope.gridOptions.enableColumnResizing = true;
+//    $scope.gridOptions.enableFiltering = true;
+//    $scope.gridOptions.enableGridMenu = true;
+//    $scope.gridOptions.showGridFooter = true;
+//    $scope.gridOptions.showColumnFooter = true;
+//    $scope.gridOptions.fastWatch = true;
     // $scope.gridOptions.minRowsToShow = 5;
    
-    $scope.gridOptions.rowIdentity = function(row) {
-      return row.id;
-    };
-    $scope.gridOptions.getRowIdentity = function(row) {
-      return row.id;
-    };
-   
-    $scope.gridOptions.columnDefs = [
-      { field:'id', displayName:'ID',  width:'10%' },
-      { field:'titel', name:'Titel', width:'40%', enableCellEdit: true},
-      { field:'isbn.formattedValue',displayName:'ISBN', width:'40%', enableCellEdit: true},
-      { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false, type:'boolean'}
-    ];
-   
+//    $scope.gridOptions.rowIdentity = function(row) {
+//      return row.id;
+//    };
+//    $scope.gridOptions.getRowIdentity = function(row) {
+//      return row.id;
+//    };
+//   
+//    $scope.gridOptions.columnDefs = [
+//      { field:'id', displayName:'ID',  width:'10%' },
+//      { field:'titel', name:'Titel', width:'40%', enableCellEdit: true},
+//      { field:'isbn.formattedValue',displayName:'ISBN', width:'40%', enableCellEdit: true},
+//      { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false, type:'boolean'}
+//    ];
+//   
+	
     //GET http://localhost:8080/books
     $scope.refreshData = function(defaultURL){
     	
