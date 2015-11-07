@@ -1,4 +1,5 @@
 # Einführung und Ziele
+(next: [09_Entscheidungen](09_Entscheidungen.md))
 ## Aufgabenstellung
 Es ist eine Buchverwaltung zu erstellen, welche besonderen Wert auf den Schutz der Privatspähre und der eigenen
 Daten legt. Die Buchverwaltung soll als Desktopapplication über normale Betriebsmittel wie Paketverwaltungen,
