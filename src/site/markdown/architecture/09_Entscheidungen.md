@@ -1,6 +1,6 @@
 
 ---
-(next: [ 01_EinfuehrungZiele]( 01_EinfuehrungZiele.md))
+[[01_EinfuehrungZiele]( 01_EinfuehrungZiele.md)]
 
 ---
 
@@ -74,7 +74,7 @@ Entscheidungen getroffen am 07.11.2015 auf folgenden Grundlagen:
   * Der Login Mechanismus wird über ein asymmetrisches Verfahren abgehandelt.
  
 ---
-(next: [ 01_EinfuehrungZiele]( 01_EinfuehrungZiele.md))
+[[01_EinfuehrungZiele]( 01_EinfuehrungZiele.md)]
 
 ---
 
