@@ -1,5 +1,9 @@
-# Einführung und Ziele
+
+---
 (next: [09_Entscheidungen](09_Entscheidungen.md))
+
+---
+# Einführung und Ziele
 ## Aufgabenstellung
 Es ist eine Buchverwaltung zu erstellen, welche besonderen Wert auf den Schutz der Privatspähre und der eigenen
 Daten legt. Die Buchverwaltung soll als Desktopapplication über normale Betriebsmittel wie Paketverwaltungen,
@@ -20,3 +24,8 @@ Installer oder Webstart installiert werden können.
 * Die Barrierefreiheit der GUI ist sicherzustellen.
 * Die Verwendete Toolchain für Versionierung, CI und Auslieferung soll über kostenlose Tools/Hoster im Internet erfolgen.
 * Ein tägliches Backup auf einen selbstverwalteten Rechner soll stets sichergestellt werden. Wobei nur bei Änderungen automatisiert ein Backup erstellt und heruntergeladen werden soll. (Idealerweise wird das Backup automatisiert über einen Raspberry Pi erstellt und eine Kopie auf private Massendatenträger abgelegt).
+
+---
+(next: [09_Entscheidungen](09_Entscheidungen.md))
+
+---
