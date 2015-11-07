@@ -17,6 +17,7 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 
 # Backup
 * git clone --mirror https://github.com/FunThomas424242/books.example.git
+* Für alle weiteren Aktualisierungen in das gespiegelte, lokale Repository wechseln und git remote update ausführen.
 * obigen Befehl als shell script per cron ausführen lassen: https://www.garron.me/en/bits/backup-git-bare-repo.html
 
 # Quellen
