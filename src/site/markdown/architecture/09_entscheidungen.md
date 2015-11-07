@@ -3,6 +3,29 @@
 ## Versionierung
 06.03.2015 In dem Projekt ist [semantische Versionierung](semantischeVersionierung.md) zu nutzen.
 
+## Client Server Schnittstelle
+* Die Anwendung wird als Sammlung von Microservices realisiert
+* Das Backend wird als REST Service implementiert
+* Das Frontend wird als reine AngularJS Anwendung implementiert
+* Die GUI wird über AngularUI und Bootstrap realisiert
+* Die Kommunikation zwischen Server und Client erfolgt zustandslos im Sinne von HATEOAS
+* Weder im Client noch im Server soll ein Zustand gehalten werden. 
+* Ein durch obige Entscheidungen entstehendes hohes Aufkommen an Requests wird akzeptiert
+* Das Deployment soll über DockerContainer erfolgen
+
+Entscheidung getroffen am 07.11.2015 auf folgenden Grundlagen:
+* Über ein REST Backend kann eine möglichst lose Kopplung vom Client realisiert werden.
+* Durch die Zustandslose Kommunikation vereinfachen sich Loadbalancing und Failover Szenarien, da keine Sessionreplikation benötigt wird.
+* Durch die Erzeugung von Docker Images können bei Bedarf weitere Container bedarfsgerecht von einem Imagae erzeugt werden und dadurch kann ein Skallieren der Anwendung auf einfachste Art ermöglicht werden.
+* Durch den konsequenten Einsatz von HATEOAS benötigt der Client keine Information über die URLs des Backends (bis auf den Einstieg URL). Dadurch können die URLs vom Backend nach Belieben spontan geändert werden. 
+* Als GUI Framework AngularUI und Bootstrap zu verwenden wird als gut erachtet, da es aktuell sehr verbreitet ist und schneller Support über eine aktive Community gewährleistet ist.
+* **RISIKO (sehr gering)** Aktuell wird die Verwendung von AngularJS als Risiko eingestuft. Hintergrund ist der gerade stattfindende API Bruch durch die Entwicklung von AngularJS v2. Da jedoch die Migrationsstrategie öffentlich von der Community auf github entwickelt wird wird dieses Risiko als sehr gering eingestuft.
+* **RISKO (gering)** Die Frontendlogik im Kern auf eine Realisierung mittels Javascript auszurichten wird als Risiko erkannt, da hier vermutlich eine weitere, komplett neue Toolchain zur Entwicklung des Frontends sowie völlig andere technische Skills als in der Backend Entwicklung benötigt werden. Das Risiko wird als gering (also deutlich mehr Aufwand als bei sehr gering) eingestuft und als Herausforderung an den Entwickler gesehen. 
+
+
+
+
+
 ## Testkonzept
 ### Modultest
 * HTML Seiten werden mit HTMLUnit auf korrekte Struktur getestet
