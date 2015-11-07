@@ -1,8 +1,8 @@
-package gh.funthomas424242.webapp.books.domain;
+package gh.funthomas424242.webapp.books.web;
 
 /*
  * #%L
- * Books.App
+ * Books.App - REST Services
  * %%
  * Copyright (C) 2015 Pivotal Software, Inc.
  * %%
@@ -22,38 +22,25 @@ package gh.funthomas424242.webapp.books.domain;
  * #L%
  */
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+public abstract class WebResource {
 
-@Entity
-@Table(name = "ISBN")
-public class ISBN10 extends ISBN {
+	protected transient String selfURL;
 
-	protected ISBN10() {
+	public abstract long getId();
 
+	public abstract String getResourcePathPattern();
+
+	public String getSelfURL() {
+		return selfURL;
 	}
 
-	protected ISBN10(final String isbnDigits, final String formattedValue) {
-		super(isbnDigits, formattedValue);
-	}
-	
-	protected int getDigitBase(){
-		return 10;
-	}
-
-
-	@Override
-	protected String berechnePruefziffer(final String numberPart) {
-
-		int summe = 0;
-		for (int i = 10; i > 1; i--) {
-			final char c = numberPart.charAt(10 - i);
-			final String digit = Character.toString(c);
-			int value = Integer.parseInt(digit);
-			summe = summe + (value * i);
-		}
-		int pruefDigit = (11 - (summe % 11)) % 11;
-		return Integer.toString(pruefDigit);
+	public void computeAndSetSelfURL(final String baseURL) {
+		final long id = getId();
+		final String idPart = String.valueOf(id);
+		String resourcePath = getResourcePathPattern();
+		resourcePath=resourcePath.replaceAll("\\{baseURL\\}\\/", baseURL);
+		resourcePath=resourcePath.replaceAll("\\{id\\}", idPart);
+		selfURL=resourcePath;
 	}
 
 }

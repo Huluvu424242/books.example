@@ -26,9 +26,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import gh.funthomas424242.webapp.books.web.WebResource;
 
 @Entity
-public class Book {
+public class Book extends WebResource {
 
 	@Id
 	@GeneratedValue
@@ -43,22 +46,30 @@ public class Book {
 
 	}
 
-	public Book(final String titel, final ISBN isbn) {
+	public Book(@NotNull final String titel, final ISBN isbn) {
+		if (titel == null || titel.length() == 0) {
+			throw new IllegalArgumentException("Ein Buchtitel ist erforderlich. Bitte geben Sie einen Buchtitel ein.");
+		}
 		this.titel = titel;
 		this.isbn = isbn;
 	}
 
+	@Override
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	public String getTitel() {
-		return titel;
+		return this.titel;
 	}
 
-	
 	public ISBN getIsbn() {
-		return isbn;
+		return this.isbn;
+	}
+
+	@Override
+	public String getResourcePathPattern() {
+		return "{baseURL}/book/{id}";
 	}
 
 }

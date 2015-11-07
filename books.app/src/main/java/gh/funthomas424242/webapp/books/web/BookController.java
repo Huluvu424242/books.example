@@ -22,110 +22,85 @@ package gh.funthomas424242.webapp.books.web;
  * #L%
  */
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.ext.Provider;
+
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-@RestController
+@Path("/")
+@Provider
 public class BookController {
 
 	protected final BookService bookService;
 
 	protected final ISBNService isbnService;
 
-	@Autowired
-	public BookController(final BookService bookService,
-			final ISBNService isbnService) {
+	@Inject
+	public BookController(final BookService bookService, final ISBNService isbnService) {
 		this.bookService = bookService;
 		this.isbnService = isbnService;
 	}
 
-	@RequestMapping({ "${link.books}" })
-	public ModelAndView listeBuecher() {
-		return new ModelAndView("booklist", "books", retrieveAllBooks());
-	}
-
 	protected List<Book> retrieveAllBooks() {
-		return bookService.findAll();
+		return this.bookService.findAll();
 	}
 
-	@RequestMapping({ "${link.books}/json" })
-	public List<Book> listeBuecherJSON() {
-		return retrieveAllBooks();
+	@GET
+	@Path("/books")
+	public WebState listeBuecher(@Context final HttpServletRequest request) {
+		final String selfURL = request.getRequestURL().toString();
+		final String baseURL = selfURL.substring(0, selfURL.length() - request.getRequestURI().length())
+				+ request.getContextPath() + "/";
+		// convert book list to resource array
+		final List<Book> books = retrieveAllBooks();
+		final WebResource[] resources = new WebResource[books.size()];
+		books.toArray(resources);
+		final WebState webState = new WebState(baseURL, selfURL, resources);
+		webState.setNewURL(baseURL + "book/new");
+		return webState;
 	}
 
 	// @ApiMethod
-	@RequestMapping(value = "${link.buch.loeschen}/{id}", method = RequestMethod.DELETE)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void loescheBuch(@PathVariable("id") Long id) {
-		// if(true){
-		// throw new RuntimeException();
-		// }
+	@DELETE
+	@Path("/book/{id}")
+	public void loescheBuch(@PathParam("id") Long id) {
 		System.out.println("loeschen aufgerufen");
 		System.out.println("ID:" + id);
-		bookService.deleteBook(id);
+		this.bookService.deleteBook(id);
 	}
 
-	@RequestMapping("${link.buch.erfassen}")
-	public ModelAndView erfasseBuch() {
-		final Map<String, Object> modelMap = erzeugeModelMap();
-		modelMap.put("message", null);
-		modelMap.put("invalidISBN", false);
+	@POST
+	@Path("/book/new")
+	public void speichereBuch(@Context final HttpServletRequest request,
+			@NotNull @QueryParam("titel") final String titel,
+			@DefaultValue("") @QueryParam("isbn") final String isbnraw) throws InvalidISBNException {
 
-		return new ModelAndView("erfassebuch", modelMap);
-	}
+		System.out.println("Titel: " + titel);
+		System.out.println("ISB: " + isbnraw);
 
-	@RequestMapping("${link.buch.registrieren}")
-	public ModelAndView speichereBuch(final HttpServletRequest request,
-			@RequestParam("titel") final String titel,
-			@RequestParam("isbn") final String isbnraw) {
+		ISBN isbn = null;
 
-		ModelAndView nextModelView = null;
-		try {
-			ISBN isbn = null;
-
-			if (isbnraw.length() > 0) {
-				isbn = ISBN.parseFromString(isbnraw);
-				isbnService.addISBN(isbn);
-			}
-			bookService.addBook(titel, isbn);
-			nextModelView = new ModelAndView("redirect:/books");
-		} catch (InvalidISBNException e) {
-			final Map<String, Object> modelMap = erzeugeModelMap();
-			modelMap.put("message", "Es wurde eine ungültige ISBN eingegeben ("
-					+ isbnraw + " ). Bitte korrigieren Sie diese.");
-			modelMap.put("titel", titel);
-			modelMap.put("isbn", isbnraw);
-			modelMap.put("invalidISBN", true);
-
-			nextModelView = new ModelAndView("erfassebuch", modelMap);
+		if (isbnraw.length() > 0) {
+			isbn = ISBN.parseFromString(isbnraw);
+			this.isbnService.addISBN(isbn);
 		}
-
-		return nextModelView;
-	}
-
-	protected Map<String, Object> erzeugeModelMap() {
-		final Map<String, Object> modelMap = new HashMap<String, Object>();
-		return modelMap;
+		this.bookService.addBook(titel, isbn);
 	}
 
 }
