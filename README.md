@@ -34,6 +34,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * Spring Cloud
     * https://jaxenter.de/spring-cloud-das-microservices-framework-501
     * https://github.com/ewolff/microservice/tree/master/microservice-demo
+* Maven
+    * https://maven.apache.org/ref/3.3.3/maven-core/lifecycles.html#default_Lifecycle
 * Docker
     * https://github.com/craigivy/spring-cloud-microservice-example
     * https://github.com/kbastani/spring-cloud-microservice-example
