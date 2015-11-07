@@ -1,13 +1,13 @@
-#Semantische Versionierung#
+# Semantische Versionierung#
 
-##Quellen##
+## Quellen
 * http://semver.org/
 
   ( bis mal jemand schafft die deutsche Übersetzung als Pull Request zu formulieren findet man sie [hier](http://blog.selfhtml.org/2013/11/08/semantische-versionsnumerierung-2-0-0/) )
 * https://jaxenter.de/semantic-versioning-1034
 * http://de.slideshare.net/mfrancis/osgi-community-event-2010-automated-semantic-versioning-for-osgi-bundles
 
-##Grundlagen##
+## Grundlagen
 
 Versionsnummer: Major,Minor,Patch
 
@@ -17,12 +17,12 @@ Patch: Änderungen zur Fehlerbehebung ohne Bruch der API
 
 Als Alternative findet sich das [ Libtool versioning system](http://www.sourceware.org/autobook/autobook/autobook_91.html)
 
-##Sicherstellung über TCK##
+## Sicherstellung über TCK
 TCK: Technical Compatibility Kit
 
 Eine Testsuite die sicherstellt, dass das API nicht gebrochen wurde.
 
-##Was ist das API##
+## Was ist das API
 Um den Bruch der API über ein TCK feststellen zu können muss geklärt sein was das API darstellt.
 Das API sind alle Schnittstellen die nach außen gegeben werden. Bei einer Webanwendung wie books.example 
 ist diese Schnittstelle scheinbar nicht vorhanden. Versetzt man sich allerdings in die Lage des Nutzers
