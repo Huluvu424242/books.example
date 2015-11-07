@@ -36,7 +36,6 @@ als API in Betracht kommen:
 * Änderungen an Formaten welche zum Push ins Internet (soziale Netze) verwendet werden.
 * Änderungen am Format der uuid zur Nutzeridentifikation
 
-##Bau eines TCK##
 
 
 
