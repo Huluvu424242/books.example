@@ -7,7 +7,7 @@
 # 9 Entscheidungen#
 
 ## Versionierung
-06.03.2015 In dem Projekt ist [semantische Versionierung](semantischeVersionierung.md) zu nutzen.
+06.03.2015 In dem Projekt ist [Semantische Versionierung](SemantischeVersionierung.md) zu nutzen.
 
 ## Client Server Schnittstelle
 * Die Anwendung wird als Sammlung von Microservices realisiert
