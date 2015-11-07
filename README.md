@@ -11,9 +11,11 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 # Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
 1. Dann das Projekt bauen mit mvn  -U clean install
-1. Und starten mit java -jar books.app/target/books.app-1.1.0-SNAPSHOT.jar oder hot deploy über  mvn spring-boot:run
+1. Und starten mit:
+   * java -jar books.web/target/books.app-1.1.2-SNAPSHOT.jar (Frontend)
+   * java -jar books.app/target/books.app-1.1.2-SNAPSHOT.jar (Backend)
 1. Per Webbrowser die URL [http://localhost:9000/](http://localhost:9000/) aufrufen und das Projekt ausprobieren.
-2. Herunterfahren funktioniert über eine Console mittels  curl -X POST http://localhost:8080/shutdown oder in der gestarteten Console über Ctrl+C ;)
+2. Zum Herunterfahren in der gestarteten Console über Ctrl+C ;)
 
 # Backup
 * git clone --mirror https://github.com/FunThomas424242/books.example.git
