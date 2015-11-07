@@ -33,6 +33,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://spring.io/guides/gs/actuator-service/
 * Spring Cloud
     * https://jaxenter.de/spring-cloud-das-microservices-framework-501
+    * https://github.com/ewolff/microservice/tree/master/microservice-demo
 * Docker
     * https://github.com/kbastani/spring-cloud-microservice-example
 * Cucumber-JVM Integration in Spring
