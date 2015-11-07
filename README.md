@@ -35,6 +35,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://jaxenter.de/spring-cloud-das-microservices-framework-501
     * https://github.com/ewolff/microservice/tree/master/microservice-demo
 * Docker
+    * https://github.com/craigivy/spring-cloud-microservice-example
     * https://github.com/kbastani/spring-cloud-microservice-example
 * Cucumber-JVM Integration in Spring
     * https://github.com/cucumber/cucumber-java-skeleton
