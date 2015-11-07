@@ -5,8 +5,17 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 [ ![Download Releases](./src/main/resources/img/Releases.png) ](https://bintray.com/funthomas424242/books.example/books.example/_latestVersion)
 [ ![Download Snapshots](./src/main/resources/img/Snapshots.png) ](http://oss.jfrog.org/simple/oss-snapshot-local/gh/funthomas424242/webapp/)
 
-Es gibt auch weitere [Dokumentation](src/site/markdown/index.md) zum Projekt
+# Dokumentation
+* [Architektur](src/site/markdown/architecture/01_EinfuehrungZiele.md)
 
+# Ausprobieren
+1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
+1. Dann das Projekt bauen mit mvn  -U clean install
+1. Und starten mit java -jar books.app/target/books.app-1.1.0-SNAPSHOT.jar oder hot deploy über  mvn spring-boot:run
+1. Per Webbrowser die URL [http://localhost:8080/](http://localhost:8080/) aufrufen und das Projekt ausprobieren.
+2. Herunterfahren funktioniert über eine Console mittels  curl -X POST http://localhost:8080/shutdown oder in der gestarteten Console über Ctrl+C ;)
+
+# Quellen
 Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
 * Spring Boot Konfiguration
@@ -57,13 +66,5 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * JavaScript Libs & Components 
     * Ladespinner: https://github.com/fgnass/spin.js
 
-# Dokumentation
-* [Architektur](src/site/markdown/architecture/01_EinfuehrungZiele.md)
 
-# Ausprobieren
-1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
-1. Dann das Projekt bauen mit mvn  -U clean install
-1. Und starten mit java -jar books.app/target/books.app-1.1.0-SNAPSHOT.jar oder hot deploy über  mvn spring-boot:run
-1. Per Webbrowser die URL [http://localhost:8080/](http://localhost:8080/) aufrufen und das Projekt ausprobieren.
-2. Herunterfahren funktioniert über eine Console mittels  curl -X POST http://localhost:8080/shutdown oder in der gestarteten Console über Ctrl+C ;)
 
