@@ -1,6 +1,6 @@
 
 ---
-(next: [09_Entscheidungen](09_Entscheidungen.md))
+[[09_Entscheidungen](09_Entscheidungen.md)]
 
 ---
 # Einführung und Ziele
@@ -26,6 +26,6 @@ Installer oder Webstart installiert werden können. Bedient wird die Anwendung �
 * Ein tägliches Backup auf einen selbstverwalteten Rechner soll stets sichergestellt werden. Wobei nur bei Änderungen automatisiert ein Backup erstellt und heruntergeladen werden soll. (Idealerweise wird das Backup automatisiert über einen Raspberry Pi erstellt und eine Kopie auf private Massendatenträger abgelegt).
 
 ---
-(next: [09_Entscheidungen](09_Entscheidungen.md))
+[[09_Entscheidungen](09_Entscheidungen.md)]
 
 ---
