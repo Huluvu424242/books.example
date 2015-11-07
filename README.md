@@ -15,6 +15,10 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 1. Per Webbrowser die URL [http://localhost:8080/](http://localhost:8080/) aufrufen und das Projekt ausprobieren.
 2. Herunterfahren funktioniert über eine Console mittels  curl -X POST http://localhost:8080/shutdown oder in der gestarteten Console über Ctrl+C ;)
 
+# Backup
+* git clone --mirror https://github.com/FunThomas424242/books.example.git
+* obigen Befehl als shell script per cron ausführen lassen: https://www.garron.me/en/bits/backup-git-bare-repo.html
+
 # Quellen
 Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
