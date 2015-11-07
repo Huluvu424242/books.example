@@ -57,6 +57,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * JavaScript Libs & Components 
     * Ladespinner: https://github.com/fgnass/spin.js
 
+# Dokumentation
+* [Architekturentscheidungen](src/site/markdown/architecture/09_entscheidungen.md)
 
 # Ausprobieren
 1. Zum Ausprobieren bitte zunächst das Projekt auschecken mit git clone https://github.com/FunThomas424242/books.example.git
