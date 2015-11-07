@@ -1,8 +1,10 @@
----
-(next: [09_Entscheidungen](09_Entscheidungen.md))
 
 ---
-#9 Entscheidungen#
+(next: [ 01_EinfuehrungZiele]( 01_EinfuehrungZiele.md))
+
+---
+
+# 9 Entscheidungen#
 
 ## Versionierung
 06.03.2015 In dem Projekt ist [semantische Versionierung](semantischeVersionierung.md) zu nutzen.
@@ -70,8 +72,10 @@ Entscheidungen getroffen am 07.11.2015 auf folgenden Grundlagen:
   * Der symmetrische Schlüssel selber wird über ein asymetrisches Verfahren (PGP) verschlüsselt in der Datenbank abgelegt. 
   * Jeder Nutzer verfügt über einen spezifischen symmetrischen Schlüssel, so dass nach Knacken eines Schlüssels nicht die Daten aller Nutzer verloren sind. 
   * Der Login Mechanismus wird über ein asymmetrisches Verfahren abgehandelt.
-  
+ 
 ---
-(next: [09_Entscheidungen](09_Entscheidungen.md))
+(next: [ 01_EinfuehrungZiele]( 01_EinfuehrungZiele.md))
 
 ---
+
+
