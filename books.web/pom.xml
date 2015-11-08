@@ -58,7 +58,7 @@
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>cpdockerfile</id>
+						<id>cpdockerfile-web</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
@@ -105,7 +105,7 @@
 						</goals>
 						<configuration>
 							<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-							<dockerDirectory>target/docker</dockerDirectory>
+							<dockerDirectory>${project.build.directory}/docker</dockerDirectory>
 							<pushImage>false</pushImage>
 							<!-- dockerHost>https://index.docker.io/v1/</dockerHost> <imageTags> 
 								<tag>${project.version}</tag> </imageTags -->
