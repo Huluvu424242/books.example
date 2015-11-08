@@ -1,10 +1,3 @@
-# FROM java:8
-# VOLUME /tmp
-# ADD ${project.build.finalName}.jar app.jar  
-# EXPOSE 8080
-# RUN bash -c 'touch /app.jar'
-# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-
 FROM java:8
 MAINTAINER FunThomas424242 (Thomas Schubert, funthomas424242@gmail.com)
 
@@ -22,6 +15,6 @@ RUN wget http://www.h2database.com/h2-$H2_RELEASE_DATE.zip && \
 # Expose ports.
 #   - 1521: H2 Server
 #   -   80: H2 Console
-EXPOSE 1521
+EXPOSE 1521 80
 
 CMD java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server -web -webAllowOthers -webPort 80 -tcp -tcpAllowOthers -tcpPort 1521 -baseDir /opt/h2-data
