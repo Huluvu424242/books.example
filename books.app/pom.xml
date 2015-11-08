@@ -124,7 +124,6 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.2.3</version>
 				<executions>
 					<execution>
 						<id>dockerbuild</id>
@@ -136,10 +135,10 @@
 							<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 							<dockerDirectory>target/docker</dockerDirectory>
 							<pushImage>false</pushImage>
-							<!-- dockerHost>https://index.docker.io/v1/</dockerHost-->
+							<!-- dockerHost>https://index.docker.io/v1/</dockerHost>
 							<imageTags>
 								<tag>${project.version}</tag>
-							</imageTags>
+							</imageTags-->
 							<resources>
 								<resource>
 									<targetPath>/</targetPath>
