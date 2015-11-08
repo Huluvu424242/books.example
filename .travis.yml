@@ -1,10 +1,10 @@
 sudo: required
 
-services:
-  - docker
-
 language:
     - java
+
+services:
+  - docker
 
 jdk:
     - openjdk7
