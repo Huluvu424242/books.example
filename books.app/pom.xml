@@ -136,7 +136,7 @@
 							<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 							<dockerDirectory>target/docker</dockerDirectory>
 							<pushImage>false</pushImage>
-							<dockerHost>https://index.docker.io/v1/</dockerHost>
+							<!-- dockerHost>https://index.docker.io/v1/</dockerHost-->
 							<imageTags>
 								<tag>${project.version}</tag>
 							</imageTags>
