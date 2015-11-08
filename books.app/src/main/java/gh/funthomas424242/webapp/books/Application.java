@@ -46,12 +46,12 @@ public class Application {
 	    app.run(args);
 	}
 	
-	@Bean
-	public ServletRegistrationBean jerseyServlet() {
-	    ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*");
-	    // our rest resources will be available in the path /rest/*
-	    registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
-	    return registration;
-	}
+//	@Bean
+//	public ServletRegistrationBean jerseyServlet() {
+//	    ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*");
+//	    // our rest resources will be available in the path /rest/*
+//	    registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
+//	    return registration;
+//	}
 
 }
