@@ -83,6 +83,7 @@
 
 
 	<modules>
+		<module>books.db</module>
 		<module>books.web</module>
 		<module>books.app</module>
 		<module>books.tck</module>
