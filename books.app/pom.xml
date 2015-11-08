@@ -135,10 +135,6 @@
 							<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 							<dockerDirectory>${project.build.directory}/docker</dockerDirectory>
 							<pushImage>false</pushImage>
-							<!-- dockerHost>https://index.docker.io/v1/</dockerHost>
-							<imageTags>
-								<tag>${project.version}</tag>
-							</imageTags-->
 							<resources>
 								<resource>
 									<targetPath>/</targetPath>
