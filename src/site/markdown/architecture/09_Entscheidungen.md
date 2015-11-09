@@ -28,6 +28,26 @@ Entscheidung getroffen am 07.11.2015 auf folgenden Grundlagen:
 * **RISIKO (sehr gering)** Aktuell wird die Verwendung von AngularJS als Risiko eingestuft. Hintergrund ist der gerade stattfindende API Bruch durch die Entwicklung von AngularJS v2. Da jedoch die Migrationsstrategie öffentlich von der Community auf github entwickelt wird wird dieses Risiko als sehr gering eingestuft.
 * **RISKO (gering)** Die Frontendlogik im Kern auf eine Realisierung mittels Javascript auszurichten wird als Risiko erkannt, da hier vermutlich eine weitere, komplett neue Toolchain zur Entwicklung des Frontends sowie völlig andere technische Skills als in der Backend Entwicklung benötigt werden. Das Risiko wird als gering (also deutlich mehr Aufwand als bei sehr gering) eingestuft und als Herausforderung an den Entwickler gesehen. 
 
+## Einsprung und Wechsel zwischen Microservices
+Wenn man davon ausgeht, dass das Frontend eine Menge statischer HTML Seiten mit JavaScript Libs und CSS sowie Bilder und anderen statischen Resourcen sind stellen sich 2 Fragen:
+1. Wie erfolgt der Einsprung in den Microservice (http://host.com/service/index.html oder http://host.com/service)?
+   Beim direkten Aufruf einer html Seite weiss diese nicht wo ihr Restservice liegt und kann diese nur aufrufen wenn in der Seite irgendwo der URL des Backends fest kodiert wurde. Oder der Seite muss ein Requestparameter mitgegeben werden. Doch wie kann dieser von der Seite selbst gelesen und verarbeitet werden? 
+1. Wie kann ich zu einem anderen Microservice wechseln um z.B. den Autor eines Buches in der Adressverwaltung zu erfassen (mit Duplikaten Bearbeitung und allem Schnick Schnack) um nach Abschluss des Vorgangs automatisch per HATEOAS wieder in der Linkliste auf den ursprünglichen Microservice zurückgeleitet zu werden?
+
+Beide Anwendungsfälle laufen auf das Grundproblem hinaus: Wie werte ich Requestparameter in einer statischen HTML Seite aus? Hierzu sind mehrere Ansätze bekannt:
+* In AngularJS über Routing (http://stackoverflow.com/questions/20655877/angularjs-get-current-url-parameters)
+  **TODO** Funktioniert Routing in einen anderen Microservice oder ist Routing auf einen Microservice begrenzt?
+* In AngularJS über $location.search (http://stackoverflow.com/questions/20655877/angularjs-get-current-url-parameters)
+* Per Frames, URL, window.name oder Cookies (http://aktuell.de.selfhtml.org/artikel/javascript/wertuebergabe)
+  Hierbei ist nur der URL Ansatz über **location.search** praktisch nutzbar. Die anderen scheiden aus wegen:
+** window.name verändert den Fensternamen und erschwert damit den Integrationstest (selenium & Co. dürften Probleme bekommen).
+** Frames waren schon vor Jahren nicht mehr gewünscht.
+** Cookies können abgeschaltet sein bzw. bei Bestätigung der Abfrage ob Cookies erlaubt sind gehen die Parameter verloren. 
+* HTML5 Local und Session Storage. Hier könnten Daten vor den Sprung zum nächsten Microservice abgelegt werden und auf der Zielseite wieder aus dem Storage ausgelesen werden.
+  **TODO** Klären in wieweit die gleiche Aktion in zwei Browserfenstern zeitgleich ohne Störung durchgeführt werden kann. Wird der Store des einen Fensters durch das andere Fenster überschrieben? Was bedeutet im Falle von HATEOAS Browsersession? Wir dürfen keinen State weder auf Client noch auf Serverseite halten!
+
+Um beim Einsprung in einen Microservice keine direkte HTML Seiten URL angeben zu müssen kann im Frontend auch ein Servlet installiert werden welches den eingehenden Request forwarded oder redirected. Ändert aber nix an der Parameterproblematik, der URL sieht nur schöner aus und verbirgt die Details der Implementierung. Dafür verliert man die schöne einfache statische Struktur und muss doch wieder einen ServletContainer aufbauen vs. einfachster Webserver ohne Servletunterstützung.
+
 ## Authentifizierung & Authorisierung
 * Zur Authentifizierung muss sich der Nutzer beim Programm registrieren und dort einen öffentlichen PGP Key hinterlegen oder Daten (z.B. eMail) mit denen der Key aus dem Netz geholt werden kann.
 * Zur Authorisierung wird an jeden URL eine UserId und ein Rechtestring angehangen aus dem die Anwendung die Identität und die aktuellen Rechte des Nutzers ermitteln kann. Die Sicherheitsinformationen sind zu zu erzeugen, dass einfache Angriffe wie nochmaliges Absetzen des kopierten Requests durch einen anderen Nutzer wirkungsvoll verhindert werden. 
