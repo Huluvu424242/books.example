@@ -29,6 +29,9 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://github.com/ewolff/spring-boot-demos 
     * http://www.leveluplunch.com/java/tutorials/019-disable-actuator-endpoints-in-spring-boot/
     * https://spring.io/blog/2013/12/19/serving-static-web-content-with-spring-boot
+* Spring Boot Controller
+    * Redirect über return "redirect:nextpage.html"; (http://stackoverflow.com/questions/33327678/springboot-controller-redirect-not-working)
+    * return "index.html" sollte direktes forwarding sein.
 * Spring Boot REST
     * https://spring.io/guides/gs/actuator-service/
     * http://geowarin.github.io/a-simple-spring-boot-and-jersey-application.html
