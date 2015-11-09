@@ -25,12 +25,8 @@ package gh.funthomas424242.webapp.books;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.glassfish.jersey.servlet.ServletContainer;
-import org.glassfish.jersey.servlet.ServletProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
@@ -40,7 +36,7 @@ public class Application {
 		final SpringApplication app = new SpringApplication(Application.class);
 	    app.setShowBanner(true);
 	    final Map<String,Object> config=new HashMap<String,Object>();
-	    config.put("spring.datasource.url","jdbc:h2:tcp://books_db:1521//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
+	    config.put("spring.datasource.url","jdbc:h2:tcp://localhost:1521//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
 	    config.put("spring.jpa.hibernate.ddl-auto", "update");
 	    app.setDefaultProperties(config);
 	    app.run(args);
