@@ -37,7 +37,7 @@ Wenn man davon ausgeht, dass das Frontend eine Menge statischer HTML Seiten mit 
 Beide Anwendungsfälle laufen auf das Grundproblem hinaus: Wie werte ich Requestparameter in einer statischen HTML Seite aus? Hierzu sind mehrere Ansätze bekannt:
 * In AngularJS über Routing (http://stackoverflow.com/questions/20655877/angularjs-get-current-url-parameters)
   **TODO** Funktioniert Routing in einen anderen Microservice oder ist Routing auf einen Microservice begrenzt?
-* In AngularJS über $location.search oder window.location.href (http://stackoverflow.com/questions/20655877/angularjs-get-current-url-parameters und http://stackoverflow.com/questions/406192/get-current-url-in-javascript?rq=1)
+* In AngularJS über $location.search oder window.location.href (?window.location.hash?) (http://stackoverflow.com/questions/20655877/angularjs-get-current-url-parameters und http://stackoverflow.com/questions/406192/get-current-url-in-javascript?rq=1)
 * Per Frames, URL, window.name oder Cookies (http://aktuell.de.selfhtml.org/artikel/javascript/wertuebergabe)
   Hierbei ist nur der URL Ansatz über **location.search** praktisch nutzbar. Die anderen scheiden aus wegen:
 ** window.name verändert den Fensternamen und erschwert damit den Integrationstest (selenium & Co. dürften Probleme bekommen).
