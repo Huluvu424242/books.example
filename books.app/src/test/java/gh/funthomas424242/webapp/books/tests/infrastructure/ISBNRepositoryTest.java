@@ -23,16 +23,16 @@ package gh.funthomas424242.webapp.books.tests.infrastructure;
  */
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import gh.funthomas424242.webapp.books.Application;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.infrastructure.ISBNRepository;
 
+import javax.inject.Inject;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -44,7 +44,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ISBNRepositoryTest {
 
-	@Autowired
+	@Inject
 	ISBNRepository isbnRepository;
 
 	@Before

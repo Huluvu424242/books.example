@@ -27,16 +27,17 @@ import gh.funthomas424242.webapp.books.infrastructure.ISBNRepository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import javax.inject.Inject;
 
-@Service
+import org.springframework.stereotype.Component;
+
+@Component
 public class ISBNService {
 
 
 	private final ISBNRepository isbnRepository;
 
-	@Autowired
+	@Inject
 	public ISBNService(final ISBNRepository isbnRepository){
 		this.isbnRepository=isbnRepository;
 	}

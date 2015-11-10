@@ -77,10 +77,10 @@ public class ManualGuiIntegrationTest {
 	@Value("${info.app.name}")
 	private String APP_INFO;
 
-	@Autowired
+	@Inject
 	protected WebDriver driver;
 
-	@Autowired
+	@Inject
 	WebApplicationContext contextWebApp;
 
 	// @Before

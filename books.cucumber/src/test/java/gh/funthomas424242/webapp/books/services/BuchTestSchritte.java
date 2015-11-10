@@ -30,8 +30,9 @@ import gh.funthomas424242.webapp.books.service.ISBNService;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
 import cucumber.api.java.de.Dann;
@@ -41,10 +42,10 @@ import cucumber.api.java.de.Wenn;
 @SpringApplicationConfiguration(classes = { Application.class })
 public class BuchTestSchritte {
 
-	@Autowired
+	@Inject
 	protected BookService bookService;
 
-	@Autowired
+	@Inject
 	protected ISBNService isbnService;
 	
 	
