@@ -30,7 +30,7 @@ public class ErfasseBuchdatenPage extends SeleniumPage {
 	
 	@Override
 	public String getPageUrl() {
-		return "http://localhost:8080/book/add";
+		return "http://localhost:9000/book/new";
 	}
 	
 	

@@ -36,7 +36,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 @SpringApplicationConfiguration(classes = { Application.class })
 @DirtiesContext
-@WebIntegrationTest({ "server.port=8080" })
+@WebIntegrationTest({ "server.port=9000" })
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Story {

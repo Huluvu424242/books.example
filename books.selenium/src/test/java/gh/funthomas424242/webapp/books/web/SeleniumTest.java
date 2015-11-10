@@ -46,5 +46,5 @@ public @interface SeleniumTest {
 	
 	LANGUAGE lang() default LANGUAGE.ENGLISH;
 
-	String baseUrl() default "http://localhost:8080";
+	String baseUrl() default "http://localhost:9000";
 }
