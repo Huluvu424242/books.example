@@ -25,29 +25,49 @@ package gh.funthomas424242.webapp.books;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 
 @SpringBootApplication
 public class Application {
 
+
+	private static final String LOCALHOST_PORT_1521_TCP = "LOCALHOST_PORT_1521_TCP";
+	private static final Logger LOG = LoggerFactory
+			.getLogger(Application.class);
+
 	public static void main(String[] args) {
-		final SpringApplication app = new SpringApplication(Application.class);
-	    app.setShowBanner(true);
-	    final Map<String,Object> config=new HashMap<String,Object>();
-	    config.put("spring.datasource.url","jdbc:h2:tcp://localhost:1521//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
-	    config.put("spring.jpa.hibernate.ddl-auto", "update");
-	    app.setDefaultProperties(config);
-	    app.run(args);
+		final Application app = new Application();
+		app.start(args);
 	}
-	
-//	@Bean
-//	public ServletRegistrationBean jerseyServlet() {
-//	    ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*");
-//	    // our rest resources will be available in the path /rest/*
-//	    registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
-//	    return registration;
-//	}
+
+	private void start(String[] args) {
+		final SpringApplication app = new SpringApplication(Application.class);
+		app.setShowBanner(true);
+		final Map<String,String>env=System.getenv();
+		String connectionHost = "tcp://localhost:1521";
+		LOG.info("CONNECTION_HOST: " + connectionHost);
+		if (connectionHost != null) {
+			connectionHost = env.get(LOCALHOST_PORT_1521_TCP);
+		}
+		final Map<String, Object> config = new HashMap<String, Object>();
+		config.put("spring.datasource.url", "jdbc:h2:" + connectionHost
+				+ "//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
+		config.put("spring.jpa.hibernate.ddl-auto", "update");
+		app.setDefaultProperties(config);
+		app.run(args);
+	}
+
+	// @Bean
+	// public ServletRegistrationBean jerseyServlet() {
+	// ServletRegistrationBean registration = new ServletRegistrationBean(new
+	// ServletContainer(), "/*");
+	// // our rest resources will be available in the path /rest/*
+	// registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS,
+	// JerseyConfig.class.getName());
+	// return registration;
+	// }
 
 }
