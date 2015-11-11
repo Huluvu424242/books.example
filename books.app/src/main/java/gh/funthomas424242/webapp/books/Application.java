@@ -47,10 +47,11 @@ public class Application {
 		final SpringApplication app = new SpringApplication(Application.class);
 		app.setShowBanner(true);
 		final Map<String,String>env=System.getenv();
+		final String envValue= env.get(LOCALHOST_PORT_1521_TCP);
 		String connectionHost = "tcp://localhost:1521";
 		LOG.info("CONNECTION_HOST: " + connectionHost);
-		if (connectionHost != null) {
-			connectionHost = env.get(LOCALHOST_PORT_1521_TCP);
+		if (envValue != null) {
+			connectionHost = envValue;
 		}
 		final Map<String, Object> config = new HashMap<String, Object>();
 		config.put("spring.datasource.url", "jdbc:h2:" + connectionHost
