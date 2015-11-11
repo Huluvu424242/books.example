@@ -34,6 +34,6 @@ import org.springframework.stereotype.Component;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
 @Component
-@WebIntegrationTest({ "server.port=8080" })
+@WebIntegrationTest({ "server.port=9000" })
 public @interface Steps {
 }

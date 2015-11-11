@@ -28,15 +28,16 @@ import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import javax.inject.Inject;
 
-@Service
+import org.springframework.stereotype.Component;
+
+@Component
 public class BookService {
 
 	protected final BookRepository bookRepository;
 
-	@Autowired
+	@Inject
 	public BookService(final BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}

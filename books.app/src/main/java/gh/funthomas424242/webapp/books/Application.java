@@ -25,33 +25,50 @@ package gh.funthomas424242.webapp.books;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.glassfish.jersey.servlet.ServletContainer;
-import org.glassfish.jersey.servlet.ServletProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
-
 
 @SpringBootApplication
 public class Application {
 
+
+	private static final String LOCALHOST_PORT_1521_TCP = "LOCALHOST_PORT_1521_TCP";
+	private static final Logger LOG = LoggerFactory
+			.getLogger(Application.class);
+
 	public static void main(String[] args) {
+		final Application app = new Application();
+		app.start(args);
+	}
+
+	private void start(String[] args) {
 		final SpringApplication app = new SpringApplication(Application.class);
-	    app.setShowBanner(true);
-	    final Map<String,Object> config=new HashMap<String,Object>();
-	    config.put("spring.datasource.url","jdbc:h2:file:~/bookdb;DB_CLOSE_ON_EXIT=FALSE");
-	    config.put("spring.jpa.hibernate.ddl-auto", "update");
-	    app.setDefaultProperties(config);
-	    app.run(args);
+		app.setShowBanner(true);
+		final Map<String,String>env=System.getenv();
+		final String envValue= env.get(LOCALHOST_PORT_1521_TCP);
+		String connectionHost = "tcp://localhost:1521";
+		LOG.info("CONNECTION_HOST: " + connectionHost);
+		if (envValue != null) {
+			connectionHost = envValue;
+		}
+		final Map<String, Object> config = new HashMap<String, Object>();
+		config.put("spring.datasource.url", "jdbc:h2:" + connectionHost
+				+ "//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
+		config.put("spring.jpa.hibernate.ddl-auto", "update");
+		app.setDefaultProperties(config);
+		app.run(args);
 	}
-	
-	@Bean
-	public ServletRegistrationBean jerseyServlet() {
-	    ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*");
-	    // our rest resources will be available in the path /rest/*
-	    registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
-	    return registration;
-	}
+
+	// @Bean
+	// public ServletRegistrationBean jerseyServlet() {
+	// ServletRegistrationBean registration = new ServletRegistrationBean(new
+	// ServletContainer(), "/*");
+	// // our rest resources will be available in the path /rest/*
+	// registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS,
+	// JerseyConfig.class.getName());
+	// return registration;
+	// }
 
 }

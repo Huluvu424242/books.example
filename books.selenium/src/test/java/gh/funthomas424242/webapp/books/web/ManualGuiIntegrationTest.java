@@ -25,6 +25,7 @@ package gh.funthomas424242.webapp.books.web;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gh.funthomas424242.webapp.books.Application;
+import gh.funthomas424242.webapp.books.WebApplication;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -53,12 +54,12 @@ import org.springframework.web.context.WebApplicationContext;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = { Application.class })
+@SpringApplicationConfiguration(classes = { WebApplication.class })
 // WebConfiguration.class })
 // @WebAppConfiguration
 @DirtiesContext
-@WebIntegrationTest({ "server.port=8080" })
-@SeleniumTest(lang = SeleniumTest.LANGUAGE.DEUTSCH, baseUrl = "http://localhost:8080")
+@WebIntegrationTest({ "server.port=9000" })
+@SeleniumTest(lang = SeleniumTest.LANGUAGE.DEUTSCH, baseUrl = "http://localhost:9000")
 // @PropertySource("classpath:messages.properties")
 public class ManualGuiIntegrationTest {
 
@@ -76,10 +77,10 @@ public class ManualGuiIntegrationTest {
 	@Value("${info.app.name}")
 	private String APP_INFO;
 
-	@Autowired
+	@Inject
 	protected WebDriver driver;
 
-	@Autowired
+	@Inject
 	WebApplicationContext contextWebApp;
 
 	// @Before

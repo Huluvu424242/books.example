@@ -1,8 +1,8 @@
-package gh.funthomas424242.webapp.books.lib;
+package gh.funthomas424242.webapp.books;
 
 /*
  * #%L
- * Books.App - JBehave Selenium Webdriver Tests
+ * Books.App - Web
  * %%
  * Copyright (C) 2015 Pivotal Software, Inc.
  * %%
@@ -22,22 +22,16 @@ package gh.funthomas424242.webapp.books.lib;
  * #L%
  */
 
-import gh.funthomas424242.webapp.books.Application;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+@Controller
+public class WebController {
 
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.annotation.DirtiesContext;
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public String landingPage() {
+		return "/index.html";
+	}
 
-
-@SpringApplicationConfiguration(classes = { Application.class })
-@DirtiesContext
-@WebIntegrationTest({ "server.port=9000" })
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Story {
 }
