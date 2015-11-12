@@ -88,7 +88,6 @@
 		<module>books.tck</module>
 		<module>books.cucumber</module>
 		<module>books.web</module>
-		<!-- <module>books.cucumberjs</module> -->
 		<!-- <module>books.selenium</module> <module>books.jbehave</module> -->
 		<module>books.deb</module>
 	</modules>
