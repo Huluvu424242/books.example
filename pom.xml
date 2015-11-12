@@ -84,12 +84,12 @@
 
 	<modules>
 		<module>books.db</module>
-		<module>books.web</module>
 		<module>books.app</module>
 		<module>books.tck</module>
 		<module>books.cucumber</module>
-		<!-- <module>books.selenium</module>
-		<module>books.jbehave</module> -->
+		<module>books.web</module>
+		<!-- <module>books.cucumberjs</module> -->
+		<!-- <module>books.selenium</module> <module>books.jbehave</module> -->
 		<module>books.deb</module>
 	</modules>
 
@@ -147,6 +147,15 @@
 						<excludedLicense>GNU General Public License (GPL) 3.0</excludedLicense>
 					</excludedLicenses>
 					<failIfWarning>true</failIfWarning>
+					<includes>
+						<include>*.java</include>
+						<include>*.properties</include>
+						<include>*.xml</include>
+					</includes>
+					<excludes>
+						<exclude>*.png</exclude>
+						<exclude>*.json</exclude>
+					</excludes>
 				</configuration>
 				<executions>
 					<execution>

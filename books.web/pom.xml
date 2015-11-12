@@ -55,66 +55,41 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>cpdockerfile-web</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/main/docker</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-							<outputDirectory>target/docker</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<dependencies>
-					<dependency>
-						<groupId>org.springframework</groupId>
-						<artifactId>springloaded</artifactId>
-						<version>1.1.5.RELEASE</version>
-					</dependency>
-				</dependencies>
+				<groupId>pl.allegro</groupId>
+				<artifactId>grunt-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<runGruntWithNode>true</runGruntWithNode>
+					<gruntExecutable>node_modules/grunt-cli/bin/grunt</gruntExecutable>
+					<bowerExecutable>node_modules/bower/bin/bower</bowerExecutable>
+					<nodeExecutable>/usr/bin/nodejs</nodeExecutable>
+
+					<!-- relative to src/main/webapp/, default: static -->
+					<!-- <jsSourceDirectory>${basedir}/src/main/resources/static</jsSourceDirectory> -->
+
+					<!-- example options usage to get verbose output in logs -->
+					<gruntOptions>
+						<gruntOption>--verbose</gruntOption>
+					</gruntOptions>
+
+					<!-- example npm install env variable -->
+					<npmEnvironmentVar>
+						<PHANTOMJS_CDNURL>http://cnpmjs.org/downloads</PHANTOMJS_CDNURL>
+					</npmEnvironmentVar>
+
+					<!-- example options usage to filter variables in given resource -->
+					<filteredResources>
+						<filteredResource>maven-properties.json</filteredResource>
+					</filteredResources>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
-							<goal>repackage</goal>
+							<goal>create-resources</goal>
+							<goal>npm</goal>
+							<!-- <goal>bower</goal> -->
+							<goal>grunt</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>dockerbuild</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-						<configuration>
-							<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-							<dockerDirectory>${project.build.directory}/docker</dockerDirectory>
-							<pushImage>false</pushImage>
-							<resources>
-								<resource>
-									<targetPath>/</targetPath>
-									<directory>${project.build.directory}</directory>
-									<include>${project.build.finalName}.jar</include>
-								</resource>
-							</resources>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
