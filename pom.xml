@@ -23,6 +23,7 @@
 			<activation>
 				<property>
 					<name>ciserver</name>
+					<value>true</value>
 				</property>
 			</activation>
 			<properties>
@@ -36,7 +37,6 @@
 			</activation>
 			<properties>
 				<ddl.mode>spring.jpa.hibernate.ddl-auto=update</ddl.mode>
-				<path.nodejs>/usr/bin/nodejs</path.nodejs>
 			</properties>
 		</profile>
 	</profiles>
@@ -44,6 +44,7 @@
 	<properties>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<java.version>1.7</java.version>
+		<path.nodejs>/usr/bin/nodejs</path.nodejs>
 		<docker.image.prefix>funthomas424242</docker.image.prefix>
 		<github.maventools.version>0.11</github.maventools.version>
 		<springboot.version>1.2.3.RELEASE</springboot.version>
