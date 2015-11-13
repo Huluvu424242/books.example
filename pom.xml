@@ -20,6 +20,15 @@
 
 	<profiles>
 		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<path.nodejs>/usr/bin/nodejs</path.nodejs>
+			</properties>
+		</profile>
+		<profile>
 			<id>ciserver</id>
 			<activation>
 				<property>
@@ -29,15 +38,6 @@
 			<properties>
 				<ddl.mode>spring.jpa.hibernate.ddl-auto=create-drop</ddl.mode>
 				<path.nodejs>/usr/bin/node</path.nodejs>
-			</properties>
-		</profile>
-		<profile>
-			<id>local</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<path.nodejs>/usr/bin/nodejs</path.nodejs>
 			</properties>
 		</profile>
 	</profiles>
