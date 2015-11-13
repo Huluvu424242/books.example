@@ -37,7 +37,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<path.nodejs>/usr/bin/node</path.nodejs>
+				<path.nodejs>/usr/bin/nodejs</path.nodejs>
 			</properties>
 		</profile>
 	</profiles>
