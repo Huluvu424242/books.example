@@ -27,6 +27,16 @@
 			</activation>
 			<properties>
 				<ddl.mode>spring.jpa.hibernate.ddl-auto=create-drop</ddl.mode>
+				<path.nodejs>/usr/bin/node</path.nodejs>
+			</properties>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<ddl.mode>spring.jpa.hibernate.ddl-auto=update</ddl.mode>
+				<path.nodejs>/usr/bin/nodejs</path.nodejs>
 			</properties>
 		</profile>
 	</profiles>

@@ -62,7 +62,7 @@
 					<runGruntWithNode>true</runGruntWithNode>
 					<gruntExecutable>node_modules/grunt-cli/bin/grunt</gruntExecutable>
 					<bowerExecutable>node_modules/bower/bin/bower</bowerExecutable>
-					<nodeExecutable>/usr/bin/nodejs</nodeExecutable>
+					<nodeExecutable>${path.nodejs}</nodeExecutable>
 
 					<!-- relative to src/main/webapp/, default: static -->
 					<!-- <jsSourceDirectory>${basedir}/src/main/resources/static</jsSourceDirectory> -->
