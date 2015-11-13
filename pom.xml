@@ -24,9 +24,20 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<properties>
-				<path.nodejs>/usr/bin/nodejs</path.nodejs>
-			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>pl.allegro</groupId>
+							<artifactId>grunt-maven-plugin</artifactId>
+							<version>1.5.0</version>
+							<configuration>
+								<nodeExecutable>/usr/bin/nodejs</nodeExecutable>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 		<profile>
 			<id>ciserver</id>
@@ -35,10 +46,20 @@
 					<name>ciserver</name>
 				</property>
 			</activation>
-			<properties>
-				<ddl.mode>spring.jpa.hibernate.ddl-auto=create-drop</ddl.mode>
-				<path.nodejs>/usr/bin/node</path.nodejs>
-			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>pl.allegro</groupId>
+							<artifactId>grunt-maven-plugin</artifactId>
+							<version>1.5.0</version>
+							<configuration>
+								<nodeExecutable>/usr/bin/node</nodeExecutable>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 	</profiles>
 
