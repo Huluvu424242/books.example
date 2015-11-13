@@ -15,8 +15,8 @@ env:
 
 before_install:
    - rm -f ~/bookdb.*
-   - mvn clean
+   - mvn -Pciserver clean 
 
 script:
-   - mvn install -fae
+   - mvn install -Pciserver -fae
 

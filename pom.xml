@@ -17,26 +17,18 @@
 	<inceptionYear>2015</inceptionYear>
 
 
+
 	<profiles>
 		<profile>
 			<id>ciserver</id>
 			<activation>
 				<property>
 					<name>ciserver</name>
-					<value>true</value>
 				</property>
 			</activation>
 			<properties>
 				<ddl.mode>spring.jpa.hibernate.ddl-auto=create-drop</ddl.mode>
 				<path.nodejs>/usr/bin/node</path.nodejs>
-			</properties>
-		</profile>
-		<profile>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<ddl.mode>spring.jpa.hibernate.ddl-auto=update</ddl.mode>
 			</properties>
 		</profile>
 	</profiles>
