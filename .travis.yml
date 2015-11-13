@@ -17,6 +17,6 @@ before_install:
    - rm -f ~/bookdb.*
    - mvn -Pciserver clean 
 
-script:
-   - mvn install -Pciserver -fae
+install:
+   - mvn -Pciserver install  -fae
 
