@@ -18,5 +18,11 @@ before_install:
    - mvn -Pciserver clean 
 
 install:
-   - mvn -Pciserver install  -fae
+   - mvn -Pciserver install -DskipTests=true -Dmaven.javadoc.skip=true -B -V 
+
+before_script:
+   - mvn -Pciserver test -B
+
+script:
+   - mvn -Pciserver install
 

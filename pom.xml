@@ -54,7 +54,7 @@
 							<artifactId>grunt-maven-plugin</artifactId>
 							<version>1.5.0</version>
 							<configuration>
-								<nodeExecutable>/usr/bin/node</nodeExecutable>
+								<!-- <nodeExecutable>/usr/bin/node</nodeExecutable> -->
 							</configuration>
 						</plugin>
 					</plugins>
