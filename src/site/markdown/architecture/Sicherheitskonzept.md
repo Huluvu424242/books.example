@@ -1,4 +1,4 @@
-# Sicherheitsaspekte
+# Sicherheitskonzept
 
 **Legende**
 Wir halten uns bei den Beschreibungen an die aus der Kryptographie üblichen [Personen](https://de.wikipedia.org/wiki/Alice_und_Bob)
