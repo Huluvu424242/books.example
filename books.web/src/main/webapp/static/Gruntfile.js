@@ -43,5 +43,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-cucumber');
 
   //grunt.registerTask('watch-tests', 'Starts a watch for test automation.', ['watch:cucumber']);
-  grunt.registerTask('default', 'Starts a watch for test automation.', ['watch:cucumber']);    
+  grunt.registerTask('default', 'Starts a watch for test automation.', ['cucumberjs']);    
 };
