@@ -24,12 +24,18 @@ module.exports = function(grunt) {
   
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    watch: {
-      cucumber: {
-        files: ['features/**/*.js', 'script/**/*.js'],
-        tasks: ['cucumberjs']
-      }
-    },
+    connect: {
+        server: {
+          options: {
+            port: 9000,
+            base: 'www-root'
+          }
+        },
+	  cucumber: {
+	      files: ['features/**/*.js', 'script/**/*.js'],
+	      tasks: ['cucumberjs']
+	    }
+      },
     cucumberjs: {
       src: 'features',
       options: {
@@ -39,9 +45,10 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-cucumber');
 
-  //grunt.registerTask('watch-tests', 'Starts a watch for test automation.', ['watch:cucumber']);
-  grunt.registerTask('default', 'Starts a watch for test automation.', ['cucumberjs']);    
+  // grunt.registerTask('watch-tests', 'Starts a watch for test automation.',
+	// ['watch:cucumber']);
+  grunt.registerTask('default', 'Starts a server with test suite.', ['connect']);    
 };
