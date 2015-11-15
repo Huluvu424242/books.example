@@ -20,28 +20,45 @@
  * #L%
  */
 module.exports = function(grunt) {
-  'use strict';
-  
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    watch: {
-      cucumber: {
-        files: ['features/**/*.js', 'script/**/*.js'],
-        tasks: ['cucumberjs']
-      }
-    },
-    cucumberjs: {
-      src: 'features',
-      options: {
-        steps: 'features/step_definitions',
-        format: 'pretty'
-      }
-    }
-  });
+	'use strict';
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-cucumber');
+	var path = require('path');
 
-  //grunt.registerTask('watch-tests', 'Starts a watch for test automation.', ['watch:cucumber']);
-  grunt.registerTask('default', 'Starts a watch for test automation.', ['cucumberjs']);    
+	grunt.initConfig({
+
+		env : {
+			chrome : {
+				PLATFORM : 'CHROME'
+			},
+			android : {
+				PLATFORM : 'ANDROID'
+			}
+		},
+
+		jshint : {
+			files : [ 'Gruntfile.js', 'features/step_definitions/*.js',
+					'features/support/*.js' ],
+			options : {
+				node : true,
+				strict : true,
+				globalstrict : true
+			}
+		},
+
+		exec : {
+			run_cucumber_tests : {
+				command : 'nodejs ' + path.join('node_modules', 'cucumber', 'bin',
+								'cucumber.js -f pretty -t ~@ignore')
+			}
+		}
+
+	});
+
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-env');
+
+	grunt.registerTask('default', [ 'env:chrome', 'jshint', 'exec' ]);
+	grunt.registerTask('android', [ 'env:android', 'jshint', 'exec' ]);
+
 };
