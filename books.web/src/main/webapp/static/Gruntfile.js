@@ -20,64 +20,28 @@
  * #L%
  */
 module.exports = function(grunt) {
- 
-  // Project configuration.
+  'use strict';
+  
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json')
-//    ,
-//    concat: {
-//        options: {
-//          separator: ';',
-//        },
-//        dist: {
-//          src: ['js/**/*.js', 'jq/**/*.js'],
-//          dest: 'temp/allinone.js',
-//        },
-//    },
-//    concat_css: {
-//                option: {},
-//        dist: {
-//          src: ['css/**/*.css'],
-//          dest: 'temp/booksweb.css',
-//        },
-//    },
-//    uglify: {
-//      options: {
-//        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-//      },
-//      build: {
-//        src: 'temp/allinone.js',
-//        dest: '../src/main/resources/public/js/booksweb.min.js'
-//      }
-//    },
-//    cssmin:{
-//      target: {
-//        files: [{
-//          expand: true,
-//          cwd: 'temp',
-//          src: ['booksweb.css'],
-//          dest: '../src/main/resources/public/css/',
-//          ext: '.min.css'
-//        }]
-//      }    
-//    },
-//    mavenPrepare: {
-//      options: {
-//        resources: ['css/**', 'js/**', 'jq/**']
-//      },
-//      prepare: {}
-//    }, 
+    pkg: grunt.file.readJSON('package.json'),
+    watch: {
+      cucumber: {
+        files: ['features/**/*.js', 'script/**/*.js'],
+        tasks: ['cucumberjs']
+      }
+    },
+    cucumberjs: {
+      src: 'features',
+      options: {
+        steps: 'features/step_definitions',
+        format: 'pretty'
+      }
+    }
   });
-// 
-//  // Load the plugin that provides the "uglify" task.
-//  grunt.loadNpmTasks('grunt-contrib-concat');
-//  grunt.loadNpmTasks('grunt-contrib-uglify');
-//  grunt.loadNpmTasks('grunt-concat-css');
-//  grunt.loadNpmTasks('grunt-contrib-cssmin');
-//  grunt.loadNpmTasks('grunt-maven');
-//   
-//  // Default task(s).
-//  grunt.registerTask('default', ['mavenPrepare', 'concat','uglify', 'concat_css','cssmin']);
-    grunt.registerTask('default', []);    
- 
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-cucumber');
+
+  //grunt.registerTask('watch-tests', 'Starts a watch for test automation.', ['watch:cucumber']);
+  grunt.registerTask('default', 'Starts a watch for test automation.', ['watch:cucumber']);    
 };
