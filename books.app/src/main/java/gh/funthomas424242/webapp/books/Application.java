@@ -34,7 +34,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
 
-	private static final String LOCALHOST_PORT_1521_TCP = "LOCALHOST_PORT_1521_TCP";
+	private static final String BOOKS_DB_PORT_1521_TCP = "BOOKS_DB_PORT_1521_TCP";
 	private static final Logger LOG = LoggerFactory
 			.getLogger(Application.class);
 
@@ -47,7 +47,7 @@ public class Application {
 		final SpringApplication app = new SpringApplication(Application.class);
 		app.setShowBanner(true);
 		final Map<String,String>env=System.getenv();
-		final String envValue= env.get(LOCALHOST_PORT_1521_TCP);
+		final String envValue= env.get(BOOKS_DB_PORT_1521_TCP);
 		String connectionHost = "tcp://localhost:1521";
 		LOG.info("CONNECTION_HOST: " + connectionHost);
 		if (envValue != null) {
@@ -60,15 +60,5 @@ public class Application {
 		app.setDefaultProperties(config);
 		app.run(args);
 	}
-
-	// @Bean
-	// public ServletRegistrationBean jerseyServlet() {
-	// ServletRegistrationBean registration = new ServletRegistrationBean(new
-	// ServletContainer(), "/*");
-	// // our rest resources will be available in the path /rest/*
-	// registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS,
-	// JerseyConfig.class.getName());
-	// return registration;
-	// }
 
 }
