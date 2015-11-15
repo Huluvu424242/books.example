@@ -86,6 +86,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * http://debian-maven.sourceforge.net/
 * JavaScript & Co Infrastructure
     * http://gruntjs.com/sample-gruntfile
+    * https://www.npmjs.com/package/cucumberjs-chromedriver
 * JavaScript Libs & Components 
     * Ladespinner: https://github.com/fgnass/spin.js
 
