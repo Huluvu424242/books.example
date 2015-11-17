@@ -1,8 +1,11 @@
-Feature: Searching for cucumbers
-  As an internet user
-  In order to find out more about cucumbers
-  I want to be able to search for information about cucumbers
-  
-  Scenario: Google cucumber search
-    When I search Google for "cucumbers"
-    Then I should see some results
+# features/myFeature.feature
+
+Feature: Example feature
+  As a user of cucumber.js
+  I want to have documentation on cucumber
+  So that I can concentrate on building awesome applications
+
+  Scenario: Reading documentation
+    Given I am on the Cucumber.js GitHub repository
+    When I go to the README file
+    Then I should see "Usage" as the page title
