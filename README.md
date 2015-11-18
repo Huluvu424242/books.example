@@ -85,6 +85,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
     * http://debian-maven.sourceforge.net/
 * JavaScript & Co Infrastructure
+    * http://joshowens.me/cucumber-js-and-meteor-the-why-and-how-of-it/
     * http://gruntjs.com/sample-gruntfile
     * https://www.npmjs.com/package/cucumberjs-chromedriver
 * JavaScript Libs & Components 
