@@ -86,6 +86,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * http://debian-maven.sourceforge.net/
 * JavaScript & Co Infrastructure
     * https://www.npmjs.com/package/protractor-cucumber
+    * https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
     * http://joshowens.me/cucumber-js-and-meteor-the-why-and-how-of-it/
     * http://gruntjs.com/sample-gruntfile
     * https://www.npmjs.com/package/cucumberjs-chromedriver
