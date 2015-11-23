@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 		    port:8080,
 		    hostname: 'localhost',
 		    livereload: true,
-		    base: '../../resources/static/'
+		    base: '../src/main/resources/static/'
 		}
             }
 	},
