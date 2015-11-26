@@ -9,9 +9,20 @@ var steps = function() {
     
     
     this.Given(/^I am on the homepage$/, function(done) {
-	page.navigate();
-	done();
+    	page.navigate();
+    	done();
     });
+    
+    this.Then(/^I should see a "([^"]*)"$/, function(link, callback) {
+    	
+    	assert.equal(page.nav, link);
+    	done()
+//    	support.isElementPresentByClass(this, link, function(result){
+//    		result.should.equal(true);
+//    		setTimeout(callback, 1000);
+//    	});
+    });
+    
     
     this.Then(/^I should see a "([^"]*)" link$/, function(link, callback) {
 	support.findByBinding(this, link, function(result){
@@ -29,12 +40,7 @@ var steps = function() {
 	});
     });
     
-    this.Then(/^I should see a "([^"]*)"$/, function(link, callback) {
-	support.isElementPresentByClass(this, link, function(result){
-	    result.should.equal(true);
-	    setTimeout(callback, 1000);
-	});
-    });
+   
     
 };
 

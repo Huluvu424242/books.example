@@ -17,6 +17,7 @@
 	"grunt-contrib-watch": "^0.6.1",
 	"grunt-cucumberjs": "^0.4.1",
 	"grunt-protractor-runner": "*",
+	"selenium-standalone": "4.7.2",
 	"grunt-protractor-webdriver": "^0.1.9",
 	"grunt-usemin": "^2.6.2",
 	"jshint-stylish": "^1.0.2",
