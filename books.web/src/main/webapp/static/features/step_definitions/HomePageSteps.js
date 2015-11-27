@@ -1,11 +1,14 @@
 'use strict';
 
 var assert = require('assert');
+var chai = require('chai');
+var expect = chai.expect;
+var should = chai.should();
 
 
 var steps = function() {
     
-    var page = require('./HomePage.js');//page object
+    var page = require('./HomePage.js');// page object
     
     
     this.Given(/^I am on the homepage$/, function(done) {
@@ -13,31 +16,30 @@ var steps = function() {
     	done();
     });
     
-    this.Then(/^I should see a "([^"]*)"$/, function(link, callback) {
+    this.Then(/^I should see a element with ccs class "([^"]*)"$/, function(link, callback) {
+    	console.log("LINK:"+link);
+    	 //should.( page.nav.isPresent() ).to.be.ok;
+    	console.log("PAGE_NAV:"+page.nav);
+    	console.log("PAGE_NAV_VALUE:"+page.nav);
     	
-    	assert.equal(page.nav, link);
-    	done()
-//    	support.isElementPresentByClass(this, link, function(result){
-//    		result.should.equal(true);
-//    		setTimeout(callback, 1000);
-//    	});
+    	callback.pending();
+// support.isElementPresentByClass(this, link, function(result){
+// result.should.equal(true);
+// setTimeout(callback, 1000);
+// });
     });
     
     
     this.Then(/^I should see a "([^"]*)" link$/, function(link, callback) {
-	support.findByBinding(this, link, function(result){
-	    result.getText().then (function(text){
-		text.trim().toLowerCase().should.equal(link.trim().toLowerCase());             
-		setTimeout(callback, 1000);
-	    });     
-	});
+        callback.pending();   
     });
     
     this.Then(/^I should not see a "([^"]*)" link$/, function(link, callback) {
-	support.isElementPresent(this, link, function(result){
-	    result.should.equal(false);
-	    setTimeout(callback, 1000);
-	});
+        callback.pending();
+// support.isElementPresent(this, link, function(result){
+// result.should.equal(false);
+// setTimeout(callback, 1000);
+// });
     });
     
    

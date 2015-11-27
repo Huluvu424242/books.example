@@ -1,18 +1,11 @@
-
 var HomePage = function() {
 
-	this.nav = element( by.css('navbar') );
-	
-	
-	this.navigate = function() {
-	    browser.get('/pages/books.html');
-	};
- 
-	//  this.After(function(callback) {
-	//    this.quit(callback);
-	//  });
+    this.nav = element(by.css('navbar-brand'));
+
+    this.navigate = function() {
+        browser.get('/pages/books.html');
+    };
+
 };
 
 module.exports = new HomePage();
-
-

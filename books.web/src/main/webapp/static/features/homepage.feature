@@ -5,6 +5,6 @@ Feature: Homepage
  
   Scenario: Visit Homepage
     Given I am on the homepage
-    Then I should see a "navbar"
+    Then I should see a element with ccs class "navbar-brand"
     And I should see a "login" link
     And I should see a "register" link

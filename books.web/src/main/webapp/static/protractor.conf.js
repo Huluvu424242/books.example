@@ -7,5 +7,5 @@ exports.config = {
     browserName: 'firefox'
   }],
   baseUrl: 'http://localhost:8080',
-  framework: 'cucumber'
+    framework : 'cucumber'
 };

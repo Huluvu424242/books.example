@@ -20,153 +20,148 @@
  * #L%
  */
 module.exports = function(grunt) {
-	'use strict';
+    'use strict';
 
-	// Load the plugins.
-	require('load-grunt-tasks')(grunt);
-	grunt.loadNpmTasks('grunt-karma');
-	grunt.loadNpmTasks('grunt-protractor-runner');
+    // Load the plugins.
+    require('load-grunt-tasks')(grunt);
+    // grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-protractor-cucumber-html-report');
+    grunt.loadNpmTasks('grunt-protractor-webdriver');
+    grunt.loadNpmTasks('grunt-selenium-server');
 
-	grunt.initConfig({
-		pkg : grunt.file.readJSON('package.json'),
+    grunt
+            .initConfig({
+                pkg : grunt.file.readJSON('package.json'),
 
-		 jshint: {
-		      files: ['Gruntfile.js'],
-		      options: {
-		        globals: {
-		          jQuery: true
-		        }
-		      }
-		    },
-		    watch: {
-		      files: ['<%= jshint.files %>'],
-		      tasks: ['jshint']
-		    },
-		    
-			connect : {
-				server : {
-					options : {
-						port : 8080,
-						hostname : 'localhost',
-						livereload : true,
-						base : '../src/main/resources/static/'
-					}
-				}
-			},
-					    
-		    
-			protractor : {
-				options : {
-					configFile : "node_modules/protractor/referenceConf.json",
-					keepAlive : true, // trotz fehler weiter
-					noColor : false // einfärben
-				},
-				target : {
-					options : {
-						configFile : "protractor.conf.js" // config file
-					},
-					protractor_webdriver : {}
-				}
-			},
-			
-		    
-		  });
-		
-	
+                jshint : {
+                    files : [ 'Gruntfile.js', 'package.json' ],
+                    options : {
+                        globals : {
+                            jQuery : true
+                        }
+                    }
+                },
 
-	
-	
-		grunt.loadNpmTasks('grunt-contrib-jshint');
-		grunt.loadNpmTasks('grunt-contrib-watch');
-		grunt.registerTask('default', ['jshint']);
+                connect : {
+                    server : {
+                        options : {
+                            port : 8080,
+                            hostname : 'localhost',
+                            livereload : true,
+                            base : '../src/main/resources/static/'
+                        }
+                    }
+                },
 
-		
-		grunt.registerTask('startServer', 'Starts a http server.',
-		[ 'connect:server:keepalive' ]);
-		grunt.registerTask('test', 'Start the modul tests.', [ 'connect:server',
-		'protractor:target' ]);
+                protractor : {
+                    options : {
+                        configFile : "node_modules/protractor/referenceConf.json",
+                        keepAlive : true, // trotz fehler weiter
+                        noColor : false
+                    },
+                    target : {
+                        options : {
+                            configFile : "protractor.conf.js"
+                        },
+                    // protractor_webdriver : {}
+                    }
+                },
 
-//grunt.registerTask('default', [ 'connect', 'protractor_webdriver',
-//		'protractor' ]);
+                protractor_webdriver : {
+                    start : [ 'tests/*.js', 'features/*.feature' ]
+                },
 
-		
-		
-		
-		
-//		"protractor-cucumber-html-report" : {
-//			options : {
-//				dest : '.',
-//				output : 'report.html',
-//				testJSONResultPath : '',
-//				testJSONDirectory : ''
-//			}
-//		},
+                protractor_cucumber_html_report : {
+                    options : {
+                        dest : '.',
+                        output : 'report.html',
+                        testJSONResultPath : '',
+                        testJSONDirectory : ''
+                    }
+                },
 
+                'start-selenium-server' : {
+                    dev : {
+                        options : {
+                            autostop : true,
+                            downloadUrl : 'https://selenium-release.storage.googleapis.com/2.48/selenium-server-standalone-2.48.0.jar',
+                            downloadLocation : '/tmp',
+                            serverOptions : {},
+                            systemProperties : {}
+                        }
+                    }
+                },
 
-//
-//		'karma' : {
-//			unit : {
-//				configFile : 'karma.conf.js',
-//				singleRun : true
-//			}
-//		},
+                'stop-selenium-server' : {
+                    dev : {}
+                }
 
-//		'protractor_webdriver' : {
-//// options : {
-//// path: 'tests/*.js',
-//// command: 'webdriver-manager start --standalone',
-//// },
-//			target : {
-//				['tests/*.js','features/*.feature']
-//			}
-//		},
-//
+            });
 
-//
-//		'cucumberjs' : {
-//			options : {
-//				format : 'html',
-//				output : 'cucumber_report.html',
-//				theme : 'simple'
-//			},
-//			my_features : [ 'features/*.feature' ]
-//		}
-//
-//// webdrivermanager: {
-//// out_dir: './selenium',
-//// capabilities: {
-//// browserName: 'chrome'
-//// },
-//// seleniumArgs: [],
-//// seleniumPort: 4444,
-//// ignore_ssl: false,
-//// proxy: false,
-//// method: 'GET',
-//// webdriverVersions: {
-//// selenium: '2.44.0',
-//// chromedriver: '2.12',
-//// iedriver: '2.44.0"
-//// }
-//// },
-//
-//	//	
-//	// cucumber: {
-//	// src: 'features',
-//	// options: {
-//	// steps: 'features/step_definitions',
-//	// format: 'pretty'
-//	// }
-//	// }
-//
-//	});
-//
-//	// grunt.loadNpmTasks('grunt-contrib-jshint');
-//	// grunt.loadNpmTasks('grunt-contrib-connect');
-//	// grunt.loadNpmTasks('grunt-webdriver-manager');
-//	// grunt.loadNpmTasks('grunt-contrib-jasmine');
-//	// grunt.loadNpmTasks('grunt-browserify');
-//	// grunt.loadNpmTasks('cucumber');
-//	grunt.loadNpmTasks('grunt-protractor-webdriver');
-//	//    
+    grunt.registerTask('default', [ 'jshint' ]);
+    grunt.registerTask('startServer', 'Starts a http server.',
+            [ 'connect:server:keepalive' ]);
+    grunt.registerTask('test', 'Start the modul tests.', [ 'connect:server',
+            'protractor:target' ]);
+    grunt.registerTask('test1', [ 'start-selenium-server:dev',
+            'connect:server', 'protractor:target' ]);
+
+    //
+    // 'karma' : {
+    // unit : {
+    // configFile : 'karma.conf.js',
+    // singleRun : true
+    // }
+    // },
+
+    //
+    // 'cucumberjs' : {
+    // options : {
+    // format : 'html',
+    // output : 'cucumber_report.html',
+    // theme : 'simple'
+    // },
+    // my_features : [ 'features/*.feature' ]
+    // }
+    //
+    // // webdrivermanager: {
+    // // out_dir: './selenium',
+    // // capabilities: {
+    // // browserName: 'chrome'
+    // // },
+    // // seleniumArgs: [],
+    // // seleniumPort: 4444,
+    // // ignore_ssl: false,
+    // // proxy: false,
+    // // method: 'GET',
+    // // webdriverVersions: {
+    // // selenium: '2.44.0',
+    // // chromedriver: '2.12',
+    // // iedriver: '2.44.0"
+    // // }
+    // // },
+    //
+    // //
+    // // cucumber: {
+    // // src: 'features',
+    // // options: {
+    // // steps: 'features/step_definitions',
+    // // format: 'pretty'
+    // // }
+    // // }
+    //
+    // });
+    //
+    // // grunt.loadNpmTasks('grunt-contrib-jshint');
+    // // grunt.loadNpmTasks('grunt-contrib-connect');
+    // // grunt.loadNpmTasks('grunt-webdriver-manager');
+    // // grunt.loadNpmTasks('grunt-contrib-jasmine');
+    // // grunt.loadNpmTasks('grunt-browserify');
+    // // grunt.loadNpmTasks('cucumber');
+    // grunt.loadNpmTasks('grunt-protractor-webdriver');
+    // //
 
 };
