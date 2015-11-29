@@ -85,6 +85,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
     * http://debian-maven.sourceforge.net/
 * JavaScript & Co Infrastructure
+    * http://angular.github.io/protractor/#/api
     * https://github.com/frozenamazon/open-weather/
     * https://www.npmjs.com/package/protractor-cucumber
     * https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
