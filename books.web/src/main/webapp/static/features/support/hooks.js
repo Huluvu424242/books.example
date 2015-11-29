@@ -2,9 +2,9 @@
 
 var myHooks = function() {
 
-    var fs = require('fs');
-    var encoder = require('base64-js').fromByteArray;
-    var decoder = require('base64-js').toByteArray;
+//    var fs = require('fs');
+//    var encoder = require('base64-js').fromByteArray;
+//    var decoder = require('base64-js').toByteArray;
     
     this.Before(function(scenario) {
         console.log("BEFORE SCENARIO:" + scenario.isFailed());
@@ -25,19 +25,12 @@ var myHooks = function() {
 
         console.log("AFTER SCENARIO:" + scenario.isFailed());
 
-        if (scenario.isFailed()) {
-            
-            browser.takeScreenshot().then(function(png) {
-                scenario.attach(new Buffer(png, 'base64'), 'image/png'); 
-                
-//               // png = decoder(png);
-//                fs.writeFile('screenshot.png', png, 'binary', function (err)
-//                {
-//                    if (err) throw err
-//                    console.log('Screenshot saved.')
-//                })
-            });
-        }
+//        if (scenario.isFailed()) {
+//            
+//            browser.takeScreenshot().then(function(png) {
+//                scenario.attach(new Buffer(png, 'base64'), 'image/png'); 
+//            });
+//        }
 
     });
 

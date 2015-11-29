@@ -1,10 +1,12 @@
-Feature: Homepage 
-  As a user
-  I want to visit the homepage
-  So that I can access the various features on offer
+# language: de
+
+Funktionalität: Homepage 
+  Als ein Nutzer
+  Möchte ich die Homepage besuchen
+  Um dort angebotene Funtionen nutzen zu können. 
  
-  Scenario: Visit Homepage
-    Given I am on the homepage
-    Then muss es eine Überschrift geben benannt: "Bücherregal - Liste aller Bücher"
-    And I should see a "login" link
-    Then I should not see a "register" link
+  Szenario: Visit Homepage
+    Angenommen Ich bin auf der Homepage
+    Dann muss es eine Überschrift geben benannt: "Bücherregal - Liste aller Bücher"
+    Und ich sollte einen "login" link sehen
+    Und ich sollte keinen "register" link sehen

@@ -9,7 +9,7 @@ var steps = function() {
 
     var page = require('./HomePage.js');
 
-    this.Given(/^I am on the homepage$/, function() {
+    this.Given(/^Ich bin auf der Homepage$/, function() {
         return page.navigateAndCallWithUrl(function(url) {
             return assert.equal(url, 'http://localhost:8080/pages/books.html',
                     'URL stimmt nicht überein');
@@ -25,11 +25,11 @@ var steps = function() {
         });
     });
 
-    this.Then(/^I should see a "([^"]*)" link$/, function(link, callback) {
+    this.Then(/^ich sollte einen "([^"]*)" link sehen$/, function(link, callback) {
         callback.pending();
     });
 
-    this.Then(/^I should not see a "([^"]*)" link$/, function(link, callback) {
+    this.Then(/^ich sollte keinen "([^"]*)" link sehen$/, function(link, callback) {
         callback.pending();
         // support.isElementPresent(this, link, function(result){
         // result.should.equal(false);
