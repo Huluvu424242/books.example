@@ -28,6 +28,25 @@ Entscheidung getroffen am 07.11.2015 auf folgenden Grundlagen:
 * **RISIKO (sehr gering)** Aktuell wird die Verwendung von AngularJS als Risiko eingestuft. Hintergrund ist der gerade stattfindende API Bruch durch die Entwicklung von AngularJS v2. Da jedoch die Migrationsstrategie öffentlich von der Community auf github entwickelt wird wird dieses Risiko als sehr gering eingestuft.
 * **RISKO (gering)** Die Frontendlogik im Kern auf eine Realisierung mittels Javascript auszurichten wird als Risiko erkannt, da hier vermutlich eine weitere, komplett neue Toolchain zur Entwicklung des Frontends sowie völlig andere technische Skills als in der Backend Entwicklung benötigt werden. Das Risiko wird als gering (also deutlich mehr Aufwand als bei sehr gering) eingestuft und als Herausforderung an den Entwickler gesehen. 
 
+## Internationalisierung
+### Daten und Inhalte 
+Diese werden bereits in der Datenhaltungsschicht internationalisiert abgelegt. Dabei ist es vermutlich nicht erforderlich jedes Datum zu internationalisieren, da dies manchmal für die Benutzung oder dem Nutzer keinen Sinn ergibt.
+### Interaktionselemente der Anwendung
+Sind auf jeden Fall zu internationalisieren, damit der Nutzer die Anwendung in seiner Sprache bedienen kann. 
+### Nichtfunktionale Anforderungen
+* Das Frontend soll möglichst wenig über die Sprachabhängigkeit wissen. Idealerweise kommen daher die Texte vom Server.
+* Das REST-Backend welches Inhalte liefert sollte möglichst wenig über die Dialoge im Frontend und deren Internationalisierung wissen. Das widerspricht natürlich dem vorgenannten Punkt.
+### Lösung
+* Das REST-Backend welches Inhalte bereitstellt liefert im Bedarfsfall nur i18n KEYs aus. Der einzige hier vorstellbare Grund für diese KEYs sind Fehlermeldungen und Hinweistexte die auf Serverseite durch Exception Handling entstehen.
+* Das REST-Backend welches Inhalte bereitstellt muss vom Frontend einen Sprachparameter entgegennehmen und zur Suche an die Datenhaltungsschicht weitergeben. Dies ist notwendig, damit beim Vorliegen internationalisierter Daten die korrekte Version ermittelt und an das Frontend ausgeliefert werden kann. z.B. Überschriften in Tabellen oder einzelne Zelleninhalte könnten aus Daten bestehen die internationalisiert vorliegen.
+* Da das Inhalte liefernde Backend keine Internationalisierung vornehmen soll und das Frontend kein Wissen über die einzelnen Sprachausprägungen besitzen soll, bleibt als Lösung nur:
+  * REST-Backend-Inhalte nimmt vom Frontend Sprachparameter entgegen und liefert für Hinweise und Meldungen i18n KEYS.
+  * REST-Backend-i18n nimmt vom Frontend Sprachparameter entgegen und liefert JSON Dateien der ausgewählten Sprache mit Mappings zwischen i18n KEYs und Texten zurück an das Frontend.
+  * Das Frontend enthält in den Oberflächenbeschreibungen keine konkreten Texte sondern nur i18n KEYs. Zusätzlich bekommt es vom REST-Backend-Inhalte i18n KEYs für Hinweise und Fehlermeldungen. Die konkreten Texte ermittelt das Frontend über das REST-Backend-i18n. Das Frontend weiss jedoch welche Sprache der Nutzer wünscht und speichert diese Information auch Session übergreifend falls dies fachlich gefordert ist. Ob die Information zur ausgewählten Sprache per Cookie oder im URL oder anders zu speichern ist hängt von fachlichen Vorgaben ab.
+
+Obige Entscheidungen getroffen am 29.11.2015. 
+  
+
 ## Einsprung und Wechsel zwischen Microservices
 Wenn man davon ausgeht, dass das Frontend eine Menge statischer HTML Seiten mit JavaScript Libs und CSS sowie Bilder und anderen statischen Resourcen sind stellen sich 2 Fragen:
 1. Wie erfolgt der Einsprung in den Microservice (http://host.com/service/index.html oder http://host.com/service)?
