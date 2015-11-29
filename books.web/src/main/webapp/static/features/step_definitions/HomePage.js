@@ -1,7 +1,9 @@
 var HomePage = function() {
 
-    this.nav = element(by.css('navbar-brand'));
+    this.welcome = element(by.tagName('H1'));
+    console.log("WELCOME:"+this.welcome);
 
+      
     this.navigate = function() {
         browser.get('/pages/books.html');
     };
