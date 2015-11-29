@@ -87,8 +87,8 @@
 							<goal>clean</goal>
 							<goal>create-resources</goal>
 							<goal>npm</goal>
-							<!--<goal>bower</goal>
-							<goal>grunt</goal>-->
+							<!--<goal>bower</goal>-->
+							<goal>grunt</goal>
 						</goals>
 					</execution>
 				</executions>
