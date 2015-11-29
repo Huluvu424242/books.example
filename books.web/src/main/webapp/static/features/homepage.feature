@@ -5,6 +5,6 @@ Feature: Homepage
  
   Scenario: Visit Homepage
     Given I am on the homepage
-    Then I should see a element with ccs class "navbar-brand"
+    Then muss es eine Überschrift geben benannt: "Bücherregal - Liste aller Bücher"
     And I should see a "login" link
-    And I should see a "register" link
+    Then I should not see a "register" link
