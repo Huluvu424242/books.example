@@ -85,6 +85,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
     * http://debian-maven.sourceforge.net/
 * JavaScript & Co Infrastructure
+    * http://mherman.org/blog/2015/04/09/testing-angularjs-with-protractor-and-karma-part-1/#.VmyeVHrbLQo
     * http://angular.github.io/protractor/#/api
     * https://github.com/frozenamazon/open-weather/
     * https://www.npmjs.com/package/protractor-cucumber
