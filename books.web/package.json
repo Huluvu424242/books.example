@@ -1,0 +1,47 @@
+{
+  "name": "books.web",
+  "version": "1.1.2-SNAPSHOT",
+  "license": "LGPL-3.0",
+  "description": "Books.App - Web Frontend",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/FunThomas424242/books.example.git"
+  },
+  "devDependencies": {
+    "base64-js": "0.0.8",
+    "chai": "^3.4.1",
+    "chrome": "^0.1.0",
+    "chromedriver": "^2.20.0",
+    "cucumber": "^0.9.1",
+    "cucumberjs-chromedriver": "^0.3.1",
+    "grunt": "^0.4.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-cucumberjs": "^0.4.1",
+    "grunt-protractor-cucumber-html-report": "^0.2.1",
+    "grunt-protractor-runner": "^2.1.0",
+    "grunt-protractor-webdriver": "^0.1.9",
+    "grunt-selenium-server": "^0.1.7",
+    "grunt-selenium-webdriver": "^0.2.451",
+    "grunt-selenium-webdriver-phantom": "^1.0.4",
+    "grunt-usemin": "^2.6.2",
+    "jshint-stylish": "^1.0.2",
+    "load-grunt-tasks": "^1.0.0",
+    "lodash": "^3.10.1",
+    "node-gyp": "^3.1.0",
+    "phantomjs": "^1.9.19",
+    "protractor-cucumber-framework": "^0.2.5",
+    "protractor-html-screenshot-reporter": "0.0.21",
+    "selenium-standalone": "^4.7.2"
+  },
+  "scripts": {
+    "install": "node node_modules/protractor/bin/webdriver-manager update"
+  }
+}

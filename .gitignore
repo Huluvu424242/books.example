@@ -18,3 +18,5 @@ hs_err_pid*
 /out.txt
 /~
 /logs
+books.web/webapp/node_modules
+books.web/node_modules

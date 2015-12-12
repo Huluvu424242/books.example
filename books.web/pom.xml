@@ -1,23 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>gh.funthomas424242.webapp</groupId>
 		<artifactId>books.example</artifactId>
 		<version>1.1.2-SNAPSHOT</version>
 	</parent>
-
 	<artifactId>books.web</artifactId>
 	<packaging>jar</packaging>
 	<name>Books.App - Web</name>
 	<description>Kleiner Buchverwaltungs Service</description>
-
 	<properties>
 		<maven.deploy.skip>false</maven.deploy.skip>
 	</properties>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -38,8 +33,6 @@
 			<artifactId>nekohtml</artifactId>
 			<version>1.9.21</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -51,50 +44,8 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>pl.allegro</groupId>
-				<artifactId>grunt-maven-plugin</artifactId>
-				<configuration>
-					<runGruntWithNode>true</runGruntWithNode>
-					<gruntExecutable>node_modules/grunt-cli/bin/grunt</gruntExecutable>
-					<bowerExecutable>node_modules/bower/bin/bower</bowerExecutable>
-					<!-- <nodeExecutable>${path.nodejs}</nodeExecutable> -->
-
-					<!-- relative to src/main/webapp/, default: static -->
-					<!-- <jsSourceDirectory>${basedir}/src/main/resources/static</jsSourceDirectory> -->
-
-					<!-- example options usage to get verbose output in logs -->
-					<gruntOptions>
-						<gruntOption>--verbose</gruntOption>
-					</gruntOptions>
-
-					<!-- example npm install env variable -->
-					<npmEnvironmentVar>
-						<PHANTOMJS_CDNURL>http://cnpmjs.org/downloads</PHANTOMJS_CDNURL>
-					</npmEnvironmentVar>
-
-					<!-- example options usage to filter variables in given resource -->
-					<filteredResources>
-						<filteredResource>maven-properties.json</filteredResource>
-					</filteredResources>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>clean</goal>
-							<goal>create-resources</goal>
-							<goal>npm</goal>
-							<!--<goal>bower</goal>-->
-							<goal>grunt</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			
-			
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
@@ -113,24 +64,6 @@
 							</resources>
 							<outputDirectory>target/docker</outputDirectory>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<dependencies>
-					<dependency>
-						<groupId>org.springframework</groupId>
-						<artifactId>springloaded</artifactId>
-						<version>1.1.5.RELEASE</version>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
 					</execution>
 				</executions>
 			</plugin>

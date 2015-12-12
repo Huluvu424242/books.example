@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                             port : 8080,
                             hostname : 'localhost',
                             livereload : true,
-                            base : '../src/main/resources/static/'
+                            base : '../src/main/webapp/static/'
                         }
                     }
                 },
@@ -63,14 +63,14 @@ module.exports = function(grunt) {
                     },
                     target : {
                         options : {
-                            configFile : "protractor.conf.js"
+                            configFile : "test/protractor.conf.js"
                         },
                     
                     }
                 },
 
                 protractor_webdriver : {
-                    start : [ 'tests/*.js', 'features/*.feature' ]
+                    start : [ 'test/bdd/**/*.feature', 'test/bdd/**/*.js' ]
                 },
 
                 // protractor_cucumber_html_report : {
