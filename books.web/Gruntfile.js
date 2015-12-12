@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                             port : 8080,
                             hostname : 'localhost',
                             livereload : true,
-                            base : '../src/main/webapp/static/'
+                            base : 'app'
                         }
                     }
                 },
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
             });
 
     grunt.registerTask('default', [ 'jshint' ]);
-    grunt.registerTask('startServer', 'Starts a http server.',
+    grunt.registerTask('server', 'Starts a http server.',
             [ 'connect:server:keepalive' ]);
     grunt.registerTask('test', [ 'start-selenium-server:dev', 'connect:server',
             'protractor:target' ]);
