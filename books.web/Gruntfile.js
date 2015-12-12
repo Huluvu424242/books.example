@@ -103,9 +103,9 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [ 'jshint' ]);
     grunt.registerTask('server', 'Starts a http server.',
             [ 'connect:server:keepalive' ]);
-    grunt.registerTask('test', [ 'start-selenium-server:dev', 'connect:server',
+    grunt.registerTask('bddtest', [ 'start-selenium-server:dev', 'connect:server',
             'protractor:target' ]);
-    grunt.registerTask('test1', 'Start the modul tests.', [ 'connect:server',
+    grunt.registerTask('modultest', 'Start the modul tests.', [ 'connect:server',
             'protractor:target' ]);
 
 };

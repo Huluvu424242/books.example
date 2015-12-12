@@ -2,7 +2,7 @@ exports.config = {
     getPageTimeout: 30000,
     allScriptsTimeout: 30000,
     seleniumAddress : 'http://localhost:4444/wd/hub',
-    specs : [ 'features/*.feature' ],
+    specs : [ 'bdd/features/*.feature' ],
     //output : 'report.html', 
     resultJsonOutputFile: 'report.json',
     //resultHtmlOutputFile: 'report.html',
@@ -36,7 +36,7 @@ exports.config = {
     framework: 'custom',
 
     // path relative to the current config file
-    frameworkPath: 'node_modules/protractor-cucumber-framework',
+    frameworkPath: '../node_modules/protractor-cucumber-framework',
 
     // relevant cucumber command line options
     cucumberOpts: {
