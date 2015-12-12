@@ -21,3 +21,4 @@ hs_err_pid*
 books.web/webapp/node_modules
 books.web/node_modules
 books.web/node_modules
+books.web/report.json
