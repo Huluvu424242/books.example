@@ -4,5 +4,9 @@
 /.project
 /.springBeans
 /target-grunt
+/report.json
 /node_modules
-report.json
+/dist
+/.tmp
+/.sass-cache
+/app/libs
