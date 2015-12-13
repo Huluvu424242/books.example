@@ -43,7 +43,7 @@ import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
-@Path("/")
+@Path("/app")
 @Provider
 public class BookController {
 
