@@ -53,6 +53,7 @@ public class Application {
 		if (envValue != null) {
 			connectionHost = envValue;
 		}
+		LOG.info("CONNECTION_HOST: " + connectionHost);
 		final Map<String, Object> config = new HashMap<String, Object>();
 		config.put("spring.datasource.url", "jdbc:h2:" + connectionHost
 				+ "//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
