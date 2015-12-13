@@ -456,7 +456,20 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+    
+    connect: {
+      myServer: {
+      	options: {
+        	port: 9000,
+        	base: 'app',
+        	// Change this to '0.0.0.0' to access the server from outside.
+        	hostname: 'localhost'
+        	//livereload: 35729
+      	}
+      }
     }
+    
   });
 
 
@@ -475,10 +488,10 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
-  });
+  // grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+    // grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+    // grunt.task.run(['serve:' + target]);
+  // });
 
   grunt.registerTask('test', [
     'clean:server',
@@ -512,5 +525,9 @@ module.exports = function (grunt) {
     'newer:jscs',
     'test',
     'build'
+  ]);
+  
+  grunt.registerTask('startServer', [
+    'connect:myServer:keepalive',
   ]);
 };
