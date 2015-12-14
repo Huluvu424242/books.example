@@ -21,8 +21,11 @@
  */
 'use strict';
 angular.module('BooksApp')
-.controller('BookController', ['bc', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
-function($http, $timeout, $interval, uiGridConstants, uiGridGroupingConstants) {
+.controller('BookController', ['$http', '$timeout', '$interval', 
+//'uiGridConstants', 'uiGridGroupingConstants',
+function($http, $timeout, $interval 
+	//, uiGridConstants, uiGridGroupingConstants
+	) {
 
 	var bc = this;
 
@@ -116,24 +119,24 @@ function($http, $timeout, $interval, uiGridConstants, uiGridGroupingConstants) {
 
 }]);
 
-if ( typeof NS == 'undefined') {
-	NS = {};
-}
-
-NS.myFunction = {
-	//empty stuff array, filled during initialization
-	stuff : [],
-
-	init : function init() {
-		this.stuff.push('Testing');
-	},
-	reset : function reset() {
-		this.stuff = [];
-	},
-	//replace “//will add new functionality here later” with the following:
-	append : function append(string1, string2) {
-		return string1 + ' ' + string2;
-	}
-};
-
-NS.myFunction.init(); 
+// if ( typeof NS == 'undefined') {
+	// NS = {};
+// }
+// 
+// NS.myFunction = {
+	// //empty stuff array, filled during initialization
+	// stuff : [],
+// 
+	// init : function init() {
+		// this.stuff.push('Testing');
+	// },
+	// reset : function reset() {
+		// this.stuff = [];
+	// },
+	// //replace “//will add new functionality here later” with the following:
+	// append : function append(string1, string2) {
+		// return string1 + ' ' + string2;
+	// }
+// };
+// 
+// NS.myFunction.init(); 

@@ -14,210 +14,23 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="BooksApp" class="jumbotron">
+  <body ng-app="BooksApp" ng-controller="BookController" class="jumbotron">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="true"
-					aria-controls="navbar">
-					<span class="sr-only">Navigation ein-/ausblenden</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" target="_blank"
-					href="https://github.com/FunThomas424242/books.example"> <img
-					style="position: absolute; height: 50px; top: 0; left: 0; border: 0;"
-					src="../img/Lieblingsbuch149x149.png" alt="App Icon Lieblingsbuch">
-					Books.App v1.1.2-SNAPSHOT
-				</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="text" placeholder="openID" class="form-control" />
-					</div>
-					<button type="submit" class="btn btn-success">Anmelden</button>
-					<button type="submit" class="btn btn-default">Zugang
-						Erstellen</button>
-				</form>
-				<div class="container">
-					<div>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="active"><a href="booklist.html">Bücher</a></li>
-							<li><a href="einstellungen.html">Einstellungen</a></li>
-							<li><a href="user.html">Nutzer</a></li>
-							<li><a href="impressum.html">Impressum</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
+    <div ng-include="views/navigation.html"></div>
+ 	<div ng-view></div>
+ 	<ng-include src="views/footer.html" >
 
-	<div class="container">
-		<div class="page-header">
-			<h1>
-				B&uuml;cherregal - <small>Liste aller B&uuml;cher</small>
-			</h1>
-		</div>
-		<div class="panel-group">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<div class="panel-title">Buchdaten Erfassen</div>
-				</div>
-				<div class="panel-body">
-					<form>
-						<div class="row">
-							<div class="form-group col-md-6">
-								<label>Titel:</label><input type="text"
-									ng-model="newBookData.titel" class="form-control"> </input>
-							</div>
-							<div class="form-group col-md-6">
-								<label>ISBN:</label><input type="text"
-									ng-model="newBookData.isbn" class="form-control"> </input>
-							</div>
-						</div>
-						<div class="btn-group">
-							<button id="newBookDataOK" class="btn btn-info" type="submit"
-								ng-click="addBook()">
-								<span class="glyphicon glyphicon-save"
-									title="Eingaben als neues Buch speichern mit Titel {{book.titel}}"></span>
-								Obige Daten als neues Buch aufnehmen
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div ng-show="editModusAktiv" class="panel panel-info">
-				<div class="panel-heading">
-					<div class="panel-title">Buchdaten Bearbeiten</div>
-				</div>
-				<div class="panel-body">
-					<form>
-						<div class="row">
-							<div class="form-group col-md-6">
-								<label>Titel:</label><input type="text"
-									ng-model="editBookData.titel" class="form-control"> </input>
-							</div>
-							<div class="form-group col-md-6">
-								<label>ISBN:</label><input type="text"
-									ng-model="editBookData.isbn" class="form-control"> </input>
-							</div>
-						</div>
-						<p>
-							<button id="editBookOK" class="btn btn-info" type="submit"
-								ng-click="saveEditData()">
-								<span class="glyphicon glyphicon-ok"
-									title="Speichere die Eingaben als Buch mit ID {{book.id}} und Titel {{book.titel}}"></span>
-								Formularwerte ins Buch zurückspeichern
-							</button>
-							<button id="editBookCancel" class="btn btn-info" type="submit"
-								ng-click="cancelEditData()">
-								<span class="glyphicon glyphicon-remove"
-									title="Eingaben verwerfen zum Buch mit ID {{book.id}}"></span>
-								Formularwerte ins Buch zurückspeichern
-							</button>
-						</p>
-					</form>
-				</div>
-			</div>
-
-			<div ng-hide="ergebnisseVorhanden" class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title">Liste der erfassten Bücher</div>
-				</div>
-				<div class="panel-body">Es wurden noch keine B&uuml;cher
-					erfasst!</div>
-			</div>
-
-			<div ng-show="ergebnisseVorhanden" class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title">Liste der erfassten Bücher</div>
-				</div>
-				<div class="panel-body">
-					<table id="buchliste"
-						class="table table-responsive table-hover table-bordered table-striped table-condensed">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Titel</th>
-								<th>ISBN</th>
-								<th>Aktionen</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="book in books | orderBy : 'id' : 'reverse' "
-								id="{{book.selfURL}}">
-								<!-- Id -->
-								<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
-								<!-- Titel -->
-								<td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
-								<!-- ISBN -->
-								<td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
-								<!-- Aktionen -->
-								<td><span id="editBook_{{book.id}}"
-									class="glyphicon glyphicon-edit"
-									title="Bearbeite Buch mit ID {{book.id}} und Titel {{book.titel}}"
-									ng-click="editBook('{{book.selfURL}}')"></span> <span
-									id="deleteBook_{{book.id}}" class="glyphicon glyphicon-trash"
-									title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
-									ng-click="deleteBook('{{book.selfURL}}')"></span></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="panel-footer">
-					<div class="panel-title">Legende</div>
-					<div>
-						<dl class="dl-horizontal">
-							<dt>
-								<span class="glyphicon glyphicon-trash"></span>
-							</dt>
-							<dd>Buch löschen</dd>
-							<dt>
-								<span class="glyphicon glyphicon-warning-sign warning"></span>
-							</dt>
-							<dd>ISBN ungültig</dd>
-						</dl>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Site footer -->
-	<footer class="footer">
-
-		<div class="container">
-			<div>
-				powered by <a href="http://www.glyphicons.com/">glyphicons</a>,
-				powered by <a href="http://www.getboostrap.com">bootstrap</a>,
-				powered by <a href="http://www.spring.io">spring</a>
-			</div>
-			<div>
-				<a href='https://www.openhub.net/accounts/68990?ref=Detailed'
-					target='_blank'> <img
-					alt='Open Hub profile for FunThomas424242' border='0' height='35'
-					src='https://www.openhub.net/accounts/68990/widgets/account_detailed.gif'
-					width='230' />
-				</a>erstellte die Anwendung und änderte sie zuletzt in 2015.
-			</div>
-		</div>
-	</footer>
-
+	
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/angular/angular.js"></script>
-    <script src="libs/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
     <script src="libs/angular-animate/angular-animate.js"></script>
     <script src="libs/angular-aria/angular-aria.js"></script>
     <script src="libs/angular-cookies/angular-cookies.js"></script>
