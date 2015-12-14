@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('bookswebApp', [
+  .module('BooksApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -17,14 +17,24 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch', 
+    'ui.grid', 
+    'ui.grid.cellNav', 
+    'ui.grid.edit', 
+    'ui.grid.resizeColumns', 
+    'ui.grid.pinning', 
+    'ui.grid.selection', 
+    'ui.grid.moveColumns', 
+    'ui.grid.exporter', 
+    'ui.grid.importer', 
+    'ui.grid.grouping'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/books.html',
+        controller: 'BookController',
+        controllerAs: 'bc'
       })
       .when('/about', {
         templateUrl: 'views/about.html',

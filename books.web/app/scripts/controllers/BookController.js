@@ -20,8 +20,8 @@
  * #L%
  */
 'use strict';
-angular.module('BooksApp', ['ngTouch', 'ui.grid', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.pinning', 'ui.grid.selection', 'ui.grid.moveColumns', 'ui.grid.exporter', 'ui.grid.importer', 'ui.grid.grouping'])
-controller('BookController', ['bc', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
+angular.module('BooksApp')
+.controller('BookController', ['bc', '$http', '$timeout', '$interval', 'uiGridConstants', 'uiGridGroupingConstants',
 function($http, $timeout, $interval, uiGridConstants, uiGridGroupingConstants) {
 
 	var bc = this;
