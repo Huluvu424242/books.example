@@ -32,7 +32,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/books.html',
+        templateUrl: 'views/booklist.html',
         controller: 'BookController',
         controllerAs: 'bc'
       })
