@@ -22,40 +22,12 @@
 'use strict';
 angular.module('BooksApp')
 .controller('BookController', ['$http', '$timeout', '$interval', 
-//'uiGridConstants', 'uiGridGroupingConstants',
-function($http, $timeout, $interval 
-	//, uiGridConstants, uiGridGroupingConstants
-	) {
+function($http, $timeout, $interval) {
 
 	var bc = this;
 
 	bc.editModusAktiv = false;
 	bc.books = [];
-
-	//    bc.gridOptions = {};
-	//    bc.gridOptions.data = 'myData';
-	//    bc.gridOptions.enableColumnResizing = true;
-	//    bc.gridOptions.enableFiltering = true;
-	//    bc.gridOptions.enableGridMenu = true;
-	//    bc.gridOptions.showGridFooter = true;
-	//    bc.gridOptions.showColumnFooter = true;
-	//    bc.gridOptions.fastWatch = true;
-	// bc.gridOptions.minRowsToShow = 5;
-
-	//    bc.gridOptions.rowIdentity = function(row) {
-	//      return row.id;
-	//    };
-	//    bc.gridOptions.getRowIdentity = function(row) {
-	//      return row.id;
-	//    };
-	//
-	//    bc.gridOptions.columnDefs = [
-	//      { field:'id', displayName:'ID',  width:'10%' },
-	//      { field:'titel', name:'Titel', width:'40%', enableCellEdit: true},
-	//      { field:'isbn.formattedValue',displayName:'ISBN', width:'40%', enableCellEdit: true},
-	//      { field:'isbn.valid',displayName:'Check', width:'10%', enableCellEdit: false, type:'boolean'}
-	//    ];
-	//
 
 	//GET http://localhost:8080/books
 	bc.refreshData = function(defaultURL) {
@@ -92,7 +64,8 @@ function($http, $timeout, $interval
 
 		$http({
 			method : 'POST',
-			url : bc.newURL,
+			//url : bc.newURL,
+			url : 'http://localhost:8080/book/new',
 			params : {
 				'titel' : titel,
 				'isbn' : isbn

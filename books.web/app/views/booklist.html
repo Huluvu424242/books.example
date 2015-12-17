@@ -15,18 +15,18 @@
 						<div class="row">
 							<div class="form-group col-md-6">
 								<label>Titel:</label><input type="text"
-									ng-model="newBookData.titel" class="form-control"> </input>
+									ng-model="bc.newBookData.titel" class="form-control"> </input>
 							</div>
 							<div class="form-group col-md-6">
 								<label>ISBN:</label><input type="text"
-									ng-model="newBookData.isbn" class="form-control"> </input>
+									ng-model="bc.newBookData.isbn" class="form-control"> </input>
 							</div>
 						</div>
 						<div class="btn-group">
 							<button id="newBookDataOK" class="btn btn-info" type="submit"
-								ng-click="addBook()">
+								ng-click="bc.addBook()">
 								<span class="glyphicon glyphicon-save"
-									title="Eingaben als neues Buch speichern mit Titel {{book.titel}}"></span>
+									title="Eingaben als neues Buch speichern mit Titel {{bc.book.titel}}"></span>
 								Obige Daten als neues Buch aufnehmen
 							</button>
 						</div>
