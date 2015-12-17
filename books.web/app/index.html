@@ -11,7 +11,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css"></script>
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap-theme.css"></script>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/jumbotron.css">
     <!-- endbuild -->
   </head>
   <body ng-app="BooksApp" ng-controller="BookController" class="jumbotron">
@@ -20,9 +23,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-include="views/navigation.html"></div>
+    <div ng-include="'views/navigation.html'"></div>
  	<div ng-view></div>
- 	<ng-include src="views/footer.html" >
+ 	<ng-include src="'views/footer.html'" >
 
 	
 
