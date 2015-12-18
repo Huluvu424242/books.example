@@ -67,7 +67,7 @@
 				</div>
 			</div>
 
-			<div ng-hide="ergebnisseVorhanden" class="panel panel-default">
+			<div ng-hide="bc.ergebnisseVorhanden" class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">Liste der erfassten Bücher</div>
 				</div>
@@ -75,7 +75,7 @@
 					erfasst!</div>
 			</div>
 
-			<div ng-show="ergebnisseVorhanden" class="panel panel-default">
+			<div ng-show="bc.ergebnisseVorhanden" class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">Liste der erfassten Bücher</div>
 				</div>
@@ -91,7 +91,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="book in books | orderBy : 'id' : 'reverse' "
+							<tr ng-repeat="book in bc.books | orderBy : 'id' : 'reverse' "
 								id="{{book.selfURL}}">
 								<!-- Id -->
 								<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
@@ -103,10 +103,10 @@
 								<td><span id="editBook_{{book.id}}"
 									class="glyphicon glyphicon-edit"
 									title="Bearbeite Buch mit ID {{book.id}} und Titel {{book.titel}}"
-									ng-click="editBook('{{book.selfURL}}')"></span> <span
+									ng-click="bc.editBook('{{book.selfURL}}')"></span> <span
 									id="deleteBook_{{book.id}}" class="glyphicon glyphicon-trash"
 									title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
-									ng-click="deleteBook('{{book.selfURL}}')"></span></td>
+									ng-click="bc.deleteBook('{{book.selfURL}}')"></span></td>
 							</tr>
 						</tbody>
 					</table>

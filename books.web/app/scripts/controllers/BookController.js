@@ -33,8 +33,9 @@ function($http, $timeout, $interval) {
 	bc.refreshData = function(defaultURL) {
 
 		//default für allerersten Aufruf
-		if ( typeof (bc.selfURL) === 'undefined')
+		if ( typeof (bc.selfURL) === 'undefined'){
 			bc.selfURL = defaultURL;
+		}
 
 		bc.books = [];
 
@@ -90,6 +91,7 @@ function($http, $timeout, $interval) {
 		});
 	};
 
+	bc.refreshData('http://localhost:8080/books');
 }]);
 
 // if ( typeof NS == 'undefined') {

@@ -43,64 +43,74 @@ import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
-@Path("/app")
+@Path("/")
 @Provider
 public class BookController {
 
-	protected final BookService bookService;
+    protected final BookService bookService;
 
-	protected final ISBNService isbnService;
+    protected final ISBNService isbnService;
 
-	@Inject
-	public BookController(final BookService bookService, final ISBNService isbnService) {
-		this.bookService = bookService;
-		this.isbnService = isbnService;
-	}
+    @Inject
+    public BookController(final BookService bookService,
+            final ISBNService isbnService) {
+        this.bookService = bookService;
+        this.isbnService = isbnService;
+    }
 
-	protected List<Book> retrieveAllBooks() {
-		return this.bookService.findAll();
-	}
+    protected List<Book> retrieveAllBooks() {
+        return this.bookService.findAll();
+    }
 
-	@GET
-	@Path("/books")
-	public WebState listeBuecher(@Context final HttpServletRequest request) {
-		final String selfURL = request.getRequestURL().toString();
-		final String baseURL = selfURL.substring(0, selfURL.length() - request.getRequestURI().length())
-				+ request.getContextPath() + "/";
-		// convert book list to resource array
-		final List<Book> books = retrieveAllBooks();
-		final WebResource[] resources = new WebResource[books.size()];
-		books.toArray(resources);
-		final WebState webState = new WebState(baseURL, selfURL, resources);
-		webState.setNewURL(baseURL + "book/new");
-		return webState;
-	}
+    @GET
+    @Path("/books")
+    public WebState listeBuecher(@Context final HttpServletRequest request) {
+        final String selfURL = request.getRequestURL().toString();
+        System.out.println("break1:" + selfURL);
+        final String baseURL = selfURL.substring(0, selfURL.length()
+                - request.getRequestURI().length())
+                + request.getContextPath() + "/";
+        System.out.println("break2:" + baseURL);
+        // convert book list to resource array
+        final List<Book> books = retrieveAllBooks();
+        System.out.println("break3:" + books);
+        final WebResource[] resources = new WebResource[books.size()];
+        System.out.println("break4:" + resources);
+        books.toArray(resources);
+        System.out.println("break5:" + resources);
+        final WebState webState = new WebState(baseURL, selfURL, resources);
+        System.out.println("break6:" + webState);
+        webState.setNewURL(baseURL + "book/new");
+        System.out.println("break7:" + webState.toString());
+        return webState;
+    }
 
-	// @ApiMethod
-	@DELETE
-	@Path("/book/{id}")
-	public void loescheBuch(@PathParam("id") Long id) {
-		System.out.println("loeschen aufgerufen");
-		System.out.println("ID:" + id);
-		this.bookService.deleteBook(id);
-	}
+    // @ApiMethod
+    @DELETE
+    @Path("/book/{id}")
+    public void loescheBuch(@PathParam("id") Long id) {
+        System.out.println("loeschen aufgerufen");
+        System.out.println("ID:" + id);
+        this.bookService.deleteBook(id);
+    }
 
-	@POST
-	@Path("/book/new")
-	public void speichereBuch(@Context final HttpServletRequest request,
-			@NotNull @QueryParam("titel") final String titel,
-			@DefaultValue("") @QueryParam("isbn") final String isbnraw) throws InvalidISBNException {
+    @POST
+    @Path("/book/new")
+    public void speichereBuch(@Context final HttpServletRequest request,
+            @NotNull @QueryParam("titel") final String titel,
+            @DefaultValue("") @QueryParam("isbn") final String isbnraw)
+            throws InvalidISBNException {
 
-		System.out.println("Titel: " + titel);
-		System.out.println("ISB: " + isbnraw);
+        System.out.println("Titel: " + titel);
+        System.out.println("ISB: " + isbnraw);
 
-		ISBN isbn = null;
+        ISBN isbn = null;
 
-		if (isbnraw.length() > 0) {
-			isbn = ISBN.parseFromString(isbnraw);
-			this.isbnService.addISBN(isbn);
-		}
-		this.bookService.addBook(titel, isbn);
-	}
+        if (isbnraw.length() > 0) {
+            isbn = ISBN.parseFromString(isbnraw);
+            this.isbnService.addISBN(isbn);
+        }
+        this.bookService.addBook(titel, isbn);
+    }
 
 }
