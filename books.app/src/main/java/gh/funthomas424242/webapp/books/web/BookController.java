@@ -33,6 +33,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
@@ -43,6 +44,7 @@ import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
+//@Path("${server.contextPath}")
 @Path("/")
 @Provider
 public class BookController {
@@ -64,24 +66,19 @@ public class BookController {
 
     @GET
     @Path("/books")
+    @Produces("application/json")
     public WebState listeBuecher(@Context final HttpServletRequest request) {
         final String selfURL = request.getRequestURL().toString();
-        System.out.println("break1:" + selfURL);
         final String baseURL = selfURL.substring(0, selfURL.length()
                 - request.getRequestURI().length())
                 + request.getContextPath() + "/";
-        System.out.println("break2:" + baseURL);
+        System.out.println("contextPath:" + request.getContextPath());
         // convert book list to resource array
         final List<Book> books = retrieveAllBooks();
-        System.out.println("break3:" + books);
         final WebResource[] resources = new WebResource[books.size()];
-        System.out.println("break4:" + resources);
         books.toArray(resources);
-        System.out.println("break5:" + resources);
         final WebState webState = new WebState(baseURL, selfURL, resources);
-        System.out.println("break6:" + webState);
         webState.setNewURL(baseURL + "book/new");
-        System.out.println("break7:" + webState.toString());
         return webState;
     }
 
