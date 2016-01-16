@@ -21,22 +21,25 @@ package gh.funthomas424242.webapp.books.web;
  * <http://www.gnu.org/licenses/lgpl-3.0.html>.
  * #L%
  */
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.ext.Provider;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.hateoas.Resources;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
@@ -44,10 +47,10 @@ import gh.funthomas424242.webapp.books.domain.InvalidISBNException;
 import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
-//@Path("${server.contextPath}")
-@Path("/")
-@Provider
+@Controller
 public class BookController {
+
+    final Logger LOG = LoggerFactory.getLogger(BookController.class);
 
     protected final BookService bookService;
 
@@ -56,6 +59,7 @@ public class BookController {
     @Inject
     public BookController(final BookService bookService,
             final ISBNService isbnService) {
+        LOG.trace("BookController(" + bookService + ", " + isbnService + ")");
         this.bookService = bookService;
         this.isbnService = isbnService;
     }
@@ -64,43 +68,34 @@ public class BookController {
         return this.bookService.findAll();
     }
 
-    @GET
-    @Path("/books")
-    @Produces("application/json")
-    public WebState listeBuecher(@Context final HttpServletRequest request) {
-        final String selfURL = request.getRequestURL().toString();
-        final String baseURL = selfURL.substring(0, selfURL.length()
-                - request.getRequestURI().length())
-                + request.getContextPath() + "/";
-        System.out.println("contextPath:" + request.getContextPath());
-        // convert book list to resource array
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    @ResponseBody
+    public HttpEntity<Resources<Book>> listeBuecher() {
+        LOG.trace("listeBuecher()");
         final List<Book> books = retrieveAllBooks();
-        final WebResource[] resources = new WebResource[books.size()];
-        books.toArray(resources);
-        final WebState webState = new WebState(baseURL, selfURL, resources);
-        webState.setNewURL(baseURL + "book/new");
-        return webState;
+        // for(final Book book:books){
+        // book.add(linkTo(methodOn(BookController.class).getBuch(book.getId()))
+        // .withSelfRel());
+        // }
+        final Resources<Book> buchregal = new Resources<Book>(books);
+        buchregal.add(linkTo(methodOn(BookController.class).listeBuecher())
+                .withSelfRel());
+        LOG.trace("Books:" + books);
+        return new ResponseEntity<Resources<Book>>(buchregal, HttpStatus.OK);
     }
 
     // @ApiMethod
-    @DELETE
-    @Path("/book/{id}")
-    public void loescheBuch(@PathParam("id") Long id) {
-        System.out.println("loeschen aufgerufen");
-        System.out.println("ID:" + id);
+    @RequestMapping(value = "/book/{id}", method = RequestMethod.DELETE)
+    public void loescheBuch(@PathVariable Long id) {
+        LOG.trace("loescheBuch(" + id + ")");
         this.bookService.deleteBook(id);
     }
 
-    @POST
-    @Path("/book/new")
-    public void speichereBuch(@Context final HttpServletRequest request,
-            @NotNull @QueryParam("titel") final String titel,
-            @DefaultValue("") @QueryParam("isbn") final String isbnraw)
-            throws InvalidISBNException {
-
-        System.out.println("Titel: " + titel);
-        System.out.println("ISB: " + isbnraw);
-
+    @RequestMapping(value = "/book/new", method = RequestMethod.POST)
+    public void speichereBuch(@RequestParam(required = true) final String titel,
+            @RequestParam(required = true, defaultValue = "") final String isbnraw)
+                    throws InvalidISBNException {
+        LOG.trace("speichereBuch(" + titel + ", " + isbnraw + ")");
         ISBN isbn = null;
 
         if (isbnraw.length() > 0) {

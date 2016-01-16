@@ -28,48 +28,55 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import gh.funthomas424242.webapp.books.web.WebResource;
+import org.springframework.hateoas.ResourceSupport;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-public class Book extends WebResource {
+public class Book extends ResourceSupport {
 
-	@Id
-	@GeneratedValue
-	protected long id;
+    @Id
+    @GeneratedValue
+    protected long dbId;
 
-	protected String titel;
+    protected String titel;
 
-	@ManyToOne
-	protected ISBN isbn;
+    @ManyToOne
+    protected ISBN isbn;
 
-	public Book() {
+    @JsonCreator
+    public Book() {
 
-	}
+    }
 
-	public Book(@NotNull final String titel, final ISBN isbn) {
-		if (titel == null || titel.length() == 0) {
-			throw new IllegalArgumentException("Ein Buchtitel ist erforderlich. Bitte geben Sie einen Buchtitel ein.");
-		}
-		this.titel = titel;
-		this.isbn = isbn;
-	}
+    @JsonCreator
+    public Book(@JsonProperty @NotNull final String titel,
+            @JsonProperty final ISBN isbn) {
 
-	@Override
-	public long getId() {
-		return this.id;
-	}
+        if (titel == null || titel.length() == 0) {
+            throw new IllegalArgumentException(
+                    "Ein Buchtitel ist erforderlich. Bitte geben Sie einen Buchtitel ein.");
+        }
+        this.titel = titel;
+        this.isbn = isbn;
+    }
 
-	public String getTitel() {
-		return this.titel;
-	}
+    // public long getPrimaryKey() {
+    // return this.dbId;
+    // }
 
-	public ISBN getIsbn() {
-		return this.isbn;
-	}
+    public String getTitel() {
+        return this.titel;
+    }
 
-	@Override
-	public String getResourcePathPattern() {
-		return "{baseURL}/book/{id}";
-	}
+    public ISBN getIsbn() {
+        return this.isbn;
+    }
+
+    // @Override
+    // public String getResourcePathPattern() {
+    // return "{baseURL}/book/{id}";
+    // }
 
 }

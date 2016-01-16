@@ -33,33 +33,48 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
+    private static final String BOOKS_DB_PORT_1521_TCP = "BOOKS_DB_PORT_1521_TCP";
+    private static final Logger LOG = LoggerFactory
+            .getLogger(Application.class);
 
-	private static final String BOOKS_DB_PORT_1521_TCP = "BOOKS_DB_PORT_1521_TCP";
-	private static final Logger LOG = LoggerFactory
-			.getLogger(Application.class);
+    public static void main(String[] args) {
+        final Application app = new Application();
+        app.start(args);
+    }
 
-	public static void main(String[] args) {
-		final Application app = new Application();
-		app.start(args);
-	}
+    private void start(String[] args) {
+        final SpringApplication app = new SpringApplication(Application.class);
+        app.setShowBanner(true);
+        final Map<String, String> env = System.getenv();
+        final String envValue = env.get(BOOKS_DB_PORT_1521_TCP); // "tcp://localhost:1521";
+        LOG.debug("BOOKS_DB_PORT_1521_TCP: " + envValue);
 
-	private void start(String[] args) {
-		final SpringApplication app = new SpringApplication(Application.class);
-		app.setShowBanner(true);
-		final Map<String,String>env=System.getenv();
-		final String envValue= env.get(BOOKS_DB_PORT_1521_TCP);
-		String connectionHost = "tcp://localhost:1521";
-		LOG.info("CONNECTION_HOST: " + connectionHost);
-		if (envValue != null) {
-			connectionHost = envValue;
-		}
-		LOG.info("CONNECTION_HOST: " + connectionHost);
-		final Map<String, Object> config = new HashMap<String, Object>();
-		config.put("spring.datasource.url", "jdbc:h2:" + connectionHost
-				+ "//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE");
-		config.put("spring.jpa.hibernate.ddl-auto", "update");
-		app.setDefaultProperties(config);
-		app.run(args);
-	}
+        final String dbConnectionURL;
+        if (envValue == null) {
+            dbConnectionURL = "jdbc:h2:~/test";
+        } else {
+            dbConnectionURL = "jdbc:h2:" + envValue
+                    + "//opt/h2-data/bookdb;DB_CLOSE_ON_EXIT=FALSE";
+        }
+        LOG.info("DB CONNECTION URL: " + dbConnectionURL);
+
+        final Map<String, Object> config = new HashMap<String, Object>();
+        config.put("spring.datasource.url", dbConnectionURL);
+        config.put("spring.jpa.hibernate.ddl-auto", "update");
+        app.setDefaultProperties(config);
+        app.run(args);
+    }
+
+    // Lösung wenn WebMvc genutzt wird
+    // @Bean
+    // public WebMvcConfigurer corsConfigurer() {
+    // return new WebMvcConfigurerAdapter() {
+    // @Override
+    // public void addCorsMappings(CorsRegistry registry) {
+    // registry.addMapping("/greeting-javaconfig")
+    // .allowedOrigins("http://localhost:9000");
+    // }
+    // };
+    // }
 
 }
