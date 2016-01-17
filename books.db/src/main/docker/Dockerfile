@@ -1,4 +1,4 @@
-FROM java:8
+FROM java:8-jdk
 MAINTAINER FunThomas424242 (Thomas Schubert, funthomas424242@gmail.com)
 
 ENV H2_RELEASE_DATE=2015-10-11

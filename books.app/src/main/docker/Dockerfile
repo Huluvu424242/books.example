@@ -1,4 +1,4 @@
-FROM java:8
+FROM java:8-jdk
 VOLUME /tmp
 ADD ${project.build.finalName}.jar app.jar  
 EXPOSE 8080
