@@ -8,6 +8,7 @@ zu verkürzen
 # 1.1.3-SNAPSHOT
 
 * Spring-Boot Version auf 1.2.8 erhöht
+* Logs abgelegt unter /tmp/logs
 * HATEOAS Implementierung von spring-boot einsetzen
 * Jersey Verwendung wieder ausgebaut - es werden nur noch spring-boot Bordmittel genutzt
 * Frontend an neues Backend angepasst und über Direktiven modularisiert
