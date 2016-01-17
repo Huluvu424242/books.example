@@ -19,82 +19,81 @@
  * <http://www.gnu.org/licenses/lgpl-3.0.html>.
  * #L%
  */
-'use strict';
-angular.module('BooksApp')
-	.controller('BookController', ['$http', '$timeout', '$interval',
-		function ($http, $timeout, $interval) {
+(function () {
+    'use strict';
+    angular.module('BooksApp')
+	       .controller('BookController', ['$http', '$timeout', '$interval',
+		      function ($http, $timeout, $interval) {
+                var bc = this;
+                bc.editModusAktiv = false;
+			    bc.books = [];
 
-			var bc = this;
+                //GET http://localhost:8080/books
+                bc.refreshData = function (defaultURL) {
 
-			bc.editModusAktiv = false;
-			bc.books = [];
+                //default für allerersten Aufruf
+                    if (typeof (bc.selfURL) === 'undefined') {
+                        bc.selfURL = defaultURL;
+                    }
 
-			//GET http://localhost:8080/books
-			bc.refreshData = function (defaultURL) {
+                    bc.books = [];
 
-            //default für allerersten Aufruf
-                if (typeof (bc.selfURL) === 'undefined') {
-                    bc.selfURL = defaultURL;
-                }
+                    $http.get(bc.selfURL).then(function erfolg(response) {
 
-				bc.books = [];
+                        bc.baseURL = response.data.baseURL;
+                        bc.selfURL = response.data.selfURL;
+                        bc.newURL = response.data.newURL;
+                        bc.nextURL = response.data.nextURL;
+                        bc.prevURL = response.data.prevURL;
 
-				$http.get(bc.selfURL).then(function erfolg(response) {
+                        response.data.resources.forEach(function (book) {
+                            bc.books.push(book);
+                        });
+                        // Ausblenden der Tabelle wenn keine Treffer
+                        bc.ergebnisseVorhanden = (bc.books.length > 0);
+                    }, function fehler(response) {
+                        bc.message = response.statusText;
+                    });
+                };
 
-					bc.baseURL = response.data.baseURL;
-					bc.selfURL = response.data.selfURL;
-					bc.newURL = response.data.newURL;
-					bc.nextURL = response.data.nextURL;
-					bc.prevURL = response.data.prevURL;
+                //POST http://localhost:8080/book/new
+                bc.addBook = function () {
 
-					response.data.resources.forEach(function (book) {
-						bc.books.push(book);
-					});
-					// Ausblenden der Tabelle wenn keine Treffer
-					bc.ergebnisseVorhanden = (bc.books.length > 0);
-				}, function fehler(response) {
-					bc.message = response.statusText;
-				});
-			};
+                    var titel = bc.newBookData.titel,
+                        isbn = bc.newBookData.isbn;
 
-			//POST http://localhost:8080/book/new
-			bc.addBook = function () {
+                    $http({
+                        method: 'POST',
+                        //url : bc.newURL,
+                        url: 'http://localhost:8080/book/new',
+                        params: {
+                            'titel': titel,
+                            'isbn': isbn
+                        }
+                    }).then(function erfolg(response) {
+                        bc.newBookData = {};
+                        bc.refreshData();
+                    }, function fehler(response) {
+                        bc.message = "FEHLER BEIM ANGULAR ADD";
+                    });
+                };
 
-				var titel = bc.newBookData.titel,
-				    isbn = bc.newBookData.isbn;
+                //DELETE http://localhost:8080/book/{id}
+                bc.deleteBook = function (url, index) {
 
-				$http({
-					method: 'POST',
-					//url : bc.newURL,
-					url: 'http://localhost:8080/book/new',
-					params: {
-						'titel': titel,
-						'isbn': isbn
-					}
-				}).then(function erfolg(response) {
-					bc.newBookData = {};
-					bc.refreshData();
-				}, function fehler(response) {
-					bc.message = "FEHLER BEIM ANGULAR ADD";
-				});
-			};
+                    $http.delete(url).success(function (result) {
+                        //console.log(result);
+                        //document.getElementById(url).remove();
+                        bc.refreshData();
+                    }).error(function () {
+                        console.log("FEHLER BEIM ANGULAR DELETE");
+                    });
+                };
 
-			//DELETE http://localhost:8080/book/{id}
-			bc.deleteBook = function (url, index) {
-
-				$http.delete(url).success(function (result) {
-					//console.log(result);
-					//document.getElementById(url).remove();
-					bc.refreshData();
-				}).error(function () {
-					console.log("FEHLER BEIM ANGULAR DELETE");
-				});
-			};
-
-			bc.refreshData('http://localhost:8080/books');
-		}
-	    ]);
-
+                bc.refreshData('http://localhost:8080/books');
+            }
+            ]);
+}());
 // if ( typeof NS == 'undefined') {
 // NS = {};
 // }
