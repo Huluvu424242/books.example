@@ -22,6 +22,14 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 * Für alle weiteren Aktualisierungen in das gespiegelte, lokale Repository wechseln und git remote update ausführen.
 * obigen Befehl als shell script per cron ausführen lassen: https://www.garron.me/en/bits/backup-git-bare-repo.html
 
+# Backlog
+* Erhöhen der spring-boot auf version 1.3.1 
+  Wurde bislang zurückgestellt, da dann der docker build fail schlägt 
+  Evtl. hat sich was an den Variablen geändert was mit einem : zu tun hat
+* JSON Format prüfen ob dies Typsicher gestaltet werden kann 
+  z.B. Generierung von JavaScript Lib im Backend für das Frontends
+
+
 # Quellen
 Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
