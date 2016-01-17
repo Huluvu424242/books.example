@@ -28,7 +28,7 @@
    <logger name="gh.funthomas424242" level="TRACE" />
    
     <root level="INFO">
-        <appender-ref ref="consoleAppender" />  
+        <!-- <appender-ref ref="consoleAppender" /> -->  
         <appender-ref ref="FILE"/>
     </root>
 </configuration>
