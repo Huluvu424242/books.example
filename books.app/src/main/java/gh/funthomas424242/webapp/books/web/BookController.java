@@ -73,15 +73,23 @@ public class BookController {
     public HttpEntity<Resources<Book>> listeBuecher() {
         LOG.trace("listeBuecher()");
         final List<Book> books = retrieveAllBooks();
-        // for(final Book book:books){
-        // book.add(linkTo(methodOn(BookController.class).getBuch(book.getId()))
-        // .withSelfRel());
-        // }
+        for (final Book book : books) {
+            book.add(linkTo(methodOn(BookController.class)
+                    .getBuch(book.getPrimaryKey())).withSelfRel());
+        }
         final Resources<Book> buchregal = new Resources<Book>(books);
         buchregal.add(linkTo(methodOn(BookController.class).listeBuecher())
                 .withSelfRel());
         LOG.trace("Books:" + books);
         return new ResponseEntity<Resources<Book>>(buchregal, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public HttpEntity<Book> getBuch(@PathVariable final Long id) {
+        LOG.trace("getBuch(" + id + ")");
+        final Book buch = bookService.getBook(id);
+        return new ResponseEntity<Book>(buch, HttpStatus.OK);
     }
 
     // @ApiMethod

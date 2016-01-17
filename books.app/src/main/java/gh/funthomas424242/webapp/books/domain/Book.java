@@ -38,7 +38,7 @@ public class Book extends ResourceSupport {
 
     @Id
     @GeneratedValue
-    protected long dbId;
+    protected long primaryKey;
 
     protected String titel;
 
@@ -62,9 +62,9 @@ public class Book extends ResourceSupport {
         this.isbn = isbn;
     }
 
-    // public long getPrimaryKey() {
-    // return this.dbId;
-    // }
+    public long getPrimaryKey() {
+        return this.primaryKey;
+    }
 
     public String getTitel() {
         return this.titel;
@@ -73,10 +73,5 @@ public class Book extends ResourceSupport {
     public ISBN getIsbn() {
         return this.isbn;
     }
-
-    // @Override
-    // public String getResourcePathPattern() {
-    // return "{baseURL}/book/{id}";
-    // }
 
 }

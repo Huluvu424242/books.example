@@ -35,28 +35,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookService {
 
-	protected final BookRepository bookRepository;
+    protected final BookRepository bookRepository;
 
-	@Inject
-	public BookService(final BookRepository bookRepository) {
-		this.bookRepository = bookRepository;
-	}
+    @Inject
+    public BookService(final BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
-	public List<Book> findAll() {
-		return this.bookRepository.findAll();
-	}
+    public List<Book> findAll() {
+        return this.bookRepository.findAll();
+    }
 
-	public void addBook(final String titel, final ISBN isbn) {
-		final Book book = new Book(titel, isbn);
-		this.bookRepository.save(book);
-	}
-	
-	public void deleteBook(final Long id){
-		this.bookRepository.delete(id);
-	}
+    public Book getBook(Long id) {
+        return this.bookRepository.getOne(id);
+    }
 
-	public void deleteAll(){
-		this.bookRepository.deleteAll();
-	}
-	
+    public void addBook(final String titel, final ISBN isbn) {
+        final Book book = new Book(titel, isbn);
+        this.bookRepository.save(book);
+    }
+
+    public void deleteBook(final Long id) {
+        this.bookRepository.delete(id);
+    }
+
+    public void deleteAll() {
+        this.bookRepository.deleteAll();
+    }
+
 }
