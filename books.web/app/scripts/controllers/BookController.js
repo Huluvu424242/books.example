@@ -19,7 +19,6 @@
  * <http://www.gnu.org/licenses/lgpl-3.0.html>.
  * #L%
  */
-(function () {
     'use strict';
     angular.module('BooksApp')
 	       .controller('BookController', ['$http', '$timeout', '$interval',
@@ -41,12 +40,12 @@
                     $http.get(bc.selfURL).then(function erfolg(response) {
 
                         bc.baseURL = response.data.baseURL;
-                        bc.selfURL = response.data.selfURL;
+                        bc.selfURL = response.data._links.self;
                         bc.newURL = response.data.newURL;
                         bc.nextURL = response.data.nextURL;
                         bc.prevURL = response.data.prevURL;
 
-                        response.data.resources.forEach(function (book) {
+                        response.data._embedded.bookList.forEach(function (book) {
                             bc.books.push(book);
                         });
                         // Ausblenden der Tabelle wenn keine Treffer
@@ -93,7 +92,7 @@
                 bc.refreshData('http://localhost:8080/books');
             }
             ]);
-}());
+
 // if ( typeof NS == 'undefined') {
 // NS = {};
 // }
