@@ -47,6 +47,7 @@ import gh.funthomas424242.webapp.books.service.BookService;
 import gh.funthomas424242.webapp.books.service.ISBNService;
 
 @RestController
+@RequestMapping("/")
 public class BookController {
 
     final Logger LOG = LoggerFactory.getLogger(BookController.class);
@@ -78,6 +79,7 @@ public class BookController {
         final Resources<Book> buchregal = new Resources<Book>(books);
         buchregal.add(linkTo(methodOn(BookController.class).listeBuecher())
                 .withSelfRel());
+        buchregal.add(linkTo(BookController.class).withRel("baseURL"));
         LOG.trace("Books:" + books);
         return new ResponseEntity<Resources<Book>>(buchregal, HttpStatus.OK);
     }
