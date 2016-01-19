@@ -53,13 +53,13 @@
 							<button id="editBookOK" class="btn btn-info" type="submit"
 								ng-click="saveEditData()">
 								<span class="glyphicon glyphicon-ok"
-									title="Speichere die Eingaben als Buch mit ID {{book.id}} und Titel {{book.titel}}"></span>
+									title="Speichere die Eingaben als Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}"></span>
 								Formularwerte ins Buch zurückspeichern
 							</button>
 							<button id="editBookCancel" class="btn btn-info" type="submit"
 								ng-click="cancelEditData()">
 								<span class="glyphicon glyphicon-remove"
-									title="Eingaben verwerfen zum Buch mit ID {{book.id}}"></span>
+									title="Eingaben verwerfen zum Buch mit ID {{book.primaryKey}}"></span>
 								Formularwerte ins Buch zurückspeichern
 							</button>
 						</p>
@@ -92,21 +92,21 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="book in bc.books | orderBy : 'id' : 'reverse' "
-								id="{{book.selfURL}}">
+								id="{{book._links.self.href}}">
 								<!-- Id -->
-								<td><span title="ID: {{book.id}}">{{book.id}}</span></td>
+								<td><span title="ID: {{book.primaryKey}}">{{book.primaryKey}}</span></td>
 								<!-- Titel -->
 								<td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
 								<!-- ISBN -->
 								<td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
 								<!-- Aktionen -->
-								<td><span id="editBook_{{book.id}}"
+								<td><span id="editBook_{{book.primaryKey}}"
 									class="glyphicon glyphicon-edit"
-									title="Bearbeite Buch mit ID {{book.id}} und Titel {{book.titel}}"
-									ng-click="bc.editBook('{{book.selfURL}}')"></span> <span
-									id="deleteBook_{{book.id}}" class="glyphicon glyphicon-trash"
-									title="Loesche Buch mit ID {{book.id}} und Titel {{book.titel}}"
-									ng-click="bc.deleteBook('{{book.selfURL}}')"></span></td>
+									title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}"
+									ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span
+									id="deleteBook_{{book.primaryKey}}" class="glyphicon glyphicon-trash"
+									title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}"
+									ng-click="bc.deleteBook('{{book._links.self.href}}')"></span></td>
 							</tr>
 						</tbody>
 					</table>

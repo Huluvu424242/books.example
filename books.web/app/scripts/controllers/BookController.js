@@ -28,11 +28,11 @@
 			    bc.books = [];
 
                 //GET http://localhost:8080/books
-                bc.refreshData = function (defaultURL) {
+                bc.refreshData = function (url) {
 
                 //default für allerersten Aufruf
                     if (typeof (bc.selfURL) === 'undefined') {
-                        bc.selfURL = defaultURL;
+                        bc.selfURL = url;
                     }
 
                     bc.books = [];
@@ -40,7 +40,7 @@
                     $http.get(bc.selfURL).then(function erfolg(response) {
 
                         bc.baseURL = response.data.baseURL;
-                        bc.selfURL = response.data._links.self;
+                        bc.selfURL = response.data._links.self.href;
                         bc.newURL = response.data.newURL;
                         bc.nextURL = response.data.nextURL;
                         bc.prevURL = response.data.prevURL;
@@ -78,12 +78,12 @@
                 };
 
                 //DELETE http://localhost:8080/book/{id}
-                bc.deleteBook = function (url, index) {
+                bc.deleteBook = function (url) {
 
                     $http.delete(url).success(function (result) {
                         //console.log(result);
                         //document.getElementById(url).remove();
-                        bc.refreshData();
+                        bc.refreshData(bc.selfURL);
                     }).error(function () {
                         console.log("FEHLER BEIM ANGULAR DELETE");
                     });
