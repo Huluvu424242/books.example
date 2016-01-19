@@ -26,10 +26,9 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -56,7 +55,7 @@ public class BookController {
 
     protected final ISBNService isbnService;
 
-    @Inject
+    @Autowired
     public BookController(final BookService bookService,
             final ISBNService isbnService) {
         LOG.trace("BookController(" + bookService + ", " + isbnService + ")");

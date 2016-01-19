@@ -53,7 +53,7 @@ public class AbstractStory extends JUnitStory {
 	final static Keywords KEYWORDS_DE = new LocalizedKeywords(Locale.GERMAN);
 	final static Keywords KEYWORDS_EN = new LocalizedKeywords(Locale.ENGLISH);
 
-	@Inject
+	@Autowired
 	private ApplicationContext applicationContext;
 
 	@Override
