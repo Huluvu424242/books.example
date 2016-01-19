@@ -101,7 +101,7 @@ public class BookController {
 
     @RequestMapping(value = "/book/new", method = RequestMethod.POST)
     public void speichereBuch(@RequestParam(required = true) final String titel,
-            @RequestParam(required = true, defaultValue = "") final String isbnraw)
+            @RequestParam(value = "isbn", required = true, defaultValue = "") final String isbnraw)
                     throws InvalidISBNException {
         LOG.trace("speichereBuch(" + titel + ", " + isbnraw + ")");
         ISBN isbn = null;

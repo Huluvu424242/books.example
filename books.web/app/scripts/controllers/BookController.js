@@ -83,7 +83,7 @@
                     $http.delete(url).success(function (result) {
                         //console.log(result);
                         //document.getElementById(url).remove();
-                        bc.refreshData(bc.selfURL);
+                        bc.refreshData();
                     }).error(function () {
                         console.log("FEHLER BEIM ANGULAR DELETE");
                     });
