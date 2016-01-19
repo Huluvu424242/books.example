@@ -1,6 +1,6 @@
 FROM java:8-jdk
 VOLUME /tmp
-ADD ${project.build.finalName}.jar app.jar  
+ADD @project.build.finalName@.jar app.jar  
 EXPOSE 8080
 # install needed packages
 RUN \
