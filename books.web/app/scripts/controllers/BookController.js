@@ -21,8 +21,8 @@
  */
     'use strict';
     angular.module('BooksApp')
-	       .controller('BookController', ['$http', '$timeout', '$interval',
-		      function ($http, $timeout, $interval) {
+	       .controller('BookController', ['$http',
+		      function ($http) {
                 var bc = this;
                 bc.editModusAktiv = false;
 			    bc.books = [];
@@ -39,7 +39,7 @@
 
                     $http.get(bc.selfURL).then(function erfolg(response) {
 
-                        bc.baseURL = response.data.baseURL;
+                        bc.baseURL = response.data._links.baseURL.href;
                         bc.selfURL = response.data._links.self.href;
                         bc.newURL = response.data.newURL;
                         bc.nextURL = response.data.nextURL;
