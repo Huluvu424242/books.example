@@ -38,7 +38,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import gh.funthomas424242.webapp.books.domain.Book;
@@ -69,7 +68,6 @@ public class BookController {
     }
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
-    @ResponseBody
     public HttpEntity<Resources<Book>> listeBuecher() {
         LOG.trace("listeBuecher()");
         final List<Book> books = retrieveAllBooks();
@@ -85,7 +83,6 @@ public class BookController {
     }
 
     @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
-    @ResponseBody
     public HttpEntity<Book> getBuch(@PathVariable final Long id) {
         LOG.trace("getBuch(" + id + ")");
         final Book buch = bookService.getBook(id);
@@ -100,7 +97,8 @@ public class BookController {
     }
 
     @RequestMapping(value = "/book/new", method = RequestMethod.POST)
-    public void speichereBuch(@RequestParam(required = true) final String titel,
+    public HttpEntity<Book> speichereBuch(
+            @RequestParam(required = true) final String titel,
             @RequestParam(value = "isbn", required = true, defaultValue = "") final String isbnraw)
                     throws InvalidISBNException {
         LOG.trace("speichereBuch(" + titel + ", " + isbnraw + ")");
@@ -110,7 +108,8 @@ public class BookController {
             isbn = ISBN.parseFromString(isbnraw);
             this.isbnService.addISBN(isbn);
         }
-        this.bookService.addBook(titel, isbn);
+        return new ResponseEntity<Book>(this.bookService.addBook(titel, isbn),
+                HttpStatus.OK);
     }
 
 }
