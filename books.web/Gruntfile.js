@@ -25,8 +25,13 @@ module.exports = function(grunt) {
         dist: 'dist'
     };
 
+    // npm config
+    grunt.file.readJSON('package.json');
+
+
     // Define the configuration for all the tasks
     grunt.initConfig({
+
 
         // Project settings
         yeoman: appConfig,
@@ -476,6 +481,12 @@ module.exports = function(grunt) {
 
     });
 
+    grunt.registerTask('help', 'Gibt das Hilfe Menue aus', function(target) {
+        grunt.log.write('Folgende TASK werden angeboten:\n');
+        grunt.log.write('* grunt ohne Parameter führt JSLint auf dem Projekt aus.\n');
+        grunt.log.write('* grunt startServer: startet den Webserver\n');
+        grunt.log.write('Hilfe ausgegeben: ').ok();
+    });
 
     grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
         if (target === 'dist') {
@@ -527,8 +538,9 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'newer:jshint',
         'newer:jscs',
-        'test',
-        'build'
+       // 'test',
+    //    'build',
+        'help'
     ]);
 
     grunt.registerTask('startServer', [
