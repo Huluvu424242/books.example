@@ -23,9 +23,11 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 * obigen Befehl als shell script per cron ausführen lassen: https://www.garron.me/en/bits/backup-git-bare-repo.html
 
 # Backlog
-* Erhöhen der spring-boot auf version 1.3.1 
-  Wurde bislang zurückgestellt, da dann der docker build fail schlägt 
-  Evtl. hat sich was an den Variablen geändert was mit einem : zu tun hat
+* Bearbeiten Funktionalität einbauen
+* Docker Deployment so aufbauen, dass beliebig Container dazu gestartet werden
+  können.
+* Modultests erstellen bis Kodeabdeckung >90% ist
+* BDD Akzeptanztests einbauen Cucumber und Selenium*Webdriver
 * JSON Format prüfen ob dies Typsicher gestaltet werden kann 
   z.B. Generierung von JavaScript Lib im Backend für das Frontends
 
