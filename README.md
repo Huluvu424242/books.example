@@ -84,6 +84,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 * Deployment
     * https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
     * http://debian-maven.sourceforge.net/
+* AngularJS
+    * https://scotch.io/tutorials/angularjs-best-practices-directory-structure
 * JavaScript & Co Infrastructure
     * http://www.toptal.com/angular-js/your-first-angularjs-app-part-2-scaffolding-building-and-testing
     * http://mherman.org/blog/2015/04/09/testing-angularjs-with-protractor-and-karma-part-1/#.VmyeVHrbLQo
