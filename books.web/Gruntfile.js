@@ -95,7 +95,7 @@
                                 ),
                                 connect().use(
                                     '/public/styles',
-                                    connect.static('./public/styles')
+                                    connect.static('./public/assets/css')
                                 ),
                                 connect.static(appConfig.app)
                             ];
@@ -231,7 +231,7 @@
                     }
                 },
                 sass: {
-                    src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                    src: ['<%= yeoman.app %>/assets/css/{,*/}*.{scss,sass}'],
                     ignorePath: /(\.\.\/){1,2}bower_components\//
                 }
             },
@@ -425,7 +425,7 @@
                             '*.{ico,png,txt}',
                             '*.html',
                             'images/{,*/}*.{webp}',
-                            'styles/fonts/{,*/}*.*'
+                            'assets/css/fonts/{,*/}*.*'
                         ]
                     }, {
                         expand: true,
@@ -441,7 +441,7 @@
                 },
                 styles: {
                     expand: true,
-                    cwd: '<%= yeoman.app %>/styles',
+                    cwd: '<%= yeoman.app %>/assets/css',
                     dest: '.tmp/styles/',
                     src: '{,*/}*.css'
                 }
