@@ -28,6 +28,7 @@
         // Configurable paths for the application
         var appConfig = {
             app: require('./bower.json').appPath || 'public',
+            libs: 'public/assets/libs',
             dist: 'dist'
         };
 

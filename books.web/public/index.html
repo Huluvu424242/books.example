@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -11,45 +12,49 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css"></script>
-    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap-theme.css"></script>
+    <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.css">
+    </script>
+    <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap-theme.css">
+    </script>
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/jumbotron.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="BooksApp" class="jumbotron">
+</head>
+
+<body ng-app="BooksApp" class="jumbotron">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div ng-include="'views/navigation.html'"></div>
- 	<div ng-view></div>
- 	<div ng-include="'views/footer.html'" >
+    <div ng-view></div>
+    <div ng-include="'views/footer.html'">
 
 
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="libs/jquery/dist/jquery.js"></script>
-    <script src="libs/angular/angular.js"></script>
-    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="libs/angular-animate/angular-animate.js"></script>
-    <script src="libs/angular-aria/angular-aria.js"></script>
-    <script src="libs/angular-cookies/angular-cookies.js"></script>
-    <script src="libs/angular-messages/angular-messages.js"></script>
-    <script src="libs/angular-resource/angular-resource.js"></script>
-    <script src="libs/angular-route/angular-route.js"></script>
-    <script src="libs/angular-sanitize/angular-sanitize.js"></script>
-    <script src="libs/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="assets/libs/jquery/dist/jquery.js"></script>
+        <script src="assets/libs/angular/angular.js"></script>
+        <script src="assets/libs/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="assets/libs/angular-animate/angular-animate.js"></script>
+        <script src="assets/libs/angular-aria/angular-aria.js"></script>
+        <script src="assets/libs/angular-cookies/angular-cookies.js"></script>
+        <script src="assets/libs/angular-messages/angular-messages.js"></script>
+        <script src="assets/libs/angular-resource/angular-resource.js"></script>
+        <script src="assets/libs/angular-route/angular-route.js"></script>
+        <script src="assets/libs/angular-sanitize/angular-sanitize.js"></script>
+        <script src="assets/libs/angular-touch/angular-touch.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <!-- <script src="scripts/controllers/main.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <!-- <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script> -->
-    <script src="scripts/controllers/BookController.js"></script>
-    <!-- endbuild -->
+        <script src="scripts/controllers/BookController.js"></script>
+        <!-- endbuild -->
 </body>
+
 </html>
