@@ -27,7 +27,7 @@
 
         // Configurable paths for the application
         var appConfig = {
-            app: require('./bower.json').appPath || 'app',
+            app: require('./bower.json').appPath || 'public',
             dist: 'dist'
         };
 
@@ -93,8 +93,8 @@
                                     connect.static('./bower_components')
                                 ),
                                 connect().use(
-                                    '/app/styles',
-                                    connect.static('./app/styles')
+                                    '/public/styles',
+                                    connect.static('./public/styles')
                                 ),
                                 connect.static(appConfig.app)
                             ];
@@ -473,7 +473,7 @@
                 myServer: {
                     options: {
                         port: 9000,
-                        base: 'app',
+                        base: '<%= yeoman.app %>',
                         // Change this to '0.0.0.0' to access the server from outside.
                         hostname: 'localhost'
                             //livereload: 35729

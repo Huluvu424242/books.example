@@ -1,0 +1,115 @@
+<section>
+    <div class="container">
+        <div class="page-header">
+            <h1>
+				B&uuml;cherregal - <small>Liste aller B&uuml;cher</small>
+			</h1>
+        </div>
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Buchdaten Erfassen</div>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Titel:</label>
+                                <input type="text" ng-model="bc.newBookData.titel" class="form-control"> </input>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>ISBN:</label>
+                                <input type="text" ng-model="bc.newBookData.isbn" class="form-control"> </input>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button id="newBookDataOK" class="btn btn-info" type="submit" ng-click="bc.addBook()">
+                                <span class="glyphicon glyphicon-save" title="Eingaben als neues Buch speichern mit Titel {{bc.book.titel}}"></span> Obige Daten als neues Buch aufnehmen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="editModusAktiv" class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Buchdaten Bearbeiten</div>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Titel:</label>
+                                <input type="text" ng-model="editBookData.titel" class="form-control"> </input>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>ISBN:</label>
+                                <input type="text" ng-model="editBookData.isbn" class="form-control"> </input>
+                            </div>
+                        </div>
+                        <p>
+                            <button id="editBookOK" class="btn btn-info" type="submit" ng-click="saveEditData()">
+                                <span class="glyphicon glyphicon-ok" title="Speichere die Eingaben als Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}"></span> Formularwerte ins Buch zurückspeichern
+                            </button>
+                            <button id="editBookCancel" class="btn btn-info" type="submit" ng-click="cancelEditData()">
+                                <span class="glyphicon glyphicon-remove" title="Eingaben verwerfen zum Buch mit ID {{book.primaryKey}}"></span> Formularwerte ins Buch zurückspeichern
+                            </button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <div ng-hide="bc.ergebnisseVorhanden" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Liste der erfassten Bücher</div>
+                </div>
+                <div class="panel-body">Es wurden noch keine B&uuml;cher erfasst!
+                </div>
+            </div>
+
+            <div ng-show="bc.ergebnisseVorhanden" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Liste der erfassten Bücher</div>
+                </div>
+                <div class="panel-body">
+                    <table id="buchliste" class="table table-responsive table-hover table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Titel</th>
+                                <th>ISBN</th>
+                                <th>Aktionen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="book in bc.books | orderBy : 'id' : 'reverse' " id="{{book._links.self.href}}">
+                                <!-- Id -->
+                                <td><span title="ID: {{book.primaryKey}}">{{book.primaryKey}}</span></td>
+                                <!-- Titel -->
+                                <td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
+                                <!-- ISBN -->
+                                <td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
+                                <!-- Aktionen -->
+                                <td><span id="editBook_{{book.primaryKey}}" class="glyphicon glyphicon-edit" title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span id="deleteBook_{{book.primaryKey}}" class="glyphicon glyphicon-trash" title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.deleteBook('{{book._links.self.href}}')"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="panel-title">Legende</div>
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+								<span class="glyphicon glyphicon-trash"></span>
+							</dt>
+                            <dd>Buch löschen</dd>
+                            <dt>
+								<span class="glyphicon glyphicon-warning-sign warning"></span>
+							</dt>
+                            <dd>ISBN ungültig</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

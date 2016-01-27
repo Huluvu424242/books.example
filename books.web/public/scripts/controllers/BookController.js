@@ -19,18 +19,20 @@
  * <http://www.gnu.org/licenses/lgpl-3.0.html>.
  * #L%
  */
+(function () {
+
     'use strict';
+
     angular.module('BooksApp')
-	       .controller('BookController', ['$http',
-		      function ($http) {
+        .controller('BookController', ['$http', function ($http) {
                 var bc = this;
                 bc.editModusAktiv = false;
-			    bc.books = [];
+                bc.books = [];
 
                 //GET http://localhost:8080/books
                 bc.refreshData = function (url) {
 
-                //default für allerersten Aufruf
+                    //default für allerersten Aufruf
                     if (typeof (bc.selfURL) === 'undefined') {
                         bc.selfURL = url;
                     }
@@ -90,8 +92,9 @@
                 };
 
                 bc.refreshData('http://localhost:8080/books');
-            }
-            ]);
+    }
+  ]);
+}());
 
 // if ( typeof NS == 'undefined') {
 // NS = {};

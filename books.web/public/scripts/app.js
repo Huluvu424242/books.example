@@ -39,4 +39,3 @@ angular
     // nix zu tun
   }]);
 
- 

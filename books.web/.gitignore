@@ -9,4 +9,4 @@
 /dist
 /.tmp
 /.sass-cache
-/app/libs
+/public/libs
