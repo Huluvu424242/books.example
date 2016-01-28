@@ -61,46 +61,29 @@
             bc.addBook = function () {
                 var titel = bc.newBookData.titel,
                     isbn = bc.newBookData.isbn;
-                bookService.addBook('http://localhost:8080/book/new', this, titel, isbn);
-                bc.refreshData();
+                bookService.addBook('http://localhost:8080/book/new', titel, isbn, bc.refreshData);
+                bc.newBookData = {};
             };
-            //                //POST http://localhost:8080/book/new
-            //                bc.addBook = function () {
-            //
-            //                    var titel = bc.newBookData.titel,
-            //                        isbn = bc.newBookData.isbn;
-            //
-            //                    $http({
-            //                        method: 'POST',
-            //                        //url : bc.newURL,
-            //                        url: 'http://localhost:8080/book/new',
-            //                        params: {
-            //                            'titel': titel,
-            //                            'isbn': isbn
-            //                        }
-            //                    }).then(function erfolg(response) {
-            //                        bc.newBookData = {};
-            //                        bc.refreshData();
-            //                    }, function fehler(response) {
-            //                        bc.message = "FEHLER BEIM ANGULAR ADD";
-            //                    });
-            //                };
 
-            //DELETE http://localhost:8080/book/{id}
             bc.deleteBook = function (url) {
-
-                $http.delete(url).success(function (result) {
-                    //console.log(result);
-                    //document.getElementById(url).remove();
-                    bc.refreshData();
-                }).error(function () {
-                    console.log("FEHLER BEIM ANGULAR DELETE");
-                });
+                bookService.deleteBook(url, bc.refreshData);
             };
+
+            //            //DELETE http://localhost:8080/book/{id}
+            //            bc.deleteBook = function (url) {
+            //
+            //                $http.delete(url).success(function (result) {
+            //                    //console.log(result);
+            //                    //document.getElementById(url).remove();
+            //                    bc.refreshData();
+            //                }).error(function () {
+            //                    console.log("FEHLER BEIM ANGULAR DELETE");
+            //                });
+            //            };
 
             bc.refreshData('http://localhost:8080/books');
 
-        }]);
+                    }]);
 }());
 
 // if ( typeof NS == 'undefined') {
