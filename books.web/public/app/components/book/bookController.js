@@ -24,76 +24,83 @@
     'use strict';
 
     angular.module('BooksApp')
-        .controller('BookController', ['$http', function ($http) {
-                var bc = this;
-                bc.editModusAktiv = false;
+        .controller('BookController', ['$http', 'bookService', function ($http, bookService) {
+            var bc = this;
+            bc.editModusAktiv = false;
+            bc.books = [];
+
+            //GET http://localhost:8080/books
+            bc.refreshData = function (url) {
+
+                //default für allerersten Aufruf
+                if (typeof (bc.selfURL) === 'undefined') {
+                    bc.selfURL = url;
+                }
+
                 bc.books = [];
 
-                //GET http://localhost:8080/books
-                bc.refreshData = function (url) {
+                $http.get(bc.selfURL).then(function erfolg(response) {
 
-                    //default für allerersten Aufruf
-                    if (typeof (bc.selfURL) === 'undefined') {
-                        bc.selfURL = url;
-                    }
+                    bc.baseURL = response.data._links.baseURL.href;
+                    bc.selfURL = response.data._links.self.href;
+                    bc.newURL = response.data.newURL;
+                    bc.nextURL = response.data.nextURL;
+                    bc.prevURL = response.data.prevURL;
 
-                    bc.books = [];
-
-                    $http.get(bc.selfURL).then(function erfolg(response) {
-
-                        bc.baseURL = response.data._links.baseURL.href;
-                        bc.selfURL = response.data._links.self.href;
-                        bc.newURL = response.data.newURL;
-                        bc.nextURL = response.data.nextURL;
-                        bc.prevURL = response.data.prevURL;
-
-                        response.data._embedded.bookList.forEach(function (book) {
-                            bc.books.push(book);
-                        });
-                        // Ausblenden der Tabelle wenn keine Treffer
-                        bc.ergebnisseVorhanden = (bc.books.length > 0);
-                    }, function fehler(response) {
-                        bc.message = response.statusText;
+                    response.data._embedded.bookList.forEach(function (book) {
+                        bc.books.push(book);
                     });
-                };
+                    // Ausblenden der Tabelle wenn keine Treffer
+                    bc.ergebnisseVorhanden = (bc.books.length > 0);
+                }, function fehler(response) {
+                    bc.message = response.statusText;
+                });
+            };
 
-                //POST http://localhost:8080/book/new
-                bc.addBook = function () {
 
-                    var titel = bc.newBookData.titel,
-                        isbn = bc.newBookData.isbn;
+            bc.addBook = function () {
+                var titel = bc.newBookData.titel,
+                    isbn = bc.newBookData.isbn;
+                bookService.addBook('http://localhost:8080/book/new', this, titel, isbn);
+                bc.refreshData();
+            };
+            //                //POST http://localhost:8080/book/new
+            //                bc.addBook = function () {
+            //
+            //                    var titel = bc.newBookData.titel,
+            //                        isbn = bc.newBookData.isbn;
+            //
+            //                    $http({
+            //                        method: 'POST',
+            //                        //url : bc.newURL,
+            //                        url: 'http://localhost:8080/book/new',
+            //                        params: {
+            //                            'titel': titel,
+            //                            'isbn': isbn
+            //                        }
+            //                    }).then(function erfolg(response) {
+            //                        bc.newBookData = {};
+            //                        bc.refreshData();
+            //                    }, function fehler(response) {
+            //                        bc.message = "FEHLER BEIM ANGULAR ADD";
+            //                    });
+            //                };
 
-                    $http({
-                        method: 'POST',
-                        //url : bc.newURL,
-                        url: 'http://localhost:8080/book/new',
-                        params: {
-                            'titel': titel,
-                            'isbn': isbn
-                        }
-                    }).then(function erfolg(response) {
-                        bc.newBookData = {};
-                        bc.refreshData();
-                    }, function fehler(response) {
-                        bc.message = "FEHLER BEIM ANGULAR ADD";
-                    });
-                };
+            //DELETE http://localhost:8080/book/{id}
+            bc.deleteBook = function (url) {
 
-                //DELETE http://localhost:8080/book/{id}
-                bc.deleteBook = function (url) {
+                $http.delete(url).success(function (result) {
+                    //console.log(result);
+                    //document.getElementById(url).remove();
+                    bc.refreshData();
+                }).error(function () {
+                    console.log("FEHLER BEIM ANGULAR DELETE");
+                });
+            };
 
-                    $http.delete(url).success(function (result) {
-                        //console.log(result);
-                        //document.getElementById(url).remove();
-                        bc.refreshData();
-                    }).error(function () {
-                        console.log("FEHLER BEIM ANGULAR DELETE");
-                    });
-                };
+            bc.refreshData('http://localhost:8080/books');
 
-                bc.refreshData('http://localhost:8080/books');
-    }
-  ]);
+        }]);
 }());
 
 // if ( typeof NS == 'undefined') {
