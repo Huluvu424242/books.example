@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('BooksApp', [
+    .module('BooksApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -19,23 +19,37 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/booklist.html',
-        controller: 'BookController',
-        controllerAs: 'bc'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  })
-   .controller('SiteController', [ '$http' ,function ($http) {
-    // nix zu tun
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'app/components/book/booklist.html',
+                controller: 'BookController',
+                controllerAs: 'bc'
+            })
+            .when('/einstellungen', {
+                templateUrl: 'app/einstellungen.html',
+                controller: 'DashboardController',
+                controllerAs: 'options'
+            })
+            .when('/impressum', {
+                templateUrl: 'app/impressum.html',
+                controller: 'DashboardController',
+                controllerAs: 'impressum'
+            })
+            .when('/user', {
+                templateUrl: 'app/user.html',
+                controller: 'DashboardController',
+                controllerAs: 'user'
+            })
+            .when('/about', {
+                templateUrl: 'app/about.html',
+                controller: 'DashboardController',
+                controllerAs: 'about'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    })
+    .controller('SiteController', ['$http', function ($http) {
+        // nix zu tun
   }]);
-
