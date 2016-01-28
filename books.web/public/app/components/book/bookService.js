@@ -1,7 +1,7 @@
 angular.module('BooksApp').factory('bookService', function ($http) {
 
     //POST http://localhost:8080/book/new
-    var add = function (url, titel, isbn) {
+    var add = function (url, titel, isbn, doAction) {
 
         $http({
             method: 'POST',
@@ -12,6 +12,7 @@ angular.module('BooksApp').factory('bookService', function ($http) {
             }
         }).then(function erfolg(response) {
             console.log(response);
+            doAction();
         }, function fehler(response) {
             control.message = "FEHLER BEIM ANGULAR ADD";
         });
@@ -31,8 +32,7 @@ angular.module('BooksApp').factory('bookService', function ($http) {
     // public API
     return {
         addBook: function (url, titel, isbn, refreshAction) {
-            add(url, titel, isbn);
-            refreshAction();
+            add(url, titel, isbn, refreshAction);
         },
         deleteBook: function (url, refreshAction) {
             del(url, refreshAction);
