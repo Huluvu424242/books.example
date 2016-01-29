@@ -29,61 +29,46 @@
             bc.editModusAktiv = false;
             bc.books = [];
 
-            //GET http://localhost:8080/books
-            bc.refreshData = function (url) {
+            bc.refreshData = function () {
 
                 //default für allerersten Aufruf
                 if (typeof (bc.selfURL) === 'undefined') {
-                    bc.selfURL = url;
+                    bc.selfURL = 'http://localhost:8080/books';
                 }
 
-                bc.books = [];
+                bookService.listBooks(bc.selfURL, function erfolg(books, links) {
 
-                $http.get(bc.selfURL).then(function erfolg(response) {
-
-                    bc.baseURL = response.data._links.baseURL.href;
-                    bc.selfURL = response.data._links.self.href;
-                    bc.newURL = response.data.newURL;
-                    bc.nextURL = response.data.nextURL;
-                    bc.prevURL = response.data.prevURL;
-
-                    response.data._embedded.bookList.forEach(function (book) {
-                        bc.books.push(book);
-                    });
+                    bc.books = books;
                     // Ausblenden der Tabelle wenn keine Treffer
                     bc.ergebnisseVorhanden = (bc.books.length > 0);
-                }, function fehler(response) {
-                    bc.message = response.statusText;
+                    // link liste
+                    bc.baseURL = links.baseURL.href;
+                    bc.selfURL = links.self.href;
+                    bc.newURL = links.newURL.href;
+                    bc.nextURL = links.nextURL.href;
+                    bc.prevURL = links.prevURL.href;
+
+                }, function fehler(statusText) {
+                    bc.message = statusText;
                 });
             };
-
 
             bc.addBook = function () {
                 var titel = bc.newBookData.titel,
                     isbn = bc.newBookData.isbn;
-                bookService.addBook('http://localhost:8080/book/new', titel, isbn, bc.refreshData);
-                bc.newBookData = {};
+                bookService.addBook('http://localhost:8080/book/new', titel, isbn, function () {
+                    bc.newBookData = {};
+                    bc.refreshData();
+                });
             };
 
             bc.deleteBook = function (url) {
                 bookService.deleteBook(url, bc.refreshData);
             };
 
-            //            //DELETE http://localhost:8080/book/{id}
-            //            bc.deleteBook = function (url) {
-            //
-            //                $http.delete(url).success(function (result) {
-            //                    //console.log(result);
-            //                    //document.getElementById(url).remove();
-            //                    bc.refreshData();
-            //                }).error(function () {
-            //                    console.log("FEHLER BEIM ANGULAR DELETE");
-            //                });
-            //            };
+            bc.refreshData();
 
-            bc.refreshData('http://localhost:8080/books');
-
-                    }]);
+        }]);
 }());
 
 // if ( typeof NS == 'undefined') {
