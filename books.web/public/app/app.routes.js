@@ -33,11 +33,11 @@
                     controller: 'DashboardController',
                     controllerAs: 'user'
                 })
-                .when('/about', {
-                    templateUrl: 'app/about.html',
-                    controller: 'DashboardController',
-                    controllerAs: 'about'
-                })
+//                .when('/about', {
+             //                    templateUrl: 'app/about.html',
+             //                    controller: 'DashboardController',
+             //                    controllerAs: 'about'
+             //                })
                 .otherwise({
                     redirectTo: '/'
                 });
