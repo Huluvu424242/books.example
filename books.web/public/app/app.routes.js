@@ -14,7 +14,7 @@
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'app/components/book/booklist.html',
+                    templateUrl: 'app/components/book/uebersicht.html',
                     controller: 'BookController',
                     controllerAs: 'bc'
                 })
@@ -33,11 +33,11 @@
                     controller: 'DashboardController',
                     controllerAs: 'user'
                 })
-//                .when('/about', {
-             //                    templateUrl: 'app/about.html',
-             //                    controller: 'DashboardController',
-             //                    controllerAs: 'about'
-             //                })
+                //                .when('/about', {
+                //                    templateUrl: 'app/about.html',
+                //                    controller: 'DashboardController',
+                //                    controllerAs: 'about'
+                //                })
                 .otherwise({
                     redirectTo: '/'
                 });

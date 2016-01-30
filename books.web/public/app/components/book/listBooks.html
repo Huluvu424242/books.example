@@ -1,0 +1,52 @@
+<div ng-hide="bc.ergebnisseVorhanden" class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">Liste der erfassten Bücher</div>
+    </div>
+    <div class="panel-body">Es wurden noch keine B&uuml;cher erfasst!
+    </div>
+</div>
+
+<div ng-show="bc.ergebnisseVorhanden" class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">Liste der erfassten Bücher</div>
+    </div>
+    <div class="panel-body">
+        <table id="buchliste" class="table table-responsive table-hover table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titel</th>
+                    <th>ISBN</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in bc.books | orderBy : 'id' : 'reverse' " id="{{book._links.self.href}}">
+                    <!-- Id -->
+                    <td><span title="ID: {{book.primaryKey}}">{{book.primaryKey}}</span></td>
+                    <!-- Titel -->
+                    <td><span title="Titel: {{book.titel}}">{{book.titel}}</span></td>
+                    <!-- ISBN -->
+                    <td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
+                    <!-- Aktionen -->
+                    <td><span id="editBook_{{book.primaryKey}}" class="glyphicon glyphicon-edit" title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span id="deleteBook_{{book.primaryKey}}" class="glyphicon glyphicon-trash" title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.deleteBook('{{book._links.self.href}}')"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        <div class="panel-title">Legende</div>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+								<span class="glyphicon glyphicon-trash"></span>
+							</dt>
+                <dd>Buch löschen</dd>
+                <dt>
+								<span class="glyphicon glyphicon-warning-sign warning"></span>
+							</dt>
+                <dd>ISBN ungültig</dd>
+            </dl>
+        </div>
+    </div>
+</div>
