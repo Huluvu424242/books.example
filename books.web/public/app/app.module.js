@@ -19,6 +19,7 @@
         'ngRoute',
         'ngSanitize',
         'ngTouch'
-    ]);
+    ]).controller('BooksAppController', function () {
 
+    });
 }());

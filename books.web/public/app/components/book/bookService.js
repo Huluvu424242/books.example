@@ -33,10 +33,9 @@
                 console.log(response);
                 doAction();
             }, function fehler(response) {
-                control.message = "FEHLER BEIM ANGULAR ADD";
+                control.message = 'FEHLER BEIM ANGULAR ADD';
             });
         };
-
 
         //DELETE http://localhost:8080/book/{id}
         var del = function (url, doAction) {
@@ -44,7 +43,7 @@
             $http.delete(url).success(function (result) {
                 doAction();
             }).error(function () {
-                console.log("FEHLER BEIM ANGULAR DELETE");
+                console.log('FEHLER BEIM ANGULAR DELETE');
             });
         };
 

@@ -20,17 +20,17 @@
                 })
                 .when('/einstellungen', {
                     templateUrl: 'app/einstellungen.html',
-                    controller: 'DashboardController',
+                    controller: 'BooksAppController',
                     controllerAs: 'options'
                 })
                 .when('/impressum', {
                     templateUrl: 'app/impressum.html',
-                    controller: 'DashboardController',
+                    controller: 'BooksAppController',
                     controllerAs: 'impressum'
                 })
                 .when('/user', {
                     templateUrl: 'app/user.html',
-                    controller: 'DashboardController',
+                    controller: 'BooksAppController',
                     controllerAs: 'user'
                 })
                 //                .when('/about', {
