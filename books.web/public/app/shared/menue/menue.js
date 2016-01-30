@@ -1,18 +1,17 @@
 (function () {
-
     'use strict';
 
     /* @ngInject */
-    function footerdir() {
+    function menuedir() {
 
-        function main(scope, element, attrs) {
+        function link(scope, element, attrs) {
 
         }
 
         var directive = {
             bindToController: false,
-            templateUrl: 'app/shared/footer/footer.html',
-            link: main,
+            templateUrl: 'app/shared/menue/menue.html',
+            link: link,
             restrict: 'A',
             scope: {}
         };
@@ -20,12 +19,12 @@
 
     }
 
-    footerdir.$inject = [];
+    menuedir.$inject = [];
 
     /*jslint white:true */
     /*global angular */
     angular
         .module('BooksApp')
-        .directive('footer', footerdir);
+        .directive('menue', menuedir);
 
 }());
