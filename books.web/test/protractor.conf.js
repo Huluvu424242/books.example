@@ -1,12 +1,12 @@
 exports.config = {
     getPageTimeout: 30000,
     allScriptsTimeout: 30000,
-    seleniumAddress : 'http://localhost:4444/wd/hub',
-    specs : [ 'bdd/features/*.feature' ],
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+    specs: ['bdd/features/*.feature'],
     //output : 'report.html', 
     resultJsonOutputFile: 'report.json',
     //resultHtmlOutputFile: 'report.html',
-    multiCapabilities : [ 
+    multiCapabilities: [
 // {
 // browserName : 'chrome',
 // //'chrome.binary.path' : require('chrome').path,
@@ -26,12 +26,12 @@ exports.config = {
 // */
 // 'phantomjs.ghostdriver.cli.args' : [ '--loglevel=DEBUG' ]
 // },
-    
-    {
-        browserName : 'firefox'
-    } ],
-    baseUrl : 'http://localhost:8080',
-    
+
+        {
+            browserName: 'chrome'
+    }],
+    baseUrl: 'http://localhost:8080',
+
     // set to "custom" instead of cucumber.
     framework: 'custom',
 
@@ -40,7 +40,7 @@ exports.config = {
 
     // relevant cucumber command line options
     cucumberOpts: {
-      format: "summary"
+        format: "summary"
     },
 
 };

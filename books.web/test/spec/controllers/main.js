@@ -1,22 +1,13 @@
-'use strict';
+// example-spec.js
+describe('angularjs homepage', function () {
 
-describe('Controller: MainCtrl', function () {
+    it('should greet the named user', function () {
+        browser.get('/books');
 
-    // load the controller's module
-    beforeEach(module('bookswebApp'));
+        element(by.model('yourName')).sendKeys('Julie');
 
-    var MainCtrl,
-        scope;
+        var greeting = element(by.binding('yourName'));
 
-    // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope) {
-        scope = $rootScope.$new();
-        MainCtrl = $controller('MainCtrl', {
-            $scope: scope // place here mocked dependencies
-        });
-    }));
-
-    it('should attach a list of awesomeThings to the scope', function () {
-        expect(MainCtrl.awesomeThings.length).toBe(3);
+        expect(greeting.getText()).toEqual('Hello Julie!');
     });
 });

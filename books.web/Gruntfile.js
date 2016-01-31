@@ -547,7 +547,7 @@
         ]);
 
         grunt.registerTask('verify', [
-            'connect:myServer',
+            //'connect:myServer',
             'karma'
         ]);
     };
