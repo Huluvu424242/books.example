@@ -483,7 +483,7 @@
             grunt.log.write('Folgende TASK werden angeboten:\n');
             grunt.log.write('* grunt ohne Parameter führt JSLint auf dem Projekt aus.\n');
             grunt.log.write('* grunt startServer: startet den Webserver\n');
-            grunt.log.write('* grunt verify: startet die GUI Tests über Karama\n');
+            grunt.log.write('* grunt verify: startet die GUI Tests über Karma\n');
             grunt.log.write('Hilfe ausgegeben: ').ok();
         });
 
