@@ -1,13 +1,19 @@
-// example-spec.js
-describe('angularjs homepage', function () {
+(function () {
 
-    it('should greet the named user', function () {
-        browser.get('/books');
+    'use strict';
 
-        element(by.model('yourName')).sendKeys('Julie');
+    // example-spec.js
+    describe('angularjs homepage', function () {
 
-        var greeting = element(by.binding('yourName'));
+        it('should greet the named user', function () {
+            // browser().get('/books');
 
-        expect(greeting.getText()).toEqual('Hello Julie!');
+            //        element(by.model('yourName')).sendKeys('Julie');
+            //
+            //        var greeting = element(by.binding('yourName'));
+            //
+            //        expect(greeting.getText()).toEqual('Hello Julie!');
+        });
     });
-});
+
+}());

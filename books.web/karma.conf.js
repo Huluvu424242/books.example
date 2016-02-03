@@ -12,6 +12,8 @@
             // base path that will be used to resolve all patterns (eg. files, exclude)
             basePath: '',
 
+            //urlRoot: '__karma__',
+
             // frameworks to use
             // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
             frameworks: ['jasmine'],
@@ -31,7 +33,7 @@
             // test results reporter to use
             // possible values: 'dots', 'progress'
             // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-            reporters: ['progress', 'brackets'],
+            reporters: ['progress'],
 
             // web server port
             port: 9876,
@@ -52,7 +54,7 @@
 
             // Continuous Integration mode
             // if true, Karma captures browsers, runs the tests and exits
-            singleRun: false,
+            singleRun: true,
 
             // Concurrency level
             // how many browser should be started simultaneous

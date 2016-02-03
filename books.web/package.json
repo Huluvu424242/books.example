@@ -11,7 +11,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compass": "^1.0.0",
     "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-cssmin": "^0.12.0",
     "grunt-contrib-htmlmin": "^0.4.0",
@@ -27,6 +27,8 @@
     "grunt-newer": "^1.1.0",
     "grunt-ng-annotate": "^0.9.2",
     "grunt-postcss": "^0.5.5",
+    "grunt-protractor-runner": "^3.0.0",
+    "grunt-run": "^0.5.2",
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
@@ -46,6 +48,9 @@
     "karma": ">=0.13.19"
   },
   "scripts": {
-    "test": "grunt test"
+    "update-webdriver": "webdriver-manager update",
+    "postinstall": "webdriver-manager update",
+    "test": "grunt test",
+    "pretest": "npm install"
   }
 }

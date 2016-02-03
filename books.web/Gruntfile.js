@@ -13,14 +13,11 @@
         // npm config
         grunt.file.readJSON('package.json');
 
-        //
-        grunt.loadNpmTasks('grunt-jscs');
-
-        // Automatically load required Grunt tasks
+        //Automatically load required Grunt tasks
         require('jit-grunt')(grunt, {
-            useminPrepare: 'grunt-usemin',
-            ngtemplates: 'grunt-angular-templates',
-            cdnify: 'grunt-google-cdn'
+            // useminPrepare: 'grunt-usemin',
+            // ngtemplates: 'grunt-angular-templates',
+            // cdnify: 'grunt-google-cdn'
         });
 
         // Configurable paths for the application
@@ -160,21 +157,20 @@
                 }
             },
 
-            // Empties folders to start fresh
-            clean: {
-                dist: {
-                    files: [{
-                        dot: true,
-                        src: [
-                            '.tmp',
-                            '<%= yeoman.dist %>/{,*/}*',
-                            '!<%= yeoman.dist %>/.git{,*/}*'
-                        ]
-                    }]
-                },
-                server: '.tmp'
-            },
-
+            //            // Empties folders to start fresh
+            //            clean: {
+            //                dist: {
+            //                    files: [{
+            //                        dot: true,
+            //                        src: [
+            //                            '.tmp',
+            //                            '<%= yeoman.dist %>/{,*/}*',
+            //                            '!<%= yeoman.dist %>/.git{,*/}*'
+            //                        ]
+            //                    }]
+            //                },
+            //                server: '.tmp'
+            //            },
             // Add vendor prefixed styles
             //            postcss: {
             //                options: {
@@ -206,32 +202,32 @@
             //            },
 
             // Automatically inject Bower components into the app
-            wiredep: {
-                app: {
-                    src: ['<%= yeoman.app %>/index.html'],
-                    ignorePath: /\.\.\//
-                },
-                test: {
-                    devDependencies: true,
-                    src: '<%= karma.unit.configFile %>',
-                    ignorePath: /\.\.\//,
-                    fileTypes: {
-                        js: {
-                            block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-                            detect: {
-                                js: /'(.*\.js)'/gi
-                            },
-                            replace: {
-                                js: '\'{{filePath}}\','
-                            }
-                        }
-                    }
-                },
-                sass: {
-                    src: ['<%= yeoman.app %>/assets/css/{,*/}*.{scss,sass}'],
-                    ignorePath: /(\.\.\/){1,2}bower_components\//
-                }
-            },
+            //            wiredep: {
+            //                app: {
+            //                    src: ['<%= yeoman.app %>/index.html'],
+            //                    ignorePath: /\.\.\//
+            //                },
+            //                test: {
+            //                    devDependencies: true,
+            //                    src: '<%= karma.unit.configFile %>',
+            //                    ignorePath: /\.\.\//,
+            //                    fileTypes: {
+            //                        js: {
+            //                            block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
+            //                            detect: {
+            //                                js: /'(.*\.js)'/gi
+            //                            },
+            //                            replace: {
+            //                                js: '\'{{filePath}}\','
+            //                            }
+            //                        }
+            //                    }
+            //                },
+            //                sass: {
+            //                    src: ['<%= yeoman.app %>/assets/css/{,*/}*.{scss,sass}'],
+            //                    ignorePath: /(\.\.\/){1,2}bower_components\//
+            //                }
+            //            },
 
             // Compiles Sass to CSS and generates necessary files if requested
             // compass: {
@@ -263,55 +259,54 @@
             // },
 
             // Renames files for browser caching purposes
-            filerev: {
-                dist: {
-                    src: [
-                        '<%= yeoman.dist %>/scripts/{,*/}*.js',
-                        '<%= yeoman.dist %>/styles/{,*/}*.css',
-                        '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-                        '<%= yeoman.dist %>/styles/fonts/*'
-                    ]
-                }
-            },
+            //            filerev: {
+            //                dist: {
+            //                    src: [
+            //                        '<%= yeoman.dist %>/scripts/{,*/}*.js',
+            //                        '<%= yeoman.dist %>/styles/{,*/}*.css',
+            //                        '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            //                        '<%= yeoman.dist %>/styles/fonts/*'
+            //                    ]
+            //                }
+            //            },
 
             // Reads HTML for usemin blocks to enable smart builds that automatically
             // concat, minify and revision files. Creates configurations in memory so
-            // additional tasks can operate on them
-            useminPrepare: {
-                html: '<%= yeoman.app %>/index.html',
-                options: {
-                    dest: '<%= yeoman.dist %>',
-                    flow: {
-                        html: {
-                            steps: {
-                                js: ['concat', 'uglifyjs'],
-                                css: ['cssmin']
-                            },
-                            post: {}
-                        }
-                    }
-                }
-            },
+            //            // additional tasks can operate on them
+            //            useminPrepare: {
+            //                html: '<%= yeoman.app %>/index.html',
+            //                options: {
+            //                    dest: '<%= yeoman.dist %>',
+            //                    flow: {
+            //                        html: {
+            //                            steps: {
+            //                                js: ['concat', 'uglifyjs'],
+            //                                css: ['cssmin']
+            //                            },
+            //                            post: {}
+            //                        }
+            //                    }
+            //                }
+            //            },
 
-            // Performs rewrites based on filerev and the useminPrepare configuration
-            usemin: {
-                html: ['<%= yeoman.dist %>/{,*/}*.html'],
-                css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-                js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
-                options: {
-                    assetsDirs: [
-                        '<%= yeoman.dist %>',
-                        '<%= yeoman.dist %>/images',
-                        '<%= yeoman.dist %>/styles'
-                    ],
-                    patterns: {
-                        js: [
-                            [/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']
-                        ]
-                    }
-                }
-            },
-
+            //            // Performs rewrites based on filerev and the useminPrepare configuration
+            //            usemin: {
+            //                html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            //                css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            //                js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+            //                options: {
+            //                    assetsDirs: [
+            //                        '<%= yeoman.dist %>',
+            //                        '<%= yeoman.dist %>/images',
+            //                        '<%= yeoman.dist %>/styles'
+            //                    ],
+            //                    patterns: {
+            //                        js: [
+            //                            [/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']
+            //                        ]
+            //                    }
+            //                }
+            //            },
             // The following *-min tasks will produce minified files in the dist folder
             // By default, your `index.html`'s <!-- Usemin block --> will take care of
             // minification. These next options are pre-configured if you do not wish
@@ -338,111 +333,110 @@
             //   dist: {}
             // },
 
-            imagemin: {
-                dist: {
-                    files: [{
-                        expand: true,
-                        cwd: '<%= yeoman.app %>/images',
-                        src: '{,*/}*.{png,jpg,jpeg,gif}',
-                        dest: '<%= yeoman.dist %>/images'
-                    }]
-                }
-            },
+            //            imagemin: {
+            //                dist: {
+            //                    files: [{
+            //                        expand: true,
+            //                        cwd: '<%= yeoman.app %>/images',
+            //                        src: '{,*/}*.{png,jpg,jpeg,gif}',
+            //                        dest: '<%= yeoman.dist %>/images'
+            //                    }]
+            //                }
+            //            },
+            //            svgmin: {
+            //                dist: {
+            //                    files: [{
+            //                        expand: true,
+            //                        cwd: '<%= yeoman.app %>/images',
+            //                        src: '{,*/}*.svg',
+            //                        dest: '<%= yeoman.dist %>/images'
+            //                    }]
+            //                }
+            //            },
 
-            svgmin: {
-                dist: {
-                    files: [{
-                        expand: true,
-                        cwd: '<%= yeoman.app %>/images',
-                        src: '{,*/}*.svg',
-                        dest: '<%= yeoman.dist %>/images'
-                    }]
-                }
-            },
+            //            htmlmin: {
+            //                dist: {
+            //                    options: {
+            //                        collapseWhitespace: true,
+            //                        conservativeCollapse: true,
+            //                        collapseBooleanAttributes: true,
+            //                        removeCommentsFromCDATA: true
+            //                    },
+            //                    files: [{
+            //                        expand: true,
+            //                        cwd: '<%= yeoman.dist %>',
+            //                        src: ['*.html'],
+            //                        dest: '<%= yeoman.dist %>'
+            //                    }]
+            //                }
+            //            },
 
-            htmlmin: {
-                dist: {
-                    options: {
-                        collapseWhitespace: true,
-                        conservativeCollapse: true,
-                        collapseBooleanAttributes: true,
-                        removeCommentsFromCDATA: true
-                    },
-                    files: [{
-                        expand: true,
-                        cwd: '<%= yeoman.dist %>',
-                        src: ['*.html'],
-                        dest: '<%= yeoman.dist %>'
-                    }]
-                }
-            },
-
-            ngtemplates: {
-                dist: {
-                    options: {
-                        module: 'bookswebApp',
-                        htmlmin: '<%= htmlmin.dist.options %>',
-                        usemin: 'scripts/scripts.js'
-                    },
-                    cwd: '<%= yeoman.app %>',
-                    src: 'views/{,*/}*.html',
-                    dest: '.tmp/templateCache.js'
-                }
-            },
+            //
+            //            ngtemplates: {
+            //                dist: {
+            //                    options: {
+            //                        module: 'bookswebApp',
+            //                        htmlmin: '<%= htmlmin.dist.options %>',
+            //                        usemin: 'scripts/scripts.js'
+            //                    },
+            //                    cwd: '<%= yeoman.app %>',
+            //                    src: 'views/{,*/}*.html',
+            //                    dest: '.tmp/templateCache.js'
+            //                }
+            //            },
 
             // ng-annotate tries to make the code safe for minification automatically
             // by using the Angular long form for dependency injection.
-            ngAnnotate: {
-                dist: {
-                    files: [{
-                        expand: true,
-                        cwd: '.tmp/concat/scripts',
-                        src: '*.js',
-                        dest: '.tmp/concat/scripts'
-                    }]
-                }
-            },
-
-            // Replace Google CDN references
-            cdnify: {
-                dist: {
-                    html: ['<%= yeoman.dist %>/*.html']
-                }
-            },
+            //            ngAnnotate: {
+            //                dist: {
+            //                    files: [{
+            //                        expand: true,
+            //                        cwd: '.tmp/concat/scripts',
+            //                        src: '*.js',
+            //                        dest: '.tmp/concat/scripts'
+            //                    }]
+            //                }
+            //            },
+            //            // Replace Google CDN references
+            //            cdnify: {
+            //                dist: {
+            //                    html: ['<%= yeoman.dist %>/*.html']
+            //                }
+            //            },
 
             // Copies remaining files to places other tasks can use
-            copy: {
-                dist: {
-                    files: [{
-                        expand: true,
-                        dot: true,
-                        cwd: '<%= yeoman.app %>',
-                        dest: '<%= yeoman.dist %>',
-                        src: [
-                            '*.{ico,png,txt}',
-                            '*.html',
-                            'images/{,*/}*.{webp}',
-                            'assets/css/fonts/{,*/}*.*'
-                        ]
-                    }, {
-                        expand: true,
-                        cwd: '.tmp/images',
-                        dest: '<%= yeoman.dist %>/images',
-                        src: ['generated/*']
-                    }, {
-                        expand: true,
-                        cwd: '.',
-                        src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-                        dest: '<%= yeoman.dist %>'
-                    }]
-                },
-                styles: {
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/assets/css',
-                    dest: '.tmp/styles/',
-                    src: '{,*/}*.css'
-                }
-            },
+            //            copy: {
+            //                dist: {
+            //                    files: [{
+            //                        expand: true,
+            //                        dot: true,
+            //                        cwd: '<%= yeoman.app %>',
+            //                        dest: '<%= yeoman.dist %>',
+            //                        src: [
+            //                            '*.{ico,png,txt}',
+            //                            '*.html',
+            //                            'images/{,*/}*.{webp}',
+            //                            'assets/css/fonts/{,*/}*.*'
+            //                        ]
+            //                    }, {
+            //                        expand: true,
+            //                        cwd: '.tmp/images',
+            //                        dest: '<%= yeoman.dist %>/images',
+            //                        src: ['generated/*']
+            //                    }, {
+            //                        expand: true,
+            //                        cwd: '.',
+            //                        src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+            //                        dest: '<%= yeoman.dist %>'
+            //                    }]
+            //                },
+            //                styles: {
+            //                    expand: true,
+            //                    cwd: '<%= yeoman.app %>/assets/css',
+            //                    dest: '.tmp/styles/',
+            //                    src: '{,*/}*.css'
+            //                }
+            //            },
 
             // Run some tasks in parallel to speed up the build process
             // concurrent: {
@@ -474,10 +468,48 @@
                         // Change this to '0.0.0.0' to access the server from outside.
                         hostname: 'localhost' //livereload: 35729
                     }
+                },
+                test: {
+                    options: {
+                        port: 8000,
+                        base: '<%= yeoman.app %>',
+                        hostname: 'localhost'
+                    }
+                }
+            },
+
+            protractor: {
+                options: {
+                    // Location of your protractor config file
+                    configFile: 'test/protractor.conf.js',
+
+                    // Do you want the output to use fun colors?
+                    noColor: false,
+
+                    // Set to true if you would like to use the Protractor command line debugging tool
+                    // debug: true,
+
+                    // Additional arguments that are passed to the webdriver command
+                    args: {}
+                },
+                e2e: {
+                    options: {
+                        // Stops Grunt process if a test fails
+                        keepAlive: false
+                    }
+                },
+                continuous: {
+                    options: {
+                        keepAlive: true
+                    }
                 }
             }
-
         });
+
+        grunt.loadNpmTasks('grunt-jscs');
+        grunt.loadNpmTasks('grunt-contrib-connect');
+        grunt.loadNpmTasks('grunt-protractor-runner');
+        grunt.loadNpmTasks('grunt-run');
 
         grunt.registerTask('help', 'Gibt das Hilfe Menue aus', function () {
             grunt.log.write('Folgende TASK werden angeboten:\n');
@@ -487,52 +519,52 @@
             grunt.log.write('Hilfe ausgegeben: ').ok();
         });
 
-        grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-            if (target === 'dist') {
-                return grunt.task.run(['build', 'connect:dist:keepalive']);
-            }
-
-            grunt.task.run([
-                'clean:server',
-                'wiredep',
-                //'concurrent:server',
-                'postcss:server',
-                'connect:livereload',
-                'watch'
-            ]);
-        });
+        //        grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+        //            if (target === 'dist') {
+        //                return grunt.task.run(['build', 'connect:dist:keepalive']);
+        //            }
+        //
+        //            grunt.task.run([
+        //                'clean:server',
+        //                'wiredep',
+        //                //'concurrent:server',
+        //                'postcss:server',
+        //                'connect:livereload',
+        //                'watch'
+        //            ]);
+        //        });
 
         // grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
         // grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         // grunt.task.run(['serve:' + target]);
         // });
+        //
+        //        grunt.registerTask('test', [
+        //            'clean:server',
+        //            'wiredep',
+        //            //'concurrent:test',
+        //            'postcss',
+        //            'connect:test',
+        //            'karma'
+        //        ]);
 
-        grunt.registerTask('test', [
-            'clean:server',
-            'wiredep',
-            //'concurrent:test',
-            'postcss',
-            'connect:test',
-            'karma'
-        ]);
-
-        grunt.registerTask('build', [
-            'clean:dist',
-            'wiredep',
-            'useminPrepare',
-            //'concurrent:dist',
-            'postcss',
-            'ngtemplates',
-            'concat',
-            'ngAnnotate',
-            'copy:dist',
-            'cdnify',
-            'cssmin',
-            'uglify',
-            'filerev',
-            'usemin',
-            'htmlmin'
-        ]);
+        //        grunt.registerTask('build', [
+        //            'clean:dist',
+        //            'wiredep',
+        //            'useminPrepare',
+        //            //'concurrent:dist',
+        //            'postcss',
+        //            'ngtemplates',
+        //            'concat',
+        //            'ngAnnotate',
+        //            'copy:dist',
+        //            'cdnify',
+        //            'cssmin',
+        //            'uglify',
+        //            'filerev',
+        //            'usemin',
+        //            'htmlmin'
+        //        ]);
 
         grunt.registerTask('default', [
             'newer:jshint',
@@ -547,8 +579,7 @@
         ]);
 
         grunt.registerTask('verify', [
-            //'connect:myServer',
-            'karma'
+            'connect:test', 'protractor:e2e'
         ]);
     };
 }());
