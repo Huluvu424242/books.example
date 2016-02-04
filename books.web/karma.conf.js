@@ -16,11 +16,16 @@
 
             // frameworks to use
             // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-            frameworks: ['jasmine'],
+            frameworks: ['jasmine2'],
 
             // list of files / patterns to load in the browser
             files: [
                 'test/spec/**/*.js'
+//                'app/assets/libs/angular/angular.js',
+//                'app/assets/libs/angular-route/angular-route.js',
+//                'app/assets/libs/angular-mocks/angular-mocks.js',
+//                'app/components/**/*.js'
+//                'public/app/**/*.js'
             ],
 
             // list of files to exclude

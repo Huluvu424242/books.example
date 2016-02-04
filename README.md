@@ -36,6 +36,7 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
 * JavaScript Integration
+    * http://ramonvictor.github.io/protractor/slides
     * http://www.beyondjava.net/blog/using-grunt-in-mixed-java-and-javascript-maven-projects/
     * https://github.com/allegro/grunt-maven-plugin
     * https://github.com/cucumber/cucumber-js
