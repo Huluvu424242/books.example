@@ -18,6 +18,14 @@
             // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
             frameworks: ['jasmine2'],
 
+            //            plugins: [
+            //                'karma-chrome-launcher',
+            //                'karma-firefox-launcher',
+            //                'karma-jasmine',
+            //                'karma-junit-reporter'
+            //            ],
+
+
             // list of files / patterns to load in the browser
             files: [
                 'test/spec/**/*.js'
@@ -38,7 +46,13 @@
             // test results reporter to use
             // possible values: 'dots', 'progress'
             // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-            reporters: ['progress'],
+            reporters: ['progress', 'junit'],
+
+            junitReporter: {
+                outputFile: 'target/reports/e2e.xml'
+                    //suite: ''
+            }
+
 
             // web server port
             port: 9876,

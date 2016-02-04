@@ -4,23 +4,24 @@
 
     var ptor = protractor.getInstance ? protractor.getInstance() : browser;
 
-    //    var serviceMock = require('./mock/impl/jobSucheServicesMock');
-    //    var mockData = require('./mock/data/jobsucheData');
+    //    var serviceMock = require('./mock/impl/xxxServicesMock');
+    //    var mockData = require('./mock/data/xxxData');
 
 
-    // example-spec.js
-    describe('angularjs homepage', function () {
 
-        it('should greet the named user', function () {
+    describe('[Basis] BooksApp', function () {
+
+        it('soll die Übersichtsseite anzeigen.', function () {
             browser.get('/');
             expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/');
-
-            //        element(by.model('yourName')).sendKeys('Julie');
-            //
-            //        var greeting = element(by.binding('yourName'));
-            //
-            //        expect(greeting.getText()).toEqual('Hello Julie!');
         });
-    });
 
+        it('soll ein Buch erfassen und dann in der Liste anzeigen.', function () {
+            browser.get('/');
+            element(by.id('titel')).sendKeys('Drachenhueter');
+            element(by.id('newBookDataOK')).click();
+            expect(element(by.id('titel#Drachenhueter')).isDisplayed()).toBe(true);
+        });
+
+    });
 }());
