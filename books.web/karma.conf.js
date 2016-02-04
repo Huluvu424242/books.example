@@ -18,22 +18,22 @@
             // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
             frameworks: ['jasmine2'],
 
-            //            plugins: [
-            //                'karma-chrome-launcher',
-            //                'karma-firefox-launcher',
-            //                'karma-jasmine',
-            //                'karma-junit-reporter'
-            //            ],
-
+            plugins: [
+                'karma-coverage'
+//                'karma-chrome-launcher',
+//                'karma-firefox-launcher',
+//                'karma-jasmine',
+//                'karma-junit-reporter'
+            ],
 
             // list of files / patterns to load in the browser
             files: [
-                'test/spec/**/*.js'
+                'test/spec/**/*.js',
 //                'app/assets/libs/angular/angular.js',
 //                'app/assets/libs/angular-route/angular-route.js',
 //                'app/assets/libs/angular-mocks/angular-mocks.js',
 //                'app/components/**/*.js'
-//                'public/app/**/*.js'
+                'public/app/**/*.js'
             ],
 
             // list of files to exclude
@@ -41,17 +41,36 @@
 
             // preprocess matching files before serving them to the browser
             // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-            preprocessors: {},
+            preprocessors: {
+                // source files, that you wanna generate coverage for 
+                // do not include tests or libraries 
+                // (these files will be instrumented by Istanbul) 
+                'public/app/**/*.js': ['coverage']
+            },
 
             // test results reporter to use
             // possible values: 'dots', 'progress'
             // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-            reporters: ['progress', 'junit'],
+            reporters: ['progress', 'coverage', 'junit'],
+
+            // optionally, configure the reporter 
+            coverageReporter: {
+                reporters: [
+                    {
+                        type: 'html',
+                        dir: '_reports/unit-coverage-html'
+                    },
+                    {
+                        type: 'cobertura',
+                        dir: '_reports/unit-coverage-cobertura'
+                    },
+                ]
+            },
+
 
             junitReporter: {
-                outputFile: 'target/reports/e2e.xml'
-                    //suite: ''
-            }
+                outputFile: '_reports/unit-results/test-results.xml'
+            },
 
 
             // web server port

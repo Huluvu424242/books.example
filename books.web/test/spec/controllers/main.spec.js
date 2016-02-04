@@ -2,12 +2,15 @@
 
     'use strict';
 
-    var ptor = protractor.getInstance ? protractor.getInstance() : browser;
+    var ptor = require('protractor'),
+        by = ptor.By,
+        /* global browser */
+        element = browser.element;
+
+    //var ptor = protractor.getInstance ? protractor.getInstance() : browser;
 
     //    var serviceMock = require('./mock/impl/xxxServicesMock');
     //    var mockData = require('./mock/data/xxxData');
-
-
 
     describe('[Basis] BooksApp', function () {
 
@@ -24,4 +27,5 @@
         });
 
     });
+
 }());
