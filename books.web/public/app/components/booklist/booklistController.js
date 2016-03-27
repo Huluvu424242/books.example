@@ -50,7 +50,7 @@
                     // link liste
                     bc.baseURL = links.baseURL.href;
                     bc.selfURL = links.self.href;
-                    //bc.newURL = links.newURL.href;
+                    bc.newURL = links.newURL.href;
                     //bc.nextURL = links.nextURL.href;
                     //bc.prevURL = links.prevURL.href;
 
