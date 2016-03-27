@@ -30,7 +30,7 @@
                     <td><span id="isbn#{{$index}}" title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
                     <!-- Aktionen -->
 
-                    <td><span id="editBook#{{$index}}" class="glyphicon glyphicon-edit" title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span id="deleteBook#{{$index}}" class="glyphicon glyphicon-trash" title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.deleteBook('{{book._links.self.href}}')"></span></td>
+                    <td><span id="editBook#{{$index}}" class="glyphicon glyphicon-edit" title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span id="deleteBook#{{$index}}" class="glyphicon glyphicon-trash" title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.deleteBook(book._links.self.href)"></span></td>
                 </tr>
             </tbody>
         </table>
