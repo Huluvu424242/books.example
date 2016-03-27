@@ -29,6 +29,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -79,6 +80,8 @@ public class BookController {
         buchregal.add(linkTo(methodOn(BookController.class).listeBuecher())
                 .withSelfRel());
         buchregal.add(linkTo(BookController.class).withRel("baseURL"));
+        buchregal.add(linkTo(BookController.class).slash("book/new")
+                .withRel("newURL"));
         LOG.trace("Books:" + books);
         return new ResponseEntity<Resources<Book>>(buchregal, HttpStatus.OK);
     }
@@ -92,7 +95,7 @@ public class BookController {
 
     // @ApiMethod
     @RequestMapping(value = "/book/{id}", method = RequestMethod.DELETE)
-    public void loescheBuch(@PathVariable Long id) {
+    public void loescheBuch(@PathVariable final Long id) {
         LOG.trace("loescheBuch(" + id + ")");
         this.bookService.deleteBook(id);
     }
