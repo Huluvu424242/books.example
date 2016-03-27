@@ -12,7 +12,6 @@
      */
     angular.module('BooksApp', [
         'BookListModule',
-        'BookServiceModule',
         'ngAnimate',
         'ngAria',
         'ngCookies',
