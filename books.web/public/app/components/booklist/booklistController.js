@@ -59,10 +59,10 @@
                 });
             };
 
-            function add() {
+            function add(url) {
                 var titel = bc.newBookData.titel,
                     isbn = bc.newBookData.isbn;
-                bookService.addBook('http://localhost:8080/book/new', titel, isbn, function () {
+                bookService.addBook(url, titel, isbn, function () {
                     bc.newBookData = {};
                     bc.refreshData();
                 });
