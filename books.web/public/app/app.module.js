@@ -11,6 +11,8 @@
      * Main module of the application.
      */
     angular.module('BooksApp', [
+        'BookListModule',
+        'BookServiceModule',
         'ngAnimate',
         'ngAria',
         'ngCookies',

@@ -23,13 +23,19 @@
 
     'use strict';
 
-    angular.module('BooksApp')
-        .controller('BookController', ['$http', 'bookService', function ($http, bookService) {
+    angular.module('BookListModule', ['BookServiceModule'])
+        .controller('BookListController', ['$http', 'bookService', function ($http, bookService) {
             var bc = this;
             bc.editModusAktiv = false;
             bc.books = [];
 
-            bc.refreshData = function () {
+            bc.refreshData = refresh;
+            bc.addBook = add;
+            bc.deleteBook = loesche;
+
+            bc.refreshData();
+
+            function refresh() {
 
                 //default für allerersten Aufruf
                 if (typeof (bc.selfURL) === 'undefined') {
@@ -53,7 +59,7 @@
                 });
             };
 
-            bc.addBook = function () {
+            function add() {
                 var titel = bc.newBookData.titel,
                     isbn = bc.newBookData.isbn;
                 bookService.addBook('http://localhost:8080/book/new', titel, isbn, function () {
@@ -62,11 +68,9 @@
                 });
             };
 
-            bc.deleteBook = function (url) {
+            function loesche(url) {
                 bookService.deleteBook(url, bc.refreshData);
             };
-
-            bc.refreshData();
 
         }]);
 }());

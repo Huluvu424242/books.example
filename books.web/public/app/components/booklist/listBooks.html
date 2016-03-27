@@ -21,15 +21,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="book in bc.books | orderBy : 'id' : 'reverse' " id="{{book._links.self.href}}">
+                <tr ng-repeat="book in bc.books | orderBy : 'id' : 'reverse' track by $index " id="{{book._links.self.href}}">
                     <!-- Id -->
-                    <td><span title="ID: {{book.primaryKey}}">{{book.primaryKey}}</span></td>
+                    <td><span id="id#{{$index}}" title="ID: {{book.primaryKey}}">{{book.primaryKey}}</span></td>
                     <!-- Titel -->
-                    <td><span id="titel#{{book.titel}}" title="Titel: {{book.titel}}">{{book.titel}}</span></td>
+                    <td><span id="titel#{{$index}}" title="Titel: {{book.titel}}">{{book.titel}}</span></td>
                     <!-- ISBN -->
-                    <td><span title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
+                    <td><span id="isbn#{{$index}}" title="ISBN: {{book.isbn.formattedValue}}">{{book.isbn.formattedValue}}</span></td>
                     <!-- Aktionen -->
-                    <td><span id="editBook_{{book.primaryKey}}" class="glyphicon glyphicon-edit" title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span id="deleteBook_{{book.primaryKey}}" class="glyphicon glyphicon-trash" title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.deleteBook('{{book._links.self.href}}')"></span></td>
+
+                    <td><span id="editBook#{{$index}}" class="glyphicon glyphicon-edit" title="Bearbeite Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.editBook('{{book._links.self.href}}')"></span> <span id="deleteBook#{{$index}}" class="glyphicon glyphicon-trash" title="Loesche Buch mit ID {{book.primaryKey}} und Titel {{book.titel}}" ng-click="bc.deleteBook('{{book._links.self.href}}')"></span></td>
                 </tr>
             </tbody>
         </table>

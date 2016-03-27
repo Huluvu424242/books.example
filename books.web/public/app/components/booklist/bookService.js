@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('BooksApp').factory('bookService', ['$http', function ($http) {
+    angular.module('BookServiceModule', []).factory('bookService', ['$http', function ($http) {
 
         //GET http://localhost:8080/books
         var list = function (url, erfolg, fehler) {

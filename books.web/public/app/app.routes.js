@@ -14,8 +14,8 @@
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'app/components/book/uebersicht.html',
-                    controller: 'BookController',
+                    templateUrl: 'app/components/booklist/uebersicht.html',
+                    controller: 'BookListController',
                     controllerAs: 'bc'
                 })
                 .when('/einstellungen', {
