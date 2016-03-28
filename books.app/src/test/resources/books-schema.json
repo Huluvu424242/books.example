@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Book set",
-    "type": "array",
+    "type": "object",
     "items": {
         "title": "Book",
         "type": "object",
