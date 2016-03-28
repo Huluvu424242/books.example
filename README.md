@@ -98,6 +98,13 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://www.npmjs.com/package/cucumberjs-chromedriver
 * JavaScript Libs & Components 
     * Ladespinner: https://github.com/fgnass/spin.js
+* Grundlagen für Webanwendungen
+    * https://de.m.wikipedia.org/wiki/JavaScript_Object_Notation#JSONP
+    * https://de.m.wikipedia.org/wiki/Protocol_Buffers
+    * https://de.m.wikipedia.org/wiki/Cross-Origin_Resource_Sharing
+    * https://stateless.co/hal_specification.html
+    * https://json-schema.org
+    * https://github.com/jsonary-js/jsonary
 
 
 
