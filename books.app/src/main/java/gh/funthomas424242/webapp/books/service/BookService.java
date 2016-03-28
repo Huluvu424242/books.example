@@ -3,7 +3,7 @@ package gh.funthomas424242.webapp.books.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /*
  * #%L
@@ -31,7 +31,7 @@ import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.infrastructure.BookRepository;
 
-@Component
+@Service
 public class BookService {
 
     protected final BookRepository bookRepository;
@@ -45,7 +45,7 @@ public class BookService {
         return this.bookRepository.findAll();
     }
 
-    public Book getBook(Long id) {
+    public Book getBook(final Long id) {
         return this.bookRepository.getOne(id);
     }
 
