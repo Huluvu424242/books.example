@@ -63,10 +63,9 @@ public class BookControllerTest {
     public void testValidResponses() {
 
         final Response response = when().get("/books").then()
-                .contentType(ContentType.JSON). // check that the content type
-                                                // return from the API is JSON
-        extract().response();
+                .contentType("application/hal+json").extract().response();
         assertNotNull(response);
+
         final String jsonContent = response.asString();
         assertThat(jsonContent,
                 matchesJsonSchemaInClasspath("books-schema.json"));
@@ -79,13 +78,16 @@ public class BookControllerTest {
 
     @Test
     public void validierteSchema() {
+        final Response response = get("/books");
+        final String jsonObject = response.asString();
+
         get("/books").then().assertThat()
                 .body(matchesJsonSchemaInClasspath("books-schema.json"));
         // // Given
         // final String json = null;
         // // Then
-        // assertThat(json,
-        // matchesJsonSchemaInClasspath("greeting-schema.json"));
+        assertThat(jsonObject,
+                matchesJsonSchemaInClasspath("books-schema.json"));
     }
 
 }
