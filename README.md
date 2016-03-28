@@ -77,6 +77,8 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
    * http://www.mattheye.com/passing-data-between-spring-mvc-and-angularjs/
    * http://stackoverflow.com/questions/17230242/angular-element-vs-document-getelementbyid-or-jquery-selector-with-spin-busy-c
 * Testing
+   * https://jaxenter.de/testen-ohne-neu-zu-bauen-java-8-features-in-junit-tests-36101
+   * https://jaxenter.de/verteilte-systeme-automatisiert-testen-geht-das-und-wenn-ja-wie-36066?utm_source=jaxenter.de&utm_medium=referral&utm_campaign=seealso
    * http://blog.codeleak.pl/2015/03/spring-boot-integration-testing-with.html
    * http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html
    * http://connect-group.github.io/thymeleaf-tdd/
