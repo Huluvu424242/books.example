@@ -1,4 +1,4 @@
-package gh.funthomas424242.webapp.books.tests.infrastructure;
+package gh.funthomas424242.webapp.books.infrastructure;
 
 /*
  * #%L
