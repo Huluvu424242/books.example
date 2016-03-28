@@ -12,20 +12,16 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 
 import gh.funthomas424242.webapp.books.Application;
@@ -33,6 +29,14 @@ import gh.funthomas424242.webapp.books.domain.Book;
 import gh.funthomas424242.webapp.books.domain.ISBN;
 import gh.funthomas424242.webapp.books.service.BookService;
 
+/**
+ * Die Test Schemata werden aus dem Response des ersten Test über
+ * http://jsonschema.net/#/ manuell generiert.
+ *
+ *
+ * @author huluvu424242
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = { Application.class })
 @WebIntegrationTest
@@ -59,8 +63,28 @@ public class BookControllerTest {
     public void tearDown() throws Exception {
     }
 
+    // @Test
+    // public void generiereJsonSchemata() throws JsonProcessingException {
+    // final Response response = when().get("/books").then()
+    // .contentType("application/hal+json").extract().response();
+    // assertNotNull(response);
+    //
+    // final String jsonContent = response.asString();
+    //
+    // System.out.println(jsonContent);
+    // final ObjectMapper m = new ObjectMapper();
+    // m.gener
+    // // final SchemaFactoryWrapper visitor = new SchemaFactoryWrapper();
+    // // m.acceptJsonFormatVisitor(m.constructType(books.getClass()),
+    // // visitor);
+    // // final JsonSchema jsonSchema = visitor.finalSchema();
+    // // final String log = m.writerWithDefaultPrettyPrinter()
+    // // .writeValueAsString(jsonSchema);
+    // // System.out.println(log);
+    // }
+
     @Test
-    public void testValidResponses() {
+    public void testValidResponsesContentAndType() {
 
         final Response response = when().get("/books").then()
                 .contentType("application/hal+json").extract().response();
@@ -70,22 +94,38 @@ public class BookControllerTest {
         assertThat(jsonContent,
                 matchesJsonSchemaInClasspath("books-schema.json"));
 
-        given().contentType("application/hal+json").and()
-                .body(new String("hallo")).when().get("/books");
-        // expect().body("").when().get("/books");
-        // assertNotNull(response);
     }
 
     @Test
-    public void validierteSchema() {
+    @Ignore
+    public void testAddABook() {
+
+        // final Response response = when().get("/books").then()
+        // .contentType("application/hal+json").extract().response();
+        // assertNotNull(response);
+        //
+        // final String jsonContent = response.asString();
+        // assertThat(jsonContent,
+        // matchesJsonSchemaInClasspath("books-schema.json"));
+
+        given().parameters("titel", "Das Boot").when().post("/book/new").then()
+                .contentType("application/hal+json")
+                .body(matchesJsonSchemaInClasspath("books-schema.json"));
+    }
+
+    @Test
+    public void validierteSchemaUeberBody() {
+
+        when().get("/books").then().assertThat()
+                .body(matchesJsonSchemaInClasspath("books-schema.json"));
+
+    }
+
+    @Test
+    public void validierteSchemaUeberAssertThat() {
         final Response response = get("/books");
         final String jsonObject = response.asString();
 
-        get("/books").then().assertThat()
-                .body(matchesJsonSchemaInClasspath("books-schema.json"));
-        // // Given
-        // final String json = null;
-        // // Then
         assertThat(jsonObject,
                 matchesJsonSchemaInClasspath("books-schema.json"));
     }

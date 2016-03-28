@@ -1,45 +1,133 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Book set",
-    "type": "object",
-    "items": {
-        "title": "Book",
-        "type": "object",
-        "properties": {
-            "id": {
-                "description": "The unique identifier for a product",
-                "type": "number"
-            },
-            "name": {
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "id": "http://jsonschema.net/_embedded",
+      "type": "object",
+      "properties": {
+        "bookList": {
+          "id": "http://jsonschema.net/_embedded/bookList",
+          "type": "array",
+          "items": {
+            "id": "http://jsonschema.net/_embedded/bookList/0",
+            "type": "object",
+            "properties": {
+              "primaryKey": {
+                "id": "http://jsonschema.net/_embedded/bookList/0/primaryKey",
+                "type": "integer"
+              },
+              "titel": {
+                "id": "http://jsonschema.net/_embedded/bookList/0/titel",
                 "type": "string"
-            },
-            "price": {
-                "type": "number",
-                "minimum": 0,
-                "exclusiveMinimum": true
-            },
-            "tags": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                },
-                "minItems": 1,
-                "uniqueItems": true
-            },
-            "dimensions": {
+              },
+              "isbn": {
+                "id": "http://jsonschema.net/_embedded/bookList/0/isbn",
                 "type": "object",
                 "properties": {
-                    "length": {"type": "number"},
-                    "width": {"type": "number"},
-                    "height": {"type": "number"}
-                },
-                "required": ["length", "width", "height"]
+                  "formattedValue": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/formattedValue",
+                    "type": "string"
+                  },
+                  "prefix": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/prefix",
+                    "type": "string"
+                  },
+                  "gruppenNummer": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/gruppenNummer",
+                    "type": "string"
+                  },
+                  "verlagsNummer": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/verlagsNummer",
+                    "type": "string"
+                  },
+                  "bandTitelNummer": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/bandTitelNummer",
+                    "type": "string"
+                  },
+                  "pruefZiffer": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/pruefZiffer",
+                    "type": "string"
+                  },
+                  "valid": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/isbn/valid",
+                    "type": "boolean"
+                  }
+                }
+              },
+              "_links": {
+                "id": "http://jsonschema.net/_embedded/bookList/0/_links",
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "id": "http://jsonschema.net/_embedded/bookList/0/_links/self",
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "id": "http://jsonschema.net/_embedded/bookList/0/_links/self/href",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
             },
-            "warehouseLocation": {
-                "description": "Coordinates of the warehouse with the product",
-                "$ref": "http://json-schema.org/geo"
+            "required": [
+              "primaryKey",
+              "titel",
+              "isbn",
+              "_links"
+            ]
+          },
+          "required": [
+            "0"
+          ]
+        }
+      },
+      "required": [
+        "bookList"
+      ]
+    },
+    "_links": {
+      "id": "http://jsonschema.net/_links",
+      "type": "object",
+      "properties": {
+        "self": {
+          "id": "http://jsonschema.net/_links/self",
+          "type": "object",
+          "properties": {
+            "href": {
+              "id": "http://jsonschema.net/_links/self/href",
+              "type": "string"
             }
+          }
         },
-        "required": ["id", "name", "price"]
+        "baseURL": {
+          "id": "http://jsonschema.net/_links/baseURL",
+          "type": "object",
+          "properties": {
+            "href": {
+              "id": "http://jsonschema.net/_links/baseURL/href",
+              "type": "string"
+            }
+          }
+        },
+        "newURL": {
+          "id": "http://jsonschema.net/_links/newURL",
+          "type": "object",
+          "properties": {
+            "href": {
+              "id": "http://jsonschema.net/_links/newURL/href",
+              "type": "string"
+            }
+          }
+        }
+      }
     }
+  },
+  "required": [
+    "_embedded",
+    "_links"
+  ]
 }
