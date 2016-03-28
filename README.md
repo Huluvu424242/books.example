@@ -103,7 +103,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://de.m.wikipedia.org/wiki/Protocol_Buffers
     * https://de.m.wikipedia.org/wiki/Cross-Origin_Resource_Sharing
     * http://stateless.co/hal_specification.html
-    * https://json-schema.org
+    * http://json-schema.org
     * https://github.com/jsonary-js/jsonary
 
 
