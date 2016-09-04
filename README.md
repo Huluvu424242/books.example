@@ -46,6 +46,7 @@ Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
     * https://github.com/ewolff/microservice/tree/master/microservice-demo
 * Maven
     * https://maven.apache.org/ref/3.3.3/maven-core/lifecycles.html#default_Lifecycle
+    * https://github.com/eirslett/frontend-maven-plugin/tree/master/frontend-maven-plugin
 * Docker
     * https://jaxenter.de/docker-mit-maven-steuern-20211
     * https://jaxenter.de/docker-rockt-java-wie-sie-die-docker-logging-plug-ins-verwenden-25238
