@@ -25,6 +25,8 @@ Bücherverwaltung mit JPA aber ohne Applicationserver (mittels spring boot)
 # Quellen
 Das Projekt basiert auf Kode und Erkenntnissen folgender Quellen und Projekte:
 
+* Dokumentation 
+    * Swagger: http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 * JavaScript Integration
     * http://www.beyondjava.net/blog/using-grunt-in-mixed-java-and-javascript-maven-projects/
     * https://github.com/allegro/grunt-maven-plugin
